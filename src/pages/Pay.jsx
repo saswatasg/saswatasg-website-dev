@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import PageMeta from '@/components/PageMeta';
 import RazorpayCheckout from '@/components/payments/RazorpayCheckout';
-import { Lock, ArrowLeft, CheckCircle2, ShieldCheck, Clock, FileText, BadgeCheck, MessageCircle } from 'lucide-react';
+import { Lock, ArrowLeft, CheckCircle2, ShieldCheck, Clock, FileText, BadgeCheck, MessageCircle, Link2, Copy, Check, Unlock } from 'lucide-react';
 import { trackEvent } from '@/utils/analytics';
 
 function parseAmountParam(v) {
@@ -40,9 +40,25 @@ export default function Pay() {
 
   const [amount, setAmount] = useState(amountParam ? String(amountParam) : '');
   const [successData, setSuccessData] = useState(null);
+  const [copied, setCopied] = useState(null);
 
   const effectiveAmount = isLocked ? amountParam : (Number(amount) >= 1 ? Math.floor(Number(amount)) : 0);
   const canPay = effectiveAmount >= 1;
+
+  const shareLink = useMemo(() => {
+    if (typeof window === 'undefined') return `/pay?amount=${effectiveAmount}`;
+    return `${window.location.origin}/pay?amount=${effectiveAmount}`;
+  }, [effectiveAmount]);
+  const lockedLink = useMemo(() => {
+    if (typeof window === 'undefined') return `/pay?amount=${effectiveAmount}&locked=1`;
+    return `${window.location.origin}/pay?amount=${effectiveAmount}&locked=1`;
+  }, [effectiveAmount]);
+  const copy = async (text, key) => {
+    await navigator.clipboard.writeText(text);
+    setCopied(key);
+    setTimeout(() => setCopied(null), 1500);
+    trackEvent('pay', 'copy_link', key);
+  };
 
   const handleAmountChange = (e) => {
     if (isLocked) return;
@@ -168,6 +184,29 @@ export default function Pay() {
             </p>
             <p className="text-xs font-bold text-ink/40 text-center mt-2">Questions? <a href="mailto:saswatasg@gmail.com" className="underline">saswatasg@gmail.com</a> • Refunds within 7 days of receipt • <Link to="/contact" className="underline">Contact</Link> for Terms</p>
           </div>
+
+          {!isLocked && canPay && (
+            <div className="mt-6 pt-6 border-t-2 border-black/10">
+              <p className="text-xs font-black tracking-widest text-ink/50 mb-3 flex items-center gap-1"><Link2 className="w-3 h-3" /> SHARE THIS INVOICE (DEV)</p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <input readOnly value={shareLink} className="flex-1 px-3 py-2 rounded-xl border-2 border-black bg-canvas font-mono text-xs font-bold truncate" />
+                  <button onClick={() => copy(shareLink, 'link')} className="px-3 py-2 rounded-xl bg-white border-2 border-black font-black text-xs flex items-center gap-1 hover:bg-ink hover:text-white transition-colors">
+                    {copied === 'link' ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />} {copied === 'link' ? 'Copied' : 'Copy'}
+                  </button>
+                </div>
+                <div className="flex items-center gap-2">
+                  <input readOnly value={lockedLink} className="flex-1 px-3 py-2 rounded-xl border-2 border-black bg-canvas font-mono text-xs font-bold truncate" />
+                  <button onClick={() => copy(lockedLink, 'locked')} className="px-3 py-2 rounded-xl bg-ink text-white border-2 border-black font-black text-xs flex items-center gap-1 hover:bg-ink/90 transition-colors">
+                    {copied === 'locked' ? <Check className="w-3 h-3" /> : <Lock className="w-3 h-3" />} {copied === 'locked' ? 'Copied' : 'Copy locked'}
+                  </button>
+                </div>
+                <p className="text-[11px] font-bold text-ink/40">
+                  <span className="inline-flex items-center gap-1"><Unlock className="w-3 h-3" /> Editable:</span> recipient can change &nbsp;•&nbsp; <span className="inline-flex items-center gap-1"><Lock className="w-3 h-3" /> Locked:</span> for invoice
+                </p>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="mt-6 bg-canvas border-2 border-black rounded-xl p-4 flex items-start gap-3">
