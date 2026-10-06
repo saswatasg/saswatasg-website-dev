@@ -1,0 +1,56 @@
+[
+  {
+    "issues": [],
+    "route": "/case-studies/cart-checkout",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "issues": [],
+    "route": "/case-studies/category-discovery",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "issues": [],
+    "route": "/case-studies/lead-form",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "issues": [],
+    "route": "/case-studies/upcore-lead-scoring",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "issues": [],
+    "route": "/case-studies/sierra-lead-allocation",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "issues": [],
+    "route": "/case-studies/livekeeping-compliance-gap",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "issues": [],
+    "route": "/case-studies/livekeeping-send-greetings",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "issues": [],
+    "route": "/case-studies/livekeeping-notifications",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "issues": [],
+    "route": "/case-studies/livekeeping-report-automation",
+    "scrollWidth": 320,
+    "width": 320
+  }
+]

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- A host's SPA fallback can serve another route's static HTML. Hide that
+         content before paint; the client mounts the requested route instead. -->
+    <script>
+      var requestedRoute = location.pathname;
+      if (requestedRoute === '/contact' && new URLSearchParams(location.search).get('world') === 'adda') requestedRoute += '?world=adda';
+      if (document.documentElement.dataset.route && document.documentElement.dataset.route !== requestedRoute) document.documentElement.classList.add('route-bootstrap');
+    </script>
+    <style>.route-bootstrap #root { visibility: hidden; }</style>
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
     <!-- Google Tag Manager — deferred to idle to avoid main-thread block -->

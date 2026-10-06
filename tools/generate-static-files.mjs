@@ -7,6 +7,14 @@ const SITE_URL = 'https://saswatasg.com';
 
 const STATIC_PAGES = [
   { path: '/', priority: 1.0, changefreq: 'weekly' },
+  { path: '/workbench', priority: 0.7, changefreq: 'monthly' },
+  { path: '/builds', priority: 0.7, changefreq: 'monthly' },
+  { path: '/adda', priority: 0.7, changefreq: 'monthly' },
+  { path: '/photography', priority: 0.7, changefreq: 'monthly' },
+  { path: '/photography/frame-studies', priority: 0.7, changefreq: 'monthly' },
+  { path: '/writing', priority: 0.7, changefreq: 'monthly' },
+  { path: '/cinema', priority: 0.7, changefreq: 'monthly' },
+  { path: '/adda/about', priority: 0.7, changefreq: 'monthly' },
   { path: '/about', priority: 0.8, changefreq: 'monthly' },
   { path: '/experience', priority: 0.8, changefreq: 'monthly' },
   { path: '/work', priority: 0.9, changefreq: 'weekly' },

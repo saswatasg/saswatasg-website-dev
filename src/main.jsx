@@ -1,13 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import App from '@/App';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/700.css';
-import '@/index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "@/App";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/700.css";
+import "@/index.css";
+import "@/styles/worlds.css";
+import "@/styles/polish.css";
+import "@fontsource/noto-serif-bengali/bengali-400.css";
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const app = (
   <React.StrictMode>
     <BrowserRouter>
@@ -16,6 +19,15 @@ const app = (
   </React.StrictMode>
 );
 
+const staticRoute = document.documentElement.dataset.route;
+const requestedRoute =
+  window.location.pathname +
+  (window.location.pathname === "/contact" &&
+  new URLSearchParams(window.location.search).get("world") === "adda"
+    ? "?world=adda"
+    : "");
+if (staticRoute && staticRoute !== requestedRoute) container.replaceChildren();
+document.documentElement.classList.remove("route-bootstrap");
 if (container.hasChildNodes()) {
   ReactDOM.hydrateRoot(container, app);
 } else {

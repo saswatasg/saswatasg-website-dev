@@ -287,13 +287,13 @@ export default defineConfig({
 	test: {
 		globals: false,
 		environment: 'node',
-		include: ['tests/**/*.test.js'],
+		include: ['tests/**/*.test.{js,jsx}'],
 	},
 	plugins: [
 		mdx({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm], rehypePlugins: [rehypeWrapTables] }),
 		...(isDev ? [inlineEditPlugin(), editModeDevPlugin(), iframeRouteRestorationPlugin(), selectionModePlugin()] : []),
 		react(),
-		addTransformIndexHtml
+		...(isDev ? [addTransformIndexHtml] : [])
 	],
 	server: {
 		cors: true,

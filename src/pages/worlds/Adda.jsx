@@ -1,0 +1,262 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PageMeta from '@/components/PageMeta';
+import Portrait from '@/components/worlds/Portrait';
+import {
+  Owl,
+  Flower,
+  FolkBorder,
+  FishRule,
+  AddaWordmark,
+} from '@/components/worlds/Motifs';
+import { books, photographySeries } from '@/data/creativeContent';
+import { openSourceProjects } from '@/data/projectsData';
+export function BookPreview({ book }) {
+  return (
+    <article className="book-preview">
+      <div className={`book-cover book-${book.id}`}>
+        <span>A WORK IN PROGRESS</span>
+        <Flower />
+        <strong>{book.title}</strong>
+        <span>SASWATA S. SENGUPTA</span>
+        <small>Provisional cover concept</small>
+      </div>
+      <div>
+        <p className="eyebrow">
+          {book.status} / MANUSCRIPT {book.cover}
+        </p>
+        <h2>{book.title}</h2>
+        <p>{book.note}</p>
+        <p className="book-footnote">
+          An unpublished manuscript. No release date announced.
+        </p>
+      </div>
+    </article>
+  );
+}
+export default function Adda() {
+  const series = photographySeries[0];
+  return (
+    <div className="adda-home">
+      <PageMeta
+        title="Adda | Saswata S. Sengupta"
+        description="Photography, two unpublished books, cinema and Bengal. The observer’s side of Saswata S. Sengupta."
+      />
+      <FolkBorder />
+      <section className="adda-hero">
+        <div className="adda-hero-copy">
+          <p className="eyebrow">COME IN. THERE’S ROOM FOR ANOTHER STORY.</p>
+          <AddaWordmark />
+          <h1>
+            The world is full
+            <br />
+            of <em>little stories.</em>
+          </h1>
+          <p>
+            A frame. A film. A conversation that goes on a little longer.
+            Welcome to the other side of my workbench.
+          </p>
+          <Link className="text-link" to="/adda/about">
+            Meet the observer ↗
+          </Link>
+        </div>
+        <div className="adda-portrait-wrap">
+          <Flower className="portrait-flower" />
+          <Portrait world="adda" />
+          <span className="adda-handnote">
+            Same person,
+            <br />
+            another lens.
+          </span>
+        </div>
+        <Owl className="adda-hero-owl" />
+      </section>
+      <FishRule />
+      <section className="adda-feature">
+        <div className="editorial-heading">
+          <span>01 / THROUGH THE VIEWFINDER</span>
+          <h2>Look a little longer.</h2>
+          <Link to="/photography">Photography ↗</Link>
+        </div>
+        <Link to={`/photography/${series.slug}`} className="featured-photo">
+          <img
+            src={series.images[0].src}
+            width="1400"
+            height="900"
+            alt={series.images[0].alt}
+          />
+          <span>GALLERY PREVIEW / DESIGNED PLACEHOLDER</span>
+        </Link>
+        <div className="photo-note">
+          <h3>A place for photographs</h3>
+          <p>
+            Original photographs are coming. For now, a graphic study of light
+            and composition — a preview of the gallery, not my photographic
+            work.
+          </p>
+        </div>
+      </section>
+      <FolkBorder />
+      <section className="adda-books">
+        <div className="editorial-heading">
+          <span>02 / ON THE WRITING DESK</span>
+          <h2>Not yet on a bookshelf.</h2>
+          <Link to="/writing">Two manuscripts ↗</Link>
+        </div>
+        <BookPreview book={books[0]} />
+      </section>
+      <FishRule />
+      <section className="cinema-fragment">
+        <span className="eyebrow">03 / AFTER THE CREDITS</span>
+        <div>
+          <h2>
+            Ray. Ghosh.
+            <br />
+            And the next frame.
+          </h2>
+          <p>
+            Satyajit Ray and Rituparno Ghosh; plenty of Hollywood, some
+            Bollywood. A growing corner for the films and conversations that
+            stay with me.
+          </p>
+          <Link className="text-link" to="/cinema">
+            Stay for the cinema ↗
+          </Link>
+        </div>
+        <span className="film-reel" aria-hidden="true">
+          ◉
+        </span>
+      </section>
+      <section className="adda-personal">
+        <Owl />
+        <div>
+          <p className="eyebrow">04 / THE PERSON AT THE TABLE</p>
+          <h2>Hi, I’m Saswata.</h2>
+          <p>
+            Kolkata is home. I cook, make photographs, and watch films
+            analytically. Before product management, I worked as a freelance
+            photographer, leading commercial shoots and a creative team.
+          </p>
+          <Link className="text-link" to="/adda/about">
+            A little more about me ↗
+          </Link>
+        </div>
+      </section>
+      <FolkBorder />
+    </div>
+  );
+}
+export function Writing() {
+  return (
+    <div className="world-page editorial-page">
+      <PageMeta
+        title="Writing — Two unpublished books | Saswata S. Sengupta"
+        description="Two unpublished manuscripts: a North Kolkata detective story and a societal story about school and education in a fictional town."
+      />
+      <p className="eyebrow">ADDA / THE WRITING DESK</p>
+      <h1>
+        Stories,
+        <br />
+        <em>still becoming.</em>
+      </h1>
+      <p className="page-intro">
+        Two unpublished books. Two different questions. Both still on my desk.
+      </p>
+      <FolkBorder />
+      {books.map((book) => (
+        <BookPreview key={book.id} book={book} />
+      ))}
+    </div>
+  );
+}
+export function Cinema() {
+  const projects = openSourceProjects.filter((p) =>
+    ['11 PM Cinema', 'FilmRisk.AI', 'Topshe'].includes(p.name),
+  );
+  return (
+    <div className="world-page editorial-page">
+      <PageMeta
+        title="Cinema | Saswata S. Sengupta"
+        description="Satyajit Ray, Rituparno Ghosh and a wider world of cinema. Film reflections to come, alongside cinema-inspired builds."
+      />
+      <p className="eyebrow">ADDA / AFTER THE CREDITS</p>
+      <h1>
+        The film ends.
+        <br />
+        <em>The conversation stays.</em>
+      </h1>
+      <FishRule />
+      <div className="reading-column">
+        <h2>A few names, for now.</h2>
+        <p>
+          Satyajit Ray. Rituparno Ghosh. A lot of Hollywood and some Bollywood.
+          Specific films and personal reflections will join this space later.
+        </p>
+        <p>
+          Until then, here’s where that curiosity has already met the workbench.
+        </p>
+      </div>
+      <div className="cinema-projects">
+        {projects.map((p) => (
+          <article key={p.name}>
+            <p className="eyebrow">CULTURE ↔ BUILDING</p>
+            <h2>{p.name}</h2>
+            <p>{p.description}</p>
+            <Link
+              className="text-link"
+              to={`/builds#${p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+            >
+              Explore the implementation at Workbench ↗
+            </Link>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+export function AddaAbout() {
+  return (
+    <div className="world-page editorial-page">
+      <PageMeta
+        title="The observer | Saswata S. Sengupta"
+        description="Saswata’s personal side: Kolkata, photography, cooking, cinema and two unpublished manuscripts."
+      />
+      <p className="eyebrow">ADDA / THE PERSON AT THE TABLE</p>
+      <div className="personal-intro">
+        <div>
+          <h1>
+            Same curiosity.
+            <br />
+            <em>Another lens.</em>
+          </h1>
+          <div className="reading-column">
+            <p>
+              I’m Saswata S. Sengupta, based in Kolkata. I explore digital
+              products, cook, shoot photography, and watch films analytically.
+            </p>
+            <p>
+              From September 2019 to June 2021, I worked as a freelance
+              photographer, completing more than 58 event and commercial
+              projects and leading a six-person creative team.
+            </p>
+            <p>
+              Today, alongside my product work, I’m writing two unpublished
+              books: a detective story involving serial killings in North
+              Kolkata, and a societal story about school and education in a
+              fictional town.
+            </p>
+            <p>
+              This is a place for that side of my life: the things I notice, the
+              questions that linger, and Bengal.
+            </p>
+            <Link className="text-link" to="/contact?world=adda">
+              Let’s start a conversation ↗
+            </Link>
+          </div>
+        </div>
+        <Portrait world="adda" />
+      </div>
+      <FolkBorder />
+    </div>
+  );
+}

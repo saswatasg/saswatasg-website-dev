@@ -56,7 +56,8 @@
     @apply text-xl md:text-2xl font-display font-bold tracking-tight leading-[1.2];
   }
   p {
-    @apply text-[15px] md:text-base text-ink/75 leading-relaxed;
+    @apply text-[15px] md:text-base leading-relaxed;
+    color: inherit;
   }
 }
 

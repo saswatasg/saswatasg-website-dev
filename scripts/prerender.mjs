@@ -8,6 +8,14 @@ const dist = path.join(root, 'dist');
 
 const STATIC_ROUTES = [
   '/',
+  '/workbench',
+  '/builds',
+  '/adda',
+  '/photography',
+  '/photography/frame-studies',
+  '/writing',
+  '/cinema',
+  '/adda/about',
   '/about',
   '/experience',
   '/work',
@@ -21,6 +29,7 @@ const STATIC_ROUTES = [
   '/case-studies/livekeeping-notifications',
   '/case-studies/livekeeping-report-automation',
   '/contact',
+  '/contact?world=adda',
   '/roadmap',
 ];
 
@@ -105,7 +114,7 @@ try {
     const helmet = renderResult.helmetData.context.helmet;
     const helmetTags = serializeHelmetTags(helmet);
 
-    let html = template;
+    let html = template.replace('<html lang="en">', `<html lang="en" data-route="${route}">`);
     for (const pattern of HEAD_STRIP_PATTERNS) {
       html = html.replace(pattern, '\n');
     }
@@ -113,7 +122,7 @@ try {
     html = html.replace('<div id="root"></div>', `<div id="root">${body}</div>`);
 
     const outPath =
-      route === '/' ? path.join(dist, 'index.html') : path.join(dist, route.replace(/^\//, ''), 'index.html');
+      route === '/contact?world=adda' ? path.join(dist, 'contact-adda.html') : route === '/' ? path.join(dist, 'index.html') : path.join(dist, route.replace(/^\//, ''), 'index.html');
     await writeRoute(outPath, html);
     console.log(`[prerender] wrote ${route} (${body.trim().length} chars)`);
   }
@@ -122,7 +131,7 @@ try {
   if (!renderResult404.getRenderError()) {
     const helmet = renderResult404.helmetData.context.helmet;
     const helmetTags = serializeHelmetTags(helmet);
-    let html = template;
+    let html = template.replace('<html lang="en">', '<html lang="en" data-route="/__prerender-not-found__">');
     for (const pattern of HEAD_STRIP_PATTERNS) {
       html = html.replace(pattern, '\n');
     }

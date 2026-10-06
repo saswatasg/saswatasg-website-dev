@@ -1,0 +1,715 @@
+/* Each world has its own signature, movement, and reading surfaces. */
+.world-shell {
+  --pointer-x: 0px;
+  --pointer-y: 0px;
+}
+.saswata-logo {
+  width: 172px;
+  height: 52px;
+  flex-shrink: 0;
+}
+.logo-workbench {
+  color: #171a1d;
+}
+.logo-workbench .logo-lettering {
+  font: 700 35px monospace;
+  letter-spacing: -2px;
+}
+.logo-adda {
+  color: #b93629;
+  width: 178px;
+}
+.logo-adda .logo-lettering {
+  font:
+    italic 700 47px Georgia,
+    serif;
+  letter-spacing: -2px;
+}
+.world-brand {
+  gap: 12px;
+  min-width: 0;
+}
+.world-header {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  backdrop-filter: blur(18px);
+  background: rgba(241, 243, 238, 0.96);
+}
+.adda .world-header {
+  background: rgba(255, 243, 216, 0.96);
+}
+.world-nav a {
+  position: relative;
+}
+.world-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.world-nav a:hover::after {
+  transform: scaleX(1);
+}
+.world-brand:hover .logo-workbench {
+  filter: drop-shadow(2px 2px 0 #d5ff62);
+}
+.world-brand:hover .logo-flower {
+  animation: logo-turn 3s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #617d24;
+  transform-origin: left;
+  z-index: 70;
+  pointer-events: none;
+}
+.adda .reading-progress {
+  background: #b93629;
+}
+.pointer-orbit {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  margin: -16px;
+  border: 1px solid #617d24;
+  border-radius: 50%;
+  z-index: 55;
+  pointer-events: none;
+  opacity: 0.45;
+  transition:
+    width 0.25s,
+    height 0.25s;
+}
+.pointer-orbit span {
+  position: absolute;
+  left: 13px;
+  top: 13px;
+  width: 4px;
+  height: 4px;
+  background: #617d24;
+}
+.orbit-adda {
+  border-color: #b93629;
+  border-style: dashed;
+}
+.orbit-adda span {
+  background: #b93629;
+  border-radius: 50%;
+}
+.world-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  background: #171a1d;
+  color: #d5ff62;
+  transform-origin: left;
+  pointer-events: all;
+}
+.world-curtain span {
+  font: 600 clamp(28px, 5vw, 72px)/1.2 monospace;
+  padding: 30px;
+}
+.curtain-adda {
+  background: #fff3d8;
+  color: #b93629;
+  transform-origin: right;
+  background-image: radial-gradient(#b9362922 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.curtain-adda span {
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+.route-content {
+  animation: route-arrival 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.motion-arrived {
+  animation: surface-arrival 0.8s cubic-bezier(0.22, 1, 0.36, 1)
+    var(--reveal-delay, 0ms) both;
+}
+.workbench-home .section-label {
+  border-top: 1px solid #171a1d;
+  padding-top: 15px;
+}
+.workbench-home .section-label > span {
+  color: #536925;
+  font-family: monospace;
+}
+.adda-home {
+  background-image: radial-gradient(#b9362909 0.7px, transparent 0.7px);
+  background-size: 5px 5px;
+}
+.adda .editorial-heading h2,
+.adda .creative-intro h1 {
+  font-family: Georgia, serif;
+}
+.world-portrait {
+  overflow: hidden;
+  isolation: isolate;
+}
+.world-portrait .portrait-backdrop {
+  width: 104%;
+  height: 104%;
+  left: -2%;
+  top: -2%;
+  transform: translate3d(
+    calc(var(--pointer-x) * -0.4),
+    calc(var(--pointer-y) * -0.4),
+    0
+  );
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.world-portrait img {
+  transform: translate3d(
+      calc(var(--pointer-x) * 0.25),
+      calc(var(--pointer-y) * 0.25),
+      0
+    )
+    scale(1.015);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.portrait-workbench .portrait-backdrop > g {
+  animation: signal-breathe 4s ease-in-out infinite;
+}
+.status-dot {
+  animation: signal-pulse 2.8s ease-in-out infinite;
+}
+.crosshair {
+  animation: crosshair-turn 16s ease-in-out infinite;
+}
+.entrance-owl,
+.adda-hero-owl {
+  animation: owl-float 7s ease-in-out infinite;
+}
+.portrait-flower,
+.entrance-flower {
+  animation: flower-turn 22s linear infinite;
+}
+.folk-border svg {
+  animation: folk-sway 6s ease-in-out infinite;
+}
+.folk-border svg:nth-child(3n) {
+  animation-delay: -2s;
+}
+.folk-border svg:nth-child(3n + 1) {
+  animation-delay: -4s;
+}
+.fish-rule {
+  stroke-dasharray: 500 12;
+  animation: river-flow 14s linear infinite;
+}
+.film-reel {
+  animation: flower-turn 45s linear infinite;
+}
+.before-after > span {
+  animation: signal-breathe 3s ease-in-out infinite;
+}
+.case-lines > a,
+.build-list > article,
+.book-preview,
+.photo-series-card {
+  transition:
+    background 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+.case-lines > a:hover,
+.build-list > article:hover {
+  background: #e6ecd9;
+  box-shadow: inset 4px 0 #617d24;
+}
+.adda .book-preview:hover {
+  background: #f8e8c6;
+}
+.hero-links a span,
+.case-lines > a > span:last-child {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+.hero-links a:hover span,
+.case-lines > a:hover > span:last-child {
+  transform: translate(4px, -4px);
+}
+
+/* Fix the original global paragraph override and explicitly pair surfaces with ink. */
+.workbench main .bg-ink {
+  color: #f1f3ee;
+}
+.workbench
+  main
+  .bg-ink
+  :is(.text-coral, .text-purple, .text-mint, .text-lemon) {
+  color: #d5ff62;
+}
+.workbench main .bg-ink :is(.text-ink, [class*="text-ink/"]) {
+  color: #f1f3ee;
+}
+.workbench
+  main
+  .bg-ink
+  :is(
+    .bg-white,
+    .bg-canvas,
+    .bg-blush,
+    .bg-sky,
+    .bg-mint,
+    .bg-lemon,
+    .bg-coral,
+    .bg-purple
+  ) {
+  color: #171a1d;
+}
+.workbench
+  main
+  .bg-ink
+  :is(
+    .bg-white,
+    .bg-canvas,
+    .bg-blush,
+    .bg-sky,
+    .bg-mint,
+    .bg-lemon,
+    .bg-coral,
+    .bg-purple
+  )
+  :is(.text-ink, [class*="text-ink/"]) {
+  color: #171a1d;
+}
+.workbench main :is(.bg-lemon, .bg-coral, .bg-purple) {
+  background-color: #d5ff62;
+  color: #171a1d;
+}
+.workbench
+  main
+  :is(.bg-lemon, .bg-coral, .bg-purple)
+  :is(.text-white, [class*="text-white/"]) {
+  color: #171a1d;
+}
+.workbench main [class*="text-ink/"] {
+  color: #50584d;
+}
+.workbench main .bg-ink :is([class*="text-white/"], [class*="text-ink/"]) {
+  color: #d4dacf;
+}
+.workbench
+  main
+  .bg-ink
+  :is(.bg-lemon, .bg-white, .bg-canvas)
+  [class*="text-ink/"] {
+  color: #50584d;
+}
+.case-study-page {
+  width: 100%;
+  min-width: 0;
+}
+.case-study-page > div {
+  width: 100%;
+}
+.case-study-page h1 {
+  font-size: clamp(30px, 4.2vw, 58px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.case-study-page h2 {
+  color: #50584d;
+  font: 600 11px/1.5 monospace;
+  letter-spacing: 0.14em;
+}
+.case-study-page p {
+  text-wrap: pretty;
+}
+.case-study-page .border-2 {
+  border-color: #bac2af;
+  border-radius: 12px;
+}
+.case-study-page .bg-ink.border-2 {
+  border-color: #171a1d;
+}
+.case-study-page [class*="grid-cols-"] > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.case-study-page [class*="text-3xl"] {
+  font-size: clamp(23px, 2.6vw, 32px);
+  line-height: 1.2;
+}
+.case-study-page .leading-relaxed {
+  line-height: 1.85;
+}
+.case-study-page .bg-blush {
+  background: linear-gradient(135deg, #e7eddf, #f1f3ee);
+}
+.case-study-page .bg-ink a:focus-visible {
+  outline-color: #d5ff62;
+}
+.case-study-page a {
+  scroll-margin-top: 130px;
+}
+.world-shell button,
+.world-shell a {
+  touch-action: manipulation;
+}
+html {
+  scroll-padding-top: 130px;
+}
+@keyframes route-arrival {
+  from {
+    opacity: 0.92;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes surface-arrival {
+  from {
+    opacity: 0.92;
+    translate: 0 14px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes signal-breathe {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes signal-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 #617d2444;
+  }
+  50% {
+    box-shadow: 0 0 0 7px #617d2400;
+  }
+}
+@keyframes owl-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+@keyframes flower-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes logo-turn {
+  to {
+    rotate: 360deg;
+  }
+}
+@keyframes crosshair-turn {
+  0%,
+  40% {
+    rotate: 0deg;
+  }
+  50%,
+  90% {
+    rotate: 90deg;
+  }
+  100% {
+    rotate: 180deg;
+  }
+}
+@keyframes folk-sway {
+  0%,
+  100% {
+    rotate: -6deg;
+  }
+  50% {
+    rotate: 6deg;
+  }
+}
+@keyframes river-flow {
+  to {
+    stroke-dashoffset: -512;
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  .pointer-orbit {
+    display: none;
+  }
+}
+@media (max-width: 1100px) {
+  .saswata-logo {
+    width: 145px;
+  }
+  .world-header {
+    gap: 15px;
+  }
+}
+@media (max-width: 700px) {
+  .world-header {
+    padding: 10px 4%;
+    gap: 8px;
+  }
+  .saswata-logo {
+    width: 112px;
+    height: 42px;
+  }
+  .mode-selector a {
+    padding: 10px 8px;
+    font-size: 10px;
+    gap: 5px;
+    min-height: 40px;
+  }
+  .world-nav {
+    gap: 8px;
+    font-size: 11px;
+  }
+  .world-nav a {
+    padding: 12px 0;
+    min-height: 44px;
+  }
+  .entrance-link {
+    min-width: 28px;
+  }
+  .case-study-page > div {
+    padding: 30px 16px 50px !important;
+  }
+  .case-study-page .p-10,
+  .case-study-page .p-8 {
+    padding: 24px;
+  }
+  .case-study-page .p-6,
+  .case-study-page .p-7 {
+    padding: 20px;
+  }
+  .case-study-page .grid-cols-2 {
+    gap: 12px;
+  }
+  .case-study-page h1 {
+    font-size: clamp(29px, 7.5vw, 40px);
+  }
+  .case-study-page .text-xl {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  .case-study-page .bg-ink {
+    overflow-wrap: anywhere;
+  }
+  .world-portrait img,
+  .world-portrait .portrait-backdrop {
+    transform: none;
+  }
+  .pointer-orbit {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .saswata-logo {
+    width: 94px;
+  }
+  .world-header {
+    gap: 5px;
+  }
+  .mode-selector a {
+    padding: 9px 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .world-shell *,
+  .world-shell *::before,
+  .world-shell *::after {
+    animation: none !important;
+    transition-duration: 0s !important;
+  }
+  .pointer-orbit {
+    display: none;
+  }
+  .world-portrait img,
+  .world-portrait .portrait-backdrop {
+    transform: none;
+  }
+}
+.case-guide {
+  max-width: 1200px;
+  margin: 24px auto 0;
+  padding: 0 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font: 10px/1.5 monospace;
+  position: relative;
+  z-index: 5;
+}
+.case-guide details {
+  position: relative;
+}
+.case-guide summary {
+  cursor: pointer;
+  display: flex;
+  gap: 35px;
+  align-items: center;
+  list-style: none;
+  padding: 12px 16px;
+  border: 1px solid #bac2af;
+  background: #e5e9de;
+}
+.case-guide summary::-webkit-details-marker {
+  display: none;
+}
+.case-guide nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #f9faf6;
+  padding: 8px;
+  border: 1px solid #bac2af;
+  width: min(330px, 85vw);
+  box-shadow: 0 18px 50px #171a1d22;
+}
+.case-guide nav a {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  font-size: 11px;
+}
+.case-guide nav a:hover {
+  background: #d5ff62;
+}
+.case-guide nav a span {
+  color: #617d24;
+}
+.case-study-page h2 {
+  scroll-margin-top: 140px;
+}
+.case-study-page > div {
+  padding-top: 36px !important;
+}
+@media (max-width: 700px) {
+  .case-guide {
+    padding: 0 16px;
+    gap: 12px;
+    font-size: 9px;
+  }
+  .case-guide summary {
+    padding: 12px;
+    gap: 18px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+.workbench main [class*="bg-coral/"],
+.workbench main [class*="bg-purple/"] {
+  background-color: #e6edcf;
+  color: #171a1d;
+}
+.workbench main.case-study-page [class*="rounded-2xl"],
+.workbench main.case-study-page [class*="rounded-xl"] {
+  border-radius: 12px;
+}
+.workbench main .bg-ink p:not([class*="text-"]) {
+  color: inherit;
+}
+.case-guide nav a span {
+  color: #536925;
+}
+.workbench main .bg-ink.text-white,
+.workbench main .bg-ink .bg-ink.text-white {
+  color: #f1f3ee;
+}
+.pointer-orbit {
+  opacity: 0;
+}
+.case-study-page .flex-1 {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.workbench main [class*="bg-ink/40"] {
+  background-color: #53604a;
+  color: #fff;
+}
+@media (max-width: 700px) {
+  .case-study-page .risk-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 10px;
+  }
+  .case-study-page .risk-row > :first-child {
+    width: auto;
+  }
+  .case-study-page .risk-row > :last-child {
+    grid-column: 1/-1;
+  }
+  .case-study-page .source-row > div {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+.workbench main [class*="bg-ink/40"].text-white {
+  color: #fff;
+}
+.case-study-page h2 {
+  scroll-margin-top: 16px;
+}
+@media (max-width: 700px) {
+  .case-study-page .grid-cols-2 > .text-center {
+    padding: 16px 10px;
+  }
+  .case-study-page .grid-cols-2 > .text-center p:first-child {
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+.saswata-logo text {
+  fill: currentColor;
+}
+.logo-adda .logo-lettering {
+  font-size: 43px;
+}
+.text-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.case-guide > a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+/* The lazy-route wrapper needs no padding; spacing belongs to the article. */
+.workbench main.case-study-page > div {
+  padding: 0 !important;
+}
+.workbench main.case-study-page > div > div {
+  padding-top: 28px;
+}
+@media (max-width: 700px) {
+  .workbench main.case-study-page > div > div {
+    padding: 28px 16px 50px;
+  }
+}

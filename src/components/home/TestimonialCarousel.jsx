@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Linkedin } from 'lucide-react';
 
-const testimonials = [
+export const testimonials = [
   {
     name: 'Harish Kumawat',
     title: 'Growth Marketing Manager, Sierra Living Concepts',
