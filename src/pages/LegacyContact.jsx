@@ -232,18 +232,7 @@ const Contact = () => {
               <ExternalLink className="w-4 h-4 text-ink/30 flex-shrink-0 group-hover:text-ink transition-colors" />
             </motion.a>
 
-            <p className="text-xs font-medium text-ink/40 px-1">
-              Looking for growth/CRO consulting instead of hiring?{' '}
-              <a
-                href="https://www.thegrowthbench.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent('contact', 'growth_bench')}
-                className="underline underline-offset-2 text-ink/60 hover:text-ink transition-colors"
-              >
-                The Growth Bench ↗
-              </a>
-            </p>
+
 
           </div>
         </div>

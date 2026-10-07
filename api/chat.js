@@ -1,174 +1,95 @@
-const SYSTEM_PROMPT = `You are an AI assistant representing Saswata Subhra Sengupta, a Product Manager. Answer questions about Saswata professionally and conversationally. Use first-person ("I") as if you are Saswata. Be concise (2-4 sentences per response). Here is his background:
-
-ROLE: Product Manager (Associate PM at LiveKeeping, Growth PM at Sierra Living Concepts, PM at Upcore Technologies)
-
-EDUCATION: MBA from IIT Jodhpur (2022-2024, 71.7%, CAT 97.69 percentile); B.Tech in Mechanical Engineering from Jalpaiguri Government Engineering College (2017-2021, 77.2%)
-
-EXPERIENCE:
-- Upcore Technologies (Apr 2026-Present): Product Manager. AI agent discovery, lead scoring engine (75+ priority threshold, 24hr SLA), GTM strategy, enterprise outreach ($146K+ pipeline, 15+ clients), pricing & revenue modeling, market intelligence. Also freelanced May-Dec 2025: Caffena (+357% revenue, ROAS 5.77) and Diwan Interiors (478-523 leads/mo).
-- Sierra Living Concepts (May 2024-Dec 2025): Growth PM, US D2C furniture brand ($3M+/mo GMV). Cart & checkout optimization (73.1%→53.9% abandonment), category page redesign (+17% conversion), lead form overhaul (+105% then +124% rebuild), lead allocation & routing.
-- LiveKeeping (Jan-Mar 2026): Associate PM, B2B SaaS (GST compliance, 50K+ Indian SMBs). Compliance adoption gap diagnosis (17:1 Tally gap), push notification architecture (27+ triggers, geo-segmented), daily report automation, Send Greetings AI integration (+168% engagement).
-
-SKILLS: Product discovery, shipping & execution, data & analytics (GA4, GTM, Looker Studio, Clarity), cross-functional leadership, AI agent architecture, B2B GTM, D2C e-commerce.
-
-BLOG: I publish deep-dive posts on AI agents in production, e-commerce CRO, and AI-era product management at saswatasg.com/blog. If the user asks about case studies, agent architecture, or what I've shipped, suggest reading the blog.
-
-CONTACT:
-- Email: saswatasg@gmail.com
-- Website: saswatasg.com
-- Phone: +91 9836312162
-- LinkedIn: linkedin.com/in/sss99
-- GitHub: github.com/saswatasg
-- Location: Kolkata, India`;
-
-const rateMap = new Map();
-function isRateLimited(req, limit = 10, windowMs = 60_000) {
-  const ip = (req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.headers['x-real-ip'] || 'unknown');
-  const now = Date.now();
-  const entry = rateMap.get(ip);
-  if (!entry || now > entry.reset) {
-    rateMap.set(ip, { count: 1, reset: now + windowMs });
-    return false;
-  }
-  entry.count += 1;
-  return entry.count > limit;
-}
-
+import {
+  validateChat,
+  contextFor,
+  consumeChatRate,
+} from "../server/portfolio-chat.js";
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  res.setHeader("Cache-Control", "no-store");
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    return res.status(405).json({ error: "Use POST to chat." });
   }
-
-  const bodyStr = JSON.stringify(req.body || {});
-  if (bodyStr.length > 8192) {
-    return res.status(413).json({ error: 'Payload too large' });
+  if (req.headers.origin) {
+    try {
+      if (new URL(req.headers.origin).host !== req.headers.host)
+        return res
+          .status(403)
+          .json({ error: "Chat is available on this website." });
+    } catch {
+      return res.status(403).json({ error: "Invalid origin." });
+    }
   }
-
-  if (isRateLimited(req)) {
-    return res.status(429).json({ error: 'Too many requests. Please try again in a minute.' });
+  const input = validateChat(req.body);
+  if (!input)
+    return res
+      .status(400)
+      .json({ error: "Send a question of up to 1,200 characters." });
+  const ip = String(
+    req.headers["x-forwarded-for"] || req.socket?.remoteAddress || "unknown",
+  )
+    .split(",")[0]
+    .trim();
+  if (!consumeChatRate(ip)) {
+    res.setHeader("Retry-After", "60");
+    return res
+      .status(429)
+      .json({ error: "A little pause—please try again in a minute." });
   }
-
-  const { action } = req.body;
-
-  if (action === 'end') {
-    return handleEnd(req, res);
-  }
-
-  return handleChat(req, res);
-}
-
-async function handleChat(req, res) {
-  const { message, history = [] } = req.body;
-
-  if (!message || typeof message !== 'string' || message.trim().length === 0) {
-    return res.status(400).json({ error: 'Message is required' });
-  }
-  if (message.length > 2000) {
-    return res.status(400).json({ error: 'Message too long (max 2000 chars)' });
-  }
-  if (!Array.isArray(history)) {
-    return res.status(400).json({ error: 'Invalid history' });
-  }
-
-  const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-  if (!GEMINI_API_KEY) {
-    return res.status(500).json({ error: 'Server configuration error' });
-  }
-
-  // Cap history: last 6, each text 2KB, total 8KB
-  const cappedHistory = history.slice(-6).map((msg) => ({
-    role: msg.role === 'assistant' ? 'model' : 'user',
-    parts: [{ text: String(msg.text || '').slice(0, 2000) }],
-  }));
-  const totalChars = cappedHistory.reduce((acc, m) => acc + (m.parts[0].text.length || 0), 0) + message.length;
-  if (totalChars > 8000) {
-    return res.status(400).json({ error: 'History too large' });
-  }
-
-  const contents = [...cappedHistory, { role: 'user', parts: [{ text: message.slice(0, 2000) }] }];
-
+  if (!process.env.GROQ_API_KEY)
+    return res
+      .status(503)
+      .json({
+        error:
+          "The AI guide is not connected yet. You can still explore the links below.",
+      });
+  const context = contextFor(input.message, input.page);
   try {
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+      "https://api.groq.com/openai/v1/chat/completions",
       {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        signal: AbortSignal.timeout(20000),
         body: JSON.stringify({
-          contents,
-          systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-          generationConfig: { temperature: 0.7, maxOutputTokens: 256 },
+          model: process.env.GROQ_MODEL || "openai/gpt-oss-20b",
+          messages: [
+            { role: "system", content: context.system },
+            ...input.history,
+            { role: "user", content: input.message },
+          ],
+          temperature: 0.45,
+          max_completion_tokens: 700,
+          reasoning_effort: "low",
         }),
-      }
+      },
     );
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Gemini API error:', response.status, errorText.slice(0, 500));
-      return res.status(502).json({ error: 'AI service error' });
-    }
-
+    if (!response.ok)
+      return res
+        .status(response.status === 429 ? 429 : 502)
+        .json({
+          error: "The AI guide is taking a breather. Please retry shortly.",
+        });
     const data = await response.json();
-    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not generate a response.';
-
-    return res.status(200).json({ reply });
-  } catch (error) {
-    console.error('Chat API error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
-  }
-}
-
-async function handleEnd(req, res) {
-  const { name, phone, messages: rawMessages, sessionId } = req.body;
-
-  if (!name || typeof name !== 'string' || name.trim().length === 0 || name.length > 100) {
-    return res.status(400).json({ error: 'Name is required (max 100 chars)' });
-  }
-  if (!Array.isArray(rawMessages) || rawMessages.length === 0 || rawMessages.length > 50) {
-    return res.status(400).json({ error: 'Messages array required (max 50)' });
-  }
-  if (phone && (typeof phone !== 'string' || phone.length > 20)) {
-    return res.status(400).json({ error: 'Invalid phone' });
-  }
-
-  const transcript = rawMessages
-    .slice(-50)
-    .map((m) => `[${String(m.role || 'unknown').toUpperCase().slice(0, 20)}] ${String(m.text || '').slice(0, 2000)}`)
-    .join('\n')
-    .slice(0, 8000);
-
-  const emailBody = `New Chat Session Ended
-
-Name: ${String(name).slice(0, 100)}
-Phone: ${phone ? String(phone).slice(0, 20) : 'Not provided'}
-Session ID: ${String(sessionId || 'N/A').slice(0, 100)}
-Total Messages: ${rawMessages.length}
-
---- Transcript ---
-${transcript}
---- End of Transcript ---`;
-
-  try {
-    const response = await fetch('https://formsubmit.co/ajax/saswatasg@gmail.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        _subject: `Chat Transcript - ${String(name).slice(0, 50)}`,
-        _template: 'table',
-        _captcha: 'false',
-        name: String(name).slice(0, 100),
-        phone: phone ? String(phone).slice(0, 20) : 'Not provided',
-        session_id: String(sessionId || 'N/A').slice(0, 100),
-        message: emailBody.slice(0, 8000),
-      }),
-    });
-
-    if (!response.ok) {
-      console.error('FormSubmit error:', (await response.text()).slice(0, 500));
-    }
-
-    return res.status(200).json({ success: true });
-  } catch (error) {
-    console.error('Transcript API error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    const reply = data.choices?.[0]?.message?.content?.trim();
+    if (!reply)
+      return res
+        .status(502)
+        .json({
+          error: "No answer came through. Try asking in a different way.",
+        });
+    return res
+      .status(200)
+      .json({
+        reply: reply.slice(0, 4000),
+        links: context.links,
+        suggestAdda: context.personal,
+      });
+  } catch {
+    return res
+      .status(502)
+      .json({ error: "The connection paused. Please try again." });
   }
 }

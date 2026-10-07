@@ -36,11 +36,21 @@ export default function LatestWriting() {
                 <span className="wb-label">
                   {note.label} · {post.readingMinutes} MIN
                 </span>
-                <h3>
-                  {post.title}
-                  <ArrowUpRight size={18} />
-                </h3>
-                <p>{note.summary}</p>
+                <div className="wb-note-preview">
+                  <img
+                    src={`/blog-assets/editorial/${note.slug}.svg`}
+                    alt=""
+                    width="1000"
+                    height="600"
+                    loading="lazy"
+                    aria-hidden="true"
+                  />
+                  <h3>
+                    {post.title}
+                    <ArrowUpRight size={18} />
+                  </h3>
+                  <p>{note.summary}</p>
+                </div>
               </Link>
             );
           })}

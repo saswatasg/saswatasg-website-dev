@@ -1,94 +1,115 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import {
   ArrowUpRight,
-  GraduationCap,
   Compass,
   Wrench,
   Users,
+  GraduationCap,
   Award,
+  BookOpen,
 } from "lucide-react";
 import PageMeta from "@/components/PageMeta";
 import { PageEnd } from "@/components/workbench/PageHeader";
-const lenses = [
+const chapters = [
   {
-    icon: Compass,
-    title: "Ask a better question.",
-    text: "Start with the workflow, the person and the evidence. Make the problem clear enough to choose what deserves attention.",
-    link: "/case-studies/upcore-discovery",
-    action: "Discovery & delivery",
+    company: "Upcore Technologies",
+    field: "Enterprise AI & solution delivery",
+    question: "What does this client actually need?",
+    story:
+      "I derive solutions from client problems and manage delivery end to end. Research, scope, engineering coordination and the details of a working solution stay connected.",
+    proof: "23+ clients",
+    detail: "Solution definition & delivery ownership",
+    to: "/case-studies/upcore-discovery",
     tone: "blue",
+    icon: Compass,
   },
   {
-    icon: Users,
-    title: "Make the decision shared.",
-    text: "Connect customer needs, business constraints and engineering reality. Give everyone a clear reason for the next step.",
-    link: "/case-studies/livekeeping-compliance-gap",
-    action: "A workflow investigation",
+    company: "LiveKeeping (IndiaMART)",
+    field: "B2B SaaS & product adoption",
+    question: "What is the workflow telling us?",
+    story:
+      "I investigated adoption and compliance workflows, built the case for product decisions, and worked on AI features, notifications and reporting automation.",
+    proof: "17:1",
+    detail: "E-Way Bill gap uncovered in API logs",
+    to: "/case-studies/livekeeping-compliance-gap",
     tone: "sage",
+    icon: Users,
   },
   {
+    company: "Sierra Living Concepts",
+    field: "Commerce & the buying journey",
+    question: "Where does intent lose momentum?",
+    story:
+      "I connected session evidence, funnel analysis and customer research to improvements in checkout, category discovery and lead capture.",
+    proof: "73% → 54%",
+    detail: "Checkout abandonment before and after",
+    to: "/case-studies/cart-checkout",
+    tone: "clay",
     icon: Wrench,
-    title: "Stay close to the build.",
-    text: "Working prototypes expose the details a presentation can miss. I build, coordinate delivery and use what happens next to refine the idea.",
-    link: "/builds",
-    action: "Products & experiments",
-    tone: "gold",
   },
 ];
 export default function About() {
   const reduced = useReducedMotion();
+  const [selected, setSelected] = useState(0);
+  const chapter = chapters[selected];
+  const Icon = chapter.icon;
   return (
     <>
       <PageMeta
         title="About | Saswata S. Sengupta"
-        description="Saswata Subhra Sengupta: an engineer turned product manager and hands-on builder. IIT Jodhpur MBA, based in Kolkata."
+        description="Saswata Subhra Sengupta: product manager working across enterprise AI, SaaS and commerce. Discovery, solution delivery and hands-on product building."
       />
-      <div className="wb-page wb-about-redesign">
+      <div className="wb-page wb-about-new">
         <header className="wb-about-intro">
           <div>
             <nav className="wb-breadcrumb" aria-label="Breadcrumb">
               <Link to="/workbench">Workbench</Link>
-              <span>/</span>
-              <span>About</span>
+              <span>/ About</span>
             </nav>
-            <span className="wb-label">A LITTLE CONTEXT</span>
+            <span className="wb-label">THE PERSON BEHIND THE WORK</span>
             <h1>
-              A product mind.
+              Curious enough
               <br />
-              <em>A builder’s instinct.</em>
+              to ask.
+              <br />
+              <em>
+                Hands-on enough
+                <br />
+                to build.
+              </em>
             </h1>
             <p className="wb-about-lede">
-              I’m Saswata Subhra Sengupta—an engineer turned product manager,
-              based in Kolkata.
+              I’m Saswata Subhra Sengupta. I work in product, where customer
+              problems meet decisions, teams and working solutions.
             </p>
             <p>
-              I like understanding how things work, finding where they break,
-              and making the next version useful. That curiosity has taken me
-              from mechanical engineering to product discovery, growth and
-              building software.
+              Across enterprise AI, SaaS and commerce, I stay with the
+              question—from understanding the workflow to delivering what comes
+              next.
             </p>
             <div className="wb-role-links">
               <Link to="/experience">
-                My professional journey <ArrowUpRight size={16} />
+                The professional journey <ArrowUpRight size={16} />
               </Link>
-              <a
-                href="/assets/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Resume <ArrowUpRight size={16} />
-              </a>
+              <Link to="/builds">
+                What I’m building <ArrowUpRight size={16} />
+              </Link>
             </div>
           </div>
           <motion.figure
             className="wb-about-person"
-            initial={reduced ? false : { opacity: 0, y: 15 }}
+            initial={reduced ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             <div className="wb-about-person-art">
               <span className="wb-about-orbit" />
+              <span className="wb-about-photo-note">
+                ALWAYS ASKING
+                <br />
+                ONE MORE QUESTION ↗
+              </span>
               <img
                 src="/assets/worlds/portrait-workbench.png"
                 width="1254"
@@ -98,157 +119,177 @@ export default function About() {
             </div>
             <figcaption>
               <strong>Saswata S. Sengupta</strong>
-              <span>Kolkata, India · Product & building</span>
+              <span>Kolkata, India</span>
             </figcaption>
           </motion.figure>
         </header>
-        <section className="wb-about-story" aria-labelledby="about-story">
-          <span className="wb-label">THE THREAD THROUGH IT ALL</span>
-          <h2 id="about-story">
-            Systems, people,
-            <br />
-            and the space between.
-          </h2>
-          <div>
-            <p>
-              Engineering taught me to look at dependencies and constraints. My
-              MBA at IIT Jodhpur brought customers, markets and business
-              decisions into that picture.
-            </p>
-            <p>
-              At Sierra Living Concepts, I worked on the buying journey. At
-              LiveKeeping (IndiaMART), I investigated compliance workflows and
-              adoption. Today, at Upcore Technologies, I derive solutions and
-              manage delivery end to end for 23+ clients.
-            </p>
-            <p>
-              Alongside that work, DhanPlan and Meldstead give me room to take
-              an idea from a question to a working product.
-            </p>
+        <section className="wb-about-chapters" aria-labelledby="about-contexts">
+          <div className="wb-section-title">
+            <span className="wb-label">
+              DIFFERENT CONTEXTS. THE SAME CURIOSITY.
+            </span>
+            <h2 id="about-contexts">
+              The question changes.
+              <br />
+              The ownership stays.
+            </h2>
+          </div>
+          <div className="wb-chapter-layout">
+            <div
+              className="wb-chapter-tabs"
+              aria-label="Explore my work contexts"
+            >
+              {chapters.map((item, i) => (
+                <button
+                  key={item.company}
+                  aria-pressed={selected === i}
+                  aria-controls="about-chapter-panel"
+                  onClick={() => setSelected(i)}
+                  className={`wb-tone-${item.tone}`}
+                >
+                  <span>0{i + 1}</span>
+                  <div>
+                    <strong>{item.company}</strong>
+                    <small>{item.field}</small>
+                  </div>
+                  <ArrowUpRight size={20} />
+                </button>
+              ))}
+            </div>
+            <div
+              id="about-chapter-panel"
+              className={`wb-chapter-panel wb-tone-${chapter.tone}`}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={chapter.company}
+                  initial={reduced ? false : { opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.18 }}
+                >
+                  <div className="wb-chapter-panel-top">
+                    <Icon size={32} />
+                    <span className="wb-label">{chapter.field}</span>
+                  </div>
+                  <h3>{chapter.question}</h3>
+                  <p>{chapter.story}</p>
+                  <div className="wb-chapter-proof">
+                    <strong>{chapter.proof}</strong>
+                    <span>{chapter.detail}</span>
+                  </div>
+                  <Link className="wb-inline-link" to={chapter.to}>
+                    See the decisions behind the work <ArrowUpRight size={17} />
+                  </Link>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </section>
-        <section aria-labelledby="about-lenses">
-          <div className="wb-section-title">
-            <h2 id="about-lenses">The way I approach a problem.</h2>
-            <span>Three connected habits</span>
+        <section className="wb-about-builder" aria-labelledby="about-builder">
+          <div>
+            <span className="wb-label">FROM QUESTION TO WORKING PRODUCT</span>
+            <h2 id="about-builder">
+              Some ideas need
+              <br />a working answer.
+            </h2>
+            <p>
+              DhanPlan and Meldstead are independent products I build alongside
+              my professional work. They keep me close to the tradeoffs that
+              appear when an idea becomes something people can use.
+            </p>
+            <Link className="wb-inline-link" to="/builds">
+              Explore the builds <ArrowUpRight size={17} />
+            </Link>
           </div>
-          <div className="wb-about-lenses">
-            {lenses.map(
-              ({ icon: Icon, title, text, link, action, tone }, i) => (
-                <motion.article
-                  key={title}
-                  className={`wb-about-lens wb-tone-${tone}`}
-                  initial={reduced ? false : { opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="wb-about-lens-top">
-                    <Icon size={30} />
-                    <span>0{i + 1}</span>
-                  </div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                  <Link to={link}>
-                    {action}
-                    <ArrowUpRight size={16} />
-                  </Link>
-                </motion.article>
-              ),
-            )}
+          <div className="wb-builder-stack">
+            <Link to="/builds#dhanplan">
+              <span className="wb-label">PERSONAL FINANCE / LIVE</span>
+              <strong>DhanPlan</strong>
+              <span>
+                Planning through scenarios <ArrowUpRight size={17} />
+              </span>
+            </Link>
+            <Link to="/builds#meldstead">
+              <span className="wb-label">WORKSPACE / PRE-LAUNCH AUDIT</span>
+              <strong>Meldstead</strong>
+              <span>
+                Connecting the work <ArrowUpRight size={17} />
+              </span>
+            </Link>
           </div>
         </section>
         <section
-          className="wb-about-foundations"
-          aria-labelledby="about-foundation"
+          className="wb-about-foundation-new"
+          aria-labelledby="about-foundations"
         >
           <div className="wb-section-title">
-            <h2 id="about-foundation">A foundation that keeps expanding.</h2>
+            <span className="wb-label">THE FOUNDATION, STILL GROWING</span>
+            <h2 id="about-foundations">
+              Learning that earns its place in the work.
+            </h2>
           </div>
-          <div className="wb-about-education-path">
-            <article>
-              <span className="wb-label">2017–2021 / ENGINEERING</span>
-              <GraduationCap size={30} />
-              <h3>
-                Jalpaiguri Government
-                <br />
-                Engineering College
-              </h3>
-              <p>B.Tech · Mechanical Engineering</p>
-              <span className="wb-education-lens">
-                Systems. Constraints. First principles.
-              </span>
-            </article>
-            <article>
-              <span className="wb-label">2022–2024 / MANAGEMENT</span>
-              <GraduationCap size={30} />
-              <h3>
-                Indian Institute of
-                <br />
-                Technology Jodhpur
-              </h3>
+          <div className="wb-foundation-grid">
+            <article className="wb-tone-blue">
+              <GraduationCap size={28} />
+              <span className="wb-label">2022–2024</span>
+              <h3>IIT Jodhpur</h3>
               <p>MBA · Marketing & Analytics</p>
-              <span className="wb-education-lens">
-                Customers. Evidence. Business decisions.
-              </span>
+            </article>
+            <article className="wb-tone-sage">
+              <GraduationCap size={28} />
+              <span className="wb-label">2017–2021</span>
+              <h3>Jalpaiguri Government Engineering College</h3>
+              <p>B.Tech · Mechanical Engineering</p>
+            </article>
+            <article className="wb-tone-gold">
+              <Award size={28} />
+              <span className="wb-label">RECOGNITION & SHARING</span>
+              <h3>Tata Imagination Challenge</h3>
+              <p>
+                National semifinalist. I also informally mentor 5–6 early-career
+                professionals.
+              </p>
             </article>
           </div>
-          <div className="wb-about-learning">
+          <details className="wb-learning-details">
+            <summary>
+              <BookOpen size={20} /> The learning continues{" "}
+              <span>Applied AI · Analytics · Product operations</span>
+            </summary>
             <div>
-              <span className="wb-label">CONTINUED LEARNING</span>
-              <h3>
-                Useful knowledge,
-                <br />
-                put into practice.
-              </h3>
+              <p>
+                <strong>Applied AI</strong> — Anthropic Academy coursework in
+                Claude and AI workflows.
+              </p>
+              <p>
+                <strong>Analytics & growth</strong> — Google Skillshop
+                credentials in analytics, advertising and conversion
+                optimization.
+              </p>
+              <p>
+                <strong>Product operations</strong> — Zoho CRM administrator
+                training.
+              </p>
             </div>
-            <dl>
-              <div>
-                <dt>Applied AI</dt>
-                <dd>
-                  Anthropic Academy coursework in Claude and AI workflows.
-                </dd>
-              </div>
-              <div>
-                <dt>Analytics & growth</dt>
-                <dd>
-                  Google Skillshop credentials in analytics, advertising and
-                  conversion optimization.
-                </dd>
-              </div>
-              <div>
-                <dt>Product operations</dt>
-                <dd>Zoho CRM administrator training.</dd>
-              </div>
-            </dl>
-          </div>
-          <div className="wb-about-recognition">
-            <Award size={24} />
-            <div>
-              <h3>Tata Imagination Challenge</h3>
-              <p>National semifinalist</p>
-            </div>
-            <div>
-              <h3>Learning goes both ways.</h3>
-              <p>I informally mentor 5–6 early-career professionals.</p>
-            </div>
-          </div>
+          </details>
         </section>
         <section className="wb-about-personal">
-          <span className="wb-label">OFF THE CLOCK</span>
+          <span className="wb-label">THERE’S A PERSONAL SIDE, TOO</span>
           <h2>
-            Still curious,
+            Curiosity doesn’t
             <br />
-            after the laptop closes.
+            clock out.
           </h2>
           <p>
-            Stories, films and everyday observations are part of who I am.
-            There’s a little more of that in Adda.
+            Stories, films and everyday observations. Adda is where that side of
+            me lives.
           </p>
           <Link to="/adda" className="wb-page-button">
             Step into Adda <ArrowUpRight size={17} />
           </Link>
         </section>
-        <PageEnd title="A good conversation starts with a question." />
+        <PageEnd title="What question are you working on?" />
       </div>
     </>
   );

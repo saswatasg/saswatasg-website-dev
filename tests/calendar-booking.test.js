@@ -1,24 +1,19 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { openScheduleBooking, SCHEDULE_URL } from "../src/utils/openCalendar";
+vi.mock("@/utils/analytics", () => ({ trackEvent: vi.fn() }));
+import { openScheduleBooking } from "../src/utils/openCalendar.js";
 
 afterEach(() => vi.unstubAllGlobals());
 
-describe("calendar booking entry", () => {
-  it("opens the visitor booking page without an iframe or popup dependency", () => {
-    const assign = vi.fn();
-    const dataLayer = [];
-    vi.stubGlobal("window", { dataLayer, location: { search: "", assign } });
+describe("calendar booking", () => {
+  it("opens the in-page dialog without creating a browser window", () => {
+    const dispatchEvent = vi.fn();
+    const open = vi.fn();
+    vi.stubGlobal("CustomEvent", class { constructor(type) { this.type = type; } });
+    vi.stubGlobal("window", { open, dispatchEvent });
     openScheduleBooking();
-    expect(assign).toHaveBeenCalledWith(SCHEDULE_URL);
-    const url = new URL(SCHEDULE_URL);
-    expect(url.origin).toBe("https://calendar.google.com");
-    expect(url.searchParams.get("gv")).toBe("true");
-    expect(dataLayer).toEqual([
-      expect.objectContaining({
-        eventCategory: "calendar",
-        eventAction: "opened",
-      }),
-    ]);
-    expect(dataLayer.some((e) => e.eventAction === "booked")).toBe(false);
+    expect(dispatchEvent).toHaveBeenCalledWith(
+      expect.objectContaining({ type: "openScheduleBooking" }),
+    );
+    expect(open).not.toHaveBeenCalled();
   });
 });

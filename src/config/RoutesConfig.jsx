@@ -48,7 +48,6 @@ const LiveKeepingReportAutomation = React.lazy(
   () => import("@/pages/case-studies/LiveKeepingReportAutomation"),
 );
 const Contact = React.lazy(() => import("@/pages/Contact"));
-const Roadmap = React.lazy(() => import("@/pages/Roadmap"));
 const BlogIndex = React.lazy(() => import("@/pages/blog/BlogIndex"));
 const BlogPost = React.lazy(() => import("@/pages/blog/BlogPost"));
 const NotFound = React.lazy(() => import("@/pages/NotFound"));
@@ -328,14 +327,6 @@ const RoutesConfig = () => {
           element={
             <AnimatedPage>
               <Contact />
-            </AnimatedPage>
-          }
-        />
-        <Route
-          path="/roadmap"
-          element={
-            <AnimatedPage>
-              <Roadmap />
             </AnimatedPage>
           }
         />

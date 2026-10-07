@@ -31,7 +31,6 @@ const STATIC_PAGES = [
   { path: '/case-studies/livekeeping-notifications', priority: 0.6, changefreq: 'monthly' },
   { path: '/case-studies/livekeeping-report-automation', priority: 0.6, changefreq: 'monthly' },
   { path: '/contact', priority: 0.5, changefreq: 'yearly' },
-  { path: '/roadmap', priority: 0.6, changefreq: 'weekly' },
 ];
 
 const BLOG_DIR = path.join(root, 'content', 'blog');

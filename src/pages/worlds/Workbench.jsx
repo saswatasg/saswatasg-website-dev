@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import PageHeader, { PageEnd } from "@/components/workbench/PageHeader";
 import { Link } from "react-router-dom";
 import PageMeta from "@/components/PageMeta";
@@ -27,7 +26,6 @@ export function BuildsList({ limit }) {
           <span className="build-number">{String(i + 1).padStart(2, "0")}</span>
           <div>
             <h3>{p.name}</h3>
-            <p>{p.tagline}</p>
             <p className="build-description">{p.description}</p>
             <div className="build-links">
               {p.links.map((l) => (
@@ -65,12 +63,12 @@ export function Builds() {
   return (
     <>
       <PageMeta
-        title="Products & Prototypes | Saswata S. Sengupta"
+        title="Builds | Saswata S. Sengupta"
         description="Independent products, client demos and experiments: DhanPlan, Meldstead, Inventory Leveling, BlogHero and more."
       />
       <div className="wb-page">
         <PageHeader
-          label="Build lab"
+          label="Builds"
           variant="builds"
           title="Ideas, made tangible."
           description="Independent products, open-source tools and client demos. Explore the problem behind each build—and the stage it has reached."
@@ -106,21 +104,18 @@ export function Builds() {
               <div
                 className="wb-lab-card-visual"
                 style={{
-                  background: ["#cfe9dc", "#f0d5c8", "#d9e8f3", "#f2dfac"][
-                    i % 4
-                  ],
+                  background: [
+                    "var(--wb-sage)",
+                    "var(--wb-clay)",
+                    "var(--wb-blue)",
+                    "var(--wb-gold)",
+                  ][i % 4],
                 }}
                 aria-hidden="true"
               >
                 <div className="wb-lab-visual-content">
-                  <strong>
-                    {p.name === "Inventory Leveling Agent"
-                      ? "BOM"
-                      : p.name.split(/[ .]/)[0]}
-                  </strong>
                   <BuildDiagram project={p} />
                 </div>
-                <ArrowUpRight size={26} />
               </div>
               <div className="wb-lab-card-body">
                 <span className="wb-status">{p.status}</span>

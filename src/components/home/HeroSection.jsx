@@ -12,7 +12,8 @@ import { ArrowUpRight, ArrowDown, Calendar, X } from "lucide-react";
 import { openScheduleBooking } from "@/utils/openCalendar";
 import { trackEvent } from "@/utils/analytics";
 import ImpactEvidence from "./ImpactEvidence";
-import { PositionCard, OutcomeCard } from "./HeroCards";
+import ProductStrip from "./ProductStrip";
+import { PositionCard, OutcomeCard, MobileHeroCard } from "./HeroCards";
 
 const ease = [0.22, 1, 0.36, 1];
 function Burst({ className = "" }) {
@@ -90,23 +91,33 @@ export default function HeroSection({ bannerDismissed, onDismissBanner }) {
               style={reduced ? {} : { x: panelX }}
               {...arrive(0.35)}
             >
+              <div className="wb-mobile-hero-intro">
+                <h2>Product Manager</h2>
+                <p>
+                  I turn complex problems into useful products—from discovery
+                  to delivery.
+                </p>
+              </div>
               <PositionCard />
-              <Link
-                to="/work"
-                className="wb-button wb-button-coral"
-                onClick={() => trackEvent("hero_cta", "see_work")}
-              >
-                See the work <ArrowUpRight size={19} />
-              </Link>
-              <button
-                className="wb-button wb-button-paper"
-                onClick={() => {
-                  trackEvent("hero_cta", "lets_talk");
-                  openScheduleBooking();
-                }}
-              >
-                <Calendar size={17} /> Let’s talk
-              </button>
+              <div className="wb-hero-actions">
+                <button
+                  className="wb-button wb-button-paper"
+                  onClick={() => {
+                    trackEvent("hero_cta", "lets_talk");
+                    openScheduleBooking();
+                  }}
+                >
+                  <Calendar size={16} /> Let’s talk
+                </button>
+                <Link
+                  to="/work"
+                  className="wb-button wb-button-coral"
+                  onClick={() => trackEvent("hero_cta", "see_work")}
+                >
+                  See the work <ArrowUpRight size={16} />
+                </Link>
+              </div>
+              <MobileHeroCard />
             </motion.div>
             <motion.div
               className="wb-portrait-stage"
@@ -175,18 +186,15 @@ export default function HeroSection({ bannerDismissed, onDismissBanner }) {
                   </button>
                 </div>
               )}
-              <p className="wb-education">B.Tech (Mech) + IIT Jodhpur MBA.</p>
             </motion.div>
           </div>
           <a href="#workbench-impact" className="wb-scroll-cue">
             <ArrowDown size={16} />
             <span>THE PROOF IS BELOW</span>
           </a>
-          <span className="wb-margin-note" aria-hidden="true">
-            LESS GUESSWORK. MORE GOOD QUESTIONS.
-          </span>
         </div>
       </section>
+      <ProductStrip />
       <div id="workbench-impact">
         <ImpactEvidence />
       </div>

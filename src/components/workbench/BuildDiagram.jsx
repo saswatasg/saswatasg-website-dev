@@ -64,11 +64,11 @@ export default function BuildDiagram({ project }) {
               y="20"
               width="90"
               height="58"
-              rx="12"
+              rx="2"
               fill="#fff"
               fillOpacity=".65"
               stroke="currentColor"
-              strokeOpacity=".25"
+              strokeWidth="1.5"
             />
             <text
               x={index * 105 + 47}

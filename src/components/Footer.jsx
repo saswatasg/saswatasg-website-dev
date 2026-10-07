@@ -29,12 +29,9 @@ function Footer() {
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-12 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           <div className="col-span-2 md:col-span-1">
-            <Link
-              to="/workbench"
-              className="font-display font-black text-xl tracking-tight text-white bg-coral px-2 py-0.5 rounded-lg border-2 border-white inline-block -rotate-1 hover:scale-105 hover:-rotate-2 transition-all duration-200"
-            >
-              Saswata
-            </Link>
+            <p className="wb-footer-name font-display font-bold text-xl text-white">
+              Saswata Subhra Sengupta
+            </p>
             <p className="text-sm text-white/60 font-medium mt-2 max-w-[200px]">
               Product discovery, solution design and delivery.
             </p>
@@ -49,10 +46,9 @@ function Footer() {
                 { to: "/about", label: "About" },
                 { to: "/experience", label: "Experience" },
                 { to: "/work", label: "Work" },
-                { to: "/builds", label: "Build lab" },
+                { to: "/builds", label: "Builds" },
                 { to: "/blog", label: "Blog" },
                 { to: "/contact", label: "Contact" },
-                { to: "/roadmap", label: "On the bench" },
               ].map((link) => (
                 <li key={link.label}>
                   <Link
@@ -144,18 +140,6 @@ function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t-2 border-white/10">
           <p className="text-xs font-bold text-white/40">
             © {currentYear} Saswata S. Sengupta. All rights reserved.
-          </p>
-          <p className="text-xs font-bold text-white/40">
-            Growth consulting{" "}
-            <a
-              href="https://www.thegrowthbench.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent("footer", "growth_bench")}
-              className="underline underline-offset-2 hover:text-white transition-colors"
-            >
-              → thegrowthbench.com
-            </a>
           </p>
           <div className="flex items-center gap-4">
             {[

@@ -9,6 +9,8 @@ import WorldMotion from "@/components/worlds/WorldMotion";
 import WorkbenchMotion from "@/components/workbench/WorkbenchMotion";
 import { useWorld } from "@/contexts/WorldContext";
 import { Link } from "react-router-dom";
+import PortfolioGuide from "@/components/PortfolioGuide";
+import BookingDialog from "@/components/BookingDialog";
 import WhatsAppModal from "@/components/WhatsAppModal";
 import CaseStudyPopup from "@/components/CaseStudyPopup";
 import { Toaster } from "@/components/ui/toaster";
@@ -87,6 +89,7 @@ const Layout = ({ children }) => {
             {children}
           </main>
           <WhatsAppModal />
+          <BookingDialog />
           <AnimatePresence>
             {popupSlug && (
               <motion.div
@@ -119,6 +122,7 @@ const Layout = ({ children }) => {
           <Toaster />
         </div>
       </CreativeScope>
+      <PortfolioGuide />
     </MotionConfig>
   );
 };

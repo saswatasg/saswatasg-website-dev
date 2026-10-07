@@ -79,6 +79,9 @@ export default function BlogIndex() {
             >
               <Link
                 className="wb-surface wb-blog-card"
+                style={{
+                  "--wb-panel-tone": `var(--wb-${["sage", "clay", "blue", "gold", "lilac"][i % 5]})`,
+                }}
                 to={`/blog/${post.slug}`}
               >
                 <div className="wb-blog-art" aria-hidden="true">

@@ -1004,9 +1004,6 @@
   }
 }
 @media (max-width: 359px) {
-  .wb-brand > svg {
-    display: none;
-  }
   .wb-mode-switch a {
     padding: 8px 7px;
     font-size: 9px;

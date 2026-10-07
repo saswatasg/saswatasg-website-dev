@@ -4,7 +4,6 @@ import WhatIDoSection from "@/components/home/WhatIDoSection";
 import TestimonialCarousel from "@/components/home/TestimonialCarousel";
 import LatestWriting from "@/components/home/LatestWriting";
 import PageMeta from "@/components/PageMeta";
-import IndependentBuilds from "@/components/home/IndependentBuilds";
 
 const Home = () => {
   const [bannerDismissed, setBannerDismissed] = useState(false);
@@ -28,7 +27,6 @@ const Home = () => {
           bannerDismissed={bannerDismissed}
           onDismissBanner={dismissBanner}
         />
-        <IndependentBuilds />
         <WhatIDoSection />
         <TestimonialCarousel />
         <LatestWriting />

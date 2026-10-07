@@ -124,7 +124,6 @@ export function ProfessionalHero() {
               diagnostics at LiveKeeping/IndiaMART. Now building AI
               discovery and solution delivery at Upcore Technologies.
             </p>
-            <p>B.Tech (Mech) + IIT Jodhpur MBA.</p>
             <div className="legacy-actions">
               <Link className="material-button" to="/contact">
                 Let’s talk ↗

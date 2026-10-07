@@ -91,23 +91,9 @@ export function FishRule() {
 
 export function AddaWordmark() {
   return (
-    <div className="adda-wordmark" aria-label="ADDA">
-      <svg viewBox="0 0 500 155" role="img" aria-label="ADDA">
-        <g
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="17"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M24 128Q26 25 66 25T108 128M34 90h62M141 128V25h26c77 0 77 103 0 103zM260 128V25h26c77 0 77 103 0 103zM380 128q2-103 42-103t42 103M390 90h62" />
-          <path
-            d="M15 12q58-12 105 0m10 0q54-12 107 0m13 0q54-12 107 0m13 0q54-12 108 0"
-            strokeWidth="5"
-          />
-        </g>
-      </svg>
-      <span lang="bn">আড্ডা</span>
+    <div className="adda-wordmark adda-bengali-wordmark" aria-label="আড্ডা (Adda)">
+      <span lang="bn" className="adda-bengali-title">আড্ডা</span>
+      <small>(Adda)</small>
     </div>
   );
 }

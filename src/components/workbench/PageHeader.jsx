@@ -16,7 +16,6 @@ export function PageGraphic({ variant = "work" }) {
             blog: "NOTES FROM THE WORK",
             contact: "THE NEXT CONVERSATION",
             builds: "IDEA → WORKING TOOL",
-            roadmap: "WHAT COMES NEXT",
           }[variant]
         }
       </span>
@@ -30,7 +29,6 @@ export function PageGraphic({ variant = "work" }) {
             blog: "IDEAS WORTH EXAMINING",
             contact: "A CONVERSATION, NOT A PITCH",
             builds: "MAKE THE IDEA INSPECTABLE",
-            roadmap: "PRIORITIES, NOT PROMISES",
           }[variant]
         }
       </span>

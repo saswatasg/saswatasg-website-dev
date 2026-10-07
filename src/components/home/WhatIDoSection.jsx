@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import {
   motion,
   useReducedMotion,
@@ -16,14 +16,18 @@ import {
   BarChart3,
   Check,
   RotateCcw,
+  Pause,
+  Play,
 } from "lucide-react";
+
+import useTimedSlides from "@/hooks/useTimedSlides";
 
 const steps = [
   {
     name: "Investigate",
     short: "Understand the friction before proposing a fix.",
     icon: Search,
-    color: "#cfe9dc",
+    color: "var(--wb-sage)",
     question: "Where does the journey break?",
     description:
       "Map user workflows, instrument the funnel and look at the sessions behind the numbers. Separate the symptom from the problem worth solving.",
@@ -37,7 +41,7 @@ const steps = [
     name: "Align",
     short: "Make the next decision clear to everyone.",
     icon: Compass,
-    color: "#f2c85b",
+    color: "var(--wb-gold)",
     question: "What deserves to be built next?",
     description:
       "Bring user needs, business goals and technical constraints into one conversation. Prioritize the opportunity and define what success will look like.",
@@ -51,7 +55,7 @@ const steps = [
     name: "Ship",
     short: "Turn the decision into something people can use.",
     icon: GitPullRequest,
-    color: "#f0d5c8",
+    color: "var(--wb-clay)",
     question: "How do we make the idea useful?",
     description:
       "Translate the brief into buildable specs, work through the edge cases and keep design, engineering and growth moving toward the same release.",
@@ -65,7 +69,7 @@ const steps = [
     name: "Measure",
     short: "Read the outcome. Use it to ask a better question.",
     icon: BarChart3,
-    color: "#d9e8f3",
+    color: "var(--wb-blue)",
     question: "Did the change move the right number?",
     description:
       "Compare the result with the baseline, inspect the funnel and feed the learning back into the next iteration. Shipping starts the feedback loop.",
@@ -191,8 +195,9 @@ function WorkingGraphic({ index, reduced }) {
   );
 }
 export default function WhatIDoSection() {
-  const [active, setActive] = useState(0);
-  const root = useRef(null);
+  const timer = useTimedSlides(steps.length, 4500);
+  const { index: active } = timer;
+  const root = timer.ref;
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: root,
@@ -242,7 +247,10 @@ export default function WhatIDoSection() {
                 className="wb-process-step"
                 aria-pressed={active === i}
                 aria-controls="wb-process-detail"
-                onClick={() => setActive(i)}
+                onClick={() => {
+                  timer.select(i);
+                  timer.setPaused(true);
+                }}
                 style={{ "--step-color": item.color }}
               >
                 <span className="wb-process-index">0{i + 1}</span>
@@ -260,6 +268,21 @@ export default function WhatIDoSection() {
           <div className="wb-process-loop">
             <RotateCcw size={15} />
             <span>Learn. Refine. Go again.</span>
+            {!reduced && (
+              <button
+                className="wb-process-play"
+                onClick={() => timer.setPaused((p) => !p)}
+                aria-pressed={!timer.paused}
+                aria-label={
+                  timer.paused
+                    ? "Play working process"
+                    : "Pause working process"
+                }
+              >
+                {timer.paused ? <Play size={14} /> : <Pause size={14} />}{" "}
+                {timer.paused ? "Play" : "Pause"}
+              </button>
+            )}
           </div>
         </div>
         <motion.div
@@ -277,6 +300,12 @@ export default function WhatIDoSection() {
           }}
           onPointerLeave={() => pointer.set(0)}
         >
+          <div
+            className="wb-slide-progress wb-process-countdown"
+            aria-hidden="true"
+          >
+            <motion.span style={{ scaleX: timer.progress }} />
+          </div>
           <motion.div
             key={active}
             className="wb-process-detail-inner"
@@ -306,10 +335,6 @@ export default function WhatIDoSection() {
         </motion.div>
       </div>
       <div className="wb-process-bottom">
-        <p>
-          Different products. The same discipline: understand, align, ship,
-          learn.
-        </p>
         <Link to="/experience" className="wb-button wb-button-paper">
           My professional journey <ArrowUpRight size={17} />
         </Link>

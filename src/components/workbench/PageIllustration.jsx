@@ -107,17 +107,6 @@ export default function PageIllustration({ variant }) {
             </g>
           ))}
         </>
-      ) : variant === "roadmap" ? (
-        <>
-          {[0, 1, 2].map((i) => (
-            <g key={i}>
-              {box(12 + i * 104, 20, 92, 143, [paper, blue, sage][i])}
-              {label(24 + i * 104, 43, ["EXPLORE", "VALIDATE", "DELIVER"][i])}
-              {box(24 + i * 104, 57, 68, 36, i === 1 ? gold : paper)}
-              {box(24 + i * 104, 103, 68, 36, paper)}
-            </g>
-          ))}
-        </>
       ) : (
         <>
           {box(45, 30, 180, 112, blue)}

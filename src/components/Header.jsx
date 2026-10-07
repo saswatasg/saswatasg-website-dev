@@ -5,16 +5,25 @@ import {
   AnimatePresence,
   useScroll,
   useSpring,
-  useMotionValueEvent,
   useReducedMotion,
 } from "framer-motion";
-import { Home, Menu, X, ArrowUpRight, ArrowLeftRight } from "lucide-react";
+import {
+  Home,
+  Menu,
+  X,
+  ArrowUpRight,
+  ArrowLeftRight,
+  Sparkles,
+  Coffee,
+  Briefcase,
+} from "lucide-react";
 import { useWorld } from "@/contexts/WorldContext";
 import { openScheduleBooking } from "@/utils/openCalendar";
 import { trackEvent } from "@/utils/analytics";
 
 const navItems = [
   { name: "Work", path: "/work" },
+  { name: "Builds", path: "/builds" },
   { name: "Experience", path: "/experience" },
   { name: "About", path: "/about" },
   { name: "Blog", path: "/blog" },
@@ -22,15 +31,13 @@ const navItems = [
 ];
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const root = useRef(null),
     toggle = useRef(null);
   const reduced = useReducedMotion();
   const { world, switchWorld, destination, transitioning } = useWorld();
-  const { scrollY, scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 100, damping: 28 });
-  useMotionValueEvent(scrollY, "change", (value) => setScrolled(value > 48));
   useEffect(() => setOpen(false), [location.pathname, location.search]);
   useEffect(() => {
     const desktop = window.matchMedia("(min-width:1000px)");
@@ -64,7 +71,7 @@ export default function Header() {
         key={item.path}
         to={item.path}
         className={({ isActive }) =>
-          `wb-nav-link ${isActive || (item.path === "/work" && /^\/(case-studies|projects|builds)/.test(location.pathname)) ? "is-active" : ""}`
+          `wb-nav-link ${isActive || (item.path === "/work" && /^\/(case-studies|projects)/.test(location.pathname)) ? "is-active" : ""}`
         }
         onClick={() => {
           trackEvent(
@@ -82,7 +89,7 @@ export default function Header() {
   return (
     <header
       ref={root}
-      className={`wb-island ${scrolled ? "is-scrolled" : ""} ${open ? "is-expanded" : ""}`}
+      className={`wb-island ${open ? "is-expanded" : ""}`}
       aria-label="Workbench navigation"
     >
       <div className="wb-island-row">
@@ -90,16 +97,17 @@ export default function Header() {
           to="/workbench"
           className="wb-brand"
           aria-label="Saswata — Workbench home"
+          aria-current={location.pathname === "/workbench" ? "page" : undefined}
         >
-          <Home size={17} />
-          <span>
-            Saswata<span aria-hidden="true">✳</span>
-          </span>
+          <Home size={20} />
         </Link>
         <nav className="wb-desktop-nav" aria-label="Primary">
           {navigation(false)}
         </nav>
-        <nav className="wb-mode-switch" aria-label="Choose a side">
+        <nav
+          className="wb-mode-switch wb-world-switch"
+          aria-label="Choose a side"
+        >
           {["workbench", "adda"].map((mode) => (
             <a
               key={mode}
@@ -120,12 +128,28 @@ export default function Header() {
                 }
               }}
             >
-              {world === mode && (
-                <span className="wb-mode-indicator" />
-              )}
-              <span>{mode === "adda" ? "Adda" : "Workbench"}</span>
+              {world === mode && <span className="wb-mode-indicator" />}
+              <span className="wb-switch-word">
+                {mode === "adda" ? (
+                  <>
+                    <Coffee size={14} />
+                    <span lang="bn" className="wb-switch-bengali">
+                      আড্ডা
+                    </span>
+                    <small>(Adda)</small>
+                  </>
+                ) : (
+                  <>
+                    <Briefcase size={14} />
+                    <span>Workbench</span>
+                  </>
+                )}
+              </span>
             </a>
           ))}
+          <span className="wb-switch-spark" aria-hidden="true">
+            <Sparkles size={17} />
+          </span>
         </nav>
         <button
           className="wb-nav-cta"

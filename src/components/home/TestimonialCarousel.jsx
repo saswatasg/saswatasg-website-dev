@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Linkedin } from "lucide-react";
 
@@ -40,6 +40,24 @@ const testimonials = [
 export default function TestimonialCarousel() {
   const rail = useRef(null);
   const reduced = useReducedMotion();
+  const [edges, setEdges] = useState({ start: true, end: false });
+  useEffect(() => {
+    const node = rail.current;
+    if (!node) return;
+    const update = () =>
+      setEdges({
+        start: node.scrollLeft <= 1,
+        end: node.scrollLeft + node.clientWidth >= node.scrollWidth - 2,
+      });
+    const observer = new ResizeObserver(update);
+    observer.observe(node);
+    node.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => {
+      observer.disconnect();
+      node.removeEventListener("scroll", update);
+    };
+  }, []);
   const move = (direction) => {
     const card = rail.current?.querySelector("article");
     if (card)
@@ -61,12 +79,17 @@ export default function TestimonialCarousel() {
         </div>
         <div className="wb-rail-controls">
           <button
+            disabled={edges.start}
             onClick={() => move(-1)}
             aria-label="Previous recommendations"
           >
             <ArrowLeft size={20} />
           </button>
-          <button onClick={() => move(1)} aria-label="Next recommendations">
+          <button
+            disabled={edges.end}
+            onClick={() => move(1)}
+            aria-label="Next recommendations"
+          >
             <ArrowRight size={20} />
           </button>
         </div>

@@ -1,0 +1,438 @@
+{
+  "updated": "2026-10-07",
+  "identity": "Saswata Subhra Sengupta, product manager based in Kolkata, India. Product discovery, solution design, end-to-end delivery, analytics, AI and growth. Contact: saswatasg@gmail.com. LinkedIn: https://linkedin.com/in/sss99. GitHub: https://github.com/saswatasg. Resume: /assets/resume.pdf. Full-time current role: Product Discovery Manager, Upcore Technologies, April 2026–present. Derived solutions and managed end-to-end delivery for 23+ clients. Six developers coordinated. DhanPlan is live; Meldstead is in pre-launch final audit. Do not present prototypes, mock-data demos or backtests as realised business impact.",
+  "entries": [
+    {
+      "title": "Sierra Living Concepts",
+      "text": "May 2024 — Dec 2025. Product Manager · Growth. D2C / Product growth. Finding and fixing friction in the buying journey. Owned the product growth roadmap for a US-based furniture brand, from UX optimisation to revenue-driving features.",
+      "url": "/experience",
+      "kind": "career"
+    },
+    {
+      "title": "LiveKeeping / IndiaMART",
+      "text": "Jan — Mar 2026. Associate Product Manager. B2B SaaS / Compliance & adoption. Making a complex compliance workflow easier to use. Investigated API logs and user behaviour to diagnose feature adoption gaps and shape product decisions for Indian SMBs.",
+      "url": "/experience",
+      "kind": "career"
+    },
+    {
+      "title": "Upcore Technologies",
+      "text": "Apr 2026 — Present. Product Discovery Manager. Enterprise AI / Discovery → Deployment. Turning enterprise workflows into AI agent opportunities. Deriving solutions and managing delivery end to end for 23+ clients, alongside discovery and six-developer delivery coordination.",
+      "url": "/experience",
+      "kind": "career"
+    },
+    {
+      "title": "Inventory Leveling: Knowing What to Buy, and When",
+      "text": "Upcore Technologies. Enterprise workflows · Client demo. A working procurement demo connecting shared component demand, available stock and lead-time scheduling. Built on mock data. Evidence: BOM Demand Trace; 28 Reconciliation Tests; Gantt Purchase Timing; Demo Delivery Stage. Topics: Product Design, Procurement, React, TypeScript",
+      "url": "/case-studies/upcore-inventory-leveling",
+      "kind": "case study"
+    },
+    {
+      "title": "From a Client Problem to a Deliverable Solution",
+      "text": "Upcore Technologies. Enterprise discovery · Delivery ownership. Built the discovery practice and derived solutions while managing delivery end to end for 23+ clients. Evidence: 23+ Clients · Solution Delivery; 500+ Survey Responses; 20+ Prospect Conversations; 6 Developers Coordinated. Topics: Discovery, Solution Design, Delivery, Enterprise",
+      "url": "/case-studies/upcore-discovery",
+      "kind": "case study"
+    },
+    {
+      "title": "The 17:1 Compliance Gap Nobody Had Measured",
+      "text": "LiveKeeping. B2B SaaS · Analytical. For every E-Way Bill generated in LiveKeeping, 17 were going to Tally. I found this in 100K+ API logs and took it to the CEO. Evidence: 17:1 E-Way Bill Gap; 19:1 E-Invoice Gap; C-Suite Escalation; Discovery Roadmap Input. Topics: Product Discovery, Data Analysis, Executive Comms, B2B SaaS",
+      "url": "/case-studies/livekeeping-compliance-gap",
+      "kind": "case study"
+    },
+    {
+      "title": "From 73% to 54%: Removing Friction from Checkout",
+      "text": "Sierra Living Concepts. D2C E-Commerce. 480,000 sessions. Funnel instrumentation, session evidence and targeted mobile checkout improvements. Evidence: –26% Checkout Abandonment; +47% Mobile CVR; +49% Checkout Completion; 480K Sessions Analysed. Topics: UX Research, A/B Testing, Mobile-First, GA4",
+      "url": "/case-studies/cart-checkout",
+      "kind": "case study"
+    },
+    {
+      "title": "AI-Powered Send Greetings: +168% Engagement From a Dormant Feature",
+      "text": "LiveKeeping. AI Integration · Feature PM. Integrated Google Gemini Flash image AI into a dormant Pro+ feature. Built a geo-segmented festival calendar across 5 Indian regions. Evidence: +168% Feature Engagement; 27 occasions Festival Calendar; Nano Banana AI Model; 5 regions Geo-Segmented. Topics: AI Integration, Feature PM, India SMB, Engagement",
+      "url": "/case-studies/livekeeping-send-greetings",
+      "kind": "case study"
+    },
+    {
+      "title": "Push Notifications From Zero: 27+ Triggers, 5 Regions, One System",
+      "text": "LiveKeeping. Systems Design · Notification Strategy. 27+ triggers. P0–P3 priority hierarchy. 3-slot daily cap with conflict resolution. Geo-segmented across 5 Indian regions. Built the entire system from scratch. Evidence: 27+ Event Triggers; 3-slot Daily Cap + Priority Queue; 5 regions Geo-Segmented; PRO/PRO+ Plan-Tier Logic. Topics: Systems Design, Notification Strategy, GST Compliance, India SMB",
+      "url": "/case-studies/livekeeping-notifications",
+      "kind": "case study"
+    },
+    {
+      "title": "Story-Driven Category Pages: +34% Leads Without a Single Ad",
+      "text": "Sierra Living Concepts. D2C Discovery. Replaced commodity category pages with story-driven, trust-led journeys. 1.1M BigQuery events. 376 in-session intercepts. Evidence: +34% Qualified Leads; +24% Session Duration; –16% Bounce Rate; +27% ATC Rate. Topics: BigQuery, Clarity, Lead Gen, Conversion",
+      "url": "/case-studies/category-discovery",
+      "kind": "case study"
+    },
+    {
+      "title": "Lead Form Overhaul: +124% Without a Single New Visitor",
+      "text": "Sierra Living Concepts. Form Optimization. Static form. Zero conditional logic. Rebuilt into category-specific modules. No traffic changes — pure UX architecture. Evidence: +124% Submission Rate; –41% Mobile Completion Time; –68% Rage Clicks; –31% Bounce (Form Page). Topics: Behavioral Analytics, UX Redesign, Clarity, Mobile",
+      "url": "/case-studies/lead-form",
+      "kind": "case study"
+    },
+    {
+      "title": "Gold, Silver, Bronze: Lead Routing That Closed 63.5%",
+      "text": "Sierra Living Concepts. Sales Operations. Website Forms convert at 63.5%. Chat converts at 4.7%. The team was treating them identically. Built Gold/Silver/Bronze routing across 4 agents. Evidence: 63.5% Gold Source CVR; 0.4% Bronze Source CVR; 5.2→3.5 Days to Close Target; 30 days Pilot to Full Rollout. Topics: Sales Ops, Data Analysis, Routing Design, Revenue Operations",
+      "url": "/case-studies/sierra-lead-allocation",
+      "kind": "case study"
+    },
+    {
+      "title": "Daily Report Automation: 3 Sources, 88 Rows, 0 Manual Steps",
+      "text": "LiveKeeping. Internal Tooling. Kibana + MongoDB + GA4 → Google Sheets. One Apps Script trigger. Manual data entry eliminated across the team. Evidence: 3 Data Sources Unified; 88 rows Fully Mapped; 11 AM Auto-Populate; 0 Manual Steps. Topics: Google Apps Script, Kibana, MongoDB, GA4",
+      "url": "/case-studies/livekeeping-report-automation",
+      "kind": "case study"
+    },
+    {
+      "title": "Lead Qualification: A Shared Basis for the Next Conversation",
+      "text": "Upcore Technologies. B2B GTM · Method study. A five-dimension, 100-point scorecard applied to the live pipeline, with four actionable qualification tiers. Evidence: 5 Dimensions; 100 Point Scale; 4 Qualification Tiers; Live Pipeline Application. Topics: B2B GTM, Lead Scoring, Enterprise, Sales Ops",
+      "url": "/case-studies/upcore-lead-scoring",
+      "kind": "case study"
+    },
+    {
+      "title": "DhanPlan",
+      "text": "An India-focused planner connecting contributions, assets and retirement withdrawals in a monthly ledger. Engine 2.0.0 includes gap-solving and stress scenarios; projections remain assumption-based. Status: Independent product · Live. Tags: Retirement planning, Scenario modelling, Monthly ledger",
+      "url": "/builds#dhanplan",
+      "kind": "build"
+    },
+    {
+      "title": "Meldstead",
+      "text": "Tasks, docs, whiteboards and timelines, with AI connections and client reviews. An independent product in pre-launch final audit; public availability does not mean a completed public launch. Status: Independent product · Pre-launch final audit. Tags: Project workspace, Collaboration",
+      "url": "/builds#meldstead",
+      "kind": "build"
+    },
+    {
+      "title": "Inventory Leveling Agent",
+      "text": "An Upcore Technologies client demo using mock data: expands BOM demand, nets inventory and schedules purchasing. The repository documents 28 reconciliation tests; there is no live ERP integration. Status: Upcore Technologies · Client demo · Mock data. Tags: MRP logic, Procurement, React, TypeScript",
+      "url": "/builds#inventory-leveling-agent",
+      "kind": "build"
+    },
+    {
+      "title": "BlogHero",
+      "text": "A Sierra Living Concepts content tool connecting Search Console opportunities, research and writing to WordPress drafts and a Sheets run log. It creates drafts rather than publishing automatically; client impact metrics are not published. Status: Client tool · Reported client use. Tags: Search Console, Python, Content workflows",
+      "url": "/builds#bloghero",
+      "kind": "build"
+    },
+    {
+      "title": "LinkForge",
+      "text": "A desktop workflow for Sierra Living Concepts: discover and vet domains, find contacts, match pages and draft pitches into a Google Sheets tracker. Suppression rules apply throughout; it does not send outreach automatically. Deployment and adoption are not established here. Status: Client-oriented tool · Documented implementation. Tags: NiceGUI, Google Sheets, Outreach workflows",
+      "url": "/builds#linkforge",
+      "kind": "build"
+    },
+    {
+      "title": "Pixel Display Controller",
+      "text": "A personal controller for a 32×32 BLE display. A Next.js interface connects through a local FastAPI bridge for text, images, GIFs and device controls. The repository reports an MVP tested on hardware; this is a personal integration, not a commercial deployment. Status: Personal build · Hardware MVP. Tags: Next.js, FastAPI, Bluetooth, Hardware integration",
+      "url": "/builds#pixel-display-controller",
+      "kind": "build"
+    },
+    {
+      "title": "FilmRisk.AI",
+      "text": "A TypeScript scoring experiment using 2,454 film records, of which 729 have trainable financial data. Published temporal backtests did not establish an advantage over simple baselines. The useful artifact is the evaluation and its limitations. Status: Research experiment · Weak backtest. Tags: Next.js, Gradient boosting, Bayesian priors, Evaluation",
+      "url": "/builds#filmrisk-ai",
+      "kind": "build"
+    },
+    {
+      "title": "Topshe",
+      "text": "An experimental assistant running a quantised Qwen model through WebAssembly, with local conversation storage. Voice uses browser speech APIs and may involve remote services. Calendar, email and smart-home integrations are planned rather than delivered. Status: Personal experiment · Browser-local LLM. Tags: React, wllama, Web Speech API, PWA",
+      "url": "/builds#topshe",
+      "kind": "build"
+    },
+    {
+      "title": "TGB Hunt",
+      "text": "A Django and Playwright experiment for campaign tasks, connection requests and follow-ups. The implementation can send automatically; a mandatory review gate is not established. Kept as an archive of workflow engineering and product constraints. Status: Archive · Automation experiment. Tags: Django, Playwright, Task orchestration",
+      "url": "/builds#tgb-hunt",
+      "kind": "build"
+    },
+    {
+      "title": "Intent",
+      "text": "An independent dating-product prototype built with Next.js and Supabase. Explore the product direction through the demo; verified-profile coverage, matching quality and public launch timing are not established. Status: Independent prototype · Demo. Tags: Next.js, Supabase, Product exploration",
+      "url": "/builds#intent",
+      "kind": "build"
+    },
+    {
+      "title": "11 PM Cinema",
+      "text": "A personal movie-selection app exploring mood-led choices for two people. A compact build rather than a claim of commercial traction. Status: Archive · Personal app. Tags: Next.js, TypeScript",
+      "url": "/builds#11-pm-cinema",
+      "kind": "build"
+    },
+    {
+      "title": "Compliance AI Opportunities — Product Requirements",
+      "text": "LiveKeeping. Documented requirements for pre-submission validation, recurring-field auto-population and clearer error messages for the data science roadmap. These are proposed opportunities, not claimed deployed AI features. Requirements documented · Proposed roadmap inputs",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Inventory Leveling & Procurement Intelligence",
+      "text": "Upcore Technologies. A working client demo connecting component demand, stock requirements and lead-time procurement scheduling using mock data. Client demo · 28 reconciliation tests · Mock data",
+      "url": "/case-studies/upcore-inventory-leveling",
+      "kind": "product work"
+    },
+    {
+      "title": "Fractional AI Officer — Service Architecture",
+      "text": "Upcore Technologies. Designed a five-layer governance and operating framework: Align, Accelerate, Protect, Comply and Optimise, with 19 capabilities. An architecture artifact rather than a claim of certification or production deployment. 5 layers · 19 capabilities · Architecture designed",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "AI Guardrail Evaluation",
+      "text": "Upcore Technologies. Built and stress-tested a guardrail system across five evaluations. The reported pass rate was 100% against a 40% baseline; the limited test scope does not establish general reliability. 5 evaluations · Limited test scope",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Lead Qualification — A Shared Scorecard",
+      "text": "Upcore Technologies. Built a five-dimension, 100-point qualification framework with Hot, Warm, Educate and Park tiers, applied to the live pipeline. 5 dimensions · 100-point scale · 4 tiers · Applied to pipeline",
+      "url": "/case-studies/upcore-lead-scoring",
+      "kind": "product work"
+    },
+    {
+      "title": "E-Way Bill Adoption Diagnosis — 17:1 Compliance Gap",
+      "text": "LiveKeeping. Conducted deep-dive analysis uncovering a massive drop-off where PRO+ users generated E-Way Bills externally via Tally rather than in-app. Built an executive narrative that changed the product roadmap. 17:1 E-Way Bill gap · 19:1 E-Invoice gap · Executive decision support",
+      "url": "/case-studies/livekeeping-compliance-gap",
+      "kind": "product work"
+    },
+    {
+      "title": "Cart & Checkout Flow Redesign — –26% Abandonment",
+      "text": "Sierra Living Concepts. Ran a friction audit combining GA4 step funnels and Clarity session evidence. Simplified fields, clarified trust signals, and adjusted error/validation UX. Checkout abandonment: 73.1% → 53.9% (–26%) · 480K sessions",
+      "url": "/case-studies/cart-checkout",
+      "kind": "product work"
+    },
+    {
+      "title": "Category & Landing Page Redesign — +34% Leads",
+      "text": "Sierra Living Concepts. Led a 4-week sprint guided by GA4 custom events and Microsoft Clarity heatmaps. Replaced commodity category pages with story-driven, trust-led journeys. 1.1M BigQuery events analyzed. Session-to-PDP-click: +17% · Qualified leads: +34% · Bounce: −16% · ATC: +27%",
+      "url": "/case-studies/category-discovery",
+      "kind": "product work"
+    },
+    {
+      "title": "Lead Form Conversion Overhaul — +124% in 28 Days",
+      "text": "Sierra Living Concepts. Diagnosed event funnels and rage-clicks. Rebuilt static form into category-specific modules with Material 3 components, contextual microcopy, and latency fixes. Lead submissions: +124% · Mobile completion time: −41% · Rage clicks: −68%",
+      "url": "/case-studies/lead-form",
+      "kind": "product work"
+    },
+    {
+      "title": "Lead Allocation & Routing — Gold/Silver/Bronze System",
+      "text": "Sierra Living Concepts. Built a data-backed lead routing system across 4 agents. Website forms (63.5% CVR) routed differently from chat (4.7% CVR). 30-day pilot from 10% to full rollout. Gold source CVR: 63.5% · Bronze source CVR: 0.4% · Days to close: 5.2 → 3.5 target",
+      "url": "/case-studies/sierra-lead-allocation",
+      "kind": "product work"
+    },
+    {
+      "title": "Send Greetings + Nano Banana AI Integration — +168% Engagement",
+      "text": "LiveKeeping. Integrated Google Gemini Flash (Nano Banana) image AI into LiveKeeping's dormant Pro+ Send Greetings feature. Built a geo-segmented festival calendar across 5 Indian regions with 27 occasions. +168% feature engagement · 27 occasions · 5 geo-regions",
+      "url": "/case-studies/livekeeping-send-greetings",
+      "kind": "product work"
+    },
+    {
+      "title": "Push Notification Architecture — 27 Triggers, Priority Tiers, Geo-Segmented",
+      "text": "LiveKeeping. Redesigned the entire lifecycle messaging architecture covering renewals, transactional states, conflict logic, and feature releases across PRO and PRO+ plan segments. 27+ triggers · P0–P3 priority · 3-slot daily cap · 5 geo-regions",
+      "url": "/case-studies/livekeeping-notifications",
+      "kind": "product work"
+    },
+    {
+      "title": "Daily Report Automation — 3 Sources, 88 Rows, 11 AM",
+      "text": "LiveKeeping. Built a Google Apps Script pipeline unifying Kibana, MongoDB, and GA4 into a single auto-populated report. Eliminated manual data entry across the team. 3 sources unified · 88 rows mapped · 11 AM auto-populate · 0 manual steps",
+      "url": "/case-studies/livekeeping-report-automation",
+      "kind": "product work"
+    },
+    {
+      "title": "Webinar Sales Engine Redesign",
+      "text": "Upcore Technologies. Redesigned the full-funnel webinar experience — landing page, email sequence, and post-session nurture. Mapped drop-off points across registration, attendance, and follow-up before rebuilding each touchpoint from the data up. 478 sign-ups/month · +51% from baseline",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Enterprise Outreach Optimization",
+      "text": "Upcore Technologies. Transitioned from manual LinkedIn prospecting to a structured outbound system with lead scoring, BDR capacity planning, and a tiered qualification framework based on company size, vertical, and AI readiness signals. Cost-to-book reduced by 36%",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "AI Agent Market Intelligence Report",
+      "text": "Upcore Technologies. Produced a 16-page research report covering the agentic AI tooling landscape, market sizing, adoption maturity curve, and 8+ enterprise case studies across manufacturing, legal, logistics, and finance verticals. 16-page whitepaper · 12 verticals mapped",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Revenue Model & Pricing Strategy",
+      "text": "Upcore Technologies. Built the revenue architecture and tiered pricing model for Upcore Technologies' AI agent services, partnering with the CEO on financial modelling and the investor narrative. Revenue model · Tiered pricing strategy",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Enterprise Discovery Sprints",
+      "text": "Upcore Technologies. Conducted structured discovery interviews with 20+ prospective clients across 12 verticals. Synthesised findings into a prioritised opportunity brief identifying the top-3 agentic AI use cases by severity, ROI, and buildability. 20+ interviews · Top-three opportunity brief",
+      "url": "/case-studies/upcore-discovery",
+      "kind": "product work"
+    },
+    {
+      "title": "E-Invoice Adoption Diagnosis — 19:1 Gap",
+      "text": "LiveKeeping. Investigated low utilization of the native E-Invoice module, mapping workflow disconnects between LiveKeeping and Tally's default integrations using the same methodology as the E-Way Bill diagnosis. 19:1 E-Invoice adoption gap identified and reported to C-suite",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "CEO Compliance Error Dashboard",
+      "text": "LiveKeeping. Engineered a multi-week tracking instrument summarizing complex GST compliance rejection codes across product tiers. Created a standardized data pipeline for executive visibility. Weekly CEO dashboard tracking GST rejection errors · Reduced manual reporting effort",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Landing Page Optimisation",
+      "text": "Sierra Living Concepts. Used GA4 funnels and Clarity scroll/click insights to ship speed-tuned, modular landing templates that match paid-traffic intent. Bounce rate: −22% · AOV: +8%",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Customization Price Calculator",
+      "text": "Sierra Living Concepts. Defined real-time quote logic and shipped a lightweight JS widget embedded on PDPs with validation and analytics hooks. Custom-order attach rate: +28%",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "On-Site Search Algorithm Upgrade",
+      "text": "Sierra Living Concepts. Re-weighted relevance factors, added synonym mapping, and ran query-intent experiments with controlled A/B rollout. Search-attributed revenue: +14%",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Customer Self-Service Portal",
+      "text": "Sierra Living Concepts. Defined requirements, selected vendor, and designed track-my-order and self-serve flows with instrumentation. Reduced support load and unlocked cross-sell opportunities. Support tickets: −40% · NPS: +6 points · Cross-sell revenue: +43%",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Product Page Optimisation",
+      "text": "Sierra Living Concepts. Event-driven iterations on media gallery, variants, and micro-copy, informed by GA4 custom events and Clarity behavior data. Add-to-cart rate: +27% · Page engagement time: +22%",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Acquisition Funnel Rebuild — Coffee D2C",
+      "text": "Freelance · Caffena. Rebuilt the coffee brand's full acquisition funnel — landing pages, offer architecture, and paid media creative testing — while working full-time at Sierra Living Concepts. Revenue: ₹1.62L → ₹5.78L/mo (+257%)",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Lead-Gen Engine — Home Interiors",
+      "text": "Freelance · Diwan. Designed and ran a always-on lead-generation engine for a home interiors brand — offer positioning, landing flow, and qualification filters. 478–523 qualified leads/mo · CPL: ₹277–293",
+      "url": "/work",
+      "kind": "product work"
+    },
+    {
+      "title": "Book One",
+      "text": "Unpublished. A detective story involving serial killings in North Kolkata. Title and language to come.",
+      "url": "/writing",
+      "kind": "personal"
+    },
+    {
+      "title": "Book Two",
+      "text": "Unpublished. A societal story about school and the education system in a fictional town. Title and language to come.",
+      "url": "/writing",
+      "kind": "personal"
+    },
+    {
+      "title": "The personal side: আড্ডা (Adda)",
+      "text": "A personal cultural journal: stories, films and everyday observations, Bengal and Kolkata. Cinema interests include Satyajit Ray, Rituparno Ghosh, Hollywood and some Bollywood. No specific favourite film ranking has been supplied. Photography page currently contains illustrative placeholders, not a curated photo collection.",
+      "url": "/adda",
+      "kind": "personal"
+    },
+    {
+      "title": "Education and learning",
+      "text": "MBA, Marketing & Analytics, IIT Jodhpur, 2022–2024. B.Tech, Mechanical Engineering, Jalpaiguri Government Engineering College, 2017–2021. Anthropic Academy coursework; Google Skillshop credentials; Zoho CRM administrator training. Tata Imagination Challenge national semifinalist. Informally mentors 5–6 early-career professionals.",
+      "url": "/about",
+      "kind": "about"
+    },
+    {
+      "title": "Consulting and earlier experience",
+      "text": "Independent consulting alongside Sierra Living Concepts, May–Dec 2025: Caffena acquisition funnel, monthly revenue ₹1.62L to ₹5.78L (+257%) over three months; Diwan lead generation, 478–523 qualified leads/month, ₹277–293 CPL. Mozo Hunt Pvt Ltd Marketing & Sales Intern, May–July 2023. Rotaract Club, Delhi, Marketing Intern, December 2022. Freelance photography September 2019–June 2021, 58+ projects and a six-person creative team.",
+      "url": "/experience",
+      "kind": "career"
+    },
+    {
+      "title": "AI image greetings lifted feature engagement by 168%",
+      "text": "A dormant 'Send Greetings' feature, an image-gen model, and a festival calendar across 27 occasions — feature engagement up 168% at LiveKeeping.\n\n\n\n\n\n\n  At LiveKeeping, I worked on an AI image-generation integration for the Pro+\n  Send Greetings feature and a geo-segmented calendar of 27 occasions across\n  five regional groupings. The supplied record reports +168% feature engagement;\n  it does not establish the same increase in overall product retention or\n  revenue.\n\n\n\n\n## Give the feature a relevant moment\n\nThe feature helps a merchant create greetings for customers. Its product challenge is broader than generating an attractive image: the occasion, language and business context need to make the greeting useful at the moment someone wants to send it.\n\nThe documented work combines image generation with a regional festival calendar. This gives the product a structured source of relevant occasions rather than treating every user as if they follow the same national calendar. Five groupings provide a practical segmentation basis; they are not a claim to represent every local custom.\n\n## Make the integration understandable\n\nThe supplied work describes the Nano Banana image model integration and its role in producing greeting artwork. The product flow brings together the selected occasion, business context and image generation. A user needs to understand what will be created and have a clear path to review the result.\n\nAn AI integration should be assessed through the task it helps complete. Generation availability alone does not show that someone created a usable card or sent it successfully. Those steps deserve separate instrumentation rather than one undifferentiated AI-use counter.\n\n## Calendar design is part of the product\n\nThe 27-occasion calendar makes timing and relevance explicit. Regional mapping connects the schedule to the merchant’s context. The feature work also fits the broader lifecycle-messaging architecture, where priority, daily limits and conflicting messages need to be considered.\n\nA useful notification is a prompt for a relevant task. Sending more reminders is not automatically better, and the calendar should not be interpreted as permission to contact every merchant for every occasion. The design needs a path from relevance to action, alongside controls for message fatigue.\n\n## What the ",
+      "url": "/blog/ai-send-greetings-168",
+      "kind": "article"
+    },
+    {
+      "title": "Category pages: help customers make the next choice",
+      "text": "A Sierra Living Concepts category-page redesign using analytics and session evidence, with reported lead outcomes kept within their measurement scope.\n\n\n\n\n\n\n  At Sierra Living Concepts, I led category and landing-page work informed by\n  GA4 events, Clarity heatmaps and analysis of 1.1M BigQuery events. The\n  supplied record describes a four-week sprint and reports +34% qualified leads.\n  This note explains the decision and its measurement boundaries rather than\n  inventing a complete experiment log.\n\n\n\n\n## A category page has a job to do\n\nA product grid is useful when the customer already knows how to choose. A considered furniture purchase can require more context: which options fit the need, what customization involves and why the next step is worth taking. The product question was how the category journey could support that choice. More content is not automatically more help; its position and relevance need to be tied to the customer’s decision.\n\n## Bring behavior and event data together\n\nEvent analysis helps locate the transition from category exploration to product detail or an enquiry. Heatmaps and recordings add evidence about what people encounter along that path. The data does not explain intent by itself, and a handful of sessions does not prove how the whole audience behaves. The useful work is to connect those perspectives into a clear problem statement and a prioritized change.\n\n## Make the next step understandable\n\nThe redesign replaced a commodity presentation with a more contextual, trust-led journey. A stronger page helps a visitor understand the category, inspect relevant products and choose what to do next. This is a description of the product direction, not a claim that one particular layout suits every category. Google’s [funnel exploration guide](https://support.google.com/analytics/answer/9327974) and Microsoft’s [Clarity documentation](https://learn.microsoft.com/en-us/clarity/heatmaps/heatmaps-overview) provide the measurement-tool context.\n\n## Read the reported results carefully\n\nThe supplied work record reports +17% session-to-product-detail clicks, +34% qualified leads, −16% bounce and +27% add-to-cart. These measures describe different stages of the journey. They should not be added together, and a +34% qualified-lead figure should not become a claim of +34% revenue. The public cas",
+      "url": "/blog/category-page-redesign-plus34",
+      "kind": "article"
+    },
+    {
+      "title": "Checkout friction: from one metric to specific fixes",
+      "text": "A Sierra Living Concepts checkout investigation across 480K sessions, with reported abandonment moving from 73.1% to 53.9%.\n\n\n\n\n\n\n  At Sierra Living Concepts, a checkout investigation across 480,000 sessions\n  connected funnel data with session evidence. The reported abandonment rate\n  moved from 73.1% to 53.9%: a 19.2 percentage-point change, or approximately\n  26% relative reduction.\n\n\n## One rate, several possible explanations\n\nA checkout abandonment rate does not explain the interaction that caused someone to leave. Cost clarity, validation and payment recovery can create friction at different points. Treating them as one undifferentiated problem makes it difficult to choose a useful change.\n\nMy contribution was to connect the measured journey with the actual checkout experience, then translate the findings into targeted improvements with the team. The scope included **480,000 sessions**, GA4 funnel instrumentation and Microsoft Clarity evidence.\n\n\n\n## Diagnose the step before choosing the solution\n\nA useful investigation defines the entry event, completion event and population before interpreting a drop-off. A cart visitor and someone who has begun checkout are different populations. Device segments matter too: a field can behave acceptably on desktop while creating friction on a small screen.\n\nThe working approach combined step-level measurement with session inspection. Analytics showed where the measured flow narrowed; session evidence helped identify plausible interaction problems. A recording explains an individual experience rather than proving that every abandoned session had the same cause.\n\nGoogle’s [funnel exploration documentation](https://support.google.com/analytics/answer/9327974) explains how to define and inspect a measured journey.\n\n## Make the next action easier to complete\n\nThe work focused on clearer checkout interactions within the existing storefront. The relevant design concerns included cost visibility, validation feedback and payment-error recovery. Each needs its own acceptance criteria: can a customer understand the amount, correct an input and continue after an error?\n\nThis is also where product management connects diagnosis with delivery. A finding must become a bounded implementation decision, a shared requirement and a way to check whether the chang",
+      "url": "/blog/checkout-abandonment-73-to-54",
+      "kind": "article"
+    },
+    {
+      "title": "Daily reporting: three sources, one dependable view",
+      "text": "A LiveKeeping reporting workflow using Google Apps Script, 88 mapped rows and three data sources, with freshness and reconciliation made explicit.\n\n\n\n\n\n\n  At LiveKeeping, I built a Google Apps Script reporting workflow bringing\n  Kibana, MongoDB and GA4 information into an 88-row daily report. The\n  documented operating schedule was 11 AM. The useful product artifact is a\n  repeatable reporting structure, with a defined mapping scope and daily\n  operating expectation.\n\n\n\n\n## Define what each row means\n\nCombining systems is not the same as making their figures comparable. A report needs a definition for each row: its source, qualifying population, time period and calculation. Subscriber counts, transaction activity and analytics events describe different objects. A single spreadsheet can make those differences easier to see or accidentally hide them. The mapping work is therefore part of the product decision, not merely preparation for the script.\n\n## Separate collection from interpretation\n\nThe pipeline consolidates information so the team can inspect it in one working view. That does not mean the system can decide why a metric moved. The report needs stable labels and enough context to support comparison; the analyst still needs to investigate a change. No production credentials, private database extracts or confidential records are reproduced in this article.\n\n## Treat the schedule as an operating expectation\n\nThe 11 AM report time describes the intended daily routine. Google Apps Script time-driven triggers can run within a scheduled window rather than guaranteeing an exact second. A robust report should show when each source was last refreshed and whether the current run completed. See Google’s [installable-trigger documentation](https://developers.google.com/apps-script/guides/triggers/installable) for scheduling behavior and account constraints.\n\n## Build trust through reconciliation\n\nUseful validation compares a sample of mapped rows with their original sources, distinguishes missing values from zero and makes failed collection visible. Repeat runs should not silently duplicate figures or overwrite a valid prior result with incomplete data. Those are acceptance criteria for dependable reporting; this public case does not publish a full set of operational logs proving every condition. It also does no",
+      "url": "/blog/daily-report-automation",
+      "kind": "article"
+    },
+    {
+      "title": "A data deep-dive that ends in a product decision",
+      "text": "A practical method for connecting metric definitions, funnel evidence and user workflows to a testable product decision.\n\n\n\n\n\n\n  A useful data deep-dive ends with a decision, not just a more elaborate\n  dashboard. This article presents a reusable working method: define the\n  question, check the measurement, inspect the journey, compare explanations and\n  choose the next test. It is not a claim that every example was used in a\n  particular client engagement.\n\n\n\n\n## Write the decision before opening the dashboard\n\nBegin with the choice the team needs to make. Is a workflow failing, is a feature being bypassed, or is the measured population wrong? A question such as “why is conversion low?” is too broad until its entry event, completion event and qualifying users are defined. Decide what evidence would change the recommendation. This keeps a visually interesting chart from becoming the answer by default.\n\n## Check the denominator and the event\n\nBefore interpreting a decline, inspect whether the same action is counted consistently across devices and releases. Distinguish people, sessions, leads and transactions. Missing events, repeated submits and changes in consent can alter the apparent funnel. Keep an explicit note of the comparison period and known instrumentation gaps. A precise-looking percentage can still describe the wrong thing.\n\n## Connect the aggregate to a real journey\n\nA funnel identifies where the measured flow narrows. Session evidence and workflow conversations help explain what may be happening there. Neither is sufficient alone: a recording shows one experience, while an aggregate can conceal several different experiences. Google’s [funnel exploration guide](https://support.google.com/analytics/answer/9327974) describes the measurement tool. The [Clarity heatmap documentation](https://learn.microsoft.com/en-us/clarity/heatmaps/heatmaps-overview) describes behavioral views that can complement it.\n\n## Compare explanations instead of collecting opinions\n\nKeep a short hypothesis list. For each explanation, record the supporting evidence, contradicting evidence, uncertainty and the cheapest useful next check. A validation problem, an unclear proposition and an existing external workflow need different responses. Prioritization should consider user impact and delivery con",
+      "url": "/blog/data-deep-dive-method",
+      "kind": "article"
+    },
+    {
+      "title": "DhanPlan: monthly planning with visible assumptions",
+      "text": "How DhanPlan connects Indian savings instruments, retirement withdrawals, gap-solving and stress scenarios in a versioned monthly model.\n\n\n\n\n\n\n  DhanPlan is an India-focused retirement-planning product. The current story is\n  a monthly model connecting savings, assets and retirement withdrawals, with\n  assumptions and limitations made visible. A projection is a scenario, not a\n  guarantee or proof of financial-model accuracy.\n\n\n\n\n## A plan needs more than a final number\n\nA retirement target is useful only when someone can understand the path to it. Contributions occur over time, different instruments have different rules, assets may mature at different points and spending continues after retirement. A single compound-growth figure cannot explain all of those interactions.\n\nDhanPlan’s product direction is to connect those elements in one plan. The interface needs to communicate which inputs drive the result and which changes are meaningful. Showing a large future corpus without explaining inflation or withdrawals would make the output easier to misread.\n\n## Model the sequence month by month\n\nThe published methodology for Engine 2.0.0 describes a monthly ledger with contributions, balances, instrument behavior and retirement withdrawals. The rules review date is 2 October 2026. Instruments include EPF, PPF, NPS, deposits, precious metals and property-related cash flows alongside investment assumptions.\n\nThe point of a shared ledger is consistency across the plan. A maturity event after retirement still matters; an asset should not silently disappear because it falls outside the contribution phase. Versioning also gives a correction a visible context instead of presenting every output as timeless truth.\n\n## Make the gap actionable\n\nThe gap-solving feature reruns the model to explore the contribution change needed under the selected assumptions. It is different from promising that a particular investment will achieve the target. It depends on the same return, inflation, timing and cash-flow choices as the underlying projection.\n\nNominal and inflation-adjusted views answer different questions. The former describes future currency amounts; the latter helps a person think about purchasing power. An understandable product keeps that distinction visible rather than switching between them without explanati",
+      "url": "/blog/dhanplan-retirement-calculator",
+      "kind": "article"
+    },
+    {
+      "title": "Discovery that continues into solution delivery",
+      "text": "Building discovery at Upcore Technologies: structured research, opportunity prioritization and end-to-end solution delivery ownership for 23+ clients.\n\n\n\n\n\n\n  At Upcore Technologies, I built the discovery practice and derived solutions\n  while managing their delivery end to end for 23+ clients. Structured\n  conversations, a 500+ response survey and an evidence framework supported\n  prioritization. The work connects problem understanding to solution definition\n  and delivery ownership.\n\n\nEnterprise interest in AI is broad. A useful product direction needs a more concrete starting point: a workflow, a constraint and a reason to change it. Discovery helps define that starting point. Delivery tests whether the proposed solution can become something the client can use.\n\n\n\n## What I worked on\n\nI built the discovery practice from scratch, including structured client conversations, a survey with 500+ respondents and a framework for organizing evidence into priorities.\n\nThe work also included 20+ prospective-client conversations across 12 verticals and a top-three opportunity brief. Those counts describe research scope. They are not a combined sample, and the brief is a prioritization output rather than evidence that three products launched.\n\nAlongside discovery, I derived solutions and managed their delivery end to end for 23+ clients. I coordinated sprint planning and backlogs with a six-developer team, without formal reporting authority.\n\n## What the evidence needs to explain\n\nAn interview count is useful context, but it does not explain a product decision by itself. A decision needs the problem, the evidence supporting it, the alternatives and the constraints.\n\nThe following is a practical checklist for reviewing an opportunity brief—not a reproduction of a particular interview script or a confidential client artifact:\n\n- **Problem:** Which workflow is difficult, and for whom?\n- **Evidence:** What was observed directly, and what remains an assumption?\n- **Value:** What changes if the problem is solved?\n- **Feasibility:** What data, integration or operational constraints matter?\n- **Next step:** What should be investigated, demonstrated or delivered next?\n\nThe distinction between evidence and assumption matters throughout the process. A stated interest is different from budget approval. A positive demo reaction is d",
+      "url": "/blog/discovery-to-roadmap",
+      "kind": "article"
+    },
+    {
+      "title": "The 17:1 e-way bill gap: diagnosing B2B adoption",
+      "text": "A workflow investigation at LiveKeeping identified 17:1 and 19:1 adoption gaps and informed executive product discussions.\n\n\n\n\n\n\n  At LiveKeeping, investigating native compliance-feature usage revealed a 17:1\n  E-Way Bill gap and a 19:1 E-Invoice gap relative to external Tally-origin\n  workflows. The work informed executive roadmap discussions. It does not\n  establish a shipped connector or measured recovery in adoption.\n\n\n\n\n## Ask where the work already happens\n\nA feature can be available to a paying customer without becoming their preferred workflow. For an accounting product, the surrounding system matters: invoices, bookkeeping and compliance activities are connected. Looking only at the native feature funnel can miss the substitute workflow a customer already uses.\n\nMy work combined analysis of API transactions, product usage and workflow context. The purpose was to understand why users with access to native modules were still generating compliance documents elsewhere. This is a product-discovery problem before it is a feature-redesign problem.\n\n## Keep the ratios tied to their scope\n\nThe supplied work record reports a 17:1 E-Way Bill gap and a 19:1 E-Invoice gap, comparing external and native activity. These ratios describe the investigated usage context; they are not a market-wide share estimate or proof that seventeen times as many distinct customers rejected the product.\n\nThe underlying cohort table, time window and denominator are not reproduced publicly here. That limits how far a reader should generalize the result. A stronger evidence pack would show the qualifying subscriber cohort, event definitions, comparison period and treatment of repeated transactions.\n\n## Translate the finding into a decision\n\nThe analysis was presented at VP and CEO level and contributed to the roadmap discussion. The important change was the framing: low feature usage needed to be understood alongside the workflow customers were already completing outside the native interface.\n\nA connector, data-transfer change or revised entry point could be options to investigate. This case does not assert that a particular middleware implementation was built, installed by 50,000 merchants or achieved a latency target. Implementation and rollout outcomes need separate evidence.\n\n## Separate adoption from rel",
+      "url": "/blog/e-invoice-adoption-gap",
+      "kind": "article"
+    },
+    {
+      "title": "FilmRisk.AI: what a weak backtest changed",
+      "text": "A film-risk experiment with temporal validation, weak baseline comparisons and explicit data limits. What the evaluation changed.\n\n\n\n\n\n\n  FilmRisk.AI explores whether public film data can support a pre-release risk\n  score. The published evaluation did not establish a useful predictive\n  advantage. That finding changes how the project should be presented: as an\n  evaluation experiment, rather than a successful greenlight decision engine.\n\n\n\n\n## The product question\n\nA score is only useful if it improves the decision someone could make without it. For a film-risk product, an attractive interface or a complicated model does not establish that improvement. The relevant question is whether the prediction adds reliable information before release, using inputs available at that time.\n\nThe project combines a gradient-boosted model with empirical Bayesian priors and a component-based scoring approach. Its implementation is in TypeScript with a Next.js interface. Simulation can describe uncertainty under assumptions, but it cannot repair missing data or prove that a score is commercially useful.\n\n## Data coverage is part of the result\n\nThe repository documents 2,454 film records spanning 2001–2025. Only 729 have the financial information required for training. This is not a representative financial history of every film in the period. It is a subset shaped by which figures were publicly reported and could be assembled.\n\nThat missingness creates a practical constraint: the product must not imply that a score describes the whole industry equally well. Dataset size, the training subset and the population a model can reasonably speak about are different things.\n\n## Test on later films, not shuffled familiarity\n\nThe published primary evaluation uses 14 rolling annual folds with 658 tested films. This temporal approach asks whether knowledge from earlier releases helps with later releases. It is more relevant to a pre-release decision than simply demonstrating a fit to familiar records.\n\nOutcome-derived concept features were removed from the evaluation to address leakage. User-supplied pre-release concept inputs in the product are not thereby validated by that historical test. The distinction matters because the implemented interface and the tested prediction path need not be identical.\n\n## What the benc",
+      "url": "/blog/film-risk-engine",
+      "kind": "article"
+    },
+    {
+      "title": "Lead forms: diagnose the field, improve the journey",
+      "text": "A Sierra Living Concepts form redesign: field-level diagnosis, inline validation and category-specific modules, with reported results in context.\n\n\n\n\n\n\n  At Sierra Living Concepts, a field-level investigation identified a\n  restrictive phone-format check contributing to abandonment. The redesign\n  combined clearer input guidance, inline validation and category-specific form\n  modules. The project record reports +124% submissions in 28 days.\n\n\n## Start with the interaction, not the form length\n\nAn aggregate completion rate tells a team that people are leaving. It does not tell them which interaction needs attention. The useful question was where users hesitated or failed: field entry, validation, submission, or the next step.\n\nGA4 field-level events and Microsoft Clarity session evidence helped connect the measured funnel with the experience of filling out the form. The project record attributes 23% of drop-offs to a restrictive field. That finding supported a focused intervention rather than a blanket recommendation to remove fields.\n\n\n\n## Make the expected action understandable\n\nThe redesign addressed three connected needs:\n\n| Change                  | User need                                                  |\n| ----------------------- | ---------------------------------------------------------- |\n| Visible format guidance | Understand what the field accepts before an error          |\n| Inline validation       | Recognize and correct a problem while entering information |\n| Context-specific labels | Understand why the information is needed                   |\n\nCategory-specific modules made the form more relevant to the enquiry. A customer asking about custom furniture should encounter a form that supports that task. Faster initialization and mobile interaction details also mattered: a clear field cannot help if it appears unresponsive.\n\n## Evaluate the complete journey\n\nThe project record reports **+124% submissions**, **−41% mobile completion time** and **−68% rage clicks**. These outcomes describe different aspects of the experience. More submissions should also be evaluated against lead quality; faster completion should not depend on confusing defaults or skipped information.\n\nA separate role-level record reports conversion moving from **2.14% to 4.40%**, approximately **+105%**. The available reco",
+      "url": "/blog/lead-form-overhaul-124",
+      "kind": "article"
+    },
+    {
+      "title": "Lead routing: observed signals and explicit pilot targets",
+      "text": "Designing a tiered lead-allocation system at Sierra Living Concepts, separating observed source performance from pilot targets.\n\n\n\n\n\n\n  At Sierra Living Concepts, I designed a Gold/Silver/Bronze lead-allocation\n  system using source performance, agent capacity and escalation rules. The\n  observed conversion data informed the design. The target of 5.2 to 3.5 days to\n  close is a pilot objective, not a demonstrated result.\n\n\n\n\n## The decision behind the queue\n\nThe work addressed how a four-agent team should allocate leads arriving from six sources. Giving every source the same handling path ignores differences in intent and conversion. A useful routing system needs to translate those differences into a next action without making the source label permanent.\n\nThe available analysis reports website-form conversion at 63.5%, chat at 4.7% and cart-abandonment leads at 0.4%. These are observed source rates in the analysed dataset. They do not establish a universal probability of closing the next individual lead, and low-volume categories need particular care.\n\n## Three tiers, different handling\n\nGold prioritizes high-intent sources for specialist attention. Silver provides a structured follow-up path for intermediate intent. Bronze reduces repetitive manual handling while retaining a route to human review when stronger intent appears.\n\nThe important product choice is to make the next action clear. A tier alone is not enough: the team needs assignment rules, capacity handling and escalation conditions. A response indicating a substantial custom order can justify reconsidering a low initial priority. This is operational decision logic, not a learned model being claimed to predict every outcome.\n\n## Capacity changes the routing decision\n\nAvailability and agent specialization matter alongside source performance. The allocation design considered day-by-day coverage and a specialist path for high-intent enquiries. Those rules should be evaluated against both response delay and conversion; waiting for a specialist is not automatically better than a prompt response.\n\nCoverage and timing decisions should be evaluated against qualified-lead outcomes. The source record does not establish an independent conversion advantage from delaying a particular day’s leads. The [Salesforce guide to lead management](ht",
+      "url": "/blog/lead-routing-gold-silver-bronze",
+      "kind": "article"
+    },
+    {
+      "title": "One useful change at a time: a growth learning loop",
+      "text": "A practical framework for choosing, shipping and evaluating focused growth improvements without turning activity into a success metric.\n\n\n\n\n\n\n  A focused growth loop makes a small product change inspectable: one\n  hypothesis, a bounded intervention and an explicit evaluation. This is a\n  practice framework drawn from the kind of work I do. It is not a promise of\n  one successful experiment every week or a historical record of an exact weekly\n  shipping cadence.\n\n\n\n\n## Choose a decision-sized problem\n\nStart with a specific point in the journey rather than a broad redesign brief. A field validation error, unclear next action or mismatch between an advertisement and its landing page can become a bounded hypothesis. The intervention should be small enough to explain. It also needs to matter: changing a decorative detail without evidence of user friction may produce activity without improving the product.\n\n## Write the hypothesis and the guardrails\n\nA useful hypothesis names the affected users, the change and the expected behavior. Define the main outcome alongside a guardrail such as qualified-lead quality, completion errors or support burden. A higher submission count can be a poor result if the team receives unusable enquiries. Capture the measurement window before launch so the evaluation does not move opportunistically toward whichever metric looks favorable.\n\n## Match the evaluation to the available traffic\n\nA weekly planning rhythm does not guarantee that a result can be measured in seven days. The required duration depends on traffic, effect size, seasonality and the chosen design. Google’s [funnel exploration documentation](https://support.google.com/analytics/answer/9327974) is useful for understanding the measured journey, but a funnel comparison alone does not establish causality. Distinguish an observed change from an experiment capable of attributing it.\n\n## Keep a decision log, including failures\n\nRecord what shipped, what changed, what stayed uncertain and whether the team retained or reversed the intervention. A null result can be useful if it narrows the explanation. A failed change should not disappear from the learning record. The purpose is to make the next decision better, rather than celebrate a growing count of releases. Fixes with an obvious correctness requirement also need ",
+      "url": "/blog/one-fix-a-week-cro",
+      "kind": "article"
+    },
+    {
+      "title": "Notification design: priority, relevance and restraint",
+      "text": "A lifecycle-messaging architecture for LiveKeeping: 27+ triggers, priority tiers, regional relevance and a three-slot daily cap.\n\n\n\n\n\n\n  At LiveKeeping, I redesigned the lifecycle-messaging architecture around 27+\n  triggers, P0–P3 priority tiers, a three-slot daily cap and five regional\n  groupings. The deliverable is a messaging system and its operating rules; this\n  note does not claim independently measured revenue recovery or a reduction in\n  opt-outs.\n\n\n\n\n## Start with the reason for the message\n\nRenewals, transaction states, compliance errors and feature announcements serve different needs. A useful trigger inventory explains what changed, who needs to know and what action they can take. This makes it possible to distinguish an urgent operational message from a discretionary reminder before writing the copy. A catalogue of messages without this distinction is a list, not an architecture.\n\n## Resolve conflicts before sending\n\nPriority only helps if the system has a rule for competing messages. The design uses P0–P3 tiers and a daily cap to make that decision explicit. The operational specification also needs to explain suppression, expiry and exceptions: a message can lose relevance while waiting in a queue. The public case documents the approach, but does not provide a complete production implementation that a reader should assume is reproduced here.\n\n## Make the message relevant to the context\n\nThe regional calendar brings occasion-specific context into the same architecture as renewals and transactional messages. A calendar should support relevance rather than create an obligation to contact every user on every date. Plan eligibility and geographic context need to be applied before delivery. The greeting integration is a related feature, whose reported engagement result should remain distinct from the notification system itself.\n\n## A measurement plan for the whole channel\n\nA sensible evaluation would track eligible users, suppression reasons, delivery, the intended action and disengagement. Opens alone do not show usefulness, and a declining complaint count can be misleading if delivery also fell. Comparisons need a defined cohort and period. These are recommended measurement questions, not results reported from this project.\n\n## The useful takeaway\n\nThe product contribution is ",
+      "url": "/blog/push-notification-architecture",
+      "kind": "article"
+    },
+    {
+      "title": "TGB Hunt: orchestrating a self-hosted outreach workflow",
+      "text": "Task orchestration, campaign state and lessons from building a self-hosted outreach experiment.\n\n\n\n\n\n\n  TGB Hunt is a self-hosted Django and Playwright outreach experiment. Its\n  useful engineering story is campaign tasks, state tracking and follow-up\n  orchestration. Its implementation can send automatically; it should not be\n  described as a system where every message always receives human approval.\n\n\n\n\n## The workflow behind the interface\n\nOutreach is a sequence of states rather than a single text-generation task. A campaign needs to know what has been attempted, what remains pending, which connection requests have changed status and whether a follow-up should be scheduled. Losing those distinctions can create duplicate or badly timed actions.\n\nThe repository includes task handlers for connections, follow-ups and pending-request checks, alongside campaign records and background execution. Django provides the application and persistence layer; Playwright operates the browser. The language model participates in the workflow, but the product is not simply a prompt wrapped in a button.\n\n## State is a product requirement\n\nA useful task record should distinguish intended work from attempted work and confirmed completion. Browser activity can fail in ways that are not equivalent: navigation may fail before an action, an action may complete before confirmation is recorded, or a platform state may change between checks.\n\nThe project includes reconciliation and failed-state handling. Those mechanisms are important implementation artifacts. They do not establish that every edge case is covered or that the platform will continue to accept the same interaction behavior. A reliable claim needs reproducible tests and operational evidence, not only the presence of task code.\n\n## Correcting the approval claim\n\nThe public connection-task handler can perform the send action. The implementation reviewed here does not establish a mandatory human decision before each individual send. The earlier portfolio description of an always-reviewed drafting agent overstated that boundary.\n\nA review-first workflow would be a meaningful future product change: persist a proposed action, display its recipient and content, obtain approval, then execute and record the result. That is a reco",
+      "url": "/blog/tgb-hunt-linkedin-outreach-agent",
+      "kind": "article"
+    },
+    {
+      "title": "Building Topshe: a voice assistant in the browser",
+      "text": "An experiment in browser-local language models, voice interaction and practical integration choices.\n\n\n\n\n\n\n  Topshe is a personal assistant experiment with language-model inference in the\n  browser. That is a specific technical boundary: it does not mean every speech\n  feature is offline, every browser is supported, or every planned integration\n  is already implemented.\n\n\n\n\n## Start with a bounded experiment\n\nThe product question is whether a small local model can make an assistant useful without routing every conversation through a hosted language-model API. Topshe uses a quantised Qwen 2.5 model through wllama and WebAssembly, with a React interface and local conversation storage.\n\nThe name comes from Feluda’s assistant in Satyajit Ray’s stories. In product terms, the intended role is similarly modest: help with a question or a small planning task. It remains an experiment, not a promise that a small browser model can replace a complete connected assistant.\n\n## Local inference has a first-use cost\n\nThe documented model download is approximately 900 MB. That makes first-use readiness a separate experience from later conversations. A progress state, recoverable downloads and an honest explanation of device requirements matter more than calling the product frictionless.\n\nRunning inference locally also moves constraints onto the user’s device. Available memory, browser behavior and competing activity can affect the experience. There is no published representative device benchmark establishing a universal response-time claim, so this case does not invent one.\n\n## Separate the voice pipeline from the model\n\nThe project uses browser speech APIs for recognition and synthesis. A browser can process speech differently from how the language model processes text. In particular, speech recognition may involve a remote service. A locally running model is therefore insufficient evidence for a claim that no data leaves the device.\n\nWake-word support uses Picovoice Porcupine and requires its own access key. Push-to-talk is a fallback. These are product dependencies, not details to hide behind a broad offline label. The [MDN SpeechRecognition documentation](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition) explains the browser-support and remote-processing ca",
+      "url": "/blog/topshe-browser-voice-ai",
+      "kind": "article"
+    }
+  ]
+}

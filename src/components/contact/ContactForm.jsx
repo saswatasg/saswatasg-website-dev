@@ -154,6 +154,7 @@ const ContactForm = () => {
               </label>
               <Input
                 id="contact-name"
+                autoComplete="name"
                 type="text"
                 placeholder="What should I call you?"
                 value={name}
@@ -162,9 +163,6 @@ const ContactForm = () => {
                 aria-required="true"
                 className="mt-1 rounded-lg border-2 border-black"
               />
-              <p className="text-[11px] font-bold text-ink/50 mt-1">
-                What should I call you?
-              </p>
             </div>
             <div>
               <label
@@ -175,6 +173,7 @@ const ContactForm = () => {
               </label>
               <Input
                 id="contact-email"
+                autoComplete="email"
                 type="email"
                 placeholder="ana@company.com"
                 value={email}
@@ -219,6 +218,7 @@ const ContactForm = () => {
             </label>
             <Input
               id="contact-phone"
+              autoComplete="tel"
               type="tel"
               placeholder="+91 90000 00000"
               value={phone}
@@ -230,7 +230,7 @@ const ContactForm = () => {
               id="phone-hint"
               className="text-[11px] font-bold text-ink/50 mt-1"
             >
-              Digits, spaces, + and - only • Only if you want a callback.
+              Only if you’d like me to call back.
             </p>
           </div>
           <div>
@@ -242,6 +242,7 @@ const ContactForm = () => {
             </label>
             <Textarea
               id="contact-message"
+              aria-describedby="contact-message-hint"
               placeholder="Tell me about the project, opportunity or question you have in mind."
               rows={5}
               value={message}
@@ -250,6 +251,9 @@ const ContactForm = () => {
               aria-required="true"
               className="mt-1 rounded-xl border-2 border-black"
             />
+            <p id="contact-message-hint" className="text-xs text-ink/70 mt-1">
+              A little context helps—at least 10 characters.
+            </p>
             <div className="text-xs font-bold text-ink/60 text-right mt-1">
               {message.length} / {MAX_MESSAGE_LENGTH}
             </div>

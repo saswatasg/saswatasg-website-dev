@@ -23,7 +23,6 @@ describe('route-aware world resolution', () => {
       '/builds',
       '/blog/topshe-browser-voice-ai',
       '/case-studies/cart-checkout',
-      '/roadmap',
       '/lab/relationship-magazine',
       '/projects',
       '/case-studies',

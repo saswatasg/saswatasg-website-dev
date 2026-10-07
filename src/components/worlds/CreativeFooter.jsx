@@ -93,18 +93,7 @@ function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t-2 border-white/10">
           <p className="text-xs font-bold text-white/40">© {currentYear} Saswata S. Sengupta. All rights reserved.</p>
-          <p className="text-xs font-bold text-white/40">
-            Growth consulting{' '}
-            <a
-              href="https://www.thegrowthbench.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent('footer', 'growth_bench')}
-              className="underline underline-offset-2 hover:text-white transition-colors"
-            >
-              → thegrowthbench.com
-            </a>
-          </p>
+
           <div className="flex items-center gap-4">
             {[
               { icon: Linkedin, href: 'https://linkedin.com/in/sss99', label: 'LinkedIn' },

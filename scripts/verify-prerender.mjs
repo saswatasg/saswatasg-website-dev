@@ -31,7 +31,6 @@ const ROUTES = [
   "/case-studies/livekeeping-report-automation",
   "/contact",
   "/contact?world=adda",
-  "/roadmap",
 ];
 
 const BLOG_DIR = path.join(dist, "blog");

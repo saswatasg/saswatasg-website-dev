@@ -7,7 +7,7 @@ const stories = [
     company: "Upcore Technologies",
     role: "Product Discovery Manager · Apr 2026–present",
     domain: "ENTERPRISE AI",
-    color: "#f2c85b",
+    color: "var(--wb-gold)",
     title: "Taking client problems through to delivery.",
     problem:
       "Enterprise interest in AI does not automatically reveal a useful product opportunity.",
@@ -23,7 +23,7 @@ const stories = [
     company: "LiveKeeping (IndiaMART)",
     role: "Associate Product Manager · Jan–Mar 2026",
     domain: "B2B SAAS",
-    color: "#d9e8f3",
+    color: "var(--wb-blue)",
     title: "Finding the workflow the product was missing.",
     problem:
       "Paying subscribers were using external tools for core compliance workflows.",
@@ -39,7 +39,7 @@ const stories = [
     company: "Sierra Living Concepts",
     role: "Product Manager (Growth) · May 2024–Dec 2025",
     domain: "D2C COMMERCE",
-    color: "#cfe9dc",
+    color: "var(--wb-sage)",
     title: "Making a complex purchase easier.",
     problem:
       "Customers reached checkout but encountered friction before completing their purchase.",
@@ -197,10 +197,6 @@ export default function ImpactEvidence() {
             <em>Decisions that matter.</em>
           </h2>
         </div>
-        <p>
-          Three settings where research, product judgment and execution came
-          together.
-        </p>
       </div>
       <div className="wb-story-grid">
         {stories.map((story, i) => (
@@ -243,22 +239,7 @@ export default function ImpactEvidence() {
           </motion.article>
         ))}
       </div>
-      <div className="wb-career-context">
-        <p>
-          <span className="wb-label">CONSULTING</span> Product and growth work
-          with <strong>Caffena</strong> and <strong>Diwan</strong>.
-        </p>
-        <p>
-          <span className="wb-label">EARLIER EXPERIENCE</span>{" "}
-          <strong>Mozo Hunt Pvt Ltd</strong> ·{" "}
-          <strong>Rotaract Club, Delhi</strong>
-        </p>
-        <Link to="/experience" className="wb-inline-link">
-          The full journey <ArrowUpRight size={15} />
-        </Link>
-      </div>
       <div className="wb-selected-work-bottom">
-        <span>More work across product strategy, growth and AI systems.</span>
         <Link to="/work" className="wb-inline-link">
           Explore all work <ArrowUpRight size={17} />
         </Link>

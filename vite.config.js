@@ -1,4 +1,5 @@
 import path from 'node:path';
+import portfolioApi from './plugins/portfolio-api.mjs';
 import react from '@vitejs/plugin-react';
 import { createLogger, defineConfig } from 'vite';
 import mdx from '@mdx-js/rollup';
@@ -290,6 +291,7 @@ export default defineConfig({
 		include: ['tests/**/*.test.{js,jsx}'],
 	},
 	plugins: [
+		portfolioApi(),
 		mdx({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm], rehypePlugins: [rehypeWrapTables] }),
 		...(isDev ? [inlineEditPlugin(), editModeDevPlugin(), iframeRouteRestorationPlugin(), selectionModePlugin()] : []),
 		react(),

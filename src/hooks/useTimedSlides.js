@@ -2,12 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { useInView, useMotionValue, useReducedMotion } from "framer-motion";
 
 // Keep elapsed time when reading, focusing controls, or leaving the viewport.
-export default function useTimedSlides(count, duration = 4000) {
+export default function useTimedSlides(
+  count,
+  duration = 4000,
+  { initialIndex = 0, initialPaused = false } = {},
+) {
   const ref = useRef(null);
   const visible = useInView(ref);
   const reduced = useReducedMotion();
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [index, setIndex] = useState(initialIndex);
+  const [paused, setPaused] = useState(initialPaused);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [hidden, setHidden] = useState(false);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import PageHeader, { PageEnd } from "@/components/workbench/PageHeader";
@@ -25,6 +25,7 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
+import CareerTimeline from "@/components/workbench/CareerTimeline";
 import PageMeta from "@/components/PageMeta";
 
 const roles = [
@@ -311,6 +312,10 @@ function Experience() {
           title="A journey from questions to outcomes."
           description="Enterprise AI at Upcore Technologies, B2B SaaS at LiveKeeping, commerce at Sierra Living Concepts—and the consulting and creative work around them."
         />
+        <CareerTimeline roles={roles} />
+        <div className="wb-section-title">
+          <h2>The work behind the timeline.</h2>
+        </div>
         <div className="wb-timeline">
           {roles.map((role, index) => (
             <RoleCard role={role} index={index} key={role.company} />
@@ -321,7 +326,11 @@ function Experience() {
           <span>A foundation in client delivery</span>
         </div>
         {earlierRoles.map((role, index) => (
-          <RoleCard role={role} index={index} key={role.company} />
+          <RoleCard
+            role={role}
+            index={index + roles.length}
+            key={role.company}
+          />
         ))}
         <PageEnd
           title="A useful next chapter?"
@@ -332,10 +341,12 @@ function Experience() {
   );
 }
 function RoleCard({ role, index }) {
+  const [expanded, setExpanded] = useState(false);
   const reduced = useReducedMotion();
   return (
     <motion.article
-      className="wb-surface wb-role-card"
+      id={`experience-${index}`}
+      className={`wb-surface wb-role-card wb-tone-${["sage", "blue", "clay", "gold", "lilac"][index % 5]}`}
       initial={reduced ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
@@ -348,25 +359,56 @@ function RoleCard({ role, index }) {
         <span>{role.type}</span>
       </header>
       <div>
-        <p className="wb-role-context">{role.context}</p>
-        <ul className="wb-role-points">
-          {role.achievements.map((a, i) => (
+        {(expanded || role.achievements.length <= 3) && (
+          <p className="wb-role-context">{role.context}</p>
+        )}
+        <ul id={`role-points-${index}`} className="wb-role-points">
+          {role.achievements.slice(0, expanded ? undefined : 3).map((a, i) => (
             <li key={i}>
               <p>{a.text}</p>
               {a.metric && <span className="wb-role-metric">{a.metric}</span>}
             </li>
           ))}
         </ul>
+        {role.achievements.length > 3 && (
+          <button
+            className="wb-role-expand"
+            aria-expanded={expanded}
+            aria-controls={`role-points-${index}`}
+            onClick={() => {
+              setExpanded((value) => !value);
+              if (expanded)
+                requestAnimationFrame(() =>
+                  document
+                    .getElementById(`experience-${index}`)
+                    ?.scrollIntoView({
+                      block: "start",
+                      behavior: reduced ? "auto" : "smooth",
+                    }),
+                );
+            }}
+          >
+            {expanded
+              ? "Show less"
+              : `Show more · ${role.achievements.length - 3} more points`}{" "}
+            <span aria-hidden="true">{expanded ? "−" : "+"}</span>
+          </button>
+        )}
         {role.caseStudies && (
           <nav
             aria-label={`${role.company} related work`}
             className="wb-role-links"
           >
-            {role.caseStudies.map((cs) => (
-              <Link key={cs.to} to={cs.to}>
-                {cs.label} ↗
-              </Link>
-            ))}
+            {role.caseStudies
+              .slice(
+                0,
+                expanded || role.achievements.length <= 3 ? undefined : 1,
+              )
+              .map((cs) => (
+                <Link key={cs.to} to={cs.to}>
+                  {cs.label} ↗
+                </Link>
+              ))}
           </nav>
         )}
       </div>
