@@ -7,25 +7,6 @@ import PageMeta from "@/components/PageMeta";
 import PageHeader, { PageEnd } from "@/components/workbench/PageHeader";
 import { posts, PILLAR_META, formatDate, toIsoDate } from "@/data/blogPosts";
 const SITE_URL = "https://saswatasg.com";
-const diagrams = {
-  "discovery-to-roadmap": "discovery-to-roadmap/delivery",
-  "checkout-abandonment-73-to-54": "checkout-abandonment/three-leaks",
-  "category-page-redesign-plus34": "category-page/funnel-leak",
-  "lead-form-overhaul-124": "lead-form/one-field",
-  "lead-routing-gold-silver-bronze": "lead-routing/tiers",
-  "push-notification-architecture": "push-notifications/architecture",
-  "ai-send-greetings-168": "ai-send-greetings/calendar",
-  "daily-report-automation": "daily-report/pipeline",
-  "e-invoice-adoption-gap": "e-invoice-gap/gap",
-  "film-risk-engine": "audited/film-risk-engine",
-  "data-deep-dive-method": "data-deep-dive/funnel",
-  "dhanplan-retirement-calculator": "audited/dhanplan-retirement-calculator",
-  "tgb-hunt-linkedin-outreach-agent":
-    "audited/tgb-hunt-linkedin-outreach-agent",
-  "topshe-browser-voice-ai": "audited/topshe-browser-voice-ai",
-  "ai-era-pm": "ai-era-pm/division",
-  "one-fix-a-week-cro": "one-fix-a-week/cadence",
-};
 export default function BlogIndex() {
   const [pillar, setPillar] = useState("all");
   const reduced = useReducedMotion();
@@ -101,19 +82,13 @@ export default function BlogIndex() {
                 to={`/blog/${post.slug}`}
               >
                 <div className="wb-blog-art" aria-hidden="true">
-                  {diagrams[post.slug] ? (
-                    <img
-                      src={`/blog-assets/${diagrams[post.slug]}.svg`}
-                      alt=""
-                      width="600"
-                      height="280"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <span className="font-display text-3xl font-black">
-                      {PILLAR_META[post.pillar]?.label}
-                    </span>
-                  )}
+                  <img
+                    src={`/blog-assets/editorial/${post.slug}.svg`}
+                    alt=""
+                    width="1000"
+                    height="600"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="wb-blog-card-copy">
                   <div className="wb-blog-card-meta">

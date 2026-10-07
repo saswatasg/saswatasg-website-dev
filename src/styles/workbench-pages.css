@@ -282,7 +282,7 @@
 .workbench-shell[data-page-type="page"]
   #main-content
   :is(.text-ink\/30, .text-ink\/40, .text-ink\/45, .text-ink\/50) {
-  color: #69665b;
+  color: #5e5a50;
 }
 .workbench-shell[data-page-type="page"]
   #main-content
@@ -323,7 +323,7 @@
   font-size: 20px;
 }
 .workbench-shell[data-page-type="page"] #main-content button {
-  min-height: 40px;
+  min-height: 44px;
 }
 .workbench-shell[data-page-type="page"] #main-content input,
 .workbench-shell[data-page-type="page"] #main-content textarea {
@@ -408,7 +408,7 @@
 }
 .wb-section-title span {
   font-size: 11px;
-  color: #69665b;
+  color: #5e5a50;
 }
 .wb-competencies,
 .wb-education,
@@ -785,21 +785,21 @@
 .workbench-shell[data-page-type="page"] #main-content .wb-page-header h2 {
   font-size: 26px;
 }
-.workbench-shell footer {
+.workbench-shell .site-footer {
   border-top: 1px solid #37362e;
   background: #171713;
 }
-.workbench-shell footer h4 {
+.workbench-shell .site-footer h4 {
   border-bottom-width: 1px;
   letter-spacing: 0.06em;
   font-size: 11px;
   text-transform: uppercase;
   color: #f2c85b;
 }
-.workbench-shell footer a {
+.workbench-shell .site-footer a {
   transition: color 0.2s;
 }
-.workbench-shell footer a[href="/workbench"] {
+.workbench-shell .site-footer a[href="/workbench"] {
   background: #f2c85b;
   color: #171713;
   border: 0;
@@ -862,12 +862,434 @@
 }
 
 /* Build diagrams are illustrative; keep visuals stable as descriptions vary. */
-.wb-lab-card-visual { height: 190px; }
-.wb-lab-visual-content { width: 100%; min-width: 0; display: grid; gap: 8px; }
-.wb-lab-visual-content > strong { font-size: clamp(1.5rem, 3vw, 2.6rem); overflow-wrap: anywhere; }
-.wb-lab-visual-content > svg { display: block; height: auto; max-height: 70px; }
-.wb-lab-card-visual > svg { flex-shrink: 0; align-self: flex-start; }
+.wb-lab-card-visual {
+  height: 190px;
+}
+.wb-lab-visual-content {
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+}
+.wb-lab-visual-content > strong {
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+  overflow-wrap: anywhere;
+}
+.wb-lab-visual-content > svg {
+  display: block;
+  height: auto;
+  max-height: 70px;
+}
+.wb-lab-card-visual > svg {
+  flex-shrink: 0;
+  align-self: flex-start;
+}
 @media (max-width: 699px) {
-  .wb-lab-card-visual { height: 160px; }
-  .wb-lab-visual-content > svg { max-height: 60px; }
+  .wb-lab-card-visual {
+    height: 160px;
+  }
+  .wb-lab-visual-content > svg {
+    max-height: 60px;
+  }
+}
+/* About: a personal introduction, evidence-led habits and connected foundations. */
+.wb-about-redesign {
+  --about-sage: #cfe9dc;
+  --about-blue: #d9e8f3;
+  --about-gold: #f2dfac;
+}
+.wb-about-intro {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 64px;
+  align-items: center;
+  padding: 20px 0 64px;
+}
+.wb-about-intro h1 {
+  font-size: clamp(42px, 5.5vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+  margin: 24px 0;
+}
+.wb-about-intro h1 em {
+  font-style: normal;
+  color: #5a6854;
+}
+.wb-about-intro p {
+  max-width: 590px;
+  line-height: 1.8;
+  color: #4e5148;
+}
+.wb-about-intro .wb-about-lede {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #252820;
+}
+.wb-about-person {
+  background: #eee8da;
+  border: 1px solid #d5d0c3;
+  border-radius: 28px;
+  overflow: hidden;
+  transform: rotate(2deg);
+}
+.wb-about-person-art {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 20px 0;
+}
+.wb-about-person-art img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.wb-about-orbit {
+  position: absolute;
+  width: 85%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #f2c85b;
+  bottom: -15%;
+  left: 8%;
+  box-shadow:
+    0 0 0 20px #f2c85b30,
+    0 0 0 40px #f2c85b15;
+}
+.wb-about-person figcaption {
+  display: grid;
+  gap: 4px;
+  background: #fffaf0;
+  padding: 20px 24px;
+  border-top: 1px solid #d5d0c3;
+}
+.wb-about-person figcaption span {
+  font-size: 12px;
+  color: #4e5148;
+}
+.wb-about-story {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 24px 64px;
+  padding: 48px 0;
+  border-block: 1px solid #d8d5ca;
+}
+.wb-about-story > .wb-label {
+  grid-column: 1/-1;
+}
+.wb-about-story h2,
+.wb-about-personal h2 {
+  font-size: clamp(32px, 4vw, 46px);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+.wb-about-story p {
+  margin: 0 0 18px;
+  line-height: 1.8;
+}
+.wb-about-lenses {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.wb-about-lens {
+  border: 1px solid #d0d0c4;
+  border-radius: 24px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+}
+.wb-tone-blue {
+  background: var(--about-blue);
+}
+.wb-tone-sage {
+  background: var(--about-sage);
+}
+.wb-tone-gold {
+  background: var(--about-gold);
+}
+.wb-about-lens-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.wb-about-lens-top span {
+  font-family: monospace;
+  font-size: 12px;
+}
+.wb-about-lens h3 {
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.wb-about-lens p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 16px 0 24px;
+}
+.wb-about-lens a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  font-size: 12px;
+  font-weight: 700;
+  min-height: 44px;
+  border-top: 1px solid #25282030;
+}
+.wb-about-foundations {
+  margin-top: 72px;
+}
+.wb-about-education-path {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.wb-about-education-path article {
+  position: relative;
+  background: #fffdf7;
+  border: 1px solid #d8d5ca;
+  border-radius: 24px;
+  padding: 32px;
+}
+.wb-about-education-path article:nth-child(2) {
+  background: #e9eede;
+}
+.wb-about-education-path svg {
+  display: block;
+  margin: 28px 0 20px;
+}
+.wb-about-education-path h3 {
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+.wb-about-education-path p {
+  margin: 18px 0;
+  font-size: 14px;
+}
+.wb-education-lens {
+  display: block;
+  padding-top: 16px;
+  border-top: 1px solid #d0d0c4;
+  font-size: 12px;
+}
+.wb-about-learning {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 48px;
+  padding: 40px 0;
+  margin-top: 20px;
+}
+.wb-about-learning h3 {
+  font-size: 28px;
+  line-height: 1.15;
+  margin-top: 16px;
+}
+.wb-about-learning dl > div {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid #d8d5ca;
+}
+.wb-about-learning dt {
+  font-weight: 700;
+  font-size: 14px;
+}
+.wb-about-learning dd {
+  font-size: 14px;
+  line-height: 1.7;
+}
+.wb-about-recognition {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px 40px;
+  padding: 28px;
+  background: #f0e5c6;
+  border-radius: 20px;
+}
+.wb-about-recognition h3 {
+  font-size: 16px;
+}
+.wb-about-recognition p {
+  font-size: 13px;
+  margin: 6px 0 0;
+}
+.wb-about-personal {
+  margin-top: 64px;
+  padding: 40px;
+  background: #d9e8f3;
+  border: 1px solid #cbd5d4;
+  border-radius: 28px;
+}
+.wb-about-personal h2 {
+  margin: 18px 0;
+}
+.wb-about-personal p {
+  max-width: 560px;
+  margin-bottom: 24px;
+  line-height: 1.8;
+}
+@media (max-width: 900px) {
+  .wb-about-intro {
+    gap: 32px;
+  }
+  .wb-about-lenses {
+    gap: 12px;
+  }
+  .wb-about-lens {
+    padding: 22px;
+  }
+  .wb-about-learning dl > div {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+@media (max-width: 699px) {
+  .wb-about-intro,
+  .wb-about-story,
+  .wb-about-learning {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .wb-about-intro {
+    padding: 12px 0 40px;
+  }
+  .wb-about-intro h1 {
+    font-size: 44px;
+  }
+  .wb-about-intro .wb-about-lede {
+    font-size: 18px;
+  }
+  .wb-about-person {
+    transform: none;
+    max-width: 420px;
+  }
+  .wb-about-person-art {
+    max-height: 380px;
+  }
+  .wb-about-story {
+    padding: 32px 0;
+  }
+  .wb-about-story > .wb-label {
+    grid-column: auto;
+  }
+  .wb-about-lenses,
+  .wb-about-education-path {
+    grid-template-columns: 1fr;
+  }
+  .wb-about-lens-top {
+    margin-bottom: 20px;
+  }
+  .wb-about-education-path article {
+    padding: 26px;
+  }
+  .wb-about-foundations {
+    margin-top: 48px;
+  }
+  .wb-about-recognition {
+    gap: 20px;
+  }
+  .wb-about-recognition > svg {
+    display: none;
+  }
+  .wb-about-personal {
+    padding: 28px;
+  }
+}
+
+/* Keep actions and their arrows together, including on narrow screens. */
+.wb-role-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+}
+.wb-role-links a svg {
+  flex: 0 0 auto;
+}
+
+.wb-blog-art {
+  height: auto;
+  aspect-ratio: 5 / 3;
+}
+.wb-blog-art img {
+  object-fit: cover;
+  padding: 0;
+}
+.wb-article .blog-figure-img {
+  width: 100%;
+  height: auto;
+}
+
+/* Contrast corrections found in the cross-page audit. */
+.workbench-shell[data-page-type="page"] #main-content .text-coral {
+  color: #a13e28;
+}
+.workbench-shell[data-page-type="page"] #main-content .bg-coral.text-white {
+  background: #a5432e;
+  color: #fff;
+}
+.workbench-shell[data-page-type="page"]
+  #main-content
+  .bg-coral.text-white:hover {
+  background: #853321;
+}
+.workbench-shell[data-page-type="page"] #main-content .bg-purple {
+  background: #e6ddf2;
+  color: #252820;
+}
+.workbench-shell[data-page-type="page"] #main-content .bg-ink .bg-white {
+  color: #252820;
+}
+.workbench-shell[data-page-type="page"] #main-content .bg-ink\/40.text-white {
+  background: #625e53;
+  color: #fff;
+}
+.wb-graphic-caption,
+.wb-margin-note {
+  color: #5e5a50;
+}
+
+/* Comfortable touch controls without enlarging the visible dot artwork. */
+.workbench-shell .wb-menu-toggle,
+.workbench-shell .wb-rail-controls button,
+.workbench-shell .wb-current-note button {
+  min-width: 44px;
+  min-height: 44px;
+}
+.workbench-shell .wb-slide-controls button {
+  width: 44px;
+  min-width: 44px;
+  flex-shrink: 0;
+}
+.workbench-shell .wb-slide-controls {
+  flex-wrap: wrap;
+  height: auto;
+  min-height: 48px;
+}
+.workbench-shell .site-footer button,
+.workbench-shell .site-footer li a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.workbench-shell .wb-testimonials {
+  scroll-margin-top: 100px;
+}
+.workbench-shell[data-page-type="page"] #main-content .bg-ink .text-coral {
+  color: #f2c85b;
+}
+.workbench-shell[data-page-type="page"] #main-content .text-ink\/20 {
+  color: #5e5a50;
+}
+.workbench-shell .wb-world-switch a {
+  min-width: 44px;
+}
+.wb-about-lens a {
+  min-height: 44px;
+  align-items: center;
 }

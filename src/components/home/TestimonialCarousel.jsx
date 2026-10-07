@@ -49,7 +49,11 @@ export default function TestimonialCarousel() {
       });
   };
   return (
-    <section className="wb-testimonials" aria-label="Recommendations">
+    <section
+      id="recommendations"
+      className="wb-testimonials"
+      aria-label="Recommendations"
+    >
       <div className="wb-section-heading">
         <div>
           <span className="wb-label">PEOPLE I’VE WORKED WITH</span>

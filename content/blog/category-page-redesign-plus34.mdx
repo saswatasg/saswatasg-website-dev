@@ -1,9 +1,9 @@
 ---
-title: "Category page redesign that added +34% qualified leads"
-description: "Story-led category journeys beat commodity grids: +17% PDP clicks, +34% qualified leads, −16% bounce in a 4-week sprint at Sierra."
+title: "Category pages: help customers make the next choice"
+description: "A Sierra Living Concepts category-page redesign using analytics and session evidence, with reported lead outcomes kept within their measurement scope."
 slug: "category-page-redesign-plus34"
 date: 2026-04-09
-updated: 2026-08-03
+updated: 2026-10-07
 pillar: growth
 persona: cro-operator
 targetKeyword: "category page optimization"
@@ -13,107 +13,50 @@ secondaryKeywords:
   - "session to product detail click"
 anchorProject: category-discovery
 faq:
-  - q: "Why do category pages underperform?"
-    a: "They treat every visitor like an identical customer. Commodity grids ignore intent; clear paths and trust signals drive the product."
-  - q: "What metrics matter for category pages?"
-    a: "Session-to-PDP click, bounce rate, ATC rate, and qualified lead back through the form — not just traffic."
-  - q: "How do you prove a category redesign worked?"
-    a: "Same traffic, better behavior for weeks: +17% PDP clicks and +34% qualified leads without ad-server changes."
+  - q: "What was the analysis scope?"
+    a: "The Sierra Living Concepts work record describes four weeks and approximately 1.1 million events."
+  - q: "What did the category-page initiative report?"
+    a: "+17% product-detail clicks, +34% qualified leads, −16% bounce and +27% add-to-cart. These are separate measures."
+  - q: "Does a qualified-lead improvement establish revenue growth?"
+    a: "No. Revenue needs its own measurement and attribution. A lead metric should not be relabelled as a revenue outcome."
 ---
 
-import AnswerBox from '@/components/blog/AnswerBox';
-import FAQ from '@/components/blog/FAQ';
-import Figure from '@/components/blog/Figure';
+import AnswerBox from "@/components/blog/AnswerBox";
+import FAQ from "@/components/blog/FAQ";
+import Figure from "@/components/blog/Figure";
 
 <AnswerBox>
-Category pages look like static shelves; the data showed they were a two-step conversation. At Sierra we replaced commodity grids with story-driven journeys in a 4-week sprint, backed by GA4 custom events and Clarity heatmaps. Session-to-PDP click +17%, qualified leads +34%, bounce −16%, ATC +27% — on 1.1M BigQuery events, same traffic.
+  At Sierra Living Concepts, I led category and landing-page work informed by
+  GA4 events, Clarity heatmaps and analysis of 1.1M BigQuery events. The
+  supplied record describes a four-week sprint and reports +34% qualified leads.
+  This note explains the decision and its measurement boundaries rather than
+  inventing a complete experiment log.
 </AnswerBox>
 
-Every category page in e-commerce is a *"am I in the right store?"* moment. Most stores treat them as static shelves and leave the visitor to figure out intent alone. The data said something more interesting: the click happened, the click did nothing.
+<Figure
+  src="/blog-assets/editorial/category-page-redesign-plus34.svg"
+  alt="A product shelf with category labels"
+  caption="Concept illustration."
+/>
 
-## The moment I stopped counting clicks
+## A category page has a job to do
 
-The store's category pages got traffic. The products under them didn't get visits. It took exactly two weeks of GA4 custom events and Clarity scroll maps to see it — but once we had:
+A product grid is useful when the customer already knows how to choose. A considered furniture purchase can require more context: which options fit the need, what customization involves and why the next step is worth taking. The product question was how the category journey could support that choice. More content is not automatically more help; its position and relevance need to be tied to the customer’s decision.
 
-- **Custom GA4 events** — session start, category view, PDP click, ATC, form start.
-- **[Microsoft Clarity](https://clarity.microsoft.com/) heatmaps + scroll depth** on every category template.
+## Bring behavior and event data together
 
-The "quiet insight" turned out to be not quiet at all. Category clicks were big, but **PDP engagement after the click was weak**. Visitors clicked through a grid, landed on a product, and bounced off the page almost immediately. The funnel wasn't broken at the top — the storytelling was the leak.
+Event analysis helps locate the transition from category exploration to product detail or an enquiry. Heatmaps and recordings add evidence about what people encounter along that path. The data does not explain intent by itself, and a handful of sessions does not prove how the whole audience behaves. The useful work is to connect those perspectives into a clear problem statement and a prioritized change.
 
-<Figure src="/blog-assets/category-page/funnel-leak.svg" alt="Category to PDP funnel showing weak engagement after the click" caption="Traffic arrived; the click-through died on the product page. The leak wasn't top-of-funnel — it was the story." />
+## Make the next step understandable
 
-## What the session tapes actually showed
+The redesign replaced a commodity presentation with a more contextual, trust-led journey. A stronger page helps a visitor understand the category, inspect relevant products and choose what to do next. This is a description of the product direction, not a claim that one particular layout suits every category. Google’s [funnel exploration guide](https://support.google.com/analytics/answer/9327974) and Microsoft’s [Clarity documentation](https://learn.microsoft.com/en-us/clarity/heatmaps/heatmaps-overview) provide the measurement-tool context.
 
-We watched 40+ category sessions back to back. The pattern was consistent:
+## Read the reported results carefully
 
-- A visitor clicked a product from the grid.
-- The product page loaded a bare spec table: dimensions, materials, price.
-- The visitor looked for *why this fits my space*, didn't find it, and backed out within seconds.
+The supplied work record reports +17% session-to-product-detail clicks, +34% qualified leads, −16% bounce and +27% add-to-cart. These measures describe different stages of the journey. They should not be added together, and a +34% qualified-lead figure should not become a claim of +34% revenue. The public case does not reproduce raw cohort data, a randomization record or a complete attribution analysis.
 
-The store was selling furniture without saying *who it's for*. The redesign became a single question: **how do we tell the visitor which product belongs to their life before they have to ask?**
+## What would make the evidence stronger
 
-## The category-page system we shipped
-
-Each redesigned module balanced four layers, in order of importance:
-
-1. **A guiding first section** — *why choose this category* was layout, not a paragraph. The answer to "is this for me" appeared in the first screen.
-2. **Trust signals up top** — guarantees, shipping windows, live ratings near first glance, not buried at the footer.
-3. **Intent-filter scaffolding** — the user narrows by aspiration ("feed a family of 6") not by schema variables ("seats: 6"). People don't search dining tables by attribute; they search by occasion.
-4. **Editorial PDP traction** — the grid became teasers. Each cell teased the product story instead of a static image.
-
-## How we measured it
-
-This was the part I'd defend most. We didn't launch "the new design" — each module shipped under a **controlled rollout**, with week-over-week comparisons against the same traffic baseline. If a module didn't move its KPI, it didn't stay.
-
-Three things made the measurement honest:
-
-1. **A fixed baseline.** 1.1 million BigQuery events across the category templates, frozen before the first module shipped. No cherry-picked week, no "one lucky day."
-2. **Same traffic, no ad changes.** The budget didn't move. Any delta in behavior is behavior, not spend.
-3. **KPI-at-the-cadence-of-decision.** We watched the same five metrics for however long a change took to become boring — bounce, PDP click, ATC, qualified lead, session dwell.
-
-## The week-by-week of a 4-week sprint
-
-- **Week 1 — instrument and freeze.** GA4 events + Clarity heatmaps go live on every category template. Zero design decisions until the first read of where people stop.
-- **Week 2 — build story first, grid second.** The leading question section, trust signals, and intent filters ship to one storefront category.
-- **Week 3 — iterate against the tape.** Compare that one category against the baseline; keep or kill the modules.
-- **Week 4 — extend, then hold.** Roll the winning modules across the other templates and freeze again.
-
-The discipline that got us to +34% qualified leads wasn't a bolder design. It was refusing to ship "the new design" without a control group.
-
-## The numbers
-
-| Metric | Δ |
-| --- | --- |
-| Session→PDP click | **+17%** |
-| Qualified leads | **+34%** |
-| Bounce rate | **−16%** |
-| Add-to-cart rate | **+27%** |
-| Events analyzed | 1.1M (BigQuery) |
-
-Qualified leads mattered more than raw traffic to the business — the store's lead form feeds its sales floor, so +34% qualified meant +34% on the pipeline, not +34% on a vanity count. (That same form gets its own teardown in [the +124% lead-form fix](/blog/lead-form-overhaul-124).)
-
-## What I'd do differently
-
-- **Ship the editorial layer first.** The story section drove more than the grid styling. In hindsight the order of builds was backwards — story before structure would've compounded the wins faster.
-- **Bank more session-to-PDP variants.** We had one strong winner. A second iteration would've told us whether the win was the story or the trust signals, and run sooner.
-
-## If your category pages don't convert, start here
-
-Adapt the exact recipe, sized to your store:
-
-1. **Instrument for two weeks before you design.** GA4 events for category view → PDP click → ATC → lead; Clarity scroll + click maps. Freeze the baseline.
-2. **Answer "who is this for" on the first screen.** Not with copy — with layout. One leading section, trust signals (guarantee, shipping window, rating) above the fold.
-3. **Replace attribute filters with intent filters.** People don't search dining tables by "seat count"; they search by occasion. Offer "feed a family of six," not "seats: 6."
-4. **Make the grid a teaser.** Each cell should hint the product story — why it fits a space — so the PDP click leads somewhere.
-
-**Then ride one category for two weeks** against your frozen baseline before touching the rest. If the module doesn't move all five KPIs, it doesn't ship everywhere.
-
-## The tell a good category page has
-
-You know a category page is doing its job when a visitor can answer three questions without scrolling much: **Is this store for me? Is this product for my space? What happens if I proceed?** The old grids answered none of the three and blamed traffic. The redesigned modules answered one within the first viewport — which is why bounce fell 16 points and qualified leads rose 34.
-
-That's the whole principle, compressed: **a category page is not a shelf. It's a first conversation.** ([Baymard's e-commerce UX research](https://baymard.com/research) makes the same case with 130,000+ hours of testing behind it.)
-
-This is the deepest writeup in [the category discovery case study](/case-studies/category-discovery). Paired with the [checkout teardown](/blog/checkout-abandonment-73-to-54) it's the funnel work that finally made the store's numbers explain themselves.
+An anonymized event dictionary, comparison dates and a clear definition of a qualified lead would let a reader assess the result more precisely. It would also help distinguish this initiative from other product-page work reporting an add-to-cart improvement. The defensible story is the analytics-led redesign and its reported outcomes, with their scope kept explicit. See the [category case](/case-studies/category-discovery) and the related [lead-form work](/blog/lead-form-overhaul-124).
 
 <FAQ items={frontmatter.faq} />

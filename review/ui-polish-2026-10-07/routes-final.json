@@ -1,0 +1,1178 @@
+[
+  {
+    "route": "/",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/workbench",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/builds",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/adda",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/photography",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/photography/frame-studies",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/writing",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/cinema",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/adda/about",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/about",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/experience",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/work",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/case-studies/cart-checkout",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/case-studies/category-discovery",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/case-studies/lead-form",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/case-studies/upcore-inventory-leveling",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/case-studies/upcore-discovery",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/case-studies/upcore-lead-scoring",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/case-studies/sierra-lead-allocation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/case-studies/livekeeping-compliance-gap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/case-studies/livekeeping-send-greetings",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/case-studies/livekeeping-notifications",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/case-studies/livekeeping-report-automation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/contact",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/contact?world=adda",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/roadmap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/one-fix-a-week-cro",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/discovery-to-roadmap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/film-risk-engine",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/topshe-browser-voice-ai",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/tgb-hunt-linkedin-outreach-agent",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/daily-report-automation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/ai-send-greetings-168",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/push-notification-architecture",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/lead-routing-gold-silver-bronze",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/category-page-redesign-plus34",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/checkout-abandonment-73-to-54",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/data-deep-dive-method",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/dhanplan-retirement-calculator",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/e-invoice-adoption-gap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/blog/lead-form-overhaul-124",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 320
+  },
+  {
+    "route": "/",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/workbench",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/builds",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/adda",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/photography",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/photography/frame-studies",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/writing",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/cinema",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/adda/about",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/about",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/experience",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/work",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/case-studies/cart-checkout",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/case-studies/category-discovery",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/case-studies/lead-form",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/case-studies/upcore-inventory-leveling",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/case-studies/upcore-discovery",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/case-studies/upcore-lead-scoring",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/case-studies/sierra-lead-allocation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/case-studies/livekeeping-compliance-gap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/case-studies/livekeeping-send-greetings",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/case-studies/livekeeping-notifications",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/case-studies/livekeeping-report-automation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/contact",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/contact?world=adda",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/roadmap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/one-fix-a-week-cro",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/discovery-to-roadmap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/film-risk-engine",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/topshe-browser-voice-ai",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/tgb-hunt-linkedin-outreach-agent",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/daily-report-automation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/ai-send-greetings-168",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/push-notification-architecture",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/lead-routing-gold-silver-bronze",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/category-page-redesign-plus34",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/checkout-abandonment-73-to-54",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/data-deep-dive-method",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/dhanplan-retirement-calculator",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/e-invoice-adoption-gap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/blog/lead-form-overhaul-124",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 390
+  },
+  {
+    "route": "/",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/workbench",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/builds",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/adda",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/photography",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/photography/frame-studies",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/writing",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/cinema",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/adda/about",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/about",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/experience",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/work",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/case-studies/cart-checkout",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/case-studies/category-discovery",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/case-studies/lead-form",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/case-studies/upcore-inventory-leveling",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/case-studies/upcore-discovery",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/case-studies/upcore-lead-scoring",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/case-studies/sierra-lead-allocation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/case-studies/livekeeping-compliance-gap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/case-studies/livekeeping-send-greetings",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/case-studies/livekeeping-notifications",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/case-studies/livekeeping-report-automation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/contact",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/contact?world=adda",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/roadmap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/one-fix-a-week-cro",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/discovery-to-roadmap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/film-risk-engine",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/topshe-browser-voice-ai",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/tgb-hunt-linkedin-outreach-agent",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/daily-report-automation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/ai-send-greetings-168",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/push-notification-architecture",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/lead-routing-gold-silver-bronze",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/category-page-redesign-plus34",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/checkout-abandonment-73-to-54",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/data-deep-dive-method",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/dhanplan-retirement-calculator",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/e-invoice-adoption-gap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/blog/lead-form-overhaul-124",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 768
+  },
+  {
+    "route": "/",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/workbench",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/builds",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/adda",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/photography",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/photography/frame-studies",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/writing",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/cinema",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/adda/about",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/about",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/experience",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/work",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/case-studies/cart-checkout",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/case-studies/category-discovery",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/case-studies/lead-form",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/case-studies/upcore-inventory-leveling",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/case-studies/upcore-discovery",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/case-studies/upcore-lead-scoring",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/case-studies/sierra-lead-allocation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/case-studies/livekeeping-compliance-gap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/case-studies/livekeeping-send-greetings",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/case-studies/livekeeping-notifications",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/case-studies/livekeeping-report-automation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/contact",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/contact?world=adda",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/roadmap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/one-fix-a-week-cro",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/discovery-to-roadmap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/film-risk-engine",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/topshe-browser-voice-ai",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/tgb-hunt-linkedin-outreach-agent",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/daily-report-automation",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/ai-send-greetings-168",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/push-notification-architecture",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/lead-routing-gold-silver-bronze",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/category-page-redesign-plus34",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/checkout-abandonment-73-to-54",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/data-deep-dive-method",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/dhanplan-retirement-calculator",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/e-invoice-adoption-gap",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  },
+  {
+    "route": "/blog/lead-form-overhaul-124",
+    "broken": [],
+    "h1": 1,
+    "overflow": false,
+    "viewport": 1280
+  }
+]

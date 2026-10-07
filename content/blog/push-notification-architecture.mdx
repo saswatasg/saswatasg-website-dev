@@ -1,9 +1,9 @@
 ---
-title: "27 push notification triggers, 5 regions, one architecture"
-description: "Designing a notification system across renewals, transactional states, and conflict logic — with priority tiers and a daily cap users don't hate."
+title: "Notification design: priority, relevance and restraint"
+description: "A lifecycle-messaging architecture for LiveKeeping: 27+ triggers, priority tiers, regional relevance and a three-slot daily cap."
 slug: "push-notification-architecture"
 date: 2026-05-06
-updated: 2026-08-03
+updated: 2026-10-07
 pillar: pm
 persona: career-pm
 targetKeyword: "push notification strategy"
@@ -13,204 +13,50 @@ secondaryKeywords:
   - "lifecycle messaging"
 anchorProject: livekeeping-notifications
 faq:
-  - q: "How many push notification triggers does a product need?"
-    a: "We shipped 27+ across renewals, transactional states, and feature launches — each gated by priority, user state, and geo."
-  - q: "What kills push notification engagement?"
-    a: "Same-day stacking. We enforced a 3-slot daily cap per user and P0-P3 priority tiers so nothing buries a critical alert."
-  - q: "Is push volume more important than relevance?"
-    a: "No. Relevance wins. We geo-segmented five Indian regions into a festival calendar so sends mattered locally."
+  - q: "How should notifications compete for attention?"
+    a: "Define priority, relevance, expiry and suppression before delivery. A trigger list alone cannot resolve competing messages."
+  - q: "What was the architecture scope?"
+    a: "27+ triggers, P0–P3 tiers, a three-slot daily cap and five regional groupings at LiveKeeping."
+  - q: "What should be measured beyond opens?"
+    a: "Eligible users, suppression, successful actions and disengagement over a defined cohort and period."
 ---
 
-import AnswerBox from '@/components/blog/AnswerBox';
-import FAQ from '@/components/blog/FAQ';
-import Figure from '@/components/blog/Figure';
+import AnswerBox from "@/components/blog/AnswerBox";
+import FAQ from "@/components/blog/FAQ";
+import Figure from "@/components/blog/Figure";
 
 <AnswerBox>
-A push notification architecture decays into spam without a priority-and-cap system. We designed a lifecycle messaging system with 27+ triggers, P0–P3 priority tiers, a 3-slot daily cap, and 5 geo-regions — for GST-compliance software used by 50K+ Indian SMBs. The lesson: constrain volume so every send is earned.
+  At LiveKeeping, I redesigned the lifecycle-messaging architecture around 27+
+  triggers, P0–P3 priority tiers, a three-slot daily cap and five regional
+  groupings. The deliverable is a messaging system and its operating rules; this
+  note does not claim independently measured revenue recovery or a reduction in
+  opt-outs.
 </AnswerBox>
 
-A GST rejection notice is worth a ₹10,000+ penalty if the merchant misses it. A "new feature!" nudge is worth nothing if they don't. Send both the same afternoon and the merchant mutes you — and now your ₹10,000 alert dies in a muted channel next quarter. That's the real stakes of notification architecture: **spam doesn't just annoy users, it destroys the channel you need for the messages that matter.** This system's goal was to make every ping buy back its own attention, for a B2B SaaS with 50K+ SMBs and real money on the line.
+<Figure
+  src="/blog-assets/editorial/push-notification-architecture.svg"
+  alt="A bell beside message priority tiles"
+  caption="Concept illustration."
+/>
 
-## The 27+ trigger inventory
+## Start with the reason for the message
 
-We mapped the full lifecycle into four buckets:
+Renewals, transaction states, compliance errors and feature announcements serve different needs. A useful trigger inventory explains what changed, who needs to know and what action they can take. This makes it possible to distinguish an urgent operational message from a discretionary reminder before writing the copy. A catalogue of messages without this distinction is a list, not an architecture.
 
-- **Renewal & billing** — renewal reminders (D-30, D-14, D-7, D-3, D-1), trial expiry, invoice ready, payment failures, auto-renewal confirmation
-- **Transactional states** — ledger entry confirmed, GST return filed, payment received, reversal confirmed, credit note issued
-- **Conflicts & errors** — GST rejection (wrong GSTIN, mismatch, duplicate), compliance deadline missed, sync failure, Tally sync error
-- **Feature & content** — release notes, new-style feature release nudges, seasonal greetings (via AI Send Greetings), compliance deadline calendar
+## Resolve conflicts before sending
 
-Each trigger carried **execution context**: legal requirement (yes/no), average revenue at risk (₹), and a P0–P3 priority.
+Priority only helps if the system has a rule for competing messages. The design uses P0–P3 tiers and a daily cap to make that decision explicit. The operational specification also needs to explain suppression, expiry and exceptions: a message can lose relevance while waiting in a queue. The public case documents the approach, but does not provide a complete production implementation that a reader should assume is reproduced here.
 
-<Figure src="/blog-assets/push-notifications/architecture.svg" alt="Push notification architecture: 27+ triggers → P0-P3 priority → 3-slot daily cap → 5 geo-regions" caption="27+ triggers → P0–P3 priority → 3-slot cap → 5 geo-regions. Volume constrained so relevance wins." />
+## Make the message relevant to the context
 
-## The full trigger matrix (what we actually shipped)
+The regional calendar brings occasion-specific context into the same architecture as renewals and transactional messages. A calendar should support relevance rather than create an obligation to contact every user on every date. Plan eligibility and geographic context need to be applied before delivery. The greeting integration is a related feature, whose reported engagement result should remain distinct from the notification system itself.
 
-| Bucket | Trigger | Priority | Channel | Geo-gated | Revenue at risk |
-|--------|---------|----------|---------|-----------|-----------------|
-| Renewal | D-30 renewal reminder | P2 | Push + Email | All | ₹500–5,000/user |
-| Renewal | D-7 renewal reminder | P1 | Push + Email | All | ₹500–5,000/user |
-| Renewal | D-1 renewal reminder | P0 | Push + SMS + Email | All | ₹500–5,000/user |
-| Renewal | Trial expiry D-3 | P1 | Push + Email | All | ₹0 (conversion) |
-| Billing | Invoice ready | P1 | Push | All | ₹100–10,000 |
-| Billing | Payment failed | P0 | Push + SMS | All | ₹500–50,000 |
-| Billing | Auto-renewal confirmed | P3 | Push | All | — |
-| Transactional | GST return filed | P2 | Push | All | — |
-| Transactional | Payment received | P2 | Push | All | — |
-| Transactional | Reversal confirmed | P3 | Push | All | — |
-| Transactional | Credit note issued | P3 | Push | All | — |
-| Conflict | GST rejection (wrong GSTIN) | P0 | Push + SMS | All | ₹10,000+ penalty |
-| Conflict | GST rejection (mismatch) | P0 | Push + SMS | All | ₹10,000+ penalty |
-| Conflict | GST rejection (duplicate) | P1 | Push | All | ₹5,000+ penalty |
-| Conflict | Compliance deadline missed | P0 | Push + SMS | All | ₹25,000+ penalty |
-| Conflict | Tally sync error | P1 | Push | All | Data integrity |
-| Conflict | Bank reconciliation mismatch | P1 | Push | All | — |
-| Feature | Release notes (major) | P3 | Push | All | — |
-| Feature | New feature nudge | P3 | Push | All | — |
-| Feature | Seasonal greeting | P3 | Push | Geo (5 regions) | — |
-| Feature | Compliance calendar alert | P2 | Push | Geo (5 regions) | ₹10,000+ penalty |
-| Feature | Year-end checklist | P2 | Push | All | — |
-| Feature | Quarterly audit reminder | P2 | Push | All | — |
-| System | App update available | P3 | Push | All | — |
-| System | Session expiry warning | P1 | Push | All | — |
+## A measurement plan for the whole channel
 
-## The three rules that made it work
+A sensible evaluation would track eligible users, suppression reasons, delivery, the intended action and disengagement. Opens alone do not show usefulness, and a declining complaint count can be misleading if delivery also fell. Comparisons need a defined cohort and period. These are recommended measurement questions, not results reported from this project.
 
-**1. Priority tiers (P0–P3).** The tiers rank what *can* interrupt vs what *may* wait. Billing and compliance errors are P0; a "new report is ready" ping is P3.
+## The useful takeaway
 
-| Tier | Definition | Max latency | Channels | Example |
-|------|------------|-------------|----------|---------|
-| P0 | Legal requirement, revenue at risk, user harm | under 5 min | Push + SMS + Email | Payment failed, GST rejection |
-| P1 | User action required, revenue impact | under 30 min | Push + Email | Invoice ready, sync error |
-| P2 | Helpful context, time-sensitive | under 4 hours | Push | Renewal D-7, GST filed |
-| P3 | Nice to know, no urgency | Next slot | Push | Release notes, greetings |
-
-**2. Three-slot daily cap.** Only three notifications per user per day, globally. When the message isn't same-day critical, it queues for tomorrow. Stacking is the single fastest way to get *blocked and muted*.
-
-The cap logic:
-```
-daily_cap = 3
-p0_slots = 1 (reserved)
-p1_slots = 1
-p2_p3_slots = 1 (shared)
-if p0_queued > p0_slots: escalate to SMS
-if daily_sent >= daily_cap: defer p2/p3 to tomorrow 09:00
-```
-
-**3. Geo-segmented festivals.** India sends greetings-relevant pushes across five regional festival calendars rather than one national blast — relevance over reach.
-
-## The conflict resolution logic (the hard part)
-
-When a P0 GST rejection and a P3 feature nudge collide on the same day for the same user, who wins? We built a **conflict resolver** that runs at send-time:
-
-```python
-def resolve_conflicts(queued_notifications, user_state):
-    # 1. Deduplicate by template_id
-    unique = deduplicate(queued_notifications)
-    
-    # 2. Apply daily cap
-    sent_today = count_sent_today(user_state.user_id)
-    if sent_today >= DAILY_CAP:
-        # Keep only P0/P1, defer rest
-        unique = [n for n in unique if n.priority in [P0, P1]]
-    
-    # 3. P0 always gets a slot
-    p0_count = sum(1 for n in unique if n.priority == P0)
-    if p0_count > 1:
-        # Multiple P0s → send highest revenue_at_risk, defer rest
-        unique = [max(unique, key=lambda n: n.priority == P0 and n.revenue_at_risk)]
-    
-    # 4. Geo-gate
-    if user_state.region not in notification.geo_regions:
-        unique = [n for n in unique if n.geo_regions is None or user_state.region in n.geo_regions]
-    
-    return unique
-```
-
-This resolver runs for every user, every send window. It's the reason engagement held.
-
-## The technical architecture (how it actually runs)
-
-The notification system isn't a monolith — it's three services talking via a message queue:
-
-```
-┌─────────────┐     ┌──────────────┐     ┌────────────────┐
-│  Trigger    │────▶│  Conflict    │────▶│  Delivery      │
-│  Service    │     │  Resolver    │     │  Workers       │
-└─────────────┘     └──────────────┘     └────────────────┘
-       │                    │                    │
-       ▼                    ▼                    ▼
-  Kafka topic         Redis cache          FCM/APNs/
-  (triggers)          (user state)         SMS/Email
-```
-
-**Trigger Service** — Stateless Go service that evaluates 27+ triggers on schedule (cron) or event (webhook). Each trigger is a small function: `checkRenewalD7()`, `checkGSTRejection()`, etc. Outputs a normalized `NotificationIntent` to Kafka.
-
-**Conflict Resolver** — Consumer group that reads `NotificationIntent`, loads user state from Redis (region, tier, opt-outs, daily_sent_count), runs the resolver logic, outputs `NotificationJob` to delivery queue.
-
-**Delivery Workers** — Pool of workers that handle the actual send:
-- **[FCM](https://firebase.google.com/docs/cloud-messaging)** for Android push (Firebase Cloud Messaging)
-- **[APNs](https://developer.apple.com/documentation/usernotifications)** for iOS push (Apple Push Notification service)
-- **Twilio** for SMS (P0 only)
-- **SendGrid** for email fallback
-
-Each worker has its own retry logic with exponential backoff. Failed deliveries go to a dead-letter queue for manual review.
-
-## The A/B tests that shaped the rules
-
-We didn't guess the cap or the tiers. We tested:
-
-| Test | Variant A | Variant B | Winner | Lift |
-|------|-----------|-----------|--------|------|
-| Daily cap | 5 slots | 3 slots | 3 slots | +18% engagement |
-| P0 channels | Push only | Push+SMS+Email | Push+SMS+Email | +34% P0 open |
-| Geo-gating | National | 5 regions | 5 regions | +42% festival engagement |
-| Cap enforcement | Soft (warn) | Hard (defer) | Hard defer | -67% opt-outs |
-
-The 3-slot cap was the single biggest win. At 5 slots, users started muting. At 3, engagement per send held steady for 6 months.
-
-## The preference center (what we should've built in month 1)
-
-Users wanted control. We added a preference center in month 3:
-
-```json
-{
-  "user_id": "merchant_12345",
-  "preferences": {
-    "renewal": {"push": true, "email": true, "sms": false},
-    "billing": {"push": true, "email": true, "sms": true},
-    "conflicts": {"push": true, "email": true, "sms": true},
-    "features": {"push": false, "email": false, "sms": false},
-    "seasonal": {"push": true, "email": true, "sms": false}
-  },
-  "quiet_hours": {"start": "22:00", "end": "08:00", "tz": "Asia/Kolkata"}
-}
-```
-
-The center itself is a simple React page backed by a Firestore document. The Conflict Resolver reads this before sending. Opt-out rate dropped from 12% to under 2% within two weeks of launch.
-
-## What the numbers said
-
-| Metric | Value |
-| --- | --- |
-| Triggers mapped & released | 27+ |
-| Priority tiers | P0–P3 consistently honored |
-| Daily cap | 3 slots per user |
-| Geo-regions | 5 (festival calendars) |
-| Engagement per send | held (no decay) |
-| Opt-out rate | under 2% (vs 12% pre-cap) |
-| Revenue recovered (P0 billing) | ₹2.3M/quarter |
-
-The engagement lift from the AI seasonal feature — [+168% in the Send Greetings work](/case-studies/livekeeping-send-greetings) — only works because users never felt *spammed* in the weeks before.
-
-## What I'd do differently
-
-- **Instrument conflict logic first.** We shipped conflict-resolution rules last; measuring how many bad sends the resolver prevented would have justified the whole system in week one.
-- **Dry-run the calendar.** A festival calendar looks clean on paper; a dry-run week would have caught the collisions with quiet hours and regional weekends before real users did.
-- **Build the preference center earlier.** Users wanted to tune "I don't want payment received pings." We added it in month 3; should've been month 1.
-
-**The constraint is the feature. Volume without a cap isn't a strategy — it's spam with a roadmap.**
-
-I documented the complete trigger matrix in the [push notification case study](/case-studies/livekeeping-notifications). The seasonal-greeting triggers it gates are the subject of [the AI Send Greetings story](/blog/ai-send-greetings-168), and the same diagnose-the-workflow discipline is in [the e-invoice adoption gap](/blog/e-invoice-adoption-gap).
+The product contribution is to make messaging decisions consistent and understandable across teams. Trigger inventory, priority, conflict rules and contextual eligibility belong in the same specification. Read the [notification case](/case-studies/livekeeping-notifications) and the [Send Greetings story](/blog/ai-send-greetings-168). The [Firebase messaging documentation](https://firebase.google.com/docs/cloud-messaging) provides delivery-platform context; it does not establish this project’s outcomes.
 
 <FAQ items={frontmatter.faq} />

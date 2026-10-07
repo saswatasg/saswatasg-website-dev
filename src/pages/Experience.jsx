@@ -103,27 +103,6 @@ const roles = [
     ],
   },
   {
-    title: "Freelance Product & Growth Consultant",
-    company: "Independent · Caffena & Diwan",
-    period: "May 2025 – Dec 2025",
-    type: "Freelance",
-    context:
-      "Advised D2C and service brands on funnel architecture, paid acquisition, and lead-gen systems while working full-time at Sierra Living Concepts.",
-    tags: ["Growth Consulting", "Performance Marketing", "CRO", "Lead Gen"],
-    achievements: [
-      {
-        text: "Caffena — rebuilt the coffee brand's acquisition funnel: revenue scaled from ₹1.62L to ₹5.78L monthly (+257%) over three months.",
-        icon: <TrendingUp className="w-4 h-4" />,
-        metric: "+257%",
-      },
-      {
-        text: "Diwan — lead-gen engine producing 478–523 qualified leads/month at a ₹277–293 cost-per-lead.",
-        icon: <Target className="w-4 h-4" />,
-        metric: "478–523 leads/mo",
-      },
-    ],
-  },
-  {
     title: "Associate Product Manager",
     company: "LiveKeeping (An IndiaMART Company)",
     period: "Jan 2026 – Mar 2026",
@@ -231,6 +210,27 @@ const roles = [
       { to: "/case-studies/lead-form", label: "Lead Form Overhaul" },
       { to: "/case-studies/category-discovery", label: "Category Redesign" },
       { to: "/case-studies/sierra-lead-allocation", label: "Lead Allocation" },
+    ],
+  },
+  {
+    title: "Freelance Product & Growth Consultant",
+    company: "Independent · Caffena & Diwan",
+    period: "May 2025 – Dec 2025",
+    type: "Freelance",
+    context:
+      "Advised D2C and service brands on funnel architecture, paid acquisition, and lead-gen systems while working full-time at Sierra Living Concepts.",
+    tags: ["Growth Consulting", "Performance Marketing", "CRO", "Lead Gen"],
+    achievements: [
+      {
+        text: "Caffena — rebuilt the coffee brand's acquisition funnel: revenue scaled from ₹1.62L to ₹5.78L monthly (+257%) over three months.",
+        icon: <TrendingUp className="w-4 h-4" />,
+        metric: "+257%",
+      },
+      {
+        text: "Diwan — lead-gen engine producing 478–523 qualified leads/month at a ₹277–293 cost-per-lead.",
+        icon: <Target className="w-4 h-4" />,
+        metric: "478–523 leads/mo",
+      },
     ],
   },
   {

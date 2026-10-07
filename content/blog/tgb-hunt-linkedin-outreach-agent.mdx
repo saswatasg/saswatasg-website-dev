@@ -1,6 +1,6 @@
 ---
-title: "TGB Hunt: outreach workflows and automation limits"
-description: "A self-hosted outreach experiment: task orchestration, campaign state and the limits of automated platform actions."
+title: "TGB Hunt: orchestrating a self-hosted outreach workflow"
+description: "Task orchestration, campaign state and lessons from building a self-hosted outreach experiment."
 slug: "tgb-hunt-linkedin-outreach-agent"
 date: 2026-07-14
 updated: "2026-10-07"
@@ -17,15 +17,22 @@ faq:
     a: "As an archived automation experiment with workflow-engineering value and platform constraints."
 ---
 
-import AnswerBox from '@/components/blog/AnswerBox';
-import FAQ from '@/components/blog/FAQ';
-import Figure from '@/components/blog/Figure';
+import AnswerBox from "@/components/blog/AnswerBox";
+import FAQ from "@/components/blog/FAQ";
+import Figure from "@/components/blog/Figure";
 
 <AnswerBox>
-TGB Hunt is a self-hosted Django and Playwright outreach experiment. Its useful engineering story is campaign tasks, state tracking and follow-up orchestration. Its implementation can send automatically; it should not be described as a system where every message always receives human approval.
+  TGB Hunt is a self-hosted Django and Playwright outreach experiment. Its
+  useful engineering story is campaign tasks, state tracking and follow-up
+  orchestration. Its implementation can send automatically; it should not be
+  described as a system where every message always receives human approval.
 </AnswerBox>
 
-<Figure src="/blog-assets/audited/tgb-hunt-linkedin-outreach-agent.svg" alt="Campaign tasks, then Browser actions, then State tracking, then Reconciliation" caption="A schematic of the documented workflow; not a measured outcome." />
+<Figure
+  src="/blog-assets/editorial/tgb-hunt-linkedin-outreach-agent.svg"
+  alt="Outreach messages with a pause control"
+  caption="Concept illustration."
+/>
 
 ## The workflow behind the interface
 
@@ -53,7 +60,7 @@ This project should therefore remain an archived technical experiment rather tha
 
 ## What is and is not measured
 
-There is no traceable public dataset supporting the earlier reply-rate, approval-rate or meeting claims. This revised note removes them. Repository history and release counts show development activity; they are not proof of user value or conversion improvement.
+The public record does not provide a traceable reply-rate or meeting dataset. Repository history and release counts show development activity; they are not proof of user value or conversion improvement.
 
 A stronger future evaluation would measure task-state correctness, duplicate prevention, recovery behavior and the distinction between drafted and executed actions. Any user-outcome study would also need a defined sample, time window and attribution method. Until then, the defensible contribution is workflow engineering and an explicit account of its limitations.
 

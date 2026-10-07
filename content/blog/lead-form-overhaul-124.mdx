@@ -1,6 +1,6 @@
 ---
-title: "How a form fix lifted lead submissions by 124% in 28 days"
-description: "A field-by-field form teardown with GA4 events and Clarity — one restrictive field caused 23% of drop-offs. The fix raised submissions +124% in 28 days."
+title: "Lead forms: diagnose the field, improve the journey"
+description: "A Sierra Living Concepts form redesign: field-level diagnosis, inline validation and category-specific modules, with reported results in context."
 slug: "lead-form-overhaul-124"
 date: 2026-03-12
 updated: 2026-10-07
@@ -13,115 +13,61 @@ secondaryKeywords:
   - "increase lead submissions"
 anchorProject: lead-form
 faq:
-  - q: "What's the most common reason a lead form loses submissions?"
-    a: "A single restrictive field. Ours was a phone-format check that silently failed — 23% of drop-offs, double the next-worst field."
-  - q: "Should you shorten your lead form to convert more?"
-    a: "Length is a symptom, not the cause. Inline validation, format hints and case-specific microcopy beat removing fields."
-  - q: "What tools reveal form drop-offs?"
-    a: "GA4 custom events for a field-by-field funnel, Microsoft Clarity for rage clicks and recordings, then a prioritized fix list."
-  - q: "How long to see the +124% lift?"
-    a: "28 days after instrumentation — 14 days to measure, 14 to ship and validate."
+  - q: "Should a lead form always be shorter?"
+    a: "No. Identify the actual friction first: relevance, validation, initialization and field count are different problems."
+  - q: "What results were reported?"
+    a: "Reported: +124% submissions, -41% mobile completion time and -68% rage clicks. The separate +105% role-level metric has a different scope."
+  - q: "How would you assess lead quality?"
+    a: "Define a qualified enquiry and compare that measure alongside submission volume over an explicit period."
 ---
 
-import AnswerBox from '@/components/blog/AnswerBox';
-import FAQ from '@/components/blog/FAQ';
-import Figure from '@/components/blog/Figure';
+import AnswerBox from "@/components/blog/AnswerBox";
+import FAQ from "@/components/blog/FAQ";
+import Figure from "@/components/blog/Figure";
 
 <AnswerBox>
-Lead forms leak at one field, not from length. A hidden phone-format rule drove 23% of drop-offs. Mask + inline validation + intent labels lifted submissions 124% in 28 days — with more fields, not fewer.
+  At Sierra Living Concepts, a field-level investigation identified a
+  restrictive phone-format check contributing to abandonment. The redesign
+  combined clearer input guidance, inline validation and category-specific form
+  modules. The project record reports +124% submissions in 28 days.
 </AnswerBox>
 
-The marketing ask was the sane one: *more traffic*. The team wanted a bigger top of funnel. The data said we'd been paying for traffic and then spilling a big slice of it on the walk to the callback — a form with a 23% leak at one field is a bigger lever than any ad-budget increase. But I had to prove the leak existed before I could ask for the fix.
+## Start with the interaction, not the form length
 
-## A completion rate was not enough
+An aggregate completion rate tells a team that people are leaving. It does not tell them which interaction needs attention. The useful question was where users hesitated or failed: field entry, validation, submission, or the next step.
 
-The problem was that an aggregate completion rate was the only thing the team could see — one number, and several theories about what to do with it.
+GA4 field-level events and Microsoft Clarity session evidence helped connect the measured funnel with the experience of filling out the form. The project record attributes 23% of drop-offs to a restrictive field. That finding supported a focused intervention rather than a blanket recommendation to remove fields.
 
-**Measurement scope:** this rebuild reports +124% lead submissions in 28 days. The separate role-level record of 2.14% → 4.40% represents approximately +105%. The available records do not establish the same window or denominator; these figures should not be treated as consecutive stages of one experiment.
+<Figure
+  src="/blog-assets/editorial/lead-form-overhaul-124.svg"
+  alt="A form with clearly labelled fields and a successful validation mark"
+  caption="Concept illustration of clearer form interactions."
+/>
 
-The theories were the enemy.
+## Make the expected action understandable
 
-- "It's too long." (The form wasn't long, but the phrase had staying power.)
-- "The latency is bad." (True — client-side fields took 3–5 seconds to initialize on typical connections.)
-- "The labels are confusing." (Also plausible — but nobody could prove it.)
+The redesign addressed three connected needs:
 
-Every one of those was a snipe at the aggregate. A real diagnosis needs to know: at *which exact field* does the flow die?
+| Change                  | User need                                                  |
+| ----------------------- | ---------------------------------------------------------- |
+| Visible format guidance | Understand what the field accepts before an error          |
+| Inline validation       | Recognize and correct a problem while entering information |
+| Context-specific labels | Understand why the information is needed                   |
 
-## Field-by-field instrumentation — the recipe
+Category-specific modules made the form more relevant to the enquiry. A customer asking about custom furniture should encounter a form that supports that task. Faster initialization and mobile interaction details also mattered: a clear field cannot help if it appears unresponsive.
 
-Same play as the checkout, two levels down. Where the checkout got an event per step, this got an event per field:
+## Evaluate the complete journey
 
-- **GA4 custom events per interaction** — field focus, first touch, error, submit attempt.
-- **Microsoft Clarity recordings + binge-click heatmaps** — 50+ complete form sessions across desktop and mobile.
-- **A field-by-field funnel** built from first touch to final submit.
+The project record reports **+124% submissions**, **−41% mobile completion time** and **−68% rage clicks**. These outcomes describe different aspects of the experience. More submissions should also be evaluated against lead quality; faster completion should not depend on confusing defaults or skipped information.
 
-The funnel is the entire product. Without it you can't even name the leak — with it you can walk up to a designer and point at a phone input on a Monday afternoon.
+A separate role-level record reports conversion moving from **2.14% to 4.40%**, approximately **+105%**. The available records do not establish a shared denominator and comparison window. I keep these figures separate rather than present them as consecutive stages of the same experiment.
 
-## The moment the layout turned
+For implementation guidance, [web.dev’s form curriculum](https://web.dev/learn/forms) covers input behavior, validation and accessibility.
 
-<Figure src="/blog-assets/lead-form/one-field.svg" alt="Field-by-field funnel showing the phone number field as the single largest drop-off" caption="One field owned 23% of the entire form's abandonment — double the next-worst offender." />
+## What I would make inspectable next
 
-One pattern appeared in every single session. Users reached the phone field, typed, got nothing — and left.
+An anonymized field-event dictionary, before-and-after screenshots and a qualified-lead comparison would strengthen the public evidence. The reported results describe the work record; the raw event export is not reproduced here.
 
-The culprit was a **phone number format check** expecting `+1 (555) 000-0000`, on a desktop keyboard, failing if the input didn't match *exactly*. No hint. No formatting. No inline feedback. Type a digit the parser didn't like and the field stayed red — if it gave any signal at all. Then the tab closes.
-
-23% of all abandonment, from one restriction — more than double the next-worst field. The team had spent weeks guessing "too long." The sessions said "the phone field."
-
-## The three fixes we shipped (plus the real one)
-
-| Fix | What we did | Why it worked |
-| --- | --- | --- |
-| **Format hint** | Visible masked input + placeholder *before* the first touch | Users learned the expected format without an error |
-| **Inline validation** | Accept the moment the input becomes valid | Errors never wait for a submit failure |
-| **Contextual microcopy** | Case-specific labels ("Work phone" vs "Any phone") | Users understood intent instead of bouncing |
-
-But the deeper fix wasn't a field fix. The form shipped to every visitor with one shape, and shape was part of the leak too. We rebuilt it into **category-specific modules** ([Material 3](https://m3.material.io/) components + the latency cuts) so a *Custom Furniture* visitor got the exact fields a custom-quote visitor needs. Same form, different face, zero extra load.
-
-## The numbers
-
-| Metric | Before | After |
-| --- | --- | --- |
-| Lead submissions | baseline | **+124%** |
-| Mobile completion time | baseline | **−41%** |
-| Rage clicks | baseline | **−68%** |
-
-## Why the fix worked — and why "shorter form" never would have
-
-The hard part of this project was that every instinct pointed the wrong way. "Shorten the form" is the classic advice, and it's usually wrong — here's why we know:
-
-- **The leak wasn't length.** Users reached the phone field — deep in the form — and left there. Shortening wouldn't have removed the field that mattered; it would just have moved the leak closer to the top.
-- **Latency set the tone.** Client-side fields took 3–5 seconds to initialize on typical connections. On mobile that felt like the form was broken before the user even looked at it. Fast initialization quietly removed the "this is slow, this is broken" walk-away before a user ever typed.
-- **Expectation beats both.** A user who can see the required format in a placeholder, and gets live "yes, that's right" feedback the moment it's valid, doesn't need to *error* at all. The form stopped producing rejection moments.
-
-That last point is the one worth stealing. **Good form design is mostly removing the moment of rejection.** Every field that can be validated inline should be — [web.dev's form best practices](https://web.dev/learn/forms) cover the mechanics. Every format that can be shown ahead of typing should be. If you never show a user a red field, you never give them a reason to walk away.
-
-## What changes when you ship this on mobile (the real test)
-
-Desktop was the easy half. On mobile it was stark:
-
-- The phone field popped a numeric keypad that had no digit-formatted guide — users were guessing the mask the parser wanted.
-- Form width and focus states didn't match the brand's storefront; the form read as "generic template," not part of the site.
-- Submission after latency was worse on mobile than desktop — and the rage-click on a dead field meant that user never came back.
-
-The module rework bundled mobile-specific copy and the Material 3 components. The −41% mobile completion-time metric you see in the table came largely from the *field logic*, not the CSS.
-
-## Why this was defensible in a room of skeptics
-
-The move that made this easy to defend: **field-level funnels make the fix *ownable*.** When a designer asked "prove the phone field was it," the answer wasn't a theory — it was a row in a table and 30 seconds of shared Clarity playback. Every form project should be presented that way: as a ladder with one rung shown red, and the fix mapped to the exact rung.
-
-The full field-by-field detail lives at the [lead form case study](/case-studies/lead-form).
-
-## If your form leaks and you don't know why, this month
-
-1. **Install field-level events** — focus, error, submit. Run two weeks, export the funnel.
-2. **Watch three real mobile sessions.** You'll see the leak in one lunch break.
-3. **Remove the rejections, not the length.** Placeholder masks, inline validation, specific microcopy. Ship, then re-measure the same funnel.
-
-## What I'd do differently
-
-- **Instrument before you guess.** We burned a week on "the form is too long" because it was a pleasant hypothesis. The field-level events were built in week two, and they'd have saved us the week.
-- **Watch three real mobile sessions early.** Two weeks of Clarity told us more than three months of dashboards — because a dashboard can't show a phone input failing in silence.
-
-Full spec and code-adjacent details: the [lead form case study](/case-studies/lead-form). And if you've read the checkout teardown — the same measure-before-you-fix play at a different scale — this is the field-level version: [checkout abandonment](/blog/checkout-abandonment-73-to-54).
+For another form, I would begin with the same diagnostic discipline: define completion, inspect field errors, watch mobile interactions and choose a bounded change. Removing fields can be useful, but only when the evidence supports it. See the [full lead-form case](/case-studies/lead-form) and [checkout investigation](/blog/checkout-abandonment-73-to-54).
 
 <FAQ items={frontmatter.faq} />

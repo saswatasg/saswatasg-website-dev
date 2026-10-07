@@ -103,9 +103,9 @@ const SierraLeadAllocation = () => {
             { name: 'Custom Forms', volume: '367 leads', cvr: '5.4%', tier: 'BRONZE' },
             { name: 'Cart Abandonment', volume: '751 leads', cvr: '0.4%', tier: 'BRONZE' },
           ].map((row, i) => (
-            <div key={i} className="flex items-center justify-between py-2 border-b border-black/10">
+            <div key={i} className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between py-3 border-b border-black/10">
               <span className="font-bold text-sm text-ink">{row.name}</span>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-center gap-3">
                 <span className="text-xs text-ink/60">{row.volume}</span>
                 <span className="font-display font-black text-xl text-ink w-16 text-right">{row.cvr}</span>
                 <span className={`text-xs font-black px-2 py-0.5 rounded ${row.tier === 'GOLD' ? 'bg-ink text-white' : 'bg-ink/40 text-white'}`}>{row.tier}</span>
@@ -185,11 +185,11 @@ const SierraLeadAllocation = () => {
             { risk: 'Leslie Absence', prob: 'Medium', impact: 'High', mitigation: 'Larry as primary backup, postpone non-urgent Gold leads' },
             { risk: 'Chat Automation Failure', prob: 'Low', impact: 'Medium', mitigation: 'Mollie manual backup, 2-hour response SLA' },
           ].map((r, i) => (
-            <div key={i} className="flex gap-4 border-b border-black/10 py-3">
-              <span className="text-sm font-bold text-ink w-1/3">{r.risk}</span>
+            <div key={i} className="flex flex-wrap gap-3 border-b border-black/10 py-3">
+              <span className="text-sm font-bold text-ink w-full sm:w-1/3">{r.risk}</span>
               <span className="text-xs font-black px-2 py-0.5 rounded bg-red-100 text-red-800">{r.prob}</span>
               <span className={`text-xs font-black px-2 py-0.5 rounded ${r.impact === 'High' ? 'bg-red-100 text-red-800' : 'bg-amber-100 text-amber-800'} ${r.impact === 'Medium' ? 'bg-amber-100 text-amber-800' : ''}`}>{r.impact}</span>
-              <span className="text-sm text-ink/60 flex-1">{r.mitigation}</span>
+              <span className="text-sm text-ink/60 basis-full sm:basis-0 sm:flex-1 min-w-0">{r.mitigation}</span>
             </div>
           ))}
         </Card>

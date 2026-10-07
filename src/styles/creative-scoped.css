@@ -646,7 +646,9 @@
   font-weight: 500;
   letter-spacing: -1px;
 }
-:where(.creative-shell) .workbench-home > section:not(.wb-hero):not(.featured-system) {
+:where(.creative-shell)
+  .workbench-home
+  > section:not(.wb-hero):not(.featured-system) {
   margin-top: 90px;
 }
 :where(.creative-shell) .case-lines {
@@ -1286,7 +1288,10 @@
   outline-offset: 3px;
 }
 /* Restyle retained narratives in their Workbench scope, retaining evidence colors in diagrams. */
-:where(.creative-shell) .workbench main > div:not(.world-page):not(.split-entrance) {
+:where(.creative-shell)
+  .workbench
+  main
+  > div:not(.world-page):not(.split-entrance) {
   --ink: #171a1d;
 }
 :where(.creative-shell) .workbench main [class*="rounded-2xl"],
@@ -1592,7 +1597,9 @@
   :where(.creative-shell) .section-label h2 {
     font-size: 26px;
   }
-  :where(.creative-shell) .workbench-home > section:not(.wb-hero):not(.featured-system) {
+  :where(.creative-shell)
+    .workbench-home
+    > section:not(.wb-hero):not(.featured-system) {
     margin-top: 55px;
   }
   :where(.creative-shell) .case-lines > a {
@@ -2260,16 +2267,22 @@
 :where(.creative-shell) .workbench main .bg-ink {
   color: #f1f3ee;
 }
-:where(.creative-shell) .workbench
+:where(.creative-shell)
+  .workbench
   main
   .bg-ink
   :is(.text-coral, .text-purple, .text-mint, .text-lemon) {
   color: #d5ff62;
 }
-:where(.creative-shell) .workbench main .bg-ink :is(.text-ink, [class*="text-ink/"]) {
+:where(.creative-shell)
+  .workbench
+  main
+  .bg-ink
+  :is(.text-ink, [class*="text-ink/"]) {
   color: #f1f3ee;
 }
-:where(.creative-shell) .workbench
+:where(.creative-shell)
+  .workbench
   main
   .bg-ink
   :is(
@@ -2284,7 +2297,8 @@
   ) {
   color: #171a1d;
 }
-:where(.creative-shell) .workbench
+:where(.creative-shell)
+  .workbench
   main
   .bg-ink
   :is(
@@ -2304,7 +2318,8 @@
   background-color: #d5ff62;
   color: #171a1d;
 }
-:where(.creative-shell) .workbench
+:where(.creative-shell)
+  .workbench
   main
   :is(.bg-lemon, .bg-coral, .bg-purple)
   :is(.text-white, [class*="text-white/"]) {
@@ -2313,10 +2328,15 @@
 :where(.creative-shell) .workbench main [class*="text-ink/"] {
   color: #50584d;
 }
-:where(.creative-shell) .workbench main .bg-ink :is([class*="text-white/"], [class*="text-ink/"]) {
+:where(.creative-shell)
+  .workbench
+  main
+  .bg-ink
+  :is([class*="text-white/"], [class*="text-ink/"]) {
   color: #d4dacf;
 }
-:where(.creative-shell) .workbench
+:where(.creative-shell)
+  .workbench
   main
   .bg-ink
   :is(.bg-lemon, .bg-white, .bg-canvas)
@@ -2687,7 +2707,11 @@
   :where(.creative-shell) .case-study-page .grid-cols-2 > .text-center {
     padding: 16px 10px;
   }
-  :where(.creative-shell) .case-study-page .grid-cols-2 > .text-center p:first-child {
+  :where(.creative-shell)
+    .case-study-page
+    .grid-cols-2
+    > .text-center
+    p:first-child {
     font-size: 10px;
     letter-spacing: 0.02em;
     overflow-wrap: normal;
@@ -3992,13 +4016,15 @@
   color: #fffdf9;
   background: #302b26;
 }
-:where(.creative-shell) .workbench
+:where(.creative-shell)
+  .workbench
   main
   .bg-ink
   :is(.text-coral, .text-purple, .text-mint, .text-lemon) {
   color: #f4d390;
 }
-:where(.creative-shell) .workbench
+:where(.creative-shell)
+  .workbench
   main
   :is(.bg-lemon, .bg-coral, .bg-purple)
   :is(.text-white, [class*="text-white/"]) {
@@ -4019,13 +4045,15 @@
 :where(.creative-shell) .workbench main [class*="text-ink/"] {
   color: #655c54;
 }
-:where(.creative-shell) .workbench
+:where(.creative-shell)
+  .workbench
   main
   .bg-ink
   :is(.text-ink, [class*="text-ink/"], [class*="text-white/"]) {
   color: #f1e9de;
 }
-:where(.creative-shell) .workbench
+:where(.creative-shell)
+  .workbench
   main
   .bg-ink
   :is(
@@ -5054,7 +5082,12 @@
   left: auto;
   right: auto;
 }
-:where(.creative-shell) .unified-entrance .split-workbench .entrance-copy h2 span {
+:where(.creative-shell)
+  .unified-entrance
+  .split-workbench
+  .entrance-copy
+  h2
+  span {
   color: #b74224;
 }
 @media (min-width: 701px) {
@@ -5077,4 +5110,21 @@
 :where(.creative-shell) .professional-hero {
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+/* Cross-page accessibility review: retain Adda's palette with readable copy. */
+.creative-shell .adda-handnote {
+  color: #245b48;
+}
+.creative-shell .adda .book-cover > small {
+  background: #07594f;
+  color: #fff3d8;
+  padding: 6px 8px;
+  opacity: 1;
+}
+.creative-shell .adda-contact-page .bg-mint {
+  background: #d1e4d8;
+}
+.creative-shell .adda-contact-page :is(.text-ink\/40, .text-ink\/50) {
+  color: #625e53;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import PageIllustration from "./PageIllustration";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -19,42 +20,19 @@ export function PageGraphic({ variant = "work" }) {
           }[variant]
         }
       </span>
-      <svg viewBox="0 0 320 180" fill="none">
-        <path
-          className="wb-graphic-path"
-          d="M20 135H90V85H175V40H300"
-          stroke="currentColor"
-          strokeWidth="2"
-        />
-        {[20, 90, 175, 300].map((x, i) => (
-          <g key={x}>
-            <circle
-              cx={x}
-              cy={[135, 85, 40, 40][i]}
-              r={i === 3 ? 14 : 8}
-              fill={i === 3 ? "#f2c85b" : "#f5f2ec"}
-              stroke="currentColor"
-              strokeWidth="2"
-            />
-            <circle
-              className="wb-graphic-orbit"
-              cx={x}
-              cy={[135, 85, 40, 40][i]}
-              r={i === 3 ? 25 : 17}
-              stroke="currentColor"
-              opacity=".2"
-            />
-          </g>
-        ))}
-        <path
-          d="M25 165H300M25 15H300"
-          stroke="currentColor"
-          opacity=".12"
-          strokeDasharray="3 7"
-        />
-      </svg>
+      <PageIllustration variant={variant} />
       <span className="wb-graphic-caption">
-        DISCOVER / DEFINE / DELIVER / LEARN
+        {
+          {
+            work: "EVIDENCE INTO ACTION",
+            experience: "DIFFERENT CONTEXTS / SHARED DISCIPLINE",
+            about: "ENGINEERING / PRODUCT / BUILDING",
+            blog: "IDEAS WORTH EXAMINING",
+            contact: "A CONVERSATION, NOT A PITCH",
+            builds: "MAKE THE IDEA INSPECTABLE",
+            roadmap: "PRIORITIES, NOT PROMISES",
+          }[variant]
+        }
       </span>
     </div>
   );

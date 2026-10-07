@@ -1,26 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
+import {
+  ArrowUpRight,
+  GraduationCap,
+  Compass,
+  Wrench,
+  Users,
+  Award,
+} from "lucide-react";
 import PageMeta from "@/components/PageMeta";
-import PageHeader, { PageEnd } from "@/components/workbench/PageHeader";
-
-const competencies = [
-  [
-    "Discovery & product judgment",
-    "Client conversations, workflow analysis, opportunity framing and evidence-based prioritization.",
-  ],
-  [
-    "Solution design & delivery",
-    "Translate a problem into a solution, align stakeholders and coordinate engineering through delivery.",
-  ],
-  [
-    "Analytics & growth",
-    "Funnel instrumentation, session analysis, experimentation and lifecycle or acquisition improvements.",
-  ],
-  [
-    "Hands-on product building",
-    "Working demos and independent products that make ideas inspectable, testable and useful.",
-  ],
+import { PageEnd } from "@/components/workbench/PageHeader";
+const lenses = [
+  {
+    icon: Compass,
+    title: "Ask a better question.",
+    text: "Start with the workflow, the person and the evidence. Make the problem clear enough to choose what deserves attention.",
+    link: "/case-studies/upcore-discovery",
+    action: "Discovery & delivery",
+    tone: "blue",
+  },
+  {
+    icon: Users,
+    title: "Make the decision shared.",
+    text: "Connect customer needs, business constraints and engineering reality. Give everyone a clear reason for the next step.",
+    link: "/case-studies/livekeeping-compliance-gap",
+    action: "A workflow investigation",
+    tone: "sage",
+  },
+  {
+    icon: Wrench,
+    title: "Stay close to the build.",
+    text: "Working prototypes expose the details a presentation can miss. I build, coordinate delivery and use what happens next to refine the idea.",
+    link: "/builds",
+    action: "Products & experiments",
+    tone: "gold",
+  },
 ];
 export default function About() {
   const reduced = useReducedMotion();
@@ -28,125 +43,212 @@ export default function About() {
     <>
       <PageMeta
         title="About | Saswata S. Sengupta"
-        description="Product discovery, solution design and delivery across enterprise AI, B2B SaaS and commerce. IIT Jodhpur MBA, based in Kolkata."
+        description="Saswata Subhra Sengupta: an engineer turned product manager and hands-on builder. IIT Jodhpur MBA, based in Kolkata."
       />
-      <div className="wb-page">
-        <PageHeader
-          label="About"
-          variant="about"
-          title="Curiosity, with a direction."
-          description="I’m Saswata Subhra Sengupta. I work where a messy business problem needs a clear product decision—and someone to carry it through delivery."
-        />
-        <div className="wb-about-grid">
-          <section className="wb-surface">
-            <span className="wb-label">ENGINEERING → PRODUCT</span>
-            <h2>Understand the system. Understand the person.</h2>
-            <p>
-              Mechanical engineering gave me a foundation in systems and
-              constraints. An MBA in Marketing & Analytics at IIT Jodhpur
-              brought the customer, the business and the decision into focus.
+      <div className="wb-page wb-about-redesign">
+        <header className="wb-about-intro">
+          <div>
+            <nav className="wb-breadcrumb" aria-label="Breadcrumb">
+              <Link to="/workbench">Workbench</Link>
+              <span>/</span>
+              <span>About</span>
+            </nav>
+            <span className="wb-label">A LITTLE CONTEXT</span>
+            <h1>
+              A product mind.
+              <br />
+              <em>A builder’s instinct.</em>
+            </h1>
+            <p className="wb-about-lede">
+              I’m Saswata Subhra Sengupta—an engineer turned product manager,
+              based in Kolkata.
             </p>
             <p>
-              At Sierra Living Concepts, I worked on the purchase journey and
-              growth roadmap for a US furniture business. At LiveKeeping
-              (IndiaMART), I investigated compliance workflows and feature
-              adoption. At Upcore Technologies, I derive solutions and manage
-              delivery end to end for 23+ clients.
-            </p>
-            <p>
-              Alongside those roles, I build independent products such as
-              DhanPlan and Meldstead. Building helps me test the detail behind a
-              product idea.
+              I like understanding how things work, finding where they break,
+              and making the next version useful. That curiosity has taken me
+              from mechanical engineering to product discovery, growth and
+              building software.
             </p>
             <div className="wb-role-links">
-              <Link to="/experience">Follow the professional journey ↗</Link>
-              <Link to="/work">Explore the work ↗</Link>
+              <Link to="/experience">
+                My professional journey <ArrowUpRight size={16} />
+              </Link>
+              <a
+                href="/assets/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Resume <ArrowUpRight size={16} />
+              </a>
             </div>
-          </section>
+          </div>
           <motion.figure
-            className="wb-about-portrait"
-            initial={reduced ? false : { opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            className="wb-about-person"
+            initial={reduced ? false : { opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
           >
-            <img
-              src="/assets/worlds/portrait-workbench.png"
-              alt="Saswata wearing round glasses and a black shirt"
-              width="1254"
-              height="1254"
-            />
-            <figcaption className="sr-only">Based in Kolkata, India</figcaption>
-          </motion.figure>
-        </div>
-        <div className="wb-about-facts">
-          {[
-            ["23+", "Upcore clients · Delivery scope"],
-            ["B.Tech + MBA", "Engineering & management"],
-            ["Kolkata", "Based in India"],
-          ].map(([v, l]) => (
-            <div className="wb-surface" key={l}>
-              <strong>{v}</strong>
-              <span>{l}</span>
+            <div className="wb-about-person-art">
+              <span className="wb-about-orbit" />
+              <img
+                src="/assets/worlds/portrait-workbench.png"
+                width="1254"
+                height="1254"
+                alt="Saswata wearing round glasses and a black shirt"
+              />
             </div>
-          ))}
-        </div>
-        <div className="wb-section-title">
-          <h2>What I bring to the work.</h2>
-          <span>Four complementary strengths</span>
-        </div>
-        <div className="wb-competencies">
-          {competencies.map(([t, d], i) => (
-            <motion.section
-              key={t}
-              className="wb-surface"
-              initial={reduced ? false : { opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.04 }}
-            >
-              <span className="wb-label">0{i + 1}</span>
-              <h3>{t}</h3>
-              <p>{d}</p>
-            </motion.section>
-          ))}
-        </div>
-        <div className="wb-section-title">
-          <h2>Foundations & continued learning.</h2>
-        </div>
-        <div className="wb-education">
-          <section className="wb-surface">
-            <span className="wb-label">EDUCATION</span>
-            <h3>Indian Institute of Technology Jodhpur</h3>
-            <p>MBA · Marketing & Analytics · 2022–2024</p>
-            <h3 className="mt-6">Jalpaiguri Government Engineering College</h3>
-            <p>B.Tech · Mechanical Engineering · 2017–2021</p>
-          </section>
-          <section className="wb-surface">
-            <span className="wb-label">SELECTED LEARNING & RECOGNITION</span>
-            <h3>Applied learning, kept current.</h3>
+            <figcaption>
+              <strong>Saswata S. Sengupta</strong>
+              <span>Kolkata, India · Product & building</span>
+            </figcaption>
+          </motion.figure>
+        </header>
+        <section className="wb-about-story" aria-labelledby="about-story">
+          <span className="wb-label">THE THREAD THROUGH IT ALL</span>
+          <h2 id="about-story">
+            Systems, people,
+            <br />
+            and the space between.
+          </h2>
+          <div>
             <p>
-              Anthropic Academy coursework in Claude and applied AI; Google
-              Skillshop credentials in analytics, performance advertising and
-              conversion optimization; Zoho CRM administrator training.
+              Engineering taught me to look at dependencies and constraints. My
+              MBA at IIT Jodhpur brought customers, markets and business
+              decisions into that picture.
             </p>
             <p>
-              Tata Imagination Challenge national semifinalist. I also
-              informally mentor 5–6 early-career professionals.
+              At Sierra Living Concepts, I worked on the buying journey. At
+              LiveKeeping (IndiaMART), I investigated compliance workflows and
+              adoption. Today, at Upcore Technologies, I derive solutions and
+              manage delivery end to end for 23+ clients.
             </p>
-          </section>
-        </div>
-        <section className="wb-surface mt-6">
-          <span className="wb-label">THE PERSONAL SIDE</span>
-          <h2 className="mt-3">There’s more to a person than their roadmap.</h2>
-          <p>
-            Films, stories, photography and the everyday things I’m curious
-            about live in Adda.
-          </p>
-          <div className="wb-role-links">
-            <Link to="/adda">Step into Adda ↗</Link>
+            <p>
+              Alongside that work, DhanPlan and Meldstead give me room to take
+              an idea from a question to a working product.
+            </p>
           </div>
         </section>
-        <PageEnd />
+        <section aria-labelledby="about-lenses">
+          <div className="wb-section-title">
+            <h2 id="about-lenses">The way I approach a problem.</h2>
+            <span>Three connected habits</span>
+          </div>
+          <div className="wb-about-lenses">
+            {lenses.map(
+              ({ icon: Icon, title, text, link, action, tone }, i) => (
+                <motion.article
+                  key={title}
+                  className={`wb-about-lens wb-tone-${tone}`}
+                  initial={reduced ? false : { opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="wb-about-lens-top">
+                    <Icon size={30} />
+                    <span>0{i + 1}</span>
+                  </div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                  <Link to={link}>
+                    {action}
+                    <ArrowUpRight size={16} />
+                  </Link>
+                </motion.article>
+              ),
+            )}
+          </div>
+        </section>
+        <section
+          className="wb-about-foundations"
+          aria-labelledby="about-foundation"
+        >
+          <div className="wb-section-title">
+            <h2 id="about-foundation">A foundation that keeps expanding.</h2>
+          </div>
+          <div className="wb-about-education-path">
+            <article>
+              <span className="wb-label">2017–2021 / ENGINEERING</span>
+              <GraduationCap size={30} />
+              <h3>
+                Jalpaiguri Government
+                <br />
+                Engineering College
+              </h3>
+              <p>B.Tech · Mechanical Engineering</p>
+              <span className="wb-education-lens">
+                Systems. Constraints. First principles.
+              </span>
+            </article>
+            <article>
+              <span className="wb-label">2022–2024 / MANAGEMENT</span>
+              <GraduationCap size={30} />
+              <h3>
+                Indian Institute of
+                <br />
+                Technology Jodhpur
+              </h3>
+              <p>MBA · Marketing & Analytics</p>
+              <span className="wb-education-lens">
+                Customers. Evidence. Business decisions.
+              </span>
+            </article>
+          </div>
+          <div className="wb-about-learning">
+            <div>
+              <span className="wb-label">CONTINUED LEARNING</span>
+              <h3>
+                Useful knowledge,
+                <br />
+                put into practice.
+              </h3>
+            </div>
+            <dl>
+              <div>
+                <dt>Applied AI</dt>
+                <dd>
+                  Anthropic Academy coursework in Claude and AI workflows.
+                </dd>
+              </div>
+              <div>
+                <dt>Analytics & growth</dt>
+                <dd>
+                  Google Skillshop credentials in analytics, advertising and
+                  conversion optimization.
+                </dd>
+              </div>
+              <div>
+                <dt>Product operations</dt>
+                <dd>Zoho CRM administrator training.</dd>
+              </div>
+            </dl>
+          </div>
+          <div className="wb-about-recognition">
+            <Award size={24} />
+            <div>
+              <h3>Tata Imagination Challenge</h3>
+              <p>National semifinalist</p>
+            </div>
+            <div>
+              <h3>Learning goes both ways.</h3>
+              <p>I informally mentor 5–6 early-career professionals.</p>
+            </div>
+          </div>
+        </section>
+        <section className="wb-about-personal">
+          <span className="wb-label">OFF THE CLOCK</span>
+          <h2>
+            Still curious,
+            <br />
+            after the laptop closes.
+          </h2>
+          <p>
+            Stories, films and everyday observations are part of who I am.
+            There’s a little more of that in Adda.
+          </p>
+          <Link to="/adda" className="wb-page-button">
+            Step into Adda <ArrowUpRight size={17} />
+          </Link>
+        </section>
+        <PageEnd title="A good conversation starts with a question." />
       </div>
     </>
   );

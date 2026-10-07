@@ -17,15 +17,22 @@ faq:
     a: "DhanPlan publishes its versioned methodology, rules review date and known limitations on the product website."
 ---
 
-import AnswerBox from '@/components/blog/AnswerBox';
-import FAQ from '@/components/blog/FAQ';
-import Figure from '@/components/blog/Figure';
+import AnswerBox from "@/components/blog/AnswerBox";
+import FAQ from "@/components/blog/FAQ";
+import Figure from "@/components/blog/Figure";
 
 <AnswerBox>
-DhanPlan is an India-focused retirement-planning product. The current story is a monthly model connecting savings, assets and retirement withdrawals, with assumptions and limitations made visible. A projection is a scenario, not a guarantee or proof of financial-model accuracy.
+  DhanPlan is an India-focused retirement-planning product. The current story is
+  a monthly model connecting savings, assets and retirement withdrawals, with
+  assumptions and limitations made visible. A projection is a scenario, not a
+  guarantee or proof of financial-model accuracy.
 </AnswerBox>
 
-<Figure src="/blog-assets/audited/dhanplan-retirement-calculator.svg" alt="Assets & contributions, then Monthly ledger, then Retirement withdrawals, then Gap & stress scenarios" caption="A schematic of the documented workflow; not a measured outcome." />
+<Figure
+  src="/blog-assets/editorial/dhanplan-retirement-calculator.svg"
+  alt="A planning ledger with savings coins"
+  caption="Concept illustration."
+/>
 
 ## A plan needs more than a final number
 
@@ -55,7 +62,7 @@ A helpful experience should let a user see which assumption changed and how the 
 
 The methodology documents limits around fees, exit costs, some tax timing and other instrument or household details. A calculator cannot infer every future household decision from a short form. The product should make exclusions discoverable and date-sensitive rules traceable to the methodology.
 
-This portfolio does not claim independently verified financial accuracy, a fabricated test count or measured adoption. Those claims would need their own evidence. The delivered artifact is a live planning interface and a documented model; further verification should use reconciled fixtures and reproducible scenarios.
+Financial accuracy, test coverage and adoption need their own independent validation. The delivered artifact is a live planning interface and a documented model; further verification should use reconciled fixtures and reproducible scenarios.
 
 The broader product lesson is to treat assumptions as part of the interface. A user should be able to inspect what a number means, change its inputs and understand where the model stops. See [DhanPlan](https://www.dhanplan.in/) and its [current methodology](https://www.dhanplan.in/methodology) for the versioned rules and limitations.
 

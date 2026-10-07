@@ -21,15 +21,22 @@ faq:
     a: "The design targeted 5.2 to 3.5 days to close; the public case does not supply a measured post-rollout result."
 ---
 
-import AnswerBox from '@/components/blog/AnswerBox';
-import FAQ from '@/components/blog/FAQ';
-import Figure from '@/components/blog/Figure';
+import AnswerBox from "@/components/blog/AnswerBox";
+import FAQ from "@/components/blog/FAQ";
+import Figure from "@/components/blog/Figure";
 
 <AnswerBox>
-At Sierra Living Concepts, I designed a Gold/Silver/Bronze lead-allocation system using source performance, agent capacity and escalation rules. The observed conversion data informed the design. The target of 5.2 to 3.5 days to close is a pilot objective, not a demonstrated result.
+  At Sierra Living Concepts, I designed a Gold/Silver/Bronze lead-allocation
+  system using source performance, agent capacity and escalation rules. The
+  observed conversion data informed the design. The target of 5.2 to 3.5 days to
+  close is a pilot objective, not a demonstrated result.
 </AnswerBox>
 
-<Figure src="/blog-assets/lead-routing/tiers.svg" alt="Gold, Silver and Bronze handling paths with re-prioritization on response" caption="A routing design. Source rates are observed; pilot targets remain separate from outcomes." />
+<Figure
+  src="/blog-assets/editorial/lead-routing-gold-silver-bronze.svg"
+  alt="Three routes for different lead priority tiers"
+  caption="Concept illustration."
+/>
 
 ## The decision behind the queue
 
@@ -47,7 +54,7 @@ The important product choice is to make the next action clear. A tier alone is n
 
 Availability and agent specialization matter alongside source performance. The allocation design considered day-by-day coverage and a specialist path for high-intent enquiries. Those rules should be evaluated against both response delay and conversion; waiting for a specialist is not automatically better than a prompt response.
 
-The earlier article claimed a measured 25% advantage from delaying a particular day's leads. That comparison is not supported by the supplied record. It has been removed rather than generalized into advice. The [Salesforce guide to lead management](https://www.salesforce.com/sales/lead-management/) provides broader process context, not validation of this case's results.
+Coverage and timing decisions should be evaluated against qualified-lead outcomes. The source record does not establish an independent conversion advantage from delaying a particular day’s leads. The [Salesforce guide to lead management](https://www.salesforce.com/sales/lead-management/) provides broader process context, not validation of this case's results.
 
 ## Targets are not outcomes
 

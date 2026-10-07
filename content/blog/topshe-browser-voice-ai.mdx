@@ -1,6 +1,6 @@
 ---
-title: "Topshe: a local browser model, with clear boundaries"
-description: "Building a browser-local language-model experiment, while separating model privacy from speech APIs and planned integrations."
+title: "Building Topshe: a voice assistant in the browser"
+description: "An experiment in browser-local language models, voice interaction and practical integration choices."
 slug: "topshe-browser-voice-ai"
 date: 2026-07-28
 updated: "2026-10-07"
@@ -17,15 +17,22 @@ faq:
     a: "Those integrations are described as planned in the repository, not completed capabilities."
 ---
 
-import AnswerBox from '@/components/blog/AnswerBox';
-import FAQ from '@/components/blog/FAQ';
-import Figure from '@/components/blog/Figure';
+import AnswerBox from "@/components/blog/AnswerBox";
+import FAQ from "@/components/blog/FAQ";
+import Figure from "@/components/blog/Figure";
 
 <AnswerBox>
-Topshe is a personal assistant experiment with language-model inference in the browser. That is a specific technical boundary: it does not mean every speech feature is offline, every browser is supported, or every planned integration is already implemented.
+  Topshe is a personal assistant experiment with language-model inference in the
+  browser. That is a specific technical boundary: it does not mean every speech
+  feature is offline, every browser is supported, or every planned integration
+  is already implemented.
 </AnswerBox>
 
-<Figure src="/blog-assets/audited/topshe-browser-voice-ai.svg" alt="Browser input, then Local model, then Local history, then Speech boundary" caption="A schematic of the documented workflow; not a measured outcome." />
+<Figure
+  src="/blog-assets/editorial/topshe-browser-voice-ai.svg"
+  alt="A browser window connecting voice signals with an AI chip"
+  caption="Concept illustration."
+/>
 
 ## Start with a bounded experiment
 

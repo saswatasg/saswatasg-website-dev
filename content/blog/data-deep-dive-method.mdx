@@ -1,9 +1,9 @@
 ---
-title: "The data deep-dive: 480K sessions to three real problems"
-description: "The method behind the Sierra checkout teardown: instrument the funnel first, form ranked hypotheses second, never optimize an unmeasured funnel."
+title: "A data deep-dive that ends in a product decision"
+description: "A practical method for connecting metric definitions, funnel evidence and user workflows to a testable product decision."
 slug: "data-deep-dive-method"
 date: 2026-06-30
-updated: 2026-08-03
+updated: 2026-10-07
 pillar: pm
 persona: career-pm
 targetKeyword: "product analytics deep dive"
@@ -13,127 +13,50 @@ secondaryKeywords:
   - "product analytics framework"
 anchorProject: cart-checkout
 faq:
-  - q: "What is a product analytics deep dive?"
-    a: "Instrumentation first, funnel reads second; never conclude from an aggregate number alone. That is the whole method."
-  - q: "What tools do analysts use for deep dives?"
-    a: "GA4 custom events, session tools like Clarity, SQL on BigQuery, then a ranked hypothesis list. Frequency beats dazzle."
-  - q: "How long does a good deep dive take?"
-    a: "Two weeks of event plumbing plus a week of synthesis. The checkout teardown found three fixes in that window."
+  - q: "Where should a product analysis begin?"
+    a: "With the decision to be made and the evidence that could change it, followed by explicit metric definitions."
+  - q: "Why inspect both funnels and sessions?"
+    a: "A funnel locates measured friction; sessions help explain individual experiences. Each provides different evidence."
+  - q: "What should the analysis deliver?"
+    a: "A bounded recommendation with an owner, success measure, alternative explanations and unresolved questions."
 ---
 
-import AnswerBox from '@/components/blog/AnswerBox';
-import FAQ from '@/components/blog/FAQ';
-import Figure from '@/components/blog/Figure';
+import AnswerBox from "@/components/blog/AnswerBox";
+import FAQ from "@/components/blog/FAQ";
+import Figure from "@/components/blog/Figure";
 
 <AnswerBox>
-A deep dive that changes metrics has two phases. First, instrument the funnel until you can name each drop-off. Second, form ranked hypotheses. At Sierra, 480K sessions became three fixable problems in two weeks — because we never diagnosed an aggregate, only a funnel.
+  A useful data deep-dive ends with a decision, not just a more elaborate
+  dashboard. This article presents a reusable working method: define the
+  question, check the measurement, inspect the journey, compare explanations and
+  choose the next test. It is not a claim that every example was used in a
+  particular client engagement.
 </AnswerBox>
 
-"Cart abandonment is too high." That sentence sat in our metrics review for months, and everyone nodded, and nothing moved — because an aggregate number is unanswerable. When we finally stepped through 480K sessions properly, "abandonment" turned out to be three completely different problems wearing one trench coat. The failure happens four steps before the diagnosis: **no events, no recordings, no funnel, no ranked hypotheses** — and then a hunch gets a roadmap slot.
+<Figure
+  src="/blog-assets/editorial/data-deep-dive-method.svg"
+  alt="A magnifying glass examining research notes"
+  caption="Concept illustration."
+/>
 
-## Phase 1 — Instrument the funnel
+## Write the decision before opening the dashboard
 
-You cannot fix a funnel you cannot step through. The deep dive starts with one ask: *name every step.*
+Begin with the choice the team needs to make. Is a workflow failing, is a feature being bypassed, or is the measured population wrong? A question such as “why is conversion low?” is too broad until its entry event, completion event and qualifying users are defined. Decide what evidence would change the recommendation. This keeps a visually interesting chart from becoming the answer by default.
 
-- Install step-level events on the surface you care about (view → engage → convert or checkout view → shipping → payment → purchase)
-- Layer on session recordings: heatmaps, rage clicks, scroll depth
-- Put the output in BigQuery so you can interrogate it, not just chart it
+## Check the denominator and the event
 
-Only when you can answer "which step loses the most, and which looks like a single cause" do conclusions become credible.
+Before interpreting a decline, inspect whether the same action is counted consistently across devices and releases. Distinguish people, sessions, leads and transactions. Missing events, repeated submits and changes in consent can alter the apparent funnel. Keep an explicit note of the comparison period and known instrumentation gaps. A precise-looking percentage can still describe the wrong thing.
 
-### The shape of the events
+## Connect the aggregate to a real journey
 
-An event-per-step pattern looks roughly like this — the exact fields vary by funnel, but the principle doesn't:
+A funnel identifies where the measured flow narrows. Session evidence and workflow conversations help explain what may be happening there. Neither is sufficient alone: a recording shows one experience, while an aggregate can conceal several different experiences. Google’s [funnel exploration guide](https://support.google.com/analytics/answer/9327974) describes the measurement tool. The [Clarity heatmap documentation](https://learn.microsoft.com/en-us/clarity/heatmaps/heatmaps-overview) describes behavioral views that can complement it.
 
-```javascript
-// Illustrative — one event per checkout step, not one "checkout started" aggregate
-dataLayer.push({ event: 'checkout_start', step: 'cart', step_index: 0, value: cartTotal });
-dataLayer.push({ event: 'checkout_step', step: 'shipping', step_index: 1, option: shippingMethod });
-dataLayer.push({ event: 'checkout_step', step: 'payment', step_index: 2, option: paymentMethod });
-dataLayer.push({ event: 'checkout_step', step: 'review', step_index: 3 });
-dataLayer.push({ event: 'purchase', value: orderTotal, currency: 'USD', transaction_id: orderId });
-```
+## Compare explanations instead of collecting opinions
 
-Every step gets an event. No "checkout started" aggregate — you need the staircase.
+Keep a short hypothesis list. For each explanation, record the supporting evidence, contradicting evidence, uncertainty and the cheapest useful next check. A validation problem, an unclear proposition and an existing external workflow need different responses. Prioritization should consider user impact and delivery constraints, not merely the number of people who favor an idea. A hypothesis is not a proven cause until an appropriate evaluation supports it.
 
-### The Clarity setup
+## Leave the team with an actionable record
 
-[Microsoft Clarity](https://clarity.microsoft.com/) is free and unsampled, which matters more than any premium feature:
-
-- **Recordings on** for 100% of sessions (sampling kills the rare but critical paths)
-- **Heatmaps** on every checkout step URL
-- **Rage-click detection** on form fields, buttons, promo inputs
-- **Dead-click mapping** — clicks on non-interactive elements reveal broken expectations
-
-### The BigQuery schema
-
-Don't just chart in GA4. Stream the raw events to BigQuery via the [GA4 BigQuery export](https://support.google.com/analytics/answer/9358801) so you can interrogate them directly — a drop-off-by-step query, segmented by device, looks roughly like this:
-
-```sql
--- Illustrative — drop-off by step, segmented by device
-SELECT
-  step,
-  device.category,
-  COUNT(DISTINCT user_pseudo_id) as users,
-  COUNT(*) as events,
-  COUNT(DISTINCT user_pseudo_id) / LAG(COUNT(DISTINCT user_pseudo_id)) OVER (ORDER BY step_index) as dropoff_rate
-FROM `project.analytics_events`
-WHERE event_name IN ('checkout_step', 'purchase')
-GROUP BY step, device.category, step_index
-ORDER BY step_index;
-```
-
-SQL like this is the deep dive. The dashboard is the summary.
-
-## Phase 2 — Ranked hypotheses
-
-Aggregate data lies politely; a funnel stops lying. Take the event tables and rank drop-offs:
-
-| Rank | What you're testing |
-| --- | --- |
-| 1 | The step with the biggest unique loss |
-| 2 | The step most likely to be one cause |
-| 3 | The step that is easiest to measure after |
-
-<Figure src="/blog-assets/data-deep-dive/funnel.svg" alt="Deep dive method: instrument funnel → rank drop-offs → test hypotheses" caption="Phase 1: instrument. Phase 2: rank. The funnel names the problem; the ranking picks the fix." />
-
-At Sierra this drill surfaced *three distinct* checkout problems — shipping surprise, promo rage-click, payment dead-end — that one aggregate percentage had been hiding. Each got an independent hypothesis, an independent fix, and an independent measurement window, so when the number moved we knew exactly which change owned it. The full breakdown — what each problem looked like in the session recordings, what shipped, and the before/after numbers (73.1% → 53.9% abandonment, +47% mobile CVR, +49% checkout completion) — is in [the checkout teardown](/blog/checkout-abandonment-73-to-54).
-
-## The rule that tells this apart from guesswork
-
-- **Two years of aggregate is weaker than two weeks of steps**; instrumentation expands signal, not volume.
-- **Cost estimates are hypotheses too.** Just because a fix is one-line doesn't make it the winner.
-- **Re-read the funnel after shipping**; you only learn from the same instrument.
-
-## Post-mortem notes
-
-- "Cart abandonment" was the trap; the funnel named three different things.
-- Events are facts, recordings are opinions; trust the ones you can replay.
-- Full mechanics in [the checkout teardown](/blog/checkout-abandonment-73-to-54).
-
-## What I'd do differently
-
-- I'd start recordings earlier — we had 480K sessions before our first replay window.
-- I'd version the funnel definition like source code so "did the fix even change the view" is answerable in a ticket, not a debate.
-- I'd build the hypothesis tracker *before* the first event — a simple sheet: hypothesis, owner, KPI, window, result.
-
-## The template you can steal (copy-paste into Notion)
-
-| Hypothesis | Owner | KPI | Window | Evidence needed | Result | Decision |
-|------------|-------|-----|--------|-----------------|--------|----------|
-| *(one sentence, tied to a specific step)* | *(name)* | *(the one metric that proves it)* | *(fixed, e.g. 2 weeks)* | *(what the recording/event data must show)* | *(fill after the window closes)* | *(keep / kill / iterate)* |
-
-Fill this before you write a single event. If you can't fill the "Evidence needed" column, you don't have a hypothesis — you have a hope.
-
-## The anti-patterns that kill deep dives
-
-1. **"Let's just add events and see what happens."** No. Events without a question are noise. Write the hypothesis first.
-2. **"We'll A/B test the whole funnel."** You can't attribute. Test one hypothesis per window.
-3. **"The dashboard says X."** Dashboards aggregate. The deep dive *disaggregates*. If your dashboard and your deep dive agree, your deep dive failed.
-4. **"We don't have time for recordings."** You don't have time *not* to. 50 sessions = 2 hours. The alternative is guessing for months.
-
-**If your dashboard and your deep dive agree, your deep dive failed.** The whole point of disaggregating is to find what the average was hiding.
-
-The same instrument-first discipline is what found the single worst field in [the lead-form fix](/blog/lead-form-overhaul-124) and the intent-segmentation insight behind [the category-page redesign](/blog/category-page-redesign-plus34) — different funnels, same method. The full checkout numbers live in [the cart & checkout case study](/case-studies/cart-checkout).
+The output should state the decision, scope, owner, success measure and unresolved questions. The [LiveKeeping adoption investigation](/case-studies/livekeeping-compliance-gap) shows workflow diagnosis in a specific setting; [checkout work](/case-studies/cart-checkout) shows buying-journey friction. Their reported numbers belong to their individual cases. Reusing the method does not imply that every new analysis will produce the same uplift.
 
 <FAQ items={frontmatter.faq} />
