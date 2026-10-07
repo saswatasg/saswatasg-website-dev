@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { X, Send, ArrowUpRight, MessageCircle, RotateCcw } from "lucide-react";
 import ChatAvatar from "@/components/ChatAvatar";
 import { useWorld } from "@/contexts/WorldContext";
+import { chatViewport } from "@/utils/chatViewport";
 const initial = [
   {
     role: "assistant",
@@ -30,6 +31,34 @@ export default function PortfolioGuide() {
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
   const [answering, setAnswering] = useState(false);
+  const [viewport, setViewport] = useState(null);
+  useEffect(() => {
+    if (!open) return;
+    const visual = window.visualViewport;
+    let baselineHeight = visual?.height ?? window.innerHeight;
+    let baselineWidth = window.innerWidth;
+    let frame;
+    const update = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        if (Math.abs(window.innerWidth - baselineWidth) > 80) {
+          baselineWidth = window.innerWidth;
+          baselineHeight = visual?.height ?? window.innerHeight;
+        }
+        setViewport(chatViewport(window.innerHeight, visual, baselineHeight));
+      });
+    };
+    update();
+    visual?.addEventListener("resize", update);
+    visual?.addEventListener("scroll", update);
+    window.addEventListener("resize", update);
+    return () => {
+      cancelAnimationFrame(frame);
+      visual?.removeEventListener("resize", update);
+      visual?.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [open]);
   useEffect(() => {
     setAnswering(false);
     if (messages.length < 2 || messages.at(-1).role !== "assistant") return;
@@ -39,6 +68,7 @@ export default function PortfolioGuide() {
   }, [messages]);
   const end = useRef(null),
     inputRef = useRef(null),
+    closeRef = useRef(null),
     controller = useRef(null);
   useEffect(() => () => controller.current?.abort(), []);
   useEffect(() => {
@@ -184,10 +214,24 @@ export default function PortfolioGuide() {
         <Dialog.Content
           className="portfolio-guide-panel"
           data-world={world}
+          data-keyboard-open={viewport?.keyboardOpen || false}
+          style={
+            viewport
+              ? {
+                  "--guide-visible-height": `${viewport.height}px`,
+                  "--guide-keyboard-offset": `${viewport.bottom}px`,
+                }
+              : undefined
+          }
           onInteractOutside={(e) => e.preventDefault()}
           onOpenAutoFocus={(e) => {
             e.preventDefault();
-            inputRef.current?.focus();
+            const mobile = window.matchMedia(
+              "(max-width: 700px), (pointer: coarse)",
+            ).matches;
+            (mobile ? closeRef.current : inputRef.current)?.focus({
+              preventScroll: true,
+            });
           }}
         >
           <header className="guide-panel-heading">
@@ -198,7 +242,7 @@ export default function PortfolioGuide() {
                 Work, builds & a little আড্ডা (Adda).
               </Dialog.Description>
             </div>
-            <Dialog.Close aria-label="Close chat">
+            <Dialog.Close ref={closeRef} aria-label="Close chat">
               <X size={20} />
             </Dialog.Close>
           </header>
