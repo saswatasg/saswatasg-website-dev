@@ -80,14 +80,14 @@ const BlogLayout = ({ post, children }) => {
       </Helmet>
       <FAQJsonLd items={post.faq} url={postUrl} />
 
-      <div className="max-w-3xl mx-auto px-4 md:px-6 py-12 md:py-16">
+      <div className="wb-article max-w-3xl mx-auto px-4 md:px-6 py-12 md:py-16">
         <nav className="text-xs font-bold text-ink/50 mb-6 flex items-center gap-2">
           <Link to="/blog" className="hover:text-coral transition-colors">Blog</Link>
           <span>/</span>
           <span className="text-ink/70 truncate">{post.title}</span>
         </nav>
 
-        <span className={`inline-block text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded ${pillarMeta.accent} text-white mb-4`}>
+        <span className={`inline-block text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded ${pillarMeta.accent} text-ink mb-4`}>
           {pillarMeta.label}
         </span>
         <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-display font-black text-ink leading-tight mb-4">

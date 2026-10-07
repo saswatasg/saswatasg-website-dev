@@ -3,7 +3,7 @@ title: "AI image greetings lifted feature engagement by 168%"
 description: "A dormant 'Send Greetings' feature, an image-gen model, and a festival calendar across 27 occasions — feature engagement up 168% at LiveKeeping."
 slug: "ai-send-greetings-168"
 date: 2026-06-18
-updated: 2026-08-03
+updated: 2026-10-07
 pillar: growth
 persona: cro-operator
 targetKeyword: "AI feature engagement"
@@ -18,7 +18,7 @@ faq:
   - q: "How do you geo-segment festival greetings?"
     a: "Five Indian regions each have their own festival calendar; we mapped 27 occasions so nothing sent a one-size national blast."
   - q: "How was feature engagement measured?"
-    a: "Engaged users as a share of PRO+/PRO before vs after the AI launch. Same login floor, different feature taps: +168%."
+    a: "The record reports +168% feature engagement. Its event definition, cohort and measurement window are not reproduced publicly."
 ---
 
 import AnswerBox from '@/components/blog/AnswerBox';
@@ -26,123 +26,39 @@ import FAQ from '@/components/blog/FAQ';
 import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
-A dormant "Send Greetings" feature became a +168% engagement story when we fused Google's Nano Banana (Gemini Flash image) into it. The unlock was geo-segmentation: 27 festivals across five Indian regions, surfaced at the right moment in the merchant's existing workflow. The AI did the artwork; the calendar did the work.
+At LiveKeeping, I worked on an AI image-generation integration for the Pro+ Send Greetings feature and a geo-segmented calendar of 27 occasions across five regional groupings. The supplied record reports +168% feature engagement; it does not establish the same increase in overall product retention or revenue.
 </AnswerBox>
 
-The feature had been live for years. Average usage: 0.2 cards per active user per month — statistically, decoration. Eighteen months later the same feature was at 3.4 cards per user, engagement up 168%, and the thing that changed wasn't a redesign or a re-launch. **Send Greetings in LiveKeeping PRO+** got two ingredients: an image model that could render Bengali script without tofu boxes, and a festival calendar that knew a Kolkata trader and a Pune shopkeeper don't celebrate the same week.
+<Figure src="/blog-assets/ai-send-greetings/calendar.svg" alt="A 27-occasion calendar across five regional groupings" caption="Calendar coverage is a feature-design artifact; it is separate from the engagement measurement." />
 
-## Why it sat unused
+## Give the feature a relevant moment
 
-- The feature existed for years but had no reason to be opened.
-- Every greeting-launched list was static; no "when."
-- Nothing surprised the user into *trying* the generator.
-- The templates looked like every other business's spam — same Diwali image, same generic "Happy Diwali" text. No brand identity, no personalization.
+The feature helps a merchant create greetings for customers. Its product challenge is broader than generating an attractive image: the occasion, language and business context need to make the greeting useful at the moment someone wants to send it.
 
-## The AI reinvention: model + calendar + timing
+The documented work combines image generation with a regional festival calendar. This gives the product a structured source of relevant occasions rather than treating every user as if they follow the same national calendar. Five groupings provide a practical segmentation basis; they are not a claim to represent every local custom.
 
-We integrated **Google Gemini 3.1 Flash Image (Nano Banana)** so users could build a festival card instantly — no design skills, no assets, no excuses.
+## Make the integration understandable
 
-But the model alone doesn't fix engagement. The *timing inventory* did:
+The supplied work describes the Nano Banana image model integration and its role in producing greeting artwork. The product flow brings together the selected occasion, business context and image generation. A user needs to understand what will be created and have a clear path to review the result.
 
-<Figure src="/blog-assets/ai-send-greetings/calendar.svg" alt="Geo-segmented festival calendar: 27 occasions across 5 Indian regions" caption="27 occasions × 5 regions. The right festival, the right region, the right moment." />
+An AI integration should be assessed through the task it helps complete. Generation availability alone does not show that someone created a usable card or sent it successfully. Those steps deserve separate instrumentation rather than one undifferentiated AI-use counter.
 
-- **A geo-segmented festival calendar** across five Indian regions — Pan-India, South India, Maharashtra/Goa, East India, and Gujarat.
-- **27 occasions** — Diwali, Durga Puja, Ganesh Chaturthi, Bihu, Vishwakarma Puja, Gudi Padwa, Ratha Yatra, Onam, Pongal, and 18 more — each assigned the right messaging, language, and visual template.
-- **Triggers placed where users already worked** — send-time reminders, invoice completions, payment confirmations, GST filing completions.
+## Calendar design is part of the product
 
-## The three-part build
+The 27-occasion calendar makes timing and relevance explicit. Regional mapping connects the schedule to the merchant’s context. The feature work also fits the broader lifecycle-messaging architecture, where priority, daily limits and conflicting messages need to be considered.
 
-| Part | What it does | Why it moved the needle |
-| --- | --- | --- |
-| **AI Greeting Generator** | Select occasion → business name + customer name (pre-filled from ledger) → language → Nano Banana generates a custom card in 15 seconds. No design skills. | The AI was the paint. The user never touched a design tool. |
-| **Geo-Segmented Festival Calendar** | 27 occasions Mar–Sep 2026 across 5 regions. A West Bengal trader sees Ratha Yatra and Vishwakarma Puja. A Maharashtra shopkeeper sees Ganesh Chaturthi and Gudi Padwa. | No national blast. The right festival reaches the right user. |
-| **Evergreen Greeting Library** | 13 on-demand types any day — Good Morning, Good Night, Thank You (post-payment + post-order), Motivation (Monday + general), Payment Reminder (3 urgency tiers), Sale Promotion, 4 discount tiers. | Usage didn't wait for a festival. Daily habits = daily engagement. |
+A useful notification is a prompt for a relevant task. Sending more reminders is not automatically better, and the calendar should not be interpreted as permission to contact every merchant for every occasion. The design needs a path from relevance to action, alongside controls for message fatigue.
 
-## The model: Nano Banana (Gemini 3.1 Flash Image)
+## What the reported result means
 
-We chose Nano Banana for three reasons:
+The supplied record reports a 168% improvement in feature engagement. The public evidence does not provide the underlying event definition, denominator, cohort dates or attribution method. This case therefore keeps the label at feature engagement, rather than presenting it as an increase in DAU, revenue, retention or cards per user.
 
-1. **Precise text rendering on images** — Indian scripts (Devanagari, Bengali, Tamil, Gujarati, Telugu) render cleanly on greeting cards. Most open models garble non-Latin scripts.
-2. **Multi-language / regional script support** — The model understands "शुभ दीपावली" and renders it correctly in the card, not as tofu boxes.
-3. **Greeting card & marketing asset generation** — It was trained for this exact use case: marketing mockups, greeting cards, branded content with in-image text translation.
+The earlier article included unsupported claims about eighteen months of usage, cards per active user, cache-hit rates and evergreen volume share. Those figures are not needed to explain the contribution and have been removed. A defensible result should survive without invented supporting precision.
 
-The integration: a thin wrapper around the [Gemini image generation API](https://ai.google.dev/gemini-api/docs/image-generation), cached responses for repeated occasion+language combos, fallback to a pre-rendered template if the API fails. Total integration: ~400 lines of TypeScript.
+## What I would measure next
 
-## The calendar: 27 occasions, 5 regions, zero national blasts
+The next evidence pack should define the engaged action and comparison period, then separate generation attempts, successful images, user edits and completed sends. Regional uptake and repeat use would help distinguish one-time curiosity from recurring usefulness. These are measurement questions, not results claimed here.
 
-| Region | Key occasions (sample) | Language priority |
-|--------|------------------------|-------------------|
-| Pan-India | Diwali, Holi, Eid, Christmas, Republic Day, Independence Day, Gandhi Jayanti | Hindi, English |
-| Maharashtra/Goa | Ganesh Chaturthi, Gudi Padwa, Narali Purnima, Vat Purnima | Marathi |
-| South India | Pongal, Onam, Ugadi, Vishu, Thiruvonam, Karthigai | Tamil, Telugu, Kannada, Malayalam |
-| East India | Durga Puja, Ratha Yatra, Vishwakarma Puja, Kali Puja, Poila Boishakh | Bengali, Odia, Assamese |
-| Gujarat | Navratri, Uttarayan, Janmashtami, Diwali (regional), Bestu Varas | Gujarati |
-
-Each occasion has: a default prompt template (business name, customer name, occasion, language), a visual style guide (color palette, motif), and a trigger date range (e.g., "Diwali: 3 days before through day of").
-
-## The triggers: where the user already is
-
-We didn't build a "greetings tab" and hope they'd visit. We injected the generator into existing workflows:
-
-- **Invoice completion** → "Wish your customer a happy [upcoming festival]?"
-- **GST filing success** → "Your return is filed. Wish your clients a prosperous [festival]?"
-- **Payment received** → "Thank your customer with a [festival] card?"
-- **Send-time reminder** — 9 AM on festival morning: "It's [festival] today. Send wishes?"
-
-The greeting door was the notification banner — not a separate tab.
-
-## The A/B tests that shaped the product
-
-We didn't ship the final version on day one. We tested:
-
-| Test | Variant A | Variant B | Winner | Lift |
-|------|-----------|-----------|--------|------|
-| Greeting door | Separate tab | Notification banner | Banner | +340% CTR |
-| Prompt style | Free text | Occasion picker + prefill | Picker | +220% completion |
-| Image model | Stable Diffusion | Nano Banana | Nano Banana | +180% quality rating |
-| Timing | Morning only | Morning + invoice | Both | +45% daily active |
-
-The notification banner was the single biggest win. **Users don't navigate to features — features must navigate to users.**
-
-## The prompt engineering (what actually worked)
-
-The prompt template that produced the best cards:
-
-```
-Create a festive greeting card for {occasion}.
-Business: {business_name} ({business_type})
-Customer: {customer_name}
-Language: {language}
-Style: {style_guide}
-Constraints:
-- Include business name prominently
-- Include customer name
-- Render greeting text in {language} script correctly
-- Color palette: {color_palette}
-- Aspect ratio: 4:5 (portrait card)
-- No watermarks, no extra text
-```
-
-We cached responses by `(occasion, language, style_guide)` — 80% of requests hit the cache after week 2. Cache TTL: 7 days.
-
-## The numbers
-
-| Metric | Before | After |
-| --- | --- | --- |
-| Feature engagement | dormant | **+168%** |
-| Occasions surfaced | ~1 national | **27 geo-segmented** |
-| Regions covered | 1 | **5** |
-| Platform users | 50,000+ LiveKeeping SMBs | same |
-| Avg cards sent / active user / month | 0.2 | 3.4 |
-
-Users didn't adopt *an AI generator*. They adopted **a card for the occasion before them** — the AI was the paint, the timing was the purchase.
-
-## What I'd do differently
-
-- **Air the calendar earlier.** The 5-region mapping should've shipped before we raised the model; geo-accuracy was the real feature.
-- **Test the greeting door.** Our best surface was a banner inside a richer notification — I'd A/B it against "merchant made a bill → invite to wish a client" earlier.
-- **Build the evergreen library first.** The daily-use greetings (Good Morning, Thank You, Payment Reminder) drove 60% of post-launch volume. Festival cards are seasonal; evergreen is the retention engine.
-
-The full build is in the [Send Greetings + Nano Banana case study](/case-studies/livekeeping-send-greetings). It pairs well with the [push notification architecture](/blog/push-notification-architecture) this automated: timing and geo are 90% of the lift.
+The delivered story is a feature integration and a structured occasion calendar, with a reported engagement outcome whose measurement scope remains limited in the public case. Read the [Send Greetings case](/case-studies/livekeeping-send-greetings) alongside the [notification architecture](/blog/push-notification-architecture). Google's [Gemini image-generation documentation](https://ai.google.dev/gemini-api/docs/image-generation) provides the model context; it does not validate this product's engagement result.
 
 <FAQ items={frontmatter.faq} />

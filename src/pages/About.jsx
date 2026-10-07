@@ -1,254 +1,153 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { MapPin, Award, GraduationCap, Briefcase, FileText, Trophy, ShieldCheck, Code2, PenTool, Heart } from 'lucide-react';
-import PageMeta from '@/components/PageMeta';
-import { trackEvent } from '@/utils/analytics';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
+import PageMeta from "@/components/PageMeta";
+import PageHeader, { PageEnd } from "@/components/workbench/PageHeader";
 
-const statColors = [
-  { bg: 'bg-blush', shadow: '6px 6px 0px 0px #F4EC4A' },
-  { bg: 'bg-sky', shadow: '6px 6px 0px 0px #E85D3A' },
-  { bg: 'bg-mint', shadow: '6px 6px 0px 0px #625BF6' },
-  { bg: 'bg-lemon', shadow: '6px 6px 0px 0px #3DDC91' },
+const competencies = [
+  [
+    "Discovery & product judgment",
+    "Client conversations, workflow analysis, opportunity framing and evidence-based prioritization.",
+  ],
+  [
+    "Solution design & delivery",
+    "Translate a problem into a solution, align stakeholders and coordinate engineering through delivery.",
+  ],
+  [
+    "Analytics & growth",
+    "Funnel instrumentation, session analysis, experimentation and lifecycle or acquisition improvements.",
+  ],
+  [
+    "Hands-on product building",
+    "Working demos and independent products that make ideas inspectable, testable and useful.",
+  ],
 ];
-
-function About() {
-  const headerRef = useRef(null);
-  const headerInView = useInView(headerRef, { once: true });
-  const openCaseStudy = (slug) => window.dispatchEvent(new CustomEvent('openCaseStudyPopup', { detail: slug }));
-
+export default function About() {
+  const reduced = useReducedMotion();
   return (
     <>
-      <PageMeta />
-      <div className="max-w-[1200px] mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16">
-        <motion.div
-          ref={headerRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          whileHover={{ y: -2, transition: { duration: 0.2 } }}
-          className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14"
-          style={{ boxShadow: '10px 10px 0px 0px #E85D3A' }}
-        >
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-lemon text-ink text-xs font-bold border-2 border-black mb-3">
-            About Me
-          </span>
-          <h1 className="text-ink text-2xl md:text-3xl lg:text-4xl font-display font-black tracking-tight">
-            Product Manager — shipping outcomes, not features.
-          </h1>
-          <p className="mt-3 text-sm md:text-base text-ink/70 font-medium max-w-2xl">
-            B.Tech (Mech) + MBA. Product Manager across B2B SaaS, D2C e-commerce, and AI.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-          {[
-            { icon: <Briefcase className="w-5 h-5" />, value: '3+', label: 'Years in Product' },
-            { icon: <Award className="w-5 h-5" />, value: '70+', label: 'Product Changes Shipped' },
-            { icon: <GraduationCap className="w-5 h-5" />, value: 'B.Tech + MBA', label: 'Engineering & Management' },
-            { icon: <MapPin className="w-5 h-5" />, value: 'Kolkata', label: 'Based in India' },
-          ].map((fact, i) => {
-            const c = statColors[i];
-            return (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
+      <PageMeta
+        title="About | Saswata S. Sengupta"
+        description="Product discovery, solution design and delivery across enterprise AI, B2B SaaS and commerce. IIT Jodhpur MBA, based in Kolkata."
+      />
+      <div className="wb-page">
+        <PageHeader
+          label="About"
+          variant="about"
+          title="Curiosity, with a direction."
+          description="I’m Saswata Subhra Sengupta. I work where a messy business problem needs a clear product decision—and someone to carry it through delivery."
+        />
+        <div className="wb-about-grid">
+          <section className="wb-surface">
+            <span className="wb-label">ENGINEERING → PRODUCT</span>
+            <h2>Understand the system. Understand the person.</h2>
+            <p>
+              Mechanical engineering gave me a foundation in systems and
+              constraints. An MBA in Marketing & Analytics at IIT Jodhpur
+              brought the customer, the business and the decision into focus.
+            </p>
+            <p>
+              At Sierra Living Concepts, I worked on the purchase journey and
+              growth roadmap for a US furniture business. At LiveKeeping
+              (IndiaMART), I investigated compliance workflows and feature
+              adoption. At Upcore Technologies, I derive solutions and manage
+              delivery end to end for 23+ clients.
+            </p>
+            <p>
+              Alongside those roles, I build independent products such as
+              DhanPlan and Meldstead. Building helps me test the detail behind a
+              product idea.
+            </p>
+            <div className="wb-role-links">
+              <Link to="/experience">Follow the professional journey ↗</Link>
+              <Link to="/work">Explore the work ↗</Link>
+            </div>
+          </section>
+          <motion.figure
+            className="wb-about-portrait"
+            initial={reduced ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.08 }}
-            whileHover={{ y: -3, scale: 1.03, rotate: 0.3, transition: { duration: 0.2 } }}
-            className={`${c.bg} border-2 border-black rounded-2xl p-6 text-center`}
-            style={{ boxShadow: c.shadow }}
           >
-            <div className="flex justify-center mb-2 text-ink">{fact.icon}</div>
-            <span className="text-xl font-black font-display text-ink block">{fact.value}</span>
-            <span className="text-xs font-bold text-ink/60">{fact.label}</span>
-          </motion.div>
-        );
-      })}
-    </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6"
-        >
-          <div className="bg-white border-2 border-black rounded-2xl p-8 md:p-12 lg:p-14"
-            style={{ boxShadow: '10px 10px 0px 0px #0A0A0A' }}>
-            <p className="text-base md:text-lg font-black text-ink font-display tracking-tight mb-6">
-              I don't just ship features — I ship outcomes that move metrics.
-            </p>
-
-            <div className="space-y-5">
-              <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
-                I started out with a degree in mechanical engineering and a quiet curiosity about how people make decisions. That curiosity led me to IIT Jodhpur for an MBA, where I realised I wasn't interested in building things for the sake of building — I wanted to understand what makes a product click with the person using it.
-              </p>
-
-              <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
-                Twenty months at Sierra Living Concepts. D2C furniture — sofas to dining sets, real money, real hesitation. I rebuilt the journey around what clicks and scrolls were actually saying.
-              </p>
-              <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
-                At LiveKeeping, I landed inside a compliance product and found a gap nobody had flagged: users bypassing it for a workaround. I traced it through data, surfaced it to leadership, and watched it become a company-wide initiative.
-              </p>
-              <p className="text-sm md:text-base text-ink/70 leading-relaxed font-medium">
-                Now at Upcore, I’m building how enterprises discover and deploy AI agents — from first conversation to production.
-              </p>
-
-              <div className="flex flex-wrap gap-2 mt-5">
-                <button onClick={() => { trackEvent('about', 'case_study_tag', 'cart-checkout'); openCaseStudy('cart-checkout'); }} className="text-xs font-bold bg-blush text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
-                  Checkout optimisation
-                </button>
-                <button onClick={() => { trackEvent('about', 'case_study_tag', 'livekeeping-compliance-gap'); openCaseStudy('livekeeping-compliance-gap'); }} className="text-xs font-bold bg-sky text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
-                  Compliance gap diagnosis
-                </button>
-                <button onClick={() => { trackEvent('about', 'case_study_tag', 'upcore-lead-scoring'); openCaseStudy('upcore-lead-scoring'); }} className="text-xs font-bold bg-lemon text-ink px-3 py-1.5 rounded-lg border-2 border-black hover:bg-white transition-colors cursor-pointer">
-                  AI lead scoring
-                </button>
-              </div>
-            </div>
-
-            <div className="mt-8 bg-blush border-2 border-black rounded-xl p-5">
-              <h2 className="text-xs font-bold text-ink/60 uppercase tracking-wider mb-2">Beyond Work</h2>
-              <p className="text-sm font-medium text-ink/70 leading-relaxed">
-                I explore digital products with genuine curiosity, cook, shoot photography, watch films analytically, and mentor 5–6 early-career PMs.
-              </p>
-              <p className="text-xs font-medium text-ink/45 mt-2">
-                Growth work lives at{' '}
-                <a
-                  href="https://www.thegrowthbench.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackEvent('about', 'growth_bench')}
-                  className="underline underline-offset-2 text-ink/60 hover:text-ink transition-colors"
-                >
-                  The Growth Bench →
-                </a>
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6"
-        >
-          <h2 className="text-sm font-bold text-ink/60 uppercase tracking-wider mb-3">Education</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
-            <motion.div
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="bg-lemon border-2 border-black rounded-2xl p-6 md:p-8"
-              style={{ boxShadow: '6px 6px 0px 0px #0A0A0A' }}
-            >
-              <span className="w-8 h-8 rounded-lg bg-white border-2 border-black flex items-center justify-center mb-4">
-                <GraduationCap className="w-4 h-4 text-ink" />
-              </span>
-              <h3 className="font-display font-black text-base md:text-lg text-ink">Indian Institute of Technology Jodhpur</h3>
-              <p className="text-sm font-bold text-ink/80 mt-1">MBA — Marketing & Analytics</p>
-              <p className="text-xs font-bold text-ink/50 mt-1">2022 – 2024 · 71.7%</p>
-              <span className="px-2.5 py-1 rounded-lg bg-ink text-white text-xs font-bold border-2 border-black mt-3 inline-block">CAT 2021 · 97.69 Percentile</span>
-            </motion.div>
-            <motion.div
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="bg-blush border-2 border-black rounded-2xl p-6 md:p-8"
-              style={{ boxShadow: '6px 6px 0px 0px #0A0A0A' }}
-            >
-              <span className="w-8 h-8 rounded-lg bg-white border-2 border-black flex items-center justify-center mb-4">
-                <GraduationCap className="w-4 h-4 text-ink" />
-              </span>
-              <h3 className="font-display font-black text-base md:text-lg text-ink">Jalpaiguri Government Engineering College</h3>
-              <p className="text-sm font-bold text-ink/80 mt-1">B.Tech — Mechanical Engineering</p>
-              <p className="text-xs font-bold text-ink/50 mt-1">2017 – 2021 · 77.2%</p>
-              <p className="text-xs text-ink/60 mt-2">Foundation in systems thinking and engineering problem-solving</p>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6"
-        >
-          <h2 className="text-sm font-bold text-ink/60 uppercase tracking-wider mb-3">Achievements & Certifications</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
-            <motion.div
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="bg-sky border-2 border-black rounded-2xl p-6 md:p-8"
-              style={{ boxShadow: '6px 6px 0px 0px #0A0A0A' }}
-            >
-              <span className="w-8 h-8 rounded-lg bg-white border-2 border-black flex items-center justify-center mb-4">
-                <Trophy className="w-4 h-4 text-ink" />
-              </span>
-              <h3 className="font-display font-black text-base md:text-lg text-ink">Achievements</h3>
-              <ul className="mt-3 space-y-2 text-sm font-medium text-ink/70">
-                <li className="flex items-start gap-2"><Award className="w-4 h-4 mt-0.5 flex-shrink-0 text-ink" /> Tata Imagination Challenge — National Semi-finalist</li>
-                <li className="flex items-start gap-2"><Award className="w-4 h-4 mt-0.5 flex-shrink-0 text-ink" /> Mathematics Olympiad — Gold Medal</li>
-              </ul>
-            </motion.div>
-            <motion.div
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="bg-mint border-2 border-black rounded-2xl p-6 md:p-8"
-              style={{ boxShadow: '6px 6px 0px 0px #0A0A0A' }}
-            >
-              <span className="w-8 h-8 rounded-lg bg-white border-2 border-black flex items-center justify-center mb-4">
-                <ShieldCheck className="w-4 h-4 text-ink" />
-              </span>
-              <h3 className="font-display font-black text-base md:text-lg text-ink">Certifications</h3>
-              <ul className="mt-3 space-y-2 text-sm font-medium text-ink/70">
-                <li className="flex items-start gap-2"><Code2 className="w-4 h-4 mt-0.5 flex-shrink-0 text-ink" /> Anthropic — 20 courses (Claude & applied AI)</li>
-                <li className="flex items-start gap-2"><PenTool className="w-4 h-4 mt-0.5 flex-shrink-0 text-ink" /> Google Skillshop — 2026</li>
-                <li className="flex items-start gap-2"><Heart className="w-4 h-4 mt-0.5 flex-shrink-0 text-ink" /> Zoho CRM Administrator</li>
-              </ul>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6"
-        >
-          <div className="bg-white border-2 border-black rounded-2xl p-6 md:p-8"
-            style={{ boxShadow: '6px 6px 0px 0px #625BF6' }}>
-            <h2 className="text-xs font-bold text-ink/60 uppercase tracking-wider mb-3">Skills</h2>
-            <div className="flex flex-wrap gap-2">
-              {[
-                'Product Discovery', 'Shipping & Execution', 'Data & Analytics', 'GA4', 'GTM',
-                'Looker Studio', 'Microsoft Clarity', 'A/B Testing', 'Cross-functional Leadership',
-                'AI Agent Architecture', 'B2B GTM', 'D2C E-commerce', 'CRO', 'Growth Strategy',
-                'Sales Ops', 'Pricing & Revenue Modelling', 'User Research', 'Roadmapping'
-              ].map((skill) => (
-                <span key={skill} className="px-2.5 py-1 rounded-lg text-xs font-bold bg-canvas text-ink border-2 border-black">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        <div className="mt-6 flex justify-center">
-          <div className="relative inline-flex group">
-            <div className="absolute inset-0 rounded-lg border-2 border-black bg-purple translate-x-[3px] translate-y-[3px]" />
-            <a
-              href="/assets/resume.pdf"
-              onClick={() => trackEvent('about', 'download_resume')}
-              className="relative z-10 bg-white text-ink rounded-lg border-2 border-black px-5 py-2.5 text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
-            >
-              <FileText className="w-4 h-4" />
-              Download Resume
-            </a>
-          </div>
+            <img
+              src="/assets/worlds/portrait-workbench.png"
+              alt="Saswata wearing round glasses and a black shirt"
+              width="1254"
+              height="1254"
+            />
+            <figcaption className="sr-only">Based in Kolkata, India</figcaption>
+          </motion.figure>
         </div>
+        <div className="wb-about-facts">
+          {[
+            ["23+", "Upcore clients · Delivery scope"],
+            ["B.Tech + MBA", "Engineering & management"],
+            ["Kolkata", "Based in India"],
+          ].map(([v, l]) => (
+            <div className="wb-surface" key={l}>
+              <strong>{v}</strong>
+              <span>{l}</span>
+            </div>
+          ))}
+        </div>
+        <div className="wb-section-title">
+          <h2>What I bring to the work.</h2>
+          <span>Four complementary strengths</span>
+        </div>
+        <div className="wb-competencies">
+          {competencies.map(([t, d], i) => (
+            <motion.section
+              key={t}
+              className="wb-surface"
+              initial={reduced ? false : { opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.04 }}
+            >
+              <span className="wb-label">0{i + 1}</span>
+              <h3>{t}</h3>
+              <p>{d}</p>
+            </motion.section>
+          ))}
+        </div>
+        <div className="wb-section-title">
+          <h2>Foundations & continued learning.</h2>
+        </div>
+        <div className="wb-education">
+          <section className="wb-surface">
+            <span className="wb-label">EDUCATION</span>
+            <h3>Indian Institute of Technology Jodhpur</h3>
+            <p>MBA · Marketing & Analytics · 2022–2024</p>
+            <h3 className="mt-6">Jalpaiguri Government Engineering College</h3>
+            <p>B.Tech · Mechanical Engineering · 2017–2021</p>
+          </section>
+          <section className="wb-surface">
+            <span className="wb-label">SELECTED LEARNING & RECOGNITION</span>
+            <h3>Applied learning, kept current.</h3>
+            <p>
+              Anthropic Academy coursework in Claude and applied AI; Google
+              Skillshop credentials in analytics, performance advertising and
+              conversion optimization; Zoho CRM administrator training.
+            </p>
+            <p>
+              Tata Imagination Challenge national semifinalist. I also
+              informally mentor 5–6 early-career professionals.
+            </p>
+          </section>
+        </div>
+        <section className="wb-surface mt-6">
+          <span className="wb-label">THE PERSONAL SIDE</span>
+          <h2 className="mt-3">There’s more to a person than their roadmap.</h2>
+          <p>
+            Films, stories, photography and the everyday things I’m curious
+            about live in Adda.
+          </p>
+          <div className="wb-role-links">
+            <Link to="/adda">Step into Adda ↗</Link>
+          </div>
+        </section>
+        <PageEnd />
       </div>
     </>
   );
 }
-
-export default About;

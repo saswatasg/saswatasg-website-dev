@@ -1,45 +1,63 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import PageMeta from '@/components/PageMeta';
-import { posts, PILLAR_META, formatDate, toIsoDate } from '@/data/blogPosts';
-import { trackEvent } from '@/utils/analytics';
-
-const PILLARS = ['all', 'agents', 'growth', 'pm'];
-const SITE_URL = 'https://saswatasg.com';
-
-const BlogIndex = () => {
-  const [pillar, setPillar] = useState('all');
-  const filtered = pillar === 'all' ? posts : posts.filter((p) => p.pillar === pillar);
-
-  useEffect(() => {
-    trackEvent('blog', 'view_index', pillar);
-  }, [pillar]);
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import PageMeta from "@/components/PageMeta";
+import PageHeader, { PageEnd } from "@/components/workbench/PageHeader";
+import { posts, PILLAR_META, formatDate, toIsoDate } from "@/data/blogPosts";
+const SITE_URL = "https://saswatasg.com";
+const diagrams = {
+  "discovery-to-roadmap": "discovery-to-roadmap/delivery",
+  "checkout-abandonment-73-to-54": "checkout-abandonment/three-leaks",
+  "category-page-redesign-plus34": "category-page/funnel-leak",
+  "lead-form-overhaul-124": "lead-form/one-field",
+  "lead-routing-gold-silver-bronze": "lead-routing/tiers",
+  "push-notification-architecture": "push-notifications/architecture",
+  "ai-send-greetings-168": "ai-send-greetings/calendar",
+  "daily-report-automation": "daily-report/pipeline",
+  "e-invoice-adoption-gap": "e-invoice-gap/gap",
+  "film-risk-engine": "audited/film-risk-engine",
+  "data-deep-dive-method": "data-deep-dive/funnel",
+  "dhanplan-retirement-calculator": "audited/dhanplan-retirement-calculator",
+  "tgb-hunt-linkedin-outreach-agent":
+    "audited/tgb-hunt-linkedin-outreach-agent",
+  "topshe-browser-voice-ai": "audited/topshe-browser-voice-ai",
+  "ai-era-pm": "ai-era-pm/division",
+  "one-fix-a-week-cro": "one-fix-a-week/cadence",
+};
+export default function BlogIndex() {
+  const [pillar, setPillar] = useState("all");
+  const reduced = useReducedMotion();
+  const filtered =
+    pillar === "all" ? posts : posts.filter((p) => p.pillar === pillar);
   return (
     <>
       <PageMeta
-        title="Blog | Saswata S. Sengupta — AI Agents & CRO"
-        description="Notes from shipping AI agents and growth products in production — real architecture, real numbers, no invented stats."
+        title="Writing | Saswata S. Sengupta"
+        description="Notes on product decisions, enterprise AI, growth and hands-on building, with delivery stages and measurement scope made clear."
         image={`${SITE_URL}/og/blog.png`}
       />
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Blog',
-            '@id': `${SITE_URL}/blog`,
-            name: 'Saswata S. Sengupta — Blog',
-            description: 'AI agents in production, e-commerce CRO, and AI-era product management — with the numbers.',
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "@id": `${SITE_URL}/blog`,
+            name: "Saswata S. Sengupta — Blog",
+            description:
+              "Product decisions, delivered work, research methods and experiments.",
             url: `${SITE_URL}/blog`,
-            author: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Saswata S. Sengupta' },
+            author: {
+              "@type": "Person",
+              "@id": `${SITE_URL}/#person`,
+              name: "Saswata S. Sengupta",
+            },
             // Built from the unfiltered list so prerendered output is stable.
             mainEntity: {
-              '@type': 'ItemList',
+              "@type": "ItemList",
               itemListElement: posts.map((p, i) => ({
-                '@type': 'ListItem',
+                "@type": "ListItem",
                 position: i + 1,
                 name: p.title,
                 url: `${SITE_URL}/blog/${p.slug}`,
@@ -48,72 +66,79 @@ const BlogIndex = () => {
           })}
         </script>
       </Helmet>
-      <div className="max-w-5xl mx-auto px-4 md:px-6 py-12 md:py-16">
-        <span className="inline-block text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-coral text-white mb-4">Blog</span>
-        <h1 className="text-3xl md:text-5xl font-display font-black text-ink leading-tight mb-3">
-          AI agents, growth & product management — with the numbers.
-        </h1>
-        <p className="text-sm md:text-base font-semibold text-ink/60 max-w-2xl mb-8">
-          Every post is grounded in shipped work: real architectures, real metrics, and honest failure modes.
-        </p>
-
-        <div className="flex flex-wrap gap-2 mb-8">
-          {PILLARS.map((p) => (
+      <div className="wb-page">
+        <PageHeader
+          label="Writing"
+          variant="blog"
+          title="The thinking behind the work."
+          description="Architecture, product decisions, research methods and lessons from building. Some are measured outcomes; others are experiments and open questions."
+        />
+        <div className="wb-filter-row" role="group" aria-label="Filter writing">
+          {["all", "agents", "growth", "pm"].map((p) => (
             <button
               key={p}
+              aria-pressed={pillar === p}
               onClick={() => setPillar(p)}
-              className={`px-4 py-2 rounded-lg border-2 border-black text-sm font-bold transition-all duration-150 ${
-                pillar === p ? 'bg-ink text-white' : 'bg-white text-ink hover:bg-blush'
-              }`}
             >
-              {p === 'all' ? 'All posts' : PILLAR_META[p].label}
+              {p === "all" ? "All writing" : PILLAR_META[p].label}
             </button>
           ))}
         </div>
-
-        {filtered.length === 0 && (
-          <div className="border-2 border-dashed border-ink/30 rounded-2xl p-10 text-center text-sm font-bold text-ink/50">
-            No posts in this pillar yet — coming soon.
-          </div>
-        )}
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {filtered.map((post, i) => {
-            const pillarMeta = PILLAR_META[post.pillar] || PILLAR_META.pm;
-            return (
-              <motion.div
-                key={post.slug}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
+        <p className="text-sm mb-6" aria-live="polite">
+          {filtered.length} {filtered.length === 1 ? "article" : "articles"}
+        </p>
+        <div className="wb-lab-grid">
+          {filtered.map((post, i) => (
+            <motion.div
+              key={post.slug}
+              initial={reduced ? false : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: (i % 2) * 0.05 }}
+            >
+              <Link
+                className="wb-surface wb-blog-card"
+                to={`/blog/${post.slug}`}
               >
-                <Link
-                  to={`/blog/${post.slug}`}
-                  onClick={() => trackEvent('blog', 'open_post', post.slug)}
-                  className="group block h-full border-2 border-black rounded-2xl bg-white p-6 flex flex-col gap-3 transition-all duration-150 hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#0A0A0A]"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className={`text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded ${pillarMeta.accent} text-white`}>
-                      {pillarMeta.label}
+                <div className="wb-blog-art" aria-hidden="true">
+                  {diagrams[post.slug] ? (
+                    <img
+                      src={`/blog-assets/${diagrams[post.slug]}.svg`}
+                      alt=""
+                      width="600"
+                      height="280"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <span className="font-display text-3xl font-black">
+                      {PILLAR_META[post.pillar]?.label}
                     </span>
-                    <time dateTime={toIsoDate(post.date)} className="text-[11px] font-bold text-ink/40">{formatDate(post.date)}</time>
+                  )}
+                </div>
+                <div className="wb-blog-card-copy">
+                  <div className="wb-blog-card-meta">
+                    <span>{PILLAR_META[post.pillar]?.label}</span>
+                    <span>{post.readingMinutes} min read</span>
                   </div>
-                  <h2 className="text-lg md:text-xl font-display font-black text-ink leading-snug group-hover:underline">
-                    {post.title}
-                  </h2>
-                  <p className="text-sm text-ink/60 font-medium leading-relaxed flex-1">{post.description}</p>
-                  <span className="text-xs font-bold text-coral flex items-center gap-1">
-                    Read post <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <h2>{post.title}</h2>
+                  <p>{post.description}</p>
+                  <time
+                    className="text-xs text-ink/60"
+                    dateTime={toIsoDate(post.date)}
+                  >
+                    {formatDate(post.date)}
+                  </time>
+                  <span className="wb-blog-read">
+                    Read the article
+                    <ArrowRight size={15} />
                   </span>
-                </Link>
-              </motion.div>
-            );
-          })}
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
+        <PageEnd title="An idea worth discussing?" />
       </div>
     </>
   );
-};
-
-export default BlogIndex;
+}

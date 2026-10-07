@@ -10,9 +10,10 @@ export default function Portrait({ world, className = "" }) {
     <motion.figure
       layoutId={`portrait-${world}`}
       transition={{
-        duration: location.state?.entrance ? 0.08 : 0.22,
+        duration: location.state?.entrance ? 0.85 : 0.65,
         ease: [0.22, 1, 0.36, 1],
       }}
+      style={{ viewTransitionName: `portrait-${world}` }}
       className={`world-portrait portrait-${world} ${className}`}
     >
       <PortraitBackdrop world={world} />

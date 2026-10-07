@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 
 const CONTENT_DIR = resolve(process.cwd(), 'content/blog');
 const CASE_STUDY_SLUGS = [
-  'upcore-lead-scoring', 'livekeeping-compliance-gap', 'cart-checkout',
+  'upcore-inventory-leveling', 'upcore-discovery', 'upcore-lead-scoring', 'livekeeping-compliance-gap', 'cart-checkout',
   'category-discovery', 'lead-form', 'sierra-lead-allocation',
   'livekeeping-send-greetings', 'livekeeping-notifications',
   'livekeeping-report-automation',

@@ -1,9 +1,9 @@
 ---
-title: "Gold/silver/bronze lead routing that cut days to close"
-description: "Sierra routed every lead the same way until the data said otherwise: web forms 63.5% CVR, cart abandonment 0.4%. A tiered router fixed the queue."
+title: "Lead routing: observed signals and explicit pilot targets"
+description: "Designing a tiered lead-allocation system at Sierra Living Concepts, separating observed source performance from pilot targets."
 slug: "lead-routing-gold-silver-bronze"
 date: 2026-03-24
-updated: 2026-08-03
+updated: 2026-10-07
 pillar: pm
 persona: cro-operator
 targetKeyword: "sales lead routing"
@@ -18,7 +18,7 @@ faq:
   - q: "Which lead sources are the most valuable?"
     a: "Ours: inbound calls 71.4% CVR and web forms 63.5%, versus cart abandonment at 0.4%. Source masks are not buyer intent."
   - q: "Does lead routing lower days-to-close?"
-    a: "Yes when humans see the best leads first. Our system moved gold to the top of the queue, with days-to-close target cut from 5.2 to 3.5."
+    a: "The design targeted 5.2 to 3.5 days to close; the public case does not supply a measured post-rollout result."
 ---
 
 import AnswerBox from '@/components/blog/AnswerBox';
@@ -26,120 +26,39 @@ import FAQ from '@/components/blog/FAQ';
 import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
-Sierra's sales team distributed every inbound lead in arrival order — so a 63.5%-CVR website-form lead and a 0.4%-CVR cart-abandonment lead ate the same agent. Three months of conversion data made the fix obvious: route gold leads to the specialists who close them, send bronze to automation, and re-score as leads respond. Gold routing accuracy went from random to 90%, Leslie's daily gold leads went from 2–3 to 8–10, and the days-to-close target moved from 5.2 toward 3.5.
+At Sierra Living Concepts, I designed a Gold/Silver/Bronze lead-allocation system using source performance, agent capacity and escalation rules. The observed conversion data informed the design. The target of 5.2 to 3.5 days to close is a pilot objective, not a demonstrated result.
 </AnswerBox>
 
-The team had four agents — Leslie, Angela, Larry, and Mollie — and a simple rule for inbound leads: *whoever was free takes the next one.* No routing logic, no tier system, no thought that a $5,000 website enquiry and a tepid chat message deserved different treatment.
+<Figure src="/blog-assets/lead-routing/tiers.svg" alt="Gold, Silver and Bronze handling paths with re-prioritization on response" caption="A routing design. Source rates are observed; pilot targets remain separate from outcomes." />
 
-The lead log proved the rule wrong within an afternoon of analysis.
+## The decision behind the queue
 
-## The data that killed the "free agent" rule
+The work addressed how a four-agent team should allocate leads arriving from six sources. Giving every source the same handling path ignores differences in intent and conversion. A useful routing system needs to translate those differences into a next action without making the source label permanent.
 
-We pulled three months of leads, 4 agents, 6 sources. The spread was so wide I re-ran the query twice to make sure it wasn't a filter bug:
+The available analysis reports website-form conversion at 63.5%, chat at 4.7% and cart-abandonment leads at 0.4%. These are observed source rates in the analysed dataset. They do not establish a universal probability of closing the next individual lead, and low-volume categories need particular care.
 
-| Source | Volume / 3 mo | CVR | Tier |
-| --- | --- | --- | --- |
-| Inbound calls | 35 | **71.4%** | GOLD |
-| Website forms | 406 | **63.5%** | GOLD |
-| Product inquiries | ~350 | ~30% | SILVER |
-| Chat | 470 | 4.7% | BRONZE |
-| Custom forms | 367 | 5.4% | BRONZE |
-| Cart abandonment | 751 | 0.4% | BRONZE |
+## Three tiers, different handling
 
-Cart abandonment leads (751 per quarter) were consuming real agent minutes at a 0.4% conversion rate — five times worse than the next-worst source. Meanwhile the 71.4%-CVR phone calls went to *whoever was free*.
+Gold prioritizes high-intent sources for specialist attention. Silver provides a structured follow-up path for intermediate intent. Bronze reduces repetitive manual handling while retaining a route to human review when stronger intent appears.
 
-And the insight didn't stop at source. Each agent had a category they were exceptional in — and categories they almost never closed:
+The important product choice is to make the next action clear. A tier alone is not enough: the team needs assignment rules, capacity handling and escalation conditions. A response indicating a substantial custom order can justify reconsidering a low initial priority. This is operational decision logic, not a learned model being claimed to predict every outcome.
 
-> Leslie closes sideboards & buffets at 42.9% and dining tables at 0%. Larry closes general inquiries at 90% and dining bars at 0%. Nobody had mapped this before.
+## Capacity changes the routing decision
 
-That gap — one agent strong, another cold on the same line — is what routing actually exists to serve. Not "which channel," but **which human gets which lead**.
+Availability and agent specialization matter alongside source performance. The allocation design considered day-by-day coverage and a specialist path for high-intent enquiries. Those rules should be evaluated against both response delay and conversion; waiting for a specialist is not automatically better than a prompt response.
 
-## The three-tier routing system
+The earlier article claimed a measured 25% advantage from delaying a particular day's leads. That comparison is not supported by the supplied record. It has been removed rather than generalized into advice. The [Salesforce guide to lead management](https://www.salesforce.com/sales/lead-management/) provides broader process context, not validation of this case's results.
 
-<Figure src="/blog-assets/lead-routing/tiers.svg" alt="Gold, silver and bronze routing tiers with the specialist agent assigned to each" caption="Source CVRs ranged 71.4% to 0.4%. The tiering made the handler match the intent." />
+## Targets are not outcomes
 
-- **GOLD** — website forms + inbound calls (63–71% CVR). Route to Leslie first (best close rate on high-AOV furniture), Larry as backup. On Fridays *all* gold goes exclusively to Leslie — the routing doc called it "Leslie Day." Target: 8–10 gold leads/day for Leslie, up from 2–3.
-- **SILVER** — product inquiries (~30% CVR). Angela first (strong on general and mixed enquiries), then Mollie. Standard five-day cadence, personalized outreach with category-specific pain angle.
-- **BRONZE** — chat, custom forms, cart abandonment (under 5.5% CVR). 90% routed to automation with a clear escalation: if a message contains "bulk order," "multiple items," "designer," "urgent," or order value over $5K, flag to Gold within 30 minutes.
+The supplied case describes a 30-day pilot progressing toward rollout. The design included targets for routing accuracy, automation coverage, specialist lead allocation and reducing days to close from 5.2 to 3.5. A target remains a target until a comparable post-change measurement is available.
 
-Tiering wasn't a static label on a source either. Leads got **re-scored as they responded** — a bronze lead that replies with "I need a custom 12-seater dining table in white oak" promotes itself to the gold handler on signal, not on origin.
+The earlier portfolio presented 90% routing accuracy, 90% chat automation and increased daily specialist leads as achieved results. This revision treats them as pilot objectives. It also removes a dollar-saving estimate presented as if the money had been recovered. Expected conversion revenue is a scenario, not realized savings.
 
-**Thursday was the trap.** Only 2 of 4 agents are available on Thursdays. The naive move is to route gold to whoever's there. The data said hold gold for Friday's Leslie callback instead — and the hold-to-Friday move converted 25% better than same-day routing to a non-specialist.
+## The evidence that would close the loop
 
-## How we got there without upsetting anyone
+A stronger follow-up would report assignment compliance, response time, escalation errors and conversion by source and handler over a defined period. Lead quality and seasonal changes need to be accounted for when comparing before and after. The team also needs to know whether the system improved workload balance rather than only moving one metric.
 
-The rollout was deliberately staged, because agent pushback was a real risk:
-
-- **Week 1 (10% of leads):** Route only Friday website leads to Leslie. Track conversion.
-- **Weeks 2–3 (25%):** Add the Thursday hold queue, turn on chat automation for Mollie, bring Larry into gold routing.
-- **Week 4 (100%):** Full rollout, all automation active.
-
-The framing mattered: we showed each agent *their own* category-conversion numbers and explained routing plays to their strengths rather than limiting them. That made adoption trivial — nobody argues against getting more of the leads they close best.
-
-## What it unlocked
-
-| Metric | Before | After |
-| --- | --- | --- |
-| Gold lead routing accuracy | random | **90%** |
-| Leslie's daily gold leads | 2–3 | **8–10** |
-| Chat response automation | 0% | **90%** |
-| Days to close | 5.2 | **3.5 target** |
-| Revenue per misrouted gold lead | — | ~$2,000 dropped |
-
-The quiet math: each gold lead misrouted to a non-specialist cost about $2,000 at Sierra's AOV, and Leslie's 8–10/day target meant 5–7 *additional* golden leads a day at a $3,400 average order value. **Routing wasn't sales support. It was revenue architecture.**
-
-## The part that needs a spreadsheet: the Thursday trap
-
-The most surprising single finding wasn't a source — it was a day. On Thursdays, only 2 of 4 agents were available (Angela and Larry). Before the system, Thursday leads just got handed to whoever was there. That felt like "using what we have."
-
-The data said otherwise. Thursday gold leads, routed same-day to a non-specialist, converted measurably worse than if they sat for a Friday callback by Leslie. The hold-to-Friday move converted **25% better** than same-day routing. What felt like fast follow-up was actually answering with the wrong person, not faster.
-
-That's the psychological heart of lead routing. It feels counterintuitive to *wait* — the [classic HBR research on lead response](https://hbr.org/2011/03/the-short-life-of-online-sales-leads) says speed is everything, and it's usually right — but speed to the *wrong* handler measurably lost to a one-day hold for the right one. The thing you're optimizing is handler quality at the moment of contact, not "how quickly the lead left the inbox."
-
-## Why the re-scoring matters more than the tiers
-
-The three tiers describe the *start* of a lead's life, not the end. A bronze lead that replies "I need a custom 12-seater in white oak with mid-century legs" is not bronze anymore *by any definition that closes deals*. The escalation path captured that:
-
-- Message contains "bulk order," "multiple items," "designer," or "urgent" — flag to Gold.
-- Order value over $5K — flag to Gold within 30 minutes.
-
-So the real architecture was a *feedback loop*, not a static label: bronze converts to gold by signal, and the person is re-scored against the doctrine. The tiers described inflow; the signals described intent as a final output. You need both.
-
-## Adoption is a people problem, not a systems one
-
-The roadmap risk was real — agents don't love being told which leads they'll get, especially if it reads as "you're not good at X." The framing that turned it:
-
-- Show each agent *their own* category-conversion data, not someone else's.
-- Frame routing as "more of the leads you close best," not "fewer of the leads you don't."
-- Roll the pilot quietly at 10% of traffic, prove the wins, then expand.
-
-Nobody argues against getting more of the leads they close best. The system shipped frictionlessly because it felt like an upgrade, not a demotion.
-
-## What the routing matrix actually looked like
-
-Systems like this die when they're a vague rule ("just prioritize gold"). Ours survived because it was a spreadsheet a new starter could read in one sitting:
-
-| Day | Gold | Silver | Bronze |
-| --- | --- | --- | --- |
-| Mon–Wed | Leslie → Larry → Mollie | Angela → Mollie | automation |
-| Thursday | hold queue for Friday Leslie | Angela → Larry | max automation |
-| Friday ("Leslie Day") | Leslie exclusively | Angela → Larry | away from Leslie |
-| Saturday | Leslie | Mollie | — |
-| Sunday | Leslie first | Angela overflow | — |
-
-That matrix is the actual deliverable. Anyone can write "route gold first" — the discipline is writing *which person, on which day*. The Thursday row is the one that turned the win; without the data it would've been populated with "whoever's free," and every other row would've been guesswork.
-
-## What routing is really for (the way I explain it to non-sales leaders)
-
-Most people hear "lead routing" and think triage. It's better than triage — it's **matching the lead to the person with the best chance**. A $5,000 custom-furniture enquiry landing with a generalist is a different economic event than landing with the specialist who closes that category at 42.9%. Same lead, same day, different revenue. Routing is the cheapest pure-margin lever a sales org has, because it requires zero new headcount and zero new software — just a reader of your own data.
-
-The proof that mattered to the business: route gold first and the conversion *of the gold alone* moves. That's why "routing isn't sales support" ended up pinned above my desk — it's a revenue architecture, and the numbers agreed.
-
-## What I'd do differently
-
-- **Bring re-scoring online sooner.** The tier system only pays in the queue; promote-from-bronze logic arrived late and would've pushed more silver up.
-- **Cost a bronze lead before building.** We knew the volume of low-tier leads but priced CAC only later. Automation became trivially obvious once the number was written down.
-
-The full routing spec — including day-of-week shift logic and the escalation keywords — is in the [Sierra lead allocation case study](/case-studies/sierra-lead-allocation), and the same *tier-first* thinking shows up in [why the lead form leaked at a single field](/blog/lead-form-overhaul-124).
+This case establishes an allocation design grounded in observed source differences, with an explicit measurement plan. It does not claim a causal increase in revenue or a verified reduction in days to close. See the [full lead-allocation case](/case-studies/sierra-lead-allocation) for the routing and pilot structure.
 
 <FAQ items={frontmatter.faq} />

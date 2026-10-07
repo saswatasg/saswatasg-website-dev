@@ -1,127 +1,193 @@
-import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Menu, Calendar } from 'lucide-react';
-import { openScheduleBooking } from '@/utils/openCalendar';
-import { trackEvent } from '@/utils/analytics';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import React, { useState, useEffect, useRef } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useSpring,
+  useMotionValueEvent,
+  useReducedMotion,
+} from "framer-motion";
+import { Home, Menu, X, ArrowUpRight, ArrowLeftRight } from "lucide-react";
+import { useWorld } from "@/contexts/WorldContext";
+import { openScheduleBooking } from "@/utils/openCalendar";
+import { trackEvent } from "@/utils/analytics";
 
 const navItems = [
-  { name: 'Work', path: '/work' },
-  { name: 'Experience', path: '/experience' },
-  { name: 'About', path: '/about' },
-  { name: 'Blog', path: '/blog' },
-  { name: 'Contact', path: '/contact' },
+  { name: "Work", path: "/work" },
+  { name: "Experience", path: "/experience" },
+  { name: "About", path: "/about" },
+  { name: "Blog", path: "/blog" },
+  { name: "Contact", path: "/contact" },
 ];
-
-const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Header() {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-
+  const root = useRef(null),
+    toggle = useRef(null);
+  const reduced = useReducedMotion();
+  const { world, switchWorld, destination, transitioning } = useWorld();
+  const { scrollY, scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 100, damping: 28 });
+  useMotionValueEvent(scrollY, "change", (value) => setScrolled(value > 48));
+  useEffect(() => setOpen(false), [location.pathname, location.search]);
   useEffect(() => {
-    setIsOpen(false);
-  }, [location.pathname]);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-
+    const desktop = window.matchMedia("(min-width:1000px)");
+    const close = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", close);
+    return () => desktop.removeEventListener("change", close);
+  }, []);
+  useEffect(() => {
+    if (!open) return;
+    const escape = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    };
+    const outside = (event) => {
+      if (!root.current?.contains(event.target)) setOpen(false);
+    };
+    document.addEventListener("keydown", escape);
+    document.addEventListener("pointerdown", outside);
+    return () => {
+      document.removeEventListener("keydown", escape);
+      document.removeEventListener("pointerdown", outside);
+    };
+  }, [open]);
+  const navigation = (mobile) =>
+    navItems.map((item) => (
+      <NavLink
+        key={item.path}
+        to={item.path}
+        className={({ isActive }) =>
+          `wb-nav-link ${isActive || (item.path === "/work" && /^\/(case-studies|projects|builds)/.test(location.pathname)) ? "is-active" : ""}`
+        }
+        onClick={() => {
+          trackEvent(
+            "navigation",
+            mobile ? "mobile_nav_click" : "nav_click",
+            item.name,
+          );
+          setOpen(false);
+        }}
+      >
+        {item.name}
+        {mobile && <ArrowUpRight size={17} />}
+      </NavLink>
+    ));
   return (
-    <>
-      <header className="hidden md:flex fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-black">
-        <div className="max-w-[1200px] mx-auto w-full flex items-center justify-between px-4 md:px-6 h-16 lg:h-20">
-          <Link to="/" className="flex items-center gap-2" aria-label="Saswata Sengupta — Home">
-            <span className="font-display font-black text-lg tracking-tight text-ink bg-lemon px-2 py-0.5 rounded-lg border-2 border-black -rotate-1 inline-block hover:scale-105 hover:-rotate-2 transition-all duration-200">
-              Saswata
-              <span className="ml-1 text-sm select-none" style={{ letterSpacing: '-0.02em' }}>✳︎</span>
-            </span>
-          </Link>
-
-          <div className="flex items-center gap-1">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.path}
-                onClick={() => trackEvent('navigation', 'nav_click', item.name)}
-                className={({ isActive }) =>
-                  `px-3 py-1.5 text-sm font-bold rounded-lg border-2 transition-all ${
-                    (isActive || (item.path === '/work' && (location.pathname.startsWith('/case-studies') || location.pathname.startsWith('/projects'))))
-                      ? 'bg-ink text-white border-black'
-                      : 'text-ink border-transparent hover:text-ink hover:border-black'
-                  }`
+    <header
+      ref={root}
+      className={`wb-island ${scrolled ? "is-scrolled" : ""} ${open ? "is-expanded" : ""}`}
+      aria-label="Workbench navigation"
+    >
+      <div className="wb-island-row">
+        <Link
+          to="/workbench"
+          className="wb-brand"
+          aria-label="Saswata — Workbench home"
+        >
+          <Home size={17} />
+          <span>
+            Saswata<span aria-hidden="true">✳</span>
+          </span>
+        </Link>
+        <nav className="wb-desktop-nav" aria-label="Primary">
+          {navigation(false)}
+        </nav>
+        <nav className="wb-mode-switch" aria-label="Choose a side">
+          {["workbench", "adda"].map((mode) => (
+            <a
+              key={mode}
+              href={destination(mode)}
+              aria-current={world === mode ? "page" : undefined}
+              aria-disabled={!!transitioning}
+              onClick={(event) => {
+                if (
+                  event.button === 0 &&
+                  !event.metaKey &&
+                  !event.ctrlKey &&
+                  !event.shiftKey &&
+                  !event.altKey
+                ) {
+                  event.preventDefault();
+                  setOpen(false);
+                  switchWorld(mode);
                 }
+              }}
+            >
+              {world === mode && (
+                <span className="wb-mode-indicator" />
+              )}
+              <span>{mode === "adda" ? "Adda" : "Workbench"}</span>
+            </a>
+          ))}
+        </nav>
+        <button
+          className="wb-nav-cta"
+          onClick={() => {
+            trackEvent("navigation", "book_a_call");
+            openScheduleBooking();
+          }}
+        >
+          Let’s talk <ArrowUpRight size={16} />
+        </button>
+        <button
+          ref={toggle}
+          className="wb-menu-toggle"
+          aria-expanded={open}
+          aria-controls="wb-mobile-navigation"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((value) => !value)}
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.nav
+            id="wb-mobile-navigation"
+            className="wb-mobile-nav"
+            aria-label="Mobile primary"
+            initial={{ height: reduced ? "auto" : 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: reduced ? "auto" : 0, opacity: 0 }}
+            transition={{
+              duration: reduced ? 0 : 0.25,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <div>
+              {navigation(true)}
+              <Link
+                to="/"
+                className="wb-nav-link"
+                onClick={() => setOpen(false)}
               >
-                {item.name}
-              </NavLink>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="relative inline-flex group">
-              <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
+                Split entrance <ArrowLeftRight size={17} />
+              </Link>
               <button
-                onClick={() => { trackEvent('navigation', 'book_a_call'); openScheduleBooking(); }}
-                className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-4 py-2 text-sm font-bold min-h-[44px] inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
+                className="wb-mobile-talk"
+                onClick={() => {
+                  setOpen(false);
+                  openScheduleBooking();
+                }}
               >
-                Let's talk
+                Let’s talk <ArrowUpRight size={17} />
               </button>
             </div>
-          </div>
-        </div>
-      </header>
-
-      <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-black">
-          <div className="flex items-center justify-between px-4 h-14">
-            <Link to="/" className="flex items-center gap-2" aria-label="Saswata Sengupta — Home">
-              <span className="font-display font-black text-base text-ink bg-lemon px-2 py-0.5 rounded-lg border-2 border-black inline-block hover:scale-105 transition-all duration-200">
-                Saswata
-              </span>
-            </Link>
-
-            <SheetTrigger asChild>
-              <button
-                onClick={toggleMenu}
-                aria-expanded={isOpen}
-                aria-controls="mobile-nav"
-                aria-label={isOpen ? 'Close menu' : 'Open menu'}
-                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg flex items-center justify-center bg-ink text-white border-2 border-black hover:bg-ink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
-              >
-                <Menu className="w-5 h-5" />
-              </button>
-            </SheetTrigger>
-          </div>
-        </header>
-
-        <SheetContent side="top" id="mobile-nav" aria-label="Mobile navigation" className="bg-white border-b-2 border-black p-0 pt-14 [&>button]:hidden">
-          <nav className="flex flex-col gap-1 p-4" aria-label="Primary">
-            {navItems.map((item) => (
-              <SheetClose asChild key={item.path}>
-                <NavLink
-                  to={item.path}
-                  onClick={() => trackEvent('navigation', 'mobile_nav_click', item.name)}
-                  className={({ isActive }) =>
-                    `px-4 py-3 rounded-lg text-sm font-bold border-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink ${
-                      isActive ? 'bg-ink text-white border-black' : 'text-ink border-transparent hover:border-black'
-                    }`
-                  }
-                >
-                  {item.name}
-                </NavLink>
-              </SheetClose>
-            ))}
-            <button
-              onClick={() => { trackEvent('navigation', 'mobile_book_a_call'); openScheduleBooking(); setIsOpen(false); }}
-              className="bg-ink text-white rounded-lg border-2 border-black px-4 py-3 text-sm font-bold text-center mt-2 hover:bg-white hover:text-ink transition-all duration-200 flex items-center justify-center gap-2 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
-            >
-              <Calendar className="w-4 h-4" />
-              Let's talk
-            </button>
-          </nav>
-        </SheetContent>
-      </Sheet>
-
-
-    </>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+      <motion.div
+        className="wb-nav-progress"
+        aria-hidden="true"
+        style={{ scaleX: reduced ? scrollYProgress : progress }}
+      />
+    </header>
   );
-};
-
-export default Header;
+}

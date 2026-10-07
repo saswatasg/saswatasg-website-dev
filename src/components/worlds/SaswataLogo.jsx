@@ -36,19 +36,13 @@ export default function SaswataLogo({ world }) {
         </>
       ) : (
         <>
-          <path
-            d="M1 14V3h15M1 53v10h15M199 3h15v11M199 63h15V53"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          />
           <text x="10" y="44" className="logo-lettering">
             Saswata
           </text>
           <path
             d="M175 49l26-26m-20 0h20v20"
             fill="none"
-            stroke="#617d24"
+            stroke="#b74224"
             strokeWidth="4"
           />
           <path

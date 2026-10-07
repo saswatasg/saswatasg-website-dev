@@ -11,7 +11,7 @@ const AuthorBox = ({ compact = false }) => (
       <p className="text-xs md:text-sm text-ink/60 font-medium leading-snug">
         {compact
           ? 'Product Manager shipping AI agents and growth products in production.'
-          : 'PM at Upcore Technologies. Cut checkout abandonment 73.1% to 53.9%. IIT Jodhpur MBA. All posts are grounded in shipped work with published numbers.'}
+          : 'PM at Upcore Technologies. Cut checkout abandonment 73.1% to 53.9%. IIT Jodhpur MBA. Writing about delivered work, product decisions and experiments.'}
       </p>
       <div className="flex items-center gap-3 mt-2">
         <a href="https://www.linkedin.com/in/sss99/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-xs font-bold text-purple hover:text-ink transition-colors">

@@ -173,7 +173,7 @@ const CartCheckout = () => {
         <motion.div variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className="bg-ink border-2 border-black rounded-2xl p-6 mt-4">
           <p className="text-white font-display font-black text-lg">No single-page checkout rebuild. No platform migration. Just instrumentation followed by targeted fixes.</p>
           <p className="text-white/70 text-sm mt-2 leading-relaxed">
-            The checkout template stayed the same. What changed was the execution quality of every step. The fixes outperformed Wayfair&#39;s checkout on mobile conversion within 30 days of the final sprint — a benchmark nobody had thought to measure against.
+            The checkout template stayed the same. What changed was the execution quality of every step. The results came from improving the existing checkout rather than replacing the platform.
           </p>
           <p className="text-coral font-black mt-3">The checkout didn&#39;t need to be rebuilt. It needed to be understood.</p>
         </motion.div>

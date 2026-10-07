@@ -1,24 +1,20 @@
 ---
-title: "FilmRisk.AI: scoring film risk with ML and Bayesian priors"
-description: "A 2,200-film dataset, gradient-boosted ML plus Bayesian priors, and a scoring engine that backtests itself. I built FilmRisk.AI — the failures included."
+title: "FilmRisk.AI: what a weak backtest changed"
+description: "A film-risk experiment with temporal validation, weak baseline comparisons and explicit data limits. What the evaluation changed."
 slug: "film-risk-engine"
 date: 2026-04-15
-updated: 2026-08-03
-pillar: agents
-persona: local-ai-builder
-targetKeyword: "ML movie score model"
-secondaryKeywords:
-  - "bayesian model"
-  - "feature scoring engine"
-  - "ML in product"
-anchorProject: filmrisk
+updated: "2026-10-07"
+pillar: "agents"
+targetKeyword: "film risk model evaluation"
+secondaryKeywords: ["product design", "implementation evidence"]
+anchorProject: "filmrisk"
 faq:
-  - q: "Can machine learning predict a movie's box office?"
-    a: "Better than a gut call when you quantify priors. We rank roles on 2,200+ films with GBM + Bayesian blending — no one guarantees a hit."
-  - q: "What makes a risk engine 'honest'?"
-    a: "Backtests everyone can see — training accuracy AND failure modes. FilmRisk publishes both so users can validate."
-  - q: "Why Bayesian priors on top of gradient boosting?"
-    a: "ML overfits a handful of stars; priors pull hard toward the industry base rate when data is thin. That's what changed the output."
+  - q: "Did the model beat its baselines?"
+    a: "The published temporal evaluation did not establish an advantage over simple baselines."
+  - q: "How much financial data was available?"
+    a: "The repository lists 2,454 films, with 729 financially trainable records. Missing financial reporting limits coverage."
+  - q: "Is this a validated investment tool?"
+    a: "No. It is a research experiment; the backtest and data limitations are central to the story."
 ---
 
 import AnswerBox from '@/components/blog/AnswerBox';
@@ -26,194 +22,41 @@ import FAQ from '@/components/blog/FAQ';
 import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
-FilmRisk.AI scores a film's greenlight risk from 2,200+ Indian films by mixing a gradient-boosted model with Bayesian priors. Prior pulls thin-data predictions back to base rates. We backtest religiously and publish the failure points — because scoring moves money and pretending a model is magic ends careers.
+FilmRisk.AI explores whether public film data can support a pre-release risk score. The published evaluation did not establish a useful predictive advantage. That finding changes how the project should be presented: as an evaluation experiment, rather than a successful greenlight decision engine.
 </AnswerBox>
 
-Give a raw ML model a debut director with a Khan attached, and it screams "blockbuster." The base rate says debut directors hit ~15% of the time. One of those two is lying to you, and if you're greenlighting a ₹100Cr film, you'd better know which. FilmRisk.AI exists to render exactly that judgment — and because wrong scores move real money, honesty rails are built into the architecture, not bolted onto the marketing.
+<Figure src="/blog-assets/audited/film-risk-engine.svg" alt="Film records, then Temporal folds, then Compare baselines, then Report limitations" caption="A schematic of the documented workflow; not a measured outcome." />
 
-## The 10-component engine
+## The product question
 
-The internal scoring blends 10 feature groups — genre, cast, director, release window, budgets, star momentum, sequel flag, production house, language, and seasonality — each fed into the model as context. The architecture:
+A score is only useful if it improves the decision someone could make without it. For a film-risk product, an attractive interface or a complicated model does not establish that improvement. The relevant question is whether the prediction adds reliable information before release, using inputs available at that time.
 
-1. **Gradient-boosted ML** learns rich interactions between the 10 components.
-2. **Bayesian priors** anchor thin groups: when a 1-film director appears, the score defers toward the category average instead of over-committing.
-3. **Backtesting is non-negotiable** — runs on the full dataset every change.
+The project combines a gradient-boosted model with empirical Bayesian priors and a component-based scoring approach. Its implementation is in TypeScript with a Next.js interface. Simulation can describe uncertainty under assumptions, but it cannot repair missing data or prove that a score is commercially useful.
 
-<Figure src="/blog-assets/film-risk/engine.svg" alt="FilmRisk.AI 10-component engine: GBM + Bayesian priors + backtesting" caption="Three rails: GBM for interaction, priors for thin data, backtest for honesty." />
+## Data coverage is part of the result
 
-## The data: 2,200+ Indian films, structured for learning
+The repository documents 2,454 film records spanning 2001–2025. Only 729 have the financial information required for training. This is not a representative financial history of every film in the period. It is a subset shaped by which figures were publicly reported and could be assembled.
 
-The dataset wasn't a CSV download — it was assembled from public box-office reports, trade publications (Box Office India, Bollywood Hungama, Koimoi), and Wikipedia filmographies, then cleaned over three weekends. Each film gets:
+That missingness creates a practical constraint: the product must not imply that a score describes the whole industry equally well. Dataset size, the training subset and the population a model can reasonably speak about are different things.
 
-| Feature group | Fields | Source |
-|---------------|--------|--------|
-| Genre | Primary, secondary, tertiary | Trade publications |
-| Cast | Top 5 billed, star power index (Google Trends 5-yr) | IMDb + Trends |
-| Director | Film count, hit ratio, avg budget | Wikipedia + trade |
-| Release window | Month, festival clash, holiday flag | Calendar + trade |
-| Budgets | Production, marketing (where reported) | Trade estimates |
-| Star momentum | 12-month Trends slope, recent hit/flop | Google Trends |
-| Sequel flag | Binary + franchise strength | Wikipedia |
-| Production house | Track record, distribution reach | Trade |
-| Language | Hindi, Tamil, Telugu, Malayalam, etc. | Certification |
-| Seasonality | Quarter, holiday density | Calendar |
+## Test on later films, not shuffled familiarity
 
-Missing data strategy: for budgets (often unreported), we used genre+star+director bucket medians as priors — which is exactly where the Bayesian layer earns its keep.
+The published primary evaluation uses 14 rolling annual folds with 658 tested films. This temporal approach asks whether knowledge from earlier releases helps with later releases. It is more relevant to a pre-release decision than simply demonstrating a fit to familiar records.
 
-## Why the prior saved us
+Outcome-derived concept features were removed from the evaluation to address leakage. User-supplied pre-release concept inputs in the product are not thereby validated by that historical test. The distinction matters because the implemented interface and the tested prediction path need not be identical.
 
-The raw GBM loved stars. A debut director with a Khan attached would spike the score — but the base rate for debut directors is terrible (~15% hit rate vs 45% for 5+ films). The prior pulls that prediction toward the category average (genre + budget + language) proportional to how thin the director's own sample is. Mathematically:
+## What the benchmark actually says
 
-```
-posterior ∝ likelihood × prior
-```
+The published results report 29.3% classification accuracy, compared with 63.7% for a band-median baseline and 80.5% for an always-flop baseline. Greenlight precision was 11.3%, against a base hit rate of 11.0%. Reported RMSE was 1.303, compared with 1.23 for the band-median baseline.
 
-Where the prior is the industry base rate for that (genre, budget, language) bucket. The more films the director has, the more the data speaks; the fewer, the more the prior rules.
+These metrics answer different questions; they should not be collapsed into a single success percentage. In particular, high accuracy from predicting a dominant class is not a useful recommendation system. Conversely, these results do not justify marketing the more complex model as superior. They are published repository results, not an independently reproduced evaluation in this portfolio audit.
 
-This single mechanism turned "star-driven overconfidence" into "star-weighted caution."
+## What I would require before expanding it
 
-## The stack
+The next work should improve provenance, establish a decision-relevant baseline and test the exact inputs used before release. A larger interface or more model components should follow evidence of usefulness, rather than substitute for it. A small recent holdout also needs its sample size made visible.
 
-- **Python 3.11**, scikit-learn ([HistGradientBoostingRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html)), [PyMC](https://www.pymc.io/) for priors
-- **Streamlit** for the scoring UI — producers paste a film's params, get score + confidence interval
-- **GitHub Actions** runs full backtest on every push; fails if MAE regresses >2%
-- **DVC** for data versioning — the 2,200-film CSV is tracked with SHA
+The portfolio value here is the willingness to expose an unfavorable result and change the claim. This remains a research experiment. It should not be used as a validated financial decision tool.
 
-## The training loop (what actually ran)
-
-Here's the whole pipeline, simplified but structurally faithful — GBM for the likelihood, a hierarchical PyMC model for the priors, and a sample-size-weighted blend at prediction time:
-
-```python
-# train.py — simplified
-import pandas as pd
-from sklearn.ensemble import HistGradientBoostingRegressor
-import pymc as pm
-
-# 1. Load DVC-tracked data
-df = pd.read_csv('data/films.csv')  # 2,200 rows, 47 features
-
-# 2. Feature engineering
-df['star_momentum'] = df['google_trends_slope_12m']
-df['director_experience'] = df['director_film_count'].clip(upper=20)
-df['budget_bucket'] = pd.qcut(df['production_budget'], q=5, labels=False)
-
-# 3. GBM for likelihood
-gbm = HistGradientBoostingRegressor(
-    max_iter=300, learning_rate=0.05, max_depth=6,
-    early_stopping=True, validation_fraction=0.15
-)
-X = df.drop('box_office', axis=1)
-y = df['box_office']
-gbm.fit(X, y)
-
-# 4. Bayesian prior per (genre, budget_bucket, language)
-with pm.Model() as prior_model:
-    # Hierarchical prior: genre → budget → language
-    mu_genre = pm.Normal('mu_genre', mu=0, sigma=1, shape=n_genres)
-    mu_budget = pm.Normal('mu_budget', mu=0, sigma=1, shape=n_budgets)
-    mu_lang = pm.Normal('mu_lang', mu=0, sigma=1, shape=n_langs)
-    
-    # Director-level shrinkage
-    director_sd = pm.HalfNormal('director_sd', sigma=1)
-    director_offset = pm.Normal('director_offset', mu=0, sigma=director_sd, shape=n_directors)
-    
-    # Likelihood
-    pred = mu_genre[genre_idx] + mu_budget[budget_idx] + mu_lang[lang_idx] + director_offset[director_idx]
-    pm.Normal('obs', mu=pred, sigma=pm.HalfNormal('sigma', 1), observed=y)
-    
-    trace = pm.sample(2000, tune=1000, target_accept=0.9)
-
-# 5. Combine: posterior = GBM + prior (weighted by director sample size)
-def predict(film):
-    gbm_pred = gbm.predict(film.X)
-    prior_mean = trace.posterior['pred'].mean().values[film.idx]
-    weight = min(film.director_count / 5, 1.0)  # data speaks after 5 films
-    return weight * gbm_pred + (1 - weight) * prior_mean
-```
-
-This runs in ~4 minutes on a MacBook M2. The PyMC sampling is the bottleneck — we cache the trace and only re-sample when director counts change significantly.
-
-## The failure modes we publish (and why)
-
-Honesty isn't a marketing angle — it's a product requirement. The UI shows three failure modes explicitly:
-
-1. **Debut director in thin genre** — Score shows wide confidence interval (±35%). The engine *knows* it doesn't know.
-2. **Star-heavy bundle in saturated genre** — Score caps at market prior. No "this will be a blockbuster" hallucination.
-3. **Sequel with declining franchise momentum** — Score penalizes diminishing returns. The engine sees the trend.
-
-These aren't hidden in a methodology doc — they're on the score card. Every score card shows: point estimate, 95% CI, failure mode flags, and the feature importance breakdown for *that specific film*.
-
-## The scoring UI (what a producer actually sees)
-
-The Streamlit UI has three tabs:
-
-**Tab 1: Single Film Score** — Paste params, get score + 95% CI + failure mode flags + feature importance waterfall.
-
-**Tab 2: Slate Planner** — Upload CSV of 50 films, get ranked slate with portfolio risk metrics (expected value, portfolio variance, max drawdown).
-
-**Tab 3: Backtest Explorer** — Pick any historical film, see what the engine *would have* scored it at release, vs actual outcome. This is the trust builder.
-
-## The backtest protocol (what "every commit" actually means)
-
-The CI pipeline on GitHub Actions:
-
-```yaml
-# .github/workflows/backtest.yml
-name: Full Backtest
-on: [push, pull_request]
-jobs:
-  backtest:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: iterative/setup-dvc@v1
-      - name: Pull data
-        run: dvc pull
-      - name: Train & backtest
-        run: |
-          python train.py
-          python backtest.py --full-dataset
-      - name: Check MAE regression
-        run: |
-          python -c "
-import json
-with open('metrics.json') as f:
-    m = json.load(f)
-assert m['mae'] < 0.18 * 1.02, f'MAE regression: {m[\"mae\"]}'
-"
-```
-
-The pipeline fails if MAE regresses >2% from baseline. This is the guardrail that keeps the engine honest — no "ship and pray."
-
-## What honest backtesting surfaced
-
-We run the full backtest on every model change — not a held-out slice, the entire 2,200-film dataset. Three things the logs forced us to admit:
-
-- **Some star-heavy bundles score *under* the market prior** — and the engine says so. A big cast in a thin genre doesn't guarantee a hit; the prior wins.
-- **Sequel and date signals beat cast creativity** in some timeless categories. The engine shows the effect honestly; the feature importance table doesn't lie.
-- **Failure mode: this is a *selection* engine, not a prediction oracle.** For a producer, the score helps pick; it doesn't guarantee a hit. The UI makes this boundary visible — every score shows its confidence interval.
-
-## Numbers that matter
-
-| Metric | Value |
-| --- | --- |
-| Training corpus | 2,200+ Indian films |
-| Feature groups | 10 |
-| Priors | Category base rates (genre × budget × language) |
-| Backtest cadence | Every commit |
-| Published failure points | Yes — see repo |
-| MAE (holdout) | ~18% of actual box office |
-
-The backtest results are published on the [repo](https://github.com/saswatasg/FilmRisk.AI). Anyone can re-run; no one can re-fake — the sample is pinned with a SHA.
-
-## What I'd do differently
-
-- **Ship the API before the UI.** The engine's value is a promptable scoring grid; I papered over it for a pretty Streamlit front-end.
-- **Log prior-vs-likelihood disagreement.** The most interesting films are the ones where the GBM and the prior fight — that disagreement score is a product feature I left in the logs.
-- **Widen beyond Hindi cinema sooner.** The Tamil and Telugu base rates differ enough that the language prior deserved its own hierarchy level from day one.
-
-**A model that can say "I don't know" is worth more than a model that's confidently wrong** — in film, in credit, in anything where a score moves money.
-
-For PMs: this is what *measure-before-judge* looks like when your product is literally judgment. Pair it with [numbers-led product decisioning](/blog/e-invoice-adoption-gap) for the same muscle in SaaS, or see how the same honesty-rails thinking applies to [an in-browser voice agent](/blog/topshe-browser-voice-ai).
+The implementation, benchmark and limitations are available in the [FilmRisk.AI repository](https://github.com/saswatasg/FilmRisk.AI) and its [published benchmark results](https://github.com/saswatasg/FilmRisk.AI/blob/main/src/generated/benchmark-results.json).
 
 <FAQ items={frontmatter.faq} />

@@ -22,6 +22,8 @@ const STATIC_PAGES = [
   { path: '/case-studies/cart-checkout', priority: 0.7, changefreq: 'monthly' },
   { path: '/case-studies/category-discovery', priority: 0.7, changefreq: 'monthly' },
   { path: '/case-studies/lead-form', priority: 0.7, changefreq: 'monthly' },
+  { path: '/case-studies/upcore-inventory-leveling', priority: 0.8, changefreq: 'monthly' },
+  { path: '/case-studies/upcore-discovery', priority: 0.7, changefreq: 'monthly' },
   { path: '/case-studies/upcore-lead-scoring', priority: 0.7, changefreq: 'monthly' },
   { path: '/case-studies/sierra-lead-allocation', priority: 0.6, changefreq: 'monthly' },
   { path: '/case-studies/livekeeping-compliance-gap', priority: 0.7, changefreq: 'monthly' },
@@ -111,7 +113,9 @@ async function writeFeed(posts) {
     { slug: 'cart-checkout', title: 'Cart & Checkout — –26% abandonment' },
     { slug: 'category-discovery', title: 'Category Pages — +17% conversion' },
     { slug: 'lead-form', title: 'Lead Form Overhaul — +124% submissions' },
-    { slug: 'upcore-lead-scoring', title: 'AI Lead Scoring — 75+ priority threshold' },
+    { slug: 'upcore-inventory-leveling', title: 'Inventory Leveling — Upcore client demo' },
+    { slug: 'upcore-discovery', title: 'Discovery & Solution Delivery — 23+ clients' },
+    { slug: 'upcore-lead-scoring', title: 'Lead Qualification — Five dimensions, four tiers' },
     { slug: 'sierra-lead-allocation', title: 'Lead Allocation — Gold/Silver/Bronze' },
     { slug: 'livekeeping-compliance-gap', title: 'Compliance Gap — 17:1 Tally vs LiveKeeping' },
     { slug: 'livekeeping-send-greetings', title: 'Send Greetings + Nano Banana AI' },
@@ -145,7 +149,7 @@ async function writeFeed(posts) {
   <channel>
     <title>Saswata S. Sengupta — Blog</title>
     <link>${SITE_URL}/blog</link>
-    <description>AI agents in production, e-commerce CRO, and AI-era product management — with the numbers.</description>
+    <description>Product decisions, client delivery, growth work and experiments with clear evidence boundaries.</description>
     <language>en-us</language>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
@@ -162,23 +166,24 @@ async function writeLlmsTxt(posts) {
 
   const llms = `# Saswata S. Sengupta — saswatasg.com
 
-> Product Manager (Upcore Technologies, ex-IndiaMART/Livekeeping; IIT Jodhpur MBA)
-> who builds and ships AI agents and growth products, and publishes real outcomes.
+> Product Manager (Upcore Technologies, ex-IndiaMART/LiveKeeping; IIT Jodhpur MBA)
+> who derives solutions and manages delivery, with stage-specific case studies and build notes.
 > Signature result: reduced checkout abandonment 73.1% → 53.9% (–26%).
 
 ## Key pages
 - [Home](https://saswatasg.com/): background, experience, contact
 - [About](https://saswatasg.com/about): bio, education (IIT Jodhpur MBA), resume
 - [Experience](https://saswatasg.com/experience): Upcore, Sierra Living Concepts, LiveKeeping
-- [Blog](https://saswatasg.com/blog): AI agents in production, e-commerce CRO, AI-era product management
+- [Blog](https://saswatasg.com/blog): Product decisions, growth work, client delivery and experiments
 - [Work](https://saswatasg.com/work): case studies and product work in one place
-- [Case study deep-dives](https://saswatasg.com/case-studies/cart-checkout): checkout 73%→54% and 8 more with published metrics
+- [Case study deep-dives](https://saswatasg.com/case-studies/cart-checkout): checkout, enterprise discovery, inventory planning and workflow design
 
 ## Blog posts
 ${postLines}
 
 ## Facts
-- All blog posts are grounded in first-hand shipped work with published metrics.
+- Content covers delivered work, client demos, research methods and experiments; stages and measurement scope vary.
+- At Upcore Technologies, Saswata derives solutions and manages delivery end to end for 23+ clients.
 - Signature metric: checkout abandonment reduced 73.1% → 53.9% (–26% relative).
 - Education: MBA, IIT Jodhpur (2024); B.Tech Mechanical Engineering, Jalpaiguri Government Engineering College.
 `;

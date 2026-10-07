@@ -33,6 +33,6 @@
 
   <!-- Result -->
   <rect x="40" y="320" width="720" height="70" rx="12" fill="#E85D3A" stroke="#0A0A0A" stroke-width="4"/>
-  <text x="400" y="352" font-size="18" font-weight="black" fill="#FFFFFF" text-anchor="middle">random → 90% routing accuracy · days to close 5.2 → 3.5</text>
-  <text x="400" y="380" font-size="15" font-weight="bold" fill="#FFFFFF" text-anchor="middle">~$2,000 saved per misrouted gold lead</text>
+  <text x="400" y="352" font-size="18" font-weight="black" fill="#FFFFFF" text-anchor="middle">PILOT TARGETS: 90% routing · days to close 5.2 → 3.5</text>
+  <text x="400" y="380" font-size="15" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Targets are not measured post-rollout outcomes</text>
 </svg>

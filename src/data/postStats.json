@@ -1,62 +1,62 @@
 {
+  "topshe-browser-voice-ai": {
+    "wordCount": 523,
+    "readingMinutes": 2
+  },
+  "tgb-hunt-linkedin-outreach-agent": {
+    "wordCount": 534,
+    "readingMinutes": 2
+  },
+  "dhanplan-retirement-calculator": {
+    "wordCount": 557,
+    "readingMinutes": 3
+  },
+  "ai-send-greetings-168": {
+    "wordCount": 541,
+    "readingMinutes": 2
+  },
+  "e-invoice-adoption-gap": {
+    "wordCount": 523,
+    "readingMinutes": 2
+  },
+  "discovery-to-roadmap": {
+    "wordCount": 562,
+    "readingMinutes": 3
+  },
+  "film-risk-engine": {
+    "wordCount": 539,
+    "readingMinutes": 2
+  },
+  "lead-routing-gold-silver-bronze": {
+    "wordCount": 547,
+    "readingMinutes": 2
+  },
+  "lead-form-overhaul-124": {
+    "wordCount": 1248,
+    "readingMinutes": 6
+  },
   "one-fix-a-week-cro": {
     "wordCount": 1125,
     "readingMinutes": 5
-  },
-  "lead-form-overhaul-124": {
-    "wordCount": 1215,
-    "readingMinutes": 6
-  },
-  "topshe-browser-voice-ai": {
-    "wordCount": 1224,
-    "readingMinutes": 6
-  },
-  "tgb-hunt-linkedin-outreach-agent": {
-    "wordCount": 1275,
-    "readingMinutes": 6
-  },
-  "dhanplan-retirement-calculator": {
-    "wordCount": 948,
-    "readingMinutes": 4
   },
   "data-deep-dive-method": {
     "wordCount": 905,
     "readingMinutes": 4
   },
-  "ai-send-greetings-168": {
-    "wordCount": 1077,
-    "readingMinutes": 5
-  },
-  "e-invoice-adoption-gap": {
-    "wordCount": 998,
-    "readingMinutes": 5
-  },
   "daily-report-automation": {
     "wordCount": 812,
     "readingMinutes": 4
-  },
-  "discovery-to-roadmap": {
-    "wordCount": 1168,
-    "readingMinutes": 5
   },
   "push-notification-architecture": {
     "wordCount": 1253,
     "readingMinutes": 6
   },
-  "film-risk-engine": {
-    "wordCount": 1181,
-    "readingMinutes": 5
-  },
   "category-page-redesign-plus34": {
     "wordCount": 1105,
     "readingMinutes": 5
   },
-  "lead-routing-gold-silver-bronze": {
-    "wordCount": 1523,
-    "readingMinutes": 7
-  },
   "checkout-abandonment-73-to-54": {
-    "wordCount": 1747,
+    "wordCount": 1732,
     "readingMinutes": 8
   }
 }

@@ -19,7 +19,7 @@ const RelatedPosts = ({ post, limit = 3 }) => {
               to={`/blog/${item.slug}`}
               className="group border-2 border-black rounded-2xl bg-white p-4 flex flex-col gap-2 transition-transform duration-150 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_#0A0A0A]"
             >
-              <span className={`self-start text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded ${pillarMeta.accent} text-white`}>
+              <span className={`self-start text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded ${pillarMeta.accent} text-ink`}>
                 {pillarMeta.label}
               </span>
               <h3 className="text-sm font-bold text-ink leading-snug group-hover:underline">{item.title}</h3>

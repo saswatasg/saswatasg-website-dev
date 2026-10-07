@@ -1,35 +1,36 @@
 # Saswata S. Sengupta — saswatasg.com
 
-> Product Manager (Upcore Technologies, ex-IndiaMART/Livekeeping; IIT Jodhpur MBA)
-> who builds and ships AI agents and growth products, and publishes real outcomes.
+> Product Manager (Upcore Technologies, ex-IndiaMART/LiveKeeping; IIT Jodhpur MBA)
+> who derives solutions and manages delivery, with stage-specific case studies and build notes.
 > Signature result: reduced checkout abandonment 73.1% → 53.9% (–26%).
 
 ## Key pages
 - [Home](https://saswatasg.com/): background, experience, contact
 - [About](https://saswatasg.com/about): bio, education (IIT Jodhpur MBA), resume
 - [Experience](https://saswatasg.com/experience): Upcore, Sierra Living Concepts, LiveKeeping
-- [Blog](https://saswatasg.com/blog): AI agents in production, e-commerce CRO, AI-era product management
+- [Blog](https://saswatasg.com/blog): Product decisions, growth work, client delivery and experiments
 - [Work](https://saswatasg.com/work): case studies and product work in one place
-- [Case study deep-dives](https://saswatasg.com/case-studies/cart-checkout): checkout 73%→54% and 8 more with published metrics
+- [Case study deep-dives](https://saswatasg.com/case-studies/cart-checkout): checkout, enterprise discovery, inventory planning and workflow design
 
 ## Blog posts
-- [The cheapest e-commerce CRO: ship one fix a week](https://saswatasg.com/blog/one-fix-a-week-cro): 17 boring fixes beat one big redesign. Weekly micro-forensics on checkout, forms and search — each measured — compound faster than a quarterly splash.
-- [How a form fix lifted lead submissions by 124% in 28 days](https://saswatasg.com/blog/lead-form-overhaul-124): A field-by-field form teardown with GA4 events and Clarity — one restrictive field caused 23% of drop-offs. The fix raised submissions +124% in 28 days.
-- [Topshe: voice AI that runs entirely in your browser](https://saswatasg.com/blog/topshe-browser-voice-ai): Named after Feluda's assistant, Topshe runs Qwen 2.5 in-browser via WebAssembly — wake word, research and planning tools, zero data leaves.
-- [I built my own LinkedIn outreach tool (766 commits later)](https://saswatasg.com/blog/tgb-hunt-linkedin-outreach-agent): TGB Hunt: a self-hosted, open-source agent that finds recruiters, drafts intros, and never sends without my approval. 766 commits, GPLv3.
-- [DhanPlan: a retirement calculator that speaks Indian finance](https://saswatasg.com/blog/dhanplan-retirement-calculator): Building a calculator where SIP/EPF/PPF/NPS and FIRE are first-class citizens — product choices from projections to inflation. Design, scope, and tests.
-- [The data deep-dive: 480K sessions to three real problems](https://saswatasg.com/blog/data-deep-dive-method): The method behind the Sierra checkout teardown: instrument the funnel first, form ranked hypotheses second, never optimize an unmeasured funnel.
+- [Topshe: a local browser model, with clear boundaries](https://saswatasg.com/blog/topshe-browser-voice-ai): Building a browser-local language-model experiment, while separating model privacy from speech APIs and planned integrations.
+- [TGB Hunt: outreach workflows and automation limits](https://saswatasg.com/blog/tgb-hunt-linkedin-outreach-agent): A self-hosted outreach experiment: task orchestration, campaign state and the limits of automated platform actions.
+- [DhanPlan: monthly planning with visible assumptions](https://saswatasg.com/blog/dhanplan-retirement-calculator): How DhanPlan connects Indian savings instruments, retirement withdrawals, gap-solving and stress scenarios in a versioned monthly model.
 - [AI image greetings lifted feature engagement by 168%](https://saswatasg.com/blog/ai-send-greetings-168): A dormant 'Send Greetings' feature, an image-gen model, and a festival calendar across 27 occasions — feature engagement up 168% at LiveKeeping.
-- [The 17:1 e-way bill gap: diagnosing B2B adoption](https://saswatasg.com/blog/e-invoice-adoption-gap): Why PRO+ users generated bills in Tally, not in-app — a two-week diagnostic that uncovered a 17:1 gap and changed the roadmap at C-suite level.
+- [The 17:1 e-way bill gap: diagnosing B2B adoption](https://saswatasg.com/blog/e-invoice-adoption-gap): A workflow investigation at LiveKeeping identified 17:1 and 19:1 adoption gaps and informed executive product discussions.
+- [Discovery that continues into solution delivery](https://saswatasg.com/blog/discovery-to-roadmap): Building discovery at Upcore Technologies: structured research, opportunity prioritization and end-to-end solution delivery ownership for 23+ clients.
+- [FilmRisk.AI: what a weak backtest changed](https://saswatasg.com/blog/film-risk-engine): A film-risk experiment with temporal validation, weak baseline comparisons and explicit data limits. What the evaluation changed.
+- [Lead routing: observed signals and explicit pilot targets](https://saswatasg.com/blog/lead-routing-gold-silver-bronze): Designing a tiered lead-allocation system at Sierra Living Concepts, separating observed source performance from pilot targets.
+- [How a form fix lifted lead submissions by 124% in 28 days](https://saswatasg.com/blog/lead-form-overhaul-124): A field-by-field form teardown with GA4 events and Clarity — one restrictive field caused 23% of drop-offs. The fix raised submissions +124% in 28 days.
+- [The cheapest e-commerce CRO: ship one fix a week](https://saswatasg.com/blog/one-fix-a-week-cro): 17 boring fixes beat one big redesign. Weekly micro-forensics on checkout, forms and search — each measured — compound faster than a quarterly splash.
+- [The data deep-dive: 480K sessions to three real problems](https://saswatasg.com/blog/data-deep-dive-method): The method behind the Sierra checkout teardown: instrument the funnel first, form ranked hypotheses second, never optimize an unmeasured funnel.
 - [Daily report automation: 3 sources, 88 rows, 11 AM](https://saswatasg.com/blog/daily-report-automation): A Google Apps Script pipeline unifying Kibana, MongoDB, and GA4 into one auto-populated report — what white-collar automation really costs.
-- [20+ discovery calls to a top-3 roadmap brief](https://saswatasg.com/blog/discovery-to-roadmap): At Upcore I ran 20+ prospect interviews across 12 verticals; the output was a prioritized opportunity brief with top-3 use cases.
 - [27 push notification triggers, 5 regions, one architecture](https://saswatasg.com/blog/push-notification-architecture): Designing a notification system across renewals, transactional states, and conflict logic — with priority tiers and a daily cap users don't hate.
-- [FilmRisk.AI: scoring film risk with ML and Bayesian priors](https://saswatasg.com/blog/film-risk-engine): A 2,200-film dataset, gradient-boosted ML plus Bayesian priors, and a scoring engine that backtests itself. I built FilmRisk.AI — the failures included.
 - [Category page redesign that added +34% qualified leads](https://saswatasg.com/blog/category-page-redesign-plus34): Story-led category journeys beat commodity grids: +17% PDP clicks, +34% qualified leads, −16% bounce in a 4-week sprint at Sierra.
-- [Gold/silver/bronze lead routing that cut days to close](https://saswatasg.com/blog/lead-routing-gold-silver-bronze): Sierra routed every lead the same way until the data said otherwise: web forms 63.5% CVR, cart abandonment 0.4%. A tiered router fixed the queue.
 - [How we cut checkout abandonment from 73.1% to 53.9%](https://saswatasg.com/blog/checkout-abandonment-73-to-54): A 480K-session teardown: three separate checkout problems hidden behind one dashboard number, three targeted fixes, two sprints — −26% abandonment.
 
 ## Facts
-- All blog posts are grounded in first-hand shipped work with published metrics.
+- Content covers delivered work, client demos, research methods and experiments; stages and measurement scope vary.
+- At Upcore Technologies, Saswata derives solutions and manages delivery end to end for 23+ clients.
 - Signature metric: checkout abandonment reduced 73.1% → 53.9% (–26% relative).
 - Education: MBA, IIT Jodhpur (2024); B.Tech Mechanical Engineering, Jalpaiguri Government Engineering College.

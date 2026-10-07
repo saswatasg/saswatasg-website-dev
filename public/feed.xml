@@ -3,57 +3,33 @@
   <channel>
     <title>Saswata S. Sengupta — Blog</title>
     <link>https://saswatasg.com/blog</link>
-    <description>AI agents in production, e-commerce CRO, and AI-era product management — with the numbers.</description>
+    <description>Product decisions, client delivery, growth work and experiments with clear evidence boundaries.</description>
     <language>en-us</language>
     <atom:link href="https://saswatasg.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 06 Oct 2026 16:20:05 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 09:28:04 GMT</lastBuildDate>
     <item>
-      <title><![CDATA[The cheapest e-commerce CRO: ship one fix a week]]></title>
-      <link>https://saswatasg.com/blog/one-fix-a-week-cro</link>
-      <guid isPermaLink="true">https://saswatasg.com/blog/one-fix-a-week-cro</guid>
-      <description><![CDATA[17 boring fixes beat one big redesign. Weekly micro-forensics on checkout, forms and search — each measured — compound faster than a quarterly splash.]]></description>
-      <category>Blog</category>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[How a form fix lifted lead submissions by 124% in 28 days]]></title>
-      <link>https://saswatasg.com/blog/lead-form-overhaul-124</link>
-      <guid isPermaLink="true">https://saswatasg.com/blog/lead-form-overhaul-124</guid>
-      <description><![CDATA[A field-by-field form teardown with GA4 events and Clarity — one restrictive field caused 23% of drop-offs. The fix raised submissions +124% in 28 days.]]></description>
-      <category>Blog</category>
-      <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Topshe: voice AI that runs entirely in your browser]]></title>
+      <title><![CDATA[Topshe: a local browser model, with clear boundaries]]></title>
       <link>https://saswatasg.com/blog/topshe-browser-voice-ai</link>
       <guid isPermaLink="true">https://saswatasg.com/blog/topshe-browser-voice-ai</guid>
-      <description><![CDATA[Named after Feluda's assistant, Topshe runs Qwen 2.5 in-browser via WebAssembly — wake word, research and planning tools, zero data leaves.]]></description>
+      <description><![CDATA[Building a browser-local language-model experiment, while separating model privacy from speech APIs and planned integrations.]]></description>
       <category>Blog</category>
       <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
-      <title><![CDATA[I built my own LinkedIn outreach tool (766 commits later)]]></title>
+      <title><![CDATA[TGB Hunt: outreach workflows and automation limits]]></title>
       <link>https://saswatasg.com/blog/tgb-hunt-linkedin-outreach-agent</link>
       <guid isPermaLink="true">https://saswatasg.com/blog/tgb-hunt-linkedin-outreach-agent</guid>
-      <description><![CDATA[TGB Hunt: a self-hosted, open-source agent that finds recruiters, drafts intros, and never sends without my approval. 766 commits, GPLv3.]]></description>
+      <description><![CDATA[A self-hosted outreach experiment: task orchestration, campaign state and the limits of automated platform actions.]]></description>
       <category>Blog</category>
       <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
-      <title><![CDATA[DhanPlan: a retirement calculator that speaks Indian finance]]></title>
+      <title><![CDATA[DhanPlan: monthly planning with visible assumptions]]></title>
       <link>https://saswatasg.com/blog/dhanplan-retirement-calculator</link>
       <guid isPermaLink="true">https://saswatasg.com/blog/dhanplan-retirement-calculator</guid>
-      <description><![CDATA[Building a calculator where SIP/EPF/PPF/NPS and FIRE are first-class citizens — product choices from projections to inflation. Design, scope, and tests.]]></description>
+      <description><![CDATA[How DhanPlan connects Indian savings instruments, retirement withdrawals, gap-solving and stress scenarios in a versioned monthly model.]]></description>
       <category>Blog</category>
       <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[The data deep-dive: 480K sessions to three real problems]]></title>
-      <link>https://saswatasg.com/blog/data-deep-dive-method</link>
-      <guid isPermaLink="true">https://saswatasg.com/blog/data-deep-dive-method</guid>
-      <description><![CDATA[The method behind the Sierra checkout teardown: instrument the funnel first, form ranked hypotheses second, never optimize an unmeasured funnel.]]></description>
-      <category>Blog</category>
-      <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[AI image greetings lifted feature engagement by 168%]]></title>
@@ -67,9 +43,57 @@
       <title><![CDATA[The 17:1 e-way bill gap: diagnosing B2B adoption]]></title>
       <link>https://saswatasg.com/blog/e-invoice-adoption-gap</link>
       <guid isPermaLink="true">https://saswatasg.com/blog/e-invoice-adoption-gap</guid>
-      <description><![CDATA[Why PRO+ users generated bills in Tally, not in-app — a two-week diagnostic that uncovered a 17:1 gap and changed the roadmap at C-suite level.]]></description>
+      <description><![CDATA[A workflow investigation at LiveKeeping identified 17:1 and 19:1 adoption gaps and informed executive product discussions.]]></description>
       <category>Blog</category>
       <pubDate>Tue, 26 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Discovery that continues into solution delivery]]></title>
+      <link>https://saswatasg.com/blog/discovery-to-roadmap</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/discovery-to-roadmap</guid>
+      <description><![CDATA[Building discovery at Upcore Technologies: structured research, opportunity prioritization and end-to-end solution delivery ownership for 23+ clients.]]></description>
+      <category>Blog</category>
+      <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[FilmRisk.AI: what a weak backtest changed]]></title>
+      <link>https://saswatasg.com/blog/film-risk-engine</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/film-risk-engine</guid>
+      <description><![CDATA[A film-risk experiment with temporal validation, weak baseline comparisons and explicit data limits. What the evaluation changed.]]></description>
+      <category>Blog</category>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Lead routing: observed signals and explicit pilot targets]]></title>
+      <link>https://saswatasg.com/blog/lead-routing-gold-silver-bronze</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/lead-routing-gold-silver-bronze</guid>
+      <description><![CDATA[Designing a tiered lead-allocation system at Sierra Living Concepts, separating observed source performance from pilot targets.]]></description>
+      <category>Blog</category>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[How a form fix lifted lead submissions by 124% in 28 days]]></title>
+      <link>https://saswatasg.com/blog/lead-form-overhaul-124</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/lead-form-overhaul-124</guid>
+      <description><![CDATA[A field-by-field form teardown with GA4 events and Clarity — one restrictive field caused 23% of drop-offs. The fix raised submissions +124% in 28 days.]]></description>
+      <category>Blog</category>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[The cheapest e-commerce CRO: ship one fix a week]]></title>
+      <link>https://saswatasg.com/blog/one-fix-a-week-cro</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/one-fix-a-week-cro</guid>
+      <description><![CDATA[17 boring fixes beat one big redesign. Weekly micro-forensics on checkout, forms and search — each measured — compound faster than a quarterly splash.]]></description>
+      <category>Blog</category>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[The data deep-dive: 480K sessions to three real problems]]></title>
+      <link>https://saswatasg.com/blog/data-deep-dive-method</link>
+      <guid isPermaLink="true">https://saswatasg.com/blog/data-deep-dive-method</guid>
+      <description><![CDATA[The method behind the Sierra checkout teardown: instrument the funnel first, form ranked hypotheses second, never optimize an unmeasured funnel.]]></description>
+      <category>Blog</category>
+      <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Daily report automation: 3 sources, 88 rows, 11 AM]]></title>
@@ -80,14 +104,6 @@
       <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
-      <title><![CDATA[20+ discovery calls to a top-3 roadmap brief]]></title>
-      <link>https://saswatasg.com/blog/discovery-to-roadmap</link>
-      <guid isPermaLink="true">https://saswatasg.com/blog/discovery-to-roadmap</guid>
-      <description><![CDATA[At Upcore I ran 20+ prospect interviews across 12 verticals; the output was a prioritized opportunity brief with top-3 use cases.]]></description>
-      <category>Blog</category>
-      <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
       <title><![CDATA[27 push notification triggers, 5 regions, one architecture]]></title>
       <link>https://saswatasg.com/blog/push-notification-architecture</link>
       <guid isPermaLink="true">https://saswatasg.com/blog/push-notification-architecture</guid>
@@ -96,28 +112,12 @@
       <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
-      <title><![CDATA[FilmRisk.AI: scoring film risk with ML and Bayesian priors]]></title>
-      <link>https://saswatasg.com/blog/film-risk-engine</link>
-      <guid isPermaLink="true">https://saswatasg.com/blog/film-risk-engine</guid>
-      <description><![CDATA[A 2,200-film dataset, gradient-boosted ML plus Bayesian priors, and a scoring engine that backtests itself. I built FilmRisk.AI — the failures included.]]></description>
-      <category>Blog</category>
-      <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
       <title><![CDATA[Category page redesign that added +34% qualified leads]]></title>
       <link>https://saswatasg.com/blog/category-page-redesign-plus34</link>
       <guid isPermaLink="true">https://saswatasg.com/blog/category-page-redesign-plus34</guid>
       <description><![CDATA[Story-led category journeys beat commodity grids: +17% PDP clicks, +34% qualified leads, −16% bounce in a 4-week sprint at Sierra.]]></description>
       <category>Blog</category>
       <pubDate>Thu, 09 Apr 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Gold/silver/bronze lead routing that cut days to close]]></title>
-      <link>https://saswatasg.com/blog/lead-routing-gold-silver-bronze</link>
-      <guid isPermaLink="true">https://saswatasg.com/blog/lead-routing-gold-silver-bronze</guid>
-      <description><![CDATA[Sierra routed every lead the same way until the data said otherwise: web forms 63.5% CVR, cart abandonment 0.4%. A tiered router fixed the queue.]]></description>
-      <category>Blog</category>
-      <pubDate>Tue, 24 Mar 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[How we cut checkout abandonment from 73.1% to 53.9%]]></title>
@@ -133,7 +133,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/cart-checkout</guid>
       <description><![CDATA[Case study: Cart & Checkout — –26% abandonment]]></description>
       <category>Case Study</category>
-      <pubDate>Tue, 06 Oct 2026 16:20:05 GMT</pubDate>
+      <pubDate>Wed, 07 Oct 2026 09:28:04 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Category Pages — +17% conversion]]></title>
@@ -141,7 +141,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/category-discovery</guid>
       <description><![CDATA[Case study: Category Pages — +17% conversion]]></description>
       <category>Case Study</category>
-      <pubDate>Tue, 06 Oct 2026 16:20:05 GMT</pubDate>
+      <pubDate>Wed, 07 Oct 2026 09:28:04 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Lead Form Overhaul — +124% submissions]]></title>
@@ -149,15 +149,31 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/lead-form</guid>
       <description><![CDATA[Case study: Lead Form Overhaul — +124% submissions]]></description>
       <category>Case Study</category>
-      <pubDate>Tue, 06 Oct 2026 16:20:05 GMT</pubDate>
+      <pubDate>Wed, 07 Oct 2026 09:28:04 GMT</pubDate>
     </item>
     <item>
-      <title><![CDATA[AI Lead Scoring — 75+ priority threshold]]></title>
+      <title><![CDATA[Inventory Leveling — Upcore client demo]]></title>
+      <link>https://saswatasg.com/case-studies/upcore-inventory-leveling</link>
+      <guid isPermaLink="true">https://saswatasg.com/case-studies/upcore-inventory-leveling</guid>
+      <description><![CDATA[Case study: Inventory Leveling — Upcore client demo]]></description>
+      <category>Case Study</category>
+      <pubDate>Wed, 07 Oct 2026 09:28:04 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Discovery & Solution Delivery — 23+ clients]]></title>
+      <link>https://saswatasg.com/case-studies/upcore-discovery</link>
+      <guid isPermaLink="true">https://saswatasg.com/case-studies/upcore-discovery</guid>
+      <description><![CDATA[Case study: Discovery & Solution Delivery — 23+ clients]]></description>
+      <category>Case Study</category>
+      <pubDate>Wed, 07 Oct 2026 09:28:04 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Lead Qualification — Five dimensions, four tiers]]></title>
       <link>https://saswatasg.com/case-studies/upcore-lead-scoring</link>
       <guid isPermaLink="true">https://saswatasg.com/case-studies/upcore-lead-scoring</guid>
-      <description><![CDATA[Case study: AI Lead Scoring — 75+ priority threshold]]></description>
+      <description><![CDATA[Case study: Lead Qualification — Five dimensions, four tiers]]></description>
       <category>Case Study</category>
-      <pubDate>Tue, 06 Oct 2026 16:20:05 GMT</pubDate>
+      <pubDate>Wed, 07 Oct 2026 09:28:04 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Lead Allocation — Gold/Silver/Bronze]]></title>
@@ -165,7 +181,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/sierra-lead-allocation</guid>
       <description><![CDATA[Case study: Lead Allocation — Gold/Silver/Bronze]]></description>
       <category>Case Study</category>
-      <pubDate>Tue, 06 Oct 2026 16:20:05 GMT</pubDate>
+      <pubDate>Wed, 07 Oct 2026 09:28:04 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Compliance Gap — 17:1 Tally vs LiveKeeping]]></title>
@@ -173,7 +189,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/livekeeping-compliance-gap</guid>
       <description><![CDATA[Case study: Compliance Gap — 17:1 Tally vs LiveKeeping]]></description>
       <category>Case Study</category>
-      <pubDate>Tue, 06 Oct 2026 16:20:05 GMT</pubDate>
+      <pubDate>Wed, 07 Oct 2026 09:28:04 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Send Greetings + Nano Banana AI]]></title>
@@ -181,7 +197,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/livekeeping-send-greetings</guid>
       <description><![CDATA[Case study: Send Greetings + Nano Banana AI]]></description>
       <category>Case Study</category>
-      <pubDate>Tue, 06 Oct 2026 16:20:05 GMT</pubDate>
+      <pubDate>Wed, 07 Oct 2026 09:28:04 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Push Notification Architecture]]></title>
@@ -189,7 +205,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/livekeeping-notifications</guid>
       <description><![CDATA[Case study: Push Notification Architecture]]></description>
       <category>Case Study</category>
-      <pubDate>Tue, 06 Oct 2026 16:20:05 GMT</pubDate>
+      <pubDate>Wed, 07 Oct 2026 09:28:04 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Daily Report Automation]]></title>
@@ -197,7 +213,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/livekeeping-report-automation</guid>
       <description><![CDATA[Case study: Daily Report Automation]]></description>
       <category>Case Study</category>
-      <pubDate>Tue, 06 Oct 2026 16:20:05 GMT</pubDate>
+      <pubDate>Wed, 07 Oct 2026 09:28:04 GMT</pubDate>
     </item>
   </channel>
 </rss>

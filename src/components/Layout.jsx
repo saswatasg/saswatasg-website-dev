@@ -1,19 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import Header from "@/components/worlds/WorldHeader";
-import { Link } from "react-router-dom";
-import { useWorld } from "@/contexts/WorldContext";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import CreativeHeader, { ModeSelector } from "@/components/worlds/WorldHeader";
+import CreativeFooter from "@/components/worlds/CreativeFooter";
 import WorldMotion from "@/components/worlds/WorldMotion";
-import CaseStudyGuide from "@/components/worlds/CaseStudyGuide";
-
+import WorkbenchMotion from "@/components/workbench/WorkbenchMotion";
+import { useWorld } from "@/contexts/WorldContext";
+import { Link } from "react-router-dom";
 import WhatsAppModal from "@/components/WhatsAppModal";
 import CaseStudyPopup from "@/components/CaseStudyPopup";
 import { Toaster } from "@/components/ui/toaster";
 import { trackEvent } from "@/utils/analytics";
 
+const CreativeScope = ({ active, children }) =>
+  active ? <div className="creative-shell">{children}</div> : children;
+
 const Layout = ({ children }) => {
-  const { world, transitioning } = useWorld();
+  const { world } = useWorld();
+  const creative = world !== "workbench";
   const [popupSlug, setPopupSlug] = useState(null);
   const location = useLocation();
   const maxScroll = useRef(0);
@@ -53,99 +59,67 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <div
-      className={`world-shell ${world || "entrance"}`}
-      data-world={world || "entrance"}
-    >
-      <a
-        href="#main-content"
-        className="skip-link hover:bg-ink hover:text-white transition-colors duration-200"
-      >
-        Skip to main content
-      </a>
-      {world && <Header />}
-      <WorldMotion />
-      <AnimatePresence>
-        {transitioning && (
-          <motion.div
-            className={`world-curtain curtain-${transitioning}`}
-            aria-hidden="true"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            exit={{ scaleX: 0 }}
-            transition={{ duration: 0.32, ease: [0.76, 0, 0.24, 1] }}
+    <MotionConfig reducedMotion={creative ? "never" : "user"}>
+      <CreativeScope active={creative}>
+        <div
+          className={
+            creative
+              ? `world-shell ${world || "entrance"} min-h-screen flex flex-col`
+              : "workbench-shell min-h-screen flex flex-col"
+          }
+          data-world={world || "entrance"}
+          data-page-type={location.pathname === "/workbench" ? "home" : "page"}
+        >
+          <a
+            href="#main-content"
+            className="skip-link hover:bg-ink hover:text-white transition-colors duration-200"
           >
-            <span>
-              {transitioning === "adda"
-                ? "A little curiosity."
-                : "Let’s build something."}
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <main
-        key={location.pathname + location.search}
-        tabIndex={-1}
-        id="main-content"
-        className={`flex-grow flex flex-col route-content ${location.pathname.startsWith("/case-studies/") ? "case-study-page" : ""}`}
-      >
-        {location.pathname.startsWith("/case-studies/") && <CaseStudyGuide />}
-        {children}
-      </main>
-      <WhatsAppModal />
-      <AnimatePresence>
-        {popupSlug && (
-          <motion.div
-            key={popupSlug}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-          >
-            <CaseStudyPopup
-              slug={popupSlug}
-              onClose={() => setPopupSlug(null)}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-      {world && (
-        <footer className="world-footer">
-          <div>
-            <Link to={world === "adda" ? "/adda" : "/workbench"}>
-              Saswata S. Sengupta
-            </Link>
-            <p>Different lenses. Same curiosity.</p>
-          </div>
-          <nav aria-label="Footer navigation">
-            <Link to="/">Back to the split entrance ↔</Link>
-            {world === "adda" ? (
-              <>
-                <Link to="/photography">Photography</Link>
-                <Link to="/writing">Writing</Link>
-                <Link to="/cinema">Cinema</Link>
-                <Link to="/adda/about">About</Link>
-              </>
-            ) : (
-              <>
-                <Link to="/experience">Career</Link>
-                <Link to="/roadmap">Roadmap</Link>
-                <Link to="/about">Profile</Link>
-                <Link to="/work">Work</Link>
-              </>
+            Skip to main content
+          </a>
+          {world === "workbench" ? (
+            <Header />
+          ) : world === "adda" ? (
+            <CreativeHeader />
+          ) : null}
+          {creative && <WorldMotion />}
+          {world === "workbench" && <WorkbenchMotion />}
+          <main id="main-content" className="flex-grow flex flex-col">
+            {children}
+          </main>
+          <WhatsAppModal />
+          <AnimatePresence>
+            {popupSlug && (
+              <motion.div
+                key={popupSlug}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
+              >
+                <CaseStudyPopup
+                  slug={popupSlug}
+                  onClose={() => setPopupSlug(null)}
+                />
+              </motion.div>
             )}
-            <Link to={world === "adda" ? "/contact?world=adda" : "/contact"}>
-              Contact ↗
-            </Link>
-            <a href="/assets/Saswata_Sengupta.vcf" download>
-              Save contact ↓
-            </a>
-          </nav>
-          <small>© {new Date().getFullYear()} / KOLKATA, INDIA</small>
-        </footer>
-      )}
-      <Toaster />
-    </div>
+          </AnimatePresence>
+          {world === "workbench" ? (
+            <Footer />
+          ) : world === "adda" ? (
+            <CreativeFooter />
+          ) : null}
+          {world === "adda" && (
+            <div className="two-world-dock">
+              <ModeSelector />
+              <Link to="/" aria-label="Back to the split entrance">
+                ↔
+              </Link>
+            </div>
+          )}
+          <Toaster />
+        </div>
+      </CreativeScope>
+    </MotionConfig>
   );
 };
 

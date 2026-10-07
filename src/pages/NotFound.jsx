@@ -7,7 +7,7 @@ import PageMeta from '@/components/PageMeta';
 const NotFound = () => {
   return (
     <>
-      <PageMeta title="404 — Like an uninstrumented funnel | Saswata S. Sengupta" description="This page doesn't exist — like an uninstrumented funnel. The good news: the case studies do. 73%→54%, 17:1, +124% — all measured." noindex={true} />
+      <PageMeta title="Page not found | Saswata S. Sengupta" description="This page could not be found. Explore the work or return to the homepage." noindex={true} />
       <div className="min-h-[70vh] flex items-center justify-center px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,16 +20,16 @@ const NotFound = () => {
             <FileQuestion className="w-10 h-10 text-ink" />
           </div>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-ink text-white text-xs font-black border-2 border-black mb-3">
-            404 — uninstrumented
+            404 · Page not found
           </span>
           <h1 className="text-ink text-2xl md:text-3xl font-display font-black tracking-tight">
             This page doesn't exist
           </h1>
           <p className="mt-3 text-sm text-ink font-bold max-w-sm mx-auto">
-            Like an uninstrumented funnel — you can't measure what isn't there.
+            The link may have changed. Let’s get you back to the work.
           </p>
           <p className="mt-2 text-sm text-ink/60 font-medium max-w-sm mx-auto">
-            The good news: the case studies do. <span className="font-black text-ink">73%→54%, 17:1, +124%</span> — all measured, all before/after.
+            Explore case studies, client solutions and independent builds.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
             <div className="relative inline-flex group">
@@ -43,7 +43,7 @@ const NotFound = () => {
               </Link>
             </div>
             <Link
-              to="/"
+              to="/workbench"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-black rounded-lg border-2 border-black bg-white text-ink hover:bg-canvas min-h-[44px]"
             >
               <ArrowLeft className="w-4 h-4" />

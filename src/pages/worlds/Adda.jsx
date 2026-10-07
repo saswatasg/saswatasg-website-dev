@@ -1,16 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PageMeta from '@/components/PageMeta';
-import Portrait from '@/components/worlds/Portrait';
+import React from "react";
+import { Link } from "react-router-dom";
+import PageMeta from "@/components/PageMeta";
+import Portrait from "@/components/worlds/Portrait";
 import {
   Owl,
   Flower,
   FolkBorder,
   FishRule,
   AddaWordmark,
-} from '@/components/worlds/Motifs';
-import { books, photographySeries } from '@/data/creativeContent';
-import { openSourceProjects } from '@/data/projectsData';
+} from "@/components/worlds/Motifs";
+import { books, photographySeries } from "@/data/creativeContent";
+import { openSourceProjects } from "@/data/projectsData";
 export function BookPreview({ book }) {
   return (
     <article className="book-preview">
@@ -40,10 +40,10 @@ export default function Adda() {
     <div className="adda-home">
       <PageMeta
         title="Adda | Saswata S. Sengupta"
-        description="Photography, two unpublished books, cinema and Bengal. The observer’s side of Saswata S. Sengupta."
+        description="Pull up a chair at Adda, Saswata’s personal side. Little stories, a writing desk, films that linger and a little Bengal."
       />
       <FolkBorder />
-      <section className="adda-hero">
+      <section className="adda-hero shared-hero">
         <div className="adda-hero-copy">
           <p className="eyebrow">COME IN. THERE’S ROOM FOR ANOTHER STORY.</p>
           <AddaWordmark />
@@ -53,12 +53,13 @@ export default function Adda() {
             of <em>little stories.</em>
           </h1>
           <p>
-            A frame. A film. A conversation that goes on a little longer.
+            A conversation that goes on a little longer.
+            <br />
             Welcome to the other side of my workbench.
           </p>
-          <Link className="text-link" to="/adda/about">
-            Meet the observer ↗
-          </Link>
+          <a className="text-link" href="#adda-shelf">
+            Take a look around ↓
+          </a>
         </div>
         <div className="adda-portrait-wrap">
           <Flower className="portrait-flower" />
@@ -69,23 +70,31 @@ export default function Adda() {
             another lens.
           </span>
         </div>
+        <img
+          className="adda-skyline"
+          src="/assets/adda/kolkata-skyline.svg"
+          alt=""
+          aria-hidden="true"
+          width="1800"
+          height="500"
+        />
         <Owl className="adda-hero-owl" />
       </section>
       <FishRule />
-      <section className="adda-feature">
+      <section className="adda-feature shared-section" id="adda-shelf">
         <div className="editorial-heading">
           <span>01 / THROUGH THE VIEWFINDER</span>
-          <h2>Look a little longer.</h2>
+          <h2>A few things that stayed with me.</h2>
           <Link to="/photography">Photography ↗</Link>
         </div>
         <Link to={`/photography/${series.slug}`} className="featured-photo">
           <img
-            src={series.images[0].src}
+            src="/assets/adda/courtyard-study.svg"
             width="1400"
             height="900"
-            alt={series.images[0].alt}
+            alt="Concept illustration of a sunlit Kolkata courtyard"
           />
-          <span>GALLERY PREVIEW / DESIGNED PLACEHOLDER</span>
+          <span>CONCEPT ILLUSTRATION · AWAITING YOUR PHOTOGRAPHS</span>
         </Link>
         <div className="photo-note">
           <h3>A place for photographs</h3>
@@ -97,22 +106,50 @@ export default function Adda() {
         </div>
       </section>
       <FolkBorder />
-      <section className="adda-books">
+      <section className="adda-books shared-section">
         <div className="editorial-heading">
           <span>02 / ON THE WRITING DESK</span>
           <h2>Not yet on a bookshelf.</h2>
           <Link to="/writing">Two manuscripts ↗</Link>
         </div>
-        <BookPreview book={books[0]} />
+        <div className="personal-book-feature">
+          <Link
+            to="/writing"
+            className="book-cover book-one"
+            aria-label="Explore two unpublished manuscripts"
+          >
+            <span>ON THE WRITING DESK</span>
+            <Flower />
+            <strong>
+              North
+              <br />
+              Kolkata.
+            </strong>
+            <small>Working cover study · title unconfirmed</small>
+          </Link>
+          <div>
+            <p className="eyebrow">TWO UNPUBLISHED MANUSCRIPTS</p>
+            <h3>
+              Two books.
+              <br />
+              Still becoming.
+            </h3>
+            <p>A detective story in North Kolkata.</p>
+            <p>A school and a town with questions.</p>
+            <Link className="text-link" to="/writing">
+              Open the writing desk ↗
+            </Link>
+          </div>
+        </div>
       </section>
       <FishRule />
-      <section className="cinema-fragment">
+      <section className="cinema-fragment shared-section">
         <span className="eyebrow">03 / AFTER THE CREDITS</span>
         <div>
           <h2>
-            Ray. Ghosh.
+            Some films
             <br />
-            And the next frame.
+            follow you home.
           </h2>
           <p>
             Satyajit Ray and Rituparno Ghosh; plenty of Hollywood, some
@@ -127,7 +164,7 @@ export default function Adda() {
           ◉
         </span>
       </section>
-      <section className="adda-personal">
+      <section className="adda-personal shared-section">
         <Owl />
         <div>
           <p className="eyebrow">04 / THE PERSON AT THE TABLE</p>
@@ -143,6 +180,17 @@ export default function Adda() {
         </div>
       </section>
       <FolkBorder />
+      <section className="shared-section shared-contact">
+        <p className="eyebrow">আড্ডা</p>
+        <h2>
+          Another story?
+          <br />
+          <em>There’s always room.</em>
+        </h2>
+        <Link className="material-button" to="/contact?world=adda">
+          Say hello ↗
+        </Link>
+      </section>
     </div>
   );
 }
@@ -171,7 +219,7 @@ export function Writing() {
 }
 export function Cinema() {
   const projects = openSourceProjects.filter((p) =>
-    ['11 PM Cinema', 'FilmRisk.AI', 'Topshe'].includes(p.name),
+    ["11 PM Cinema", "FilmRisk.AI", "Topshe"].includes(p.name),
   );
   return (
     <div className="world-page editorial-page">
@@ -204,7 +252,7 @@ export function Cinema() {
             <p>{p.description}</p>
             <Link
               className="text-link"
-              to={`/builds#${p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+              to={`/builds#${p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
             >
               Explore the implementation at Workbench ↗
             </Link>

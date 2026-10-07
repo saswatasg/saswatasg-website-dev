@@ -1,24 +1,20 @@
 ---
-title: "DhanPlan: a retirement calculator that speaks Indian finance"
-description: "Building a calculator where SIP/EPF/PPF/NPS and FIRE are first-class citizens — product choices from projections to inflation. Design, scope, and tests."
+title: "DhanPlan: monthly planning with visible assumptions"
+description: "How DhanPlan connects Indian savings instruments, retirement withdrawals, gap-solving and stress scenarios in a versioned monthly model."
 slug: "dhanplan-retirement-calculator"
 date: 2026-07-02
-updated: 2026-08-03
-pillar: pm
-persona: career-pm
+updated: "2026-10-07"
+pillar: "pm"
 targetKeyword: "retirement calculator India"
-secondaryKeywords:
-  - "SIP calculator"
-  - "PPF calculator"
-  - "financial planning app"
-anchorProject: dhanplan
+secondaryKeywords: ["product design", "implementation evidence"]
+anchorProject: "dhanplan"
 faq:
-  - q: "What makes an Indian retirement calculator different?"
-    a: "It must model EPF, PPF, NPS, SIP, and FIRE with Indian taxation and inflation, not generic US assumptions."
-  - q: "Can a single calculator handle India's many instruments?"
-    a: "Yes — each instrument is a module with its own growth and cap assumptions, orchestrated into one plan."
-  - q: "What did building DhanPlan teach product?"
-    a: "Scope discipline: 4 well-modeled instruments beat a field soup with broken math."
+  - q: "What does the model connect?"
+    a: "Contributions, assets, maturities and retirement withdrawals in a monthly ledger, with instrument-specific assumptions."
+  - q: "Does a projection guarantee a retirement outcome?"
+    a: "No. Results depend on assumptions, taxes, returns and cash flows; stress scenarios do not guarantee future outcomes."
+  - q: "Where are the current rules and limits documented?"
+    a: "DhanPlan publishes its versioned methodology, rules review date and known limitations on the product website."
 ---
 
 import AnswerBox from '@/components/blog/AnswerBox';
@@ -26,176 +22,41 @@ import FAQ from '@/components/blog/FAQ';
 import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
-Most retirement calculators are US-bound templates with a rupee symbol. DhanPlan treats Indian instruments — SIP, EPF, PPF, NPS, FIRE — as first-class columns, each with institutional-grade assumptions. It taught me that scope discipline and honest model math beat feature ceilings.
+DhanPlan is an India-focused retirement-planning product. The current story is a monthly model connecting savings, assets and retirement withdrawals, with assumptions and limitations made visible. A projection is a scenario, not a guarantee or proof of financial-model accuracy.
 </AnswerBox>
 
-Every retirement calculator I tried asked me about my 401k. I don't have a 401k. Nobody in India has a 401k. What we have is EPF with a ₹2.5L interest-tax threshold, PPF with a 15-year lock-in, NPS with a 60/40 lumpsum-annuity split, and SIPs with step-ups — and not one mainstream calculator models any of it honestly. DhanPlan started as that irritation, and it became the clearest product lesson I've shipped: **in a financial product, the model *is* the product.**
+<Figure src="/blog-assets/audited/dhanplan-retirement-calculator.svg" alt="Assets & contributions, then Monthly ledger, then Retirement withdrawals, then Gap & stress scenarios" caption="A schematic of the documented workflow; not a measured outcome." />
 
-## The scope decision
+## A plan needs more than a final number
 
-We shipped four modules before adding anything else:
+A retirement target is useful only when someone can understand the path to it. Contributions occur over time, different instruments have different rules, assets may mature at different points and spending continues after retirement. A single compound-growth figure cannot explain all of those interactions.
 
-<Figure src="/blog-assets/dhanplan/modules.svg" alt="DhanPlan modules: SIP, EPF/PPF, NPS, FIRE — each with its own projection logic" caption="Four modules, each with institutional-grade assumptions. Scope discipline killed feature-creep in week one." />
+DhanPlan’s product direction is to connect those elements in one plan. The interface needs to communicate which inputs drive the result and which changes are meaningful. Showing a large future corpus without explaining inflation or withdrawals would make the output easier to misread.
 
-- **SIP** — equity growth with inflation-adjusted terms, step-up SIP support, XIRR output.
-- **EPF & PPF** — the two most Indian fixed instruments, with their year caps, interest-rate history, and tax treatment baked in.
-- **NPS** — the worker's savings-with-tax angle: Tier I/II, asset allocation, partial withdrawal rules.
-- **FIRE** — the retirement milestone everyone in 2026 asks for: coast FIRE, lean FIRE, fat FIRE, with real-growth math.
+## Model the sequence month by month
 
-Each module gets its own projection logic; the UI is honest that no model predicts a market.
+The published methodology for Engine 2.0.0 describes a monthly ledger with contributions, balances, instrument behavior and retirement withdrawals. The rules review date is 2 October 2026. Instruments include EPF, PPF, NPS, deposits, precious metals and property-related cash flows alongside investment assumptions.
 
-## The instrument specs (what we actually modeled)
+The point of a shared ledger is consistency across the plan. A maturity event after retirement still matters; an asset should not silently disappear because it falls outside the contribution phase. Versioning also gives a correction a visible context instead of presenting every output as timeless truth.
 
-### SIP — Systematic Investment Plan
-- **Growth engine**: equity CAGR (user input, default 12%) with inflation adjustment (default 6%)
-- **Step-up SIP**: annual increase % (default 10%), compounding on increased amount
-- **XIRR output**: calculates actual return on irregular cash flows
-- **Tax**: LTCG 10% >₹1L, STCG 15%, grandfathering (Jan 31 2018)
-- **Sources**: SEBI mutual fund regulations, AMFI historical NAVs, CBDT notifications
+## Make the gap actionable
 
-### EPF & PPF — The Fixed-Income Duo
+The gap-solving feature reruns the model to explore the contribution change needed under the selected assumptions. It is different from promising that a particular investment will achieve the target. It depends on the same return, inflation, timing and cash-flow choices as the underlying projection.
 
-| Parameter | EPF | PPF |
-|-----------|-----|-----|
-| Contribution | 12% basic + DA (employer + employee) | ₹500–1.5L/year voluntary |
-| Interest rate | EPFO declared (8.25% FY24) | Govt quarterly (7.1% Q1 FY25) |
-| Tax regime (old) | EEE | EEE |
-| Tax regime (new) | EET (interest >₹2.5L taxable) | EEE |
-| Lock-in | Retirement / 2 months unemployment | 15 years (extendable 5-yr blocks) |
-| Withdrawal | Partial: marriage, education, medical | Partial: year 7 onward (50% of balance 4 yrs prior) |
+Nominal and inflation-adjusted views answer different questions. The former describes future currency amounts; the latter helps a person think about purchasing power. An understandable product keeps that distinction visible rather than switching between them without explanation.
 
-Sources: [EPFO notifications](https://www.epfindia.gov.in/), PPF Scheme 1968 (amended), Finance Acts 2020/2023.
+## Stress the assumptions, not just the interface
 
-### NPS — National Pension System
-- **Tier I** (mandatory, tax-advantaged): 60% lumpsum (tax-free), 40% annuity (taxable)
-- **Tier II** (voluntary, no tax benefit): liquid, no lock-in
-- **Asset allocation**: Auto choice (age-based E/C/G) or Active choice (max 75% E)
-- **Partial withdrawal**: 25% of contributions after 3 years (specific purposes only)
-- **Annuity providers**: LIC, HDFC, ICICI, SBI, etc. — rates vary 5–7%
-- Source: [PFRDA regulations](https://www.pfrda.org.in/), NPS Trust circulars
+The documented stress scenarios include higher and lower assumptions and 1,000 Monte Carlo paths. These show how sensitive a plan can be to the selected inputs. Simulated paths are conditional on their modelling assumptions; they are not a complete picture of every possible future event.
 
-### FIRE — Financial Independence, Retire Early
-Four variants, each with distinct math:
-- **Coast FIRE**: invest early, stop contributing, let compounding hit target
-- **Lean FIRE**: minimal expenses (₹3–5L/yr), high savings rate (>70%)
-- **Fat FIRE**: comfortable expenses (₹15–30L/yr), lower savings rate
-- **Barista FIRE**: part-time work covers expenses, portfolio covers rest
+A helpful experience should let a user see which assumption changed and how the result moved. It should also explain when a feature is a deterministic calculation and when it is a simulated distribution. More scenarios are not automatically better if their meaning is hard to understand.
 
-Each uses: `target = annual_expenses × 25` (4% SWR) adjusted for Indian inflation (6–7% long-term).
+## Keep limitations beside the model
 
-## What made it ship
+The methodology documents limits around fees, exit costs, some tax timing and other instrument or household details. A calculator cannot infer every future household decision from a short form. The product should make exclusions discoverable and date-sensitive rules traceable to the methodology.
 
-The scoping rule was: **a feature must be defensible by two public data points.** If we couldn't cite the instrument's mechanics from an official source, it didn't ship. This killed feature-creep in week one.
+This portfolio does not claim independently verified financial accuracy, a fabricated test count or measured adoption. Those claims would need their own evidence. The delivered artifact is a live planning interface and a documented model; further verification should use reconciled fixtures and reproducible scenarios.
 
-Tests are part of the product. Breakage here loses trust along with money — we wrote **28 reconciliation tests** covering:
-
-| Test category | Count | Examples |
-|---------------|-------|----------|
-| Year-cap boundaries | 6 | EPF ₹2.5L interest threshold, PPF ₹1.5L contribution cap |
-| Tax regimes | 8 | Old vs new regime for each instrument, LTCG grandfathering |
-| Inflation scenarios | 5 | 4%, 6%, 7%, 8%, variable year-by-year |
-| Year-cap transitions | 4 | EPF interest taxability at ₹2.5L, NPS Tier I lumpsum tax |
-| FIRE variants | 5 | Coast/Lean/Fat/Barista convergence tests |
-
-Each test is a known-input → expected-output assertion against the projection engine. CI runs them on every push.
-
-## What the product taught me
-
-- **Model quality over field count.** Four truthful modules out-rank twenty wish-list fields.
-- **Tests are part of the product.** A user who can't reconcile a number won't come back.
-- **The boring math is the feature.** Inflation surfacing per row is the retention wedge.
-
-### The inflation wedge (the feature that retained users)
-
-We added a "real growth" column to every projection row: `nominal_return - inflation`. Users who saw their ₹1Cr corpus becoming ₹40L in today's money at 6% inflation over 20 years — that column drove 3× more return visits than the nominal projection alone. Mental accounting hates hidden inflation; surfacing it builds trust.
-
-## The projection engine (how the math actually runs)
-
-The engine is a pure TypeScript library — no framework dependencies, runs in browser or Node. Core abstraction:
-
-```typescript
-// projection-engine.ts
-interface Instrument {
-  project(inputs: Inputs, years: number): ProjectionRow[];
-}
-
-interface ProjectionRow {
-  year: number;
-  nominalValue: number;
-  realValue: number;        // inflation-adjusted
-  contributed: number;
-  inflationRate: number;
-  realGrowth: number;       // the retention wedge
-}
-
-class SIPEngine implements Instrument {
-  project(inputs: SIPInputs, years: number): ProjectionRow[] {
-    const rows: ProjectionRow[] = [];
-    let corpus = 0;
-    let contributed = 0;
-    
-    for (let y = 1; y <= years; y++) {
-      const monthlySIP = inputs.monthlyAmount * Math.pow(1 + inputs.stepUpRate, y - 1);
-      const annualContribution = monthlySIP * 12;
-      contributed += annualContribution;
-      
-      // Compound with inflation-adjusted return
-      const realRate = (1 + inputs.equityCAGR) / (1 + inputs.inflation) - 1;
-      corpus = corpus * (1 + inputs.equityCAGR) + annualContribution;
-      
-      const realValue = corpus / Math.pow(1 + inputs.inflation, y);
-      
-      rows.push({
-        year: y,
-        nominalValue: corpus,
-        realValue,
-        contributed,
-        inflationRate: inputs.inflation,
-        realGrowth: realValue - contributed
-      });
-    }
-    return rows;
-  }
-}
-```
-
-Each module (SIP, EPF, PPF, NPS, FIRE) implements `Instrument` with its own rules — caps, tax regimes, withdrawal rules. The orchestrator just calls `project()` on each and merges by year.
-
-## The CI pipeline (trust but verify)
-
-```yaml
-# .github/workflows/test.yml
-name: Projection Tests
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: '20' }
-      - run: npm ci
-      - run: npm test -- --coverage
-      - name: Check reconciliation
-        run: |
-          # EPF year-cap boundary
-          node -e "
-            const { EPFEngine } = require('./dist');
-            const out = new EPFEngine().project({basic: 15000, da: 5000}, 30);
-            const final = out[out.length-1];
-            // Interest cap at ₹2.5L/yr should trigger
-            console.assert(final.interestAccrued <= 250000 * 30);
-          "
-```
-
-Coverage threshold: 90% on projection logic, 100% on tax math.
-
-## What I'd do differently
-
-- **Let the modules export a plan** (CSV/JSON) before inviting login walls — export early, gate later.
-- **Carve the inflation story harder.** Users mentally undercount inflation; surfacing each row's real-growth number is the retention wedge.
-- **Build the tax comparator earlier.** Old vs new regime comparison per instrument was the #1 support query; should've been a first-class view.
-
-DhanPlan lives on the [projects page](/projects). For the product-method side, [data decisioning](/blog/data-deep-dive-method) and [scope from discovery](/blog/discovery-to-roadmap) are the PM muscle this product practices.
+The broader product lesson is to treat assumptions as part of the interface. A user should be able to inspect what a number means, change its inputs and understand where the model stops. See [DhanPlan](https://www.dhanplan.in/) and its [current methodology](https://www.dhanplan.in/methodology) for the versioned rules and limitations.
 
 <FAQ items={frontmatter.faq} />

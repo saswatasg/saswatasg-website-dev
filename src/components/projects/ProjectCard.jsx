@@ -44,7 +44,7 @@ const ProjectCard = ({ title, description, tags, result, index, caseStudyLink, c
         {caseStudyLink ? (
           <span className="text-[9px] font-black text-purple uppercase tracking-wider bg-purple/10 px-1.5 py-0.5 rounded border border-purple/30">Case study →</span>
         ) : (
-          <span className="text-[9px] font-black text-ink/40 uppercase tracking-wider bg-white/50 px-1.5 py-0.5 rounded border border-ink/15">Shipped highlight</span>
+          <span className="text-[9px] font-black text-ink/40 uppercase tracking-wider bg-white/50 px-1.5 py-0.5 rounded border border-ink/15">Project highlight</span>
         )}
       </div>
 

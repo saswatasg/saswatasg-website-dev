@@ -1,9 +1,9 @@
 ---
 title: "The 17:1 e-way bill gap: diagnosing B2B adoption"
-description: "Why PRO+ users generated bills in Tally, not in-app — a two-week diagnostic that uncovered a 17:1 gap and changed the roadmap at C-suite level."
+description: "A workflow investigation at LiveKeeping identified 17:1 and 19:1 adoption gaps and informed executive product discussions."
 slug: "e-invoice-adoption-gap"
 date: 2026-05-26
-updated: 2026-08-03
+updated: 2026-10-07
 pillar: pm
 persona: career-pm
 targetKeyword: "B2B SaaS adoption diagnosis"
@@ -26,150 +26,39 @@ import FAQ from '@/components/blog/FAQ';
 import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
-At LiveKeeping, PRO+ users generated E-Way Bills in Tally rather than in the app — a 17:1 adoption gap hiding in white noise. A two-week deep-dive diagnosis mapped the real workflow and produced a C-suite narrative so clear it changed the product roadmap.
+At LiveKeeping, investigating native compliance-feature usage revealed a 17:1 E-Way Bill gap and a 19:1 E-Invoice gap relative to external Tally-origin workflows. The work informed executive roadmap discussions. It does not establish a shipped connector or measured recovery in adoption.
 </AnswerBox>
 
-For every one merchant generating an e-way bill in our app, seventeen were generating it in Tally. We had shipped the feature, demoed it, celebrated it — and the dashboard that showed "usage" never once asked where the *other* bills were being made. A compliance SaaS with 50K+ Indian SMBs lives or dies on **where merchants actually do bookkeeping**, and the most dangerous number in B2B product is the one your analytics can't see: substitute behavior.
+<Figure src="/blog-assets/e-invoice-gap/gap.svg" alt="Reported external-to-native activity gaps of 17:1 and 19:1" caption="Reported ratios in the investigated usage context; not a market-share estimate." />
 
-## The set-up
+## Ask where the work already happens
 
-- Native **[e-way bill](https://ewaybillgst.gov.in/)** generation exists; it's a top-of-funnel "PRO+ feature" (e-way bills are mandatory for goods movement above ₹50,000 under GST)
-- Analytics showed usage, but nothing about *substitute* behavior
-- Support tickets hinted at Tally; nobody quantified it
+A feature can be available to a paying customer without becoming their preferred workflow. For an accounting product, the surrounding system matters: invoices, bookkeeping and compliance activities are connected. Looking only at the native feature funnel can miss the substitute workflow a customer already uses.
 
-## The two-step diagnosis
+My work combined analysis of API transactions, product usage and workflow context. The purpose was to understand why users with access to native modules were still generating compliance documents elsewhere. This is a product-discovery problem before it is a feature-redesign problem.
 
-**Step 1 — Workflow tracing.** We interviewed and instrumented a handful of merchants and discovered the real pattern: generation happens where the invoice lives, which is Tally for a majority.
+## Keep the ratios tied to their scope
 
-**Step 2 — Quantify the gap.** We measured **in-app vs external (Tally) generation** — and saw a **17:1 preference gap** in the revenue-month sample.
+The supplied work record reports a 17:1 E-Way Bill gap and a 19:1 E-Invoice gap, comparing external and native activity. These ratios describe the investigated usage context; they are not a market-wide share estimate or proof that seventeen times as many distinct customers rejected the product.
 
-<Figure src="/blog-assets/e-invoice-gap/gap.svg" alt="17:1 and 19:1 adoption gaps: in-app vs Tally for e-way bill and e-invoice" caption="17:1 e-way bill gap · 19:1 e-invoice gap. Same gravity, same root cause." />
+The underlying cohort table, time window and denominator are not reproduced publicly here. That limits how far a reader should generalize the result. A stronger evidence pack would show the qualifying subscriber cohort, event definitions, comparison period and treatment of repeated transactions.
 
-The same logic produced a **19:1 E-Invoice gap** — the native e-invoice module suffered the identical gravity problem. Two features, same root cause, same magnitude.
+## Translate the finding into a decision
 
-## How we actually traced the workflow
+The analysis was presented at VP and CEO level and contributed to the roadmap discussion. The important change was the framing: low feature usage needed to be understood alongside the workflow customers were already completing outside the native interface.
 
-We didn't guess. We ran a two-week sprint with three parallel tracks:
+A connector, data-transfer change or revised entry point could be options to investigate. This case does not assert that a particular middleware implementation was built, installed by 50,000 merchants or achieved a latency target. Those were unsupported additions in the earlier article and have been removed.
 
-### Track A: Merchant interviews (12 merchants, 45 min each)
-We asked them to screen-share their last E-Way Bill generation. Every single one opened Tally, not LiveKeeping. The pattern:
-- "I create the invoice in Tally → press F11 → E-Way Bill generates"
-- "Why would I switch tabs? The invoice is already here."
-- "Tally prints the bill with the invoice. One PDF."
-### Track B: Instrumentation (GA4 + custom events)
+## Separate adoption from reliability
 
-We added events to the in-app E-Way Bill flow:
+A parallel workstream analysed 100K+ API transaction logs and addressed compliance-journey errors. The supplied record reports a 58% reduction in rejection rate for that reliability work. This is a different measure from adoption: fewer rejected submissions do not establish that users moved their workflow into the native module.
 
-- `ewaybill_flow_start` → `ewaybill_form_view` → `ewaybill_submit` → `ewaybill_success`
-- Funnel showed: `2,840 starts → 1,120 form views → 340 submits → 298 successes`
-- Drop-off at form view: 60%. Users saw the form and left.
-### Track C: Support ticket + search log analysis
-- 340 tickets in 90 days mentioning "E-Way Bill" + "Tally"
-- Search queries: "Tally E-Way Bill", "import E-Way Bill from Tally", "LiveKeeping E-Way Bill not working"
-- Zero searches for "how to use LiveKeeping E-Way Bill"
+Keeping those results separate makes the case more useful. One stream asks why customers use another path; the other asks what fails when a compliance transaction is attempted. They may influence the same roadmap, but their outcomes should not be added together or treated as evidence of the same intervention.
 
-The triangulation was unambiguous: **the workflow lives in Tally**. Our feature was a detour.
+## What the public case establishes
 
-## The gravity problem
+The defensible contribution is analysis, problem framing and an executive narrative connecting feature usage to real workflows. It also shows the importance of distinguishing a diagnostic finding from a delivered solution. Further rollout claims would require release records, cohort adoption data and a measurement window.
 
-Once you see one gap, you check every feature that competes with the merchant's home system. The [e-invoice](https://einvoice1.gst.gov.in/) module showed a **19:1 gap** by the same measurement — two features, same root cause, same magnitude.
-
-### Why gravity wins
-
-E-Way Bill and E-Invoice are compliance events, not product experiences. The merchant's mental model:
-
-- **Invoice creation** → happens in Tally (daily, core workflow)
-- **Compliance generation** → happens *immediately after* invoice creation
-- **Switching context** → cost = time + error risk + mental load
-
-Our in-app feature asked them to: finish invoice in Tally → switch to LiveKeeping → re-enter or import data → generate → go back to Tally. That's 4 context switches for a 30-second task. Gravity wins.
-
-## The middleware solution (what we actually built)
-
-The pivot wasn't "improve the UI" — it was **build a Tally connector**. Here's the architecture:
-
-```
-┌─────────────┐     ┌──────────────┐     ┌────────────────┐
-│   Tally     │────▶│  Connector   │────▶│  LiveKeeping   │
-│   (on-prem) │     │  (middleware)│     │  (cloud)       │
-└─────────────┘     └──────────────┘     └────────────────┘
-       │                    │                    │
-       ▼                    ▼                    ▼
-  Invoice XML          Transform &           E-Way Bill/
-  (Tally format)       Validate              E-Invoice API
-```
-
-**The connector** — a lightweight Windows service (C# .NET 6) that merchants install alongside Tally:
-
-```csharp
-// Connector service — simplified
-public class TallyConnector : BackgroundService
-{
-    private readonly HttpClient _http;
-    private readonly TallyXmlParser _parser;
-    private readonly LiveKeepingApi _api;
-
-    protected override async Task ExecuteAsync(CancellationToken ct)
-    {
-        while (!ct.IsCancellationRequested)
-        {
-            var invoices = await _parser.WatchForNewInvoicesAsync(ct);
-            foreach (var invoice in invoices)
-            {
-                var ewayBill = await _api.GenerateEwayBillAsync(invoice);
-                await _parser.WriteBackToTallyAsync(invoice.Id, ewayBill);
-                
-                var einvoice = await _api.GenerateEinvoiceAsync(invoice);
-                await _parser.WriteBackToTallyAsync(invoice.Id, einvoice);
-            }
-            await Task.Delay(TimeSpan.FromMinutes(5), ct);
-        }
-    }
-}
-```
-
-**Key design decisions:**
-
-- **Push, not pull** — The connector watches Tally's data folder for new invoice XML files. No polling Tally's ODBC (slow, fragile).
-- **Idempotency** — Every invoice gets a UUID. Re-processing the same XML is safe.
-- **Offline-first** — If LiveKeeping API is down, the connector queues locally (SQLite) and retries with exponential backoff.
-- **Zero-config for merchants** — Auto-discovers Tally data path from registry. One-click install.
-
-## The rollout (how we got 50K+ merchants on the connector)
-
-We didn't push to everyone at once. The rollout:
-
-| Phase | Merchants | Duration | Success criteria |
-|-------|-----------|----------|------------------|
-| Alpha | 50 (hand-picked) | 2 weeks | 95% success rate, under 2 min latency |
-| Beta | 500 (opt-in) | 4 weeks | 98% success, under 1 min latency |
-| Gradual | 5,000 (cohort) | 6 weeks | 99% success, under 30 sec latency |
-| General | 50,000+ | 8 weeks | 99.5% success, under 15 sec latency |
-
-**The alpha feedback that changed everything:**
-- "It works, but my antivirus flags the installer" → Signed the binary with EV certificate
-- "Tally crashes when connector runs" → Added Tally version detection, graceful fallback
-- "I need to see failures in Tally" → Added Tally-side log viewer (F12 in Tally)
-
-## The result
-
-| Metric | Before | After |
-| --- | --- | --- |
-| E-way bill adoption gap | 17:1 (Tally:in-app) | **Roadmap pivoted to middleware** |
-| E-invoice adoption gap | 19:1 (Tally:in-app) | **Same pivot** |
-| C-Suite escalation | none | **Funded middleware path** |
-| Rejection rate (compliance) | baseline | **−58%** (rejection reasons tracked) |
-| Connector install rate | — | **87% of PRO+** |
-| Avg generation latency | — | **12 seconds** |
-
-## What I'd do differently
-
-- **Run the workflow trace before the honeymoon.** We found Tally-origin volume after the feature demo.
-- **Report the two numbers together.** A 17:1 and a 19:1 in one slide is a stark picture; I'd raise it in the first measurement pass, not after.
-- **Build the connector as the MVP.** The native feature was never the product; the connector was.
-
-**Adoption isn't a feature problem — it's a workflow problem. Users don't switch tools; they extend the one their day already lives in.**
-
-Read the whole story in the [compliance gap case study](/case-studies/livekeeping-compliance-gap). The same instrument-first habit runs through [the data deep-dive method](/blog/data-deep-dive-method), and the lifecycle side of this product is in [the push notification architecture](/blog/push-notification-architecture).
+For the product context, see the official [E-Way Bill portal](https://ewaybillgst.gov.in/) and the [full compliance-discovery case](/case-studies/livekeeping-compliance-gap). The lesson is to measure the work customers are completing, not simply the interface they are declining to use.
 
 <FAQ items={frontmatter.faq} />

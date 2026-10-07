@@ -21,6 +21,8 @@ const ROUTES = [
   "/case-studies/cart-checkout",
   "/case-studies/category-discovery",
   "/case-studies/lead-form",
+  "/case-studies/upcore-inventory-leveling",
+  "/case-studies/upcore-discovery",
   "/case-studies/upcore-lead-scoring",
   "/case-studies/sierra-lead-allocation",
   "/case-studies/livekeeping-compliance-gap",

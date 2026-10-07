@@ -6,35 +6,15 @@ export default function PortraitBackdrop({ world }) {
       {world === "workbench" ? (
         <>
           <defs>
-            <pattern
-              id="portrait-grid"
-              width="25"
-              height="25"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M25 0H0V25"
-                fill="none"
-                stroke="#d5ff62"
-                strokeOpacity=".12"
-              />
-            </pattern>
+            <linearGradient id="portrait-warm" x2="1" y2="1">
+              <stop stopColor="#ffdfa8" />
+              <stop offset="1" stopColor="#f0b797" />
+            </linearGradient>
           </defs>
-          <path fill="#171d20" d="M0 0h400v400H0z" />
-          <path fill="url(#portrait-grid)" d="M0 0h400v400H0z" />
-          <circle cx="202" cy="178" r="146" fill="#d5ff62" />
-          <g fill="none" stroke="#d5ff62">
-            <circle cx="202" cy="178" r="165" strokeOpacity=".5" />
-            <path
-              d="M8 178h35m318 0h31M202 5v16M25 36h45V14M330 14v22h45M16 335h38v38M345 373v-38h38"
-              strokeWidth="2"
-            />
-            <path d="M316 60h52v58M32 250h35v35" strokeDasharray="4 5" />
-          </g>
-          <g fill="#d5ff62">
-            <circle cx="42" cy="95" r="4" />
-            <circle cx="358" cy="251" r="4" />
-            <path d="M20 195h20v3H20zm9-9h3v20h-3M360 130h20v3h-20zm9-9h3v20h-3" />
+          <path fill="url(#portrait-warm)" d="M0 0h400v400H0z" />
+          <g fill="none" stroke="#b74224" opacity=".25">
+            <circle cx="200" cy="190" r="175" />
+            <circle cx="200" cy="190" r="155" strokeDasharray="3 8" />
           </g>
         </>
       ) : (

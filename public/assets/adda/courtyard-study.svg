@@ -1,0 +1,38 @@
+<svg
+                  viewBox="0 0 600 480"
+                  xmlns="http://www.w3.org/2000/svg" role="img"
+                  aria-label="Concept illustration of a sunlit Kolkata courtyard"
+                >
+                  <defs>
+                    <linearGradient id="court-light" x2="1" y2="1">
+                      <stop stop-color="#e4b17e" />
+                      <stop offset="1" stop-color="#814b3b" />
+                    </linearGradient>
+                  </defs>
+                  <path fill="url(#court-light)" d="M0 0h600v480H0z" />
+                  <path fill="#d8a078" d="M0 0h140v480H0zM460 0h140v480H460z" />
+                  <path fill="#273e38" d="M165 180q135-190 270 0v230H165z" />
+                  <path fill="#e3b891" d="M180 186q120-170 240 0v220H180z" />
+                  <path fill="#293d35" d="M207 198q94-120 186 0v208H207z" />
+                  <path fill="#ac6a4b" d="M0 405h600v75H0z" />
+                  <path
+                    fill="#dbac81"
+                    d="M70 380h460v22H70zM50 415h500v18H50zM25 455h550v20H25z"
+                  />
+                  <g fill="#3c5145">
+                    <path d="M42 45h60v155H42zM498 45h60v155H498z" />
+                  </g>
+                  <g stroke="#d29d71" stroke-width="5">
+                    <path d="M72 45v155M42 100h60M528 45v155M498 100h60" />
+                  </g>
+                  <path
+                    fill="#efc995"
+                    opacity=".6"
+                    d="M142 0h168l190 480H296z"
+                  />
+                  <path fill="#203c30" d="M0 320q65-95 97-120q-4 116-65 154z" />
+                  <path
+                    fill="#2b4434"
+                    d="M55 396q-12-115 40-178q30 88-9 174z"
+                  /></svg
+                >

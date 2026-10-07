@@ -10,6 +10,8 @@ import React, {
 } from "react";
 import { useLocation, useNavigate, useNavigationType } from "react-router-dom";
 
+import { navigateWithTransition } from "@/utils/worldTransition";
+
 const WorldContext = createContext(null);
 export function resolveWorld(path, search = "") {
   if (path === "/") return null;
@@ -145,10 +147,14 @@ export function WorldProvider({ children }) {
     }
     const next = destination(target);
     setTransitioning(target);
-    switchTimers.current = [
-      setTimeout(() => navigate(next, { state: { restoreWorld: true } }), 320),
-      setTimeout(() => setTransitioning(null), 540),
-    ];
+    const transition = navigateWithTransition(navigate, next, {
+      state: { restoreWorld: true },
+    });
+    if (transition) {
+      transition.finished.finally(() => setTransitioning(null)).catch(() => {});
+    } else {
+      switchTimers.current = [setTimeout(() => setTransitioning(null), 650)];
+    }
   };
   return (
     <WorldContext.Provider

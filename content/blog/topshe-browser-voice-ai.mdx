@@ -1,24 +1,20 @@
 ---
-title: "Topshe: voice AI that runs entirely in your browser"
-description: "Named after Feluda's assistant, Topshe runs Qwen 2.5 in-browser via WebAssembly — wake word, research and planning tools, zero data leaves."
+title: "Topshe: a local browser model, with clear boundaries"
+description: "Building a browser-local language-model experiment, while separating model privacy from speech APIs and planned integrations."
 slug: "topshe-browser-voice-ai"
 date: 2026-07-28
-updated: 2026-08-03
-pillar: agents
-persona: local-ai-builder
-targetKeyword: "in-browser LLM"
-secondaryKeywords:
-  - "WebAssembly AI"
-  - "on-device voice assistant"
-  - "privacy voice AI"
-anchorProject: topshe
+updated: "2026-10-07"
+pillar: "agents"
+targetKeyword: "browser local language model"
+secondaryKeywords: ["product design", "implementation evidence"]
+anchorProject: "topshe"
 faq:
-  - q: "Can a large language model run in a browser?"
-    a: "Yes for small quantised models. Topshe runs Qwen 2.5 1.5B Q4 through WebAssembly on a phone; bigger models need a machine with more RAM."
-  - q: "Why run AI in the browser instead of an API?"
-    a: "Privacy and $0 marginal cost — no prompt leaves the device, no vendor API bill on a quiet day."
-  - q: "Is browser voice AI practical for daily use?"
-    a: "Today: yes for dictating and light tasks. Browser WebAssembly ticks under a second on modern devices; heavy reasoning still offloads."
+  - q: "Does the language model run locally?"
+    a: "The documented implementation runs a quantised Qwen model through wllama and WebAssembly in the browser."
+  - q: "Is all voice processing offline?"
+    a: "No. Browser speech recognition may use a remote service; local model inference does not establish voice privacy."
+  - q: "Are calendar and email integrations delivered?"
+    a: "Those integrations are described as planned in the repository, not completed capabilities."
 ---
 
 import AnswerBox from '@/components/blog/AnswerBox';
@@ -26,100 +22,41 @@ import FAQ from '@/components/blog/FAQ';
 import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
-Topshe is a voice assistant that never calls home. Named after the teenage assistant in Satyajit Ray's Feluda stories — the one handed the research, the planning, and the grunt work — it runs wake word to speech-to-text to a quantised Qwen 2.5 LLM inside the browser over WebAssembly. No server, no API key, no data leaving the phone.
+Topshe is a personal assistant experiment with language-model inference in the browser. That is a specific technical boundary: it does not mean every speech feature is offline, every browser is supported, or every planned integration is already implemented.
 </AnswerBox>
 
-Say "Topshe, what's on my calendar?" into your phone, put it in airplane mode, and ask again — it still answers. Most people assume a voice AI assistant *must* phone a cloud; the entire point of this project is that it doesn't. The whole stack runs locally: React 19 shell, [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) for input, a quantised Qwen 2.5 1.5B Q4 model inferring through **WebAssembly (via [`wllama`](https://github.com/ngxson/wllama))**, offline-capable as a PWA. The whole model binary is ~900 MB cached in IndexedDB — you download it once.
+<Figure src="/blog-assets/audited/topshe-browser-voice-ai.svg" alt="Browser input, then Local model, then Local history, then Speech boundary" caption="A schematic of the documented workflow; not a measured outcome." />
 
-<Figure src="/blog-assets/topshe/pipeline.svg" alt="Topshe voice pipeline: wake word → STT → Qwen 2.5 WASM → TTS → tool registry" caption="Wake word (Picovoice) → Web Speech STT → Qwen 2.5 1.5B Q4 (wllama WASM) → tool registry → TTS. No network hop." />
+## Start with a bounded experiment
 
-## The name is the spec
+The product question is whether a small local model can make an assistant useful without routing every conversation through a hosted language-model API. Topshe uses a quantised Qwen 2.5 model through wllama and WebAssembly, with a React interface and local conversation storage.
 
-Topshe is **Tapesh Ranjan Mitter**, the teenage assistant in Satyajit Ray's Feluda detective stories — the one handed the research, the notes, and tomorrow's stake-out plan while the detective thinks. Feluda thought; Topshe researched, planned, and kept records. That division of labour *is* the product spec: a junior assistant you can shout random tasks at, who quietly researches, plans, and remembers — and never gossips, because nothing ever leaves the device.
+The name comes from Feluda’s assistant in Satyajit Ray’s stories. In product terms, the intended role is similarly modest: help with a question or a small planning task. It remains an experiment, not a promise that a small browser model can replace a complete connected assistant.
 
-## What this Topshe took as his tasks
+## Local inference has a first-use cost
 
-- **Research** — WebSearch, weather, stock, and news tool handlers; ask for the current Sensex or tomorrow's forecast, no server call.
-- **Plan** — todos, reminders, focus timer, and alarms with voice snooze; a "today plan" list greets you in the morning.
-- **Records** — calendar and email via OAuth, conversation history in IndexedDB, and a simple RAG embedding pipeline so "remember that" persists on-device.
-- **Registry** — every capability hangs off a tiny tool-registry event bus rather than a server route.
+The documented model download is approximately 900 MB. That makes first-use readiness a separate experience from later conversations. A progress state, recoverable downloads and an honest explanation of device requirements matter more than calling the product frictionless.
 
-The repo is public: [github.com/saswatasg/topshe](https://github.com/saswatasg/topshe). Ten commits in, the personality system, contacts, clipboard, files, and REPL shipped to make the assistant's "random tasks" land somewhere.
+Running inference locally also moves constraints onto the user’s device. Available memory, browser behavior and competing activity can affect the experience. There is no published representative device benchmark establishing a universal response-time claim, so this case does not invent one.
 
-## The pipeline, end to end
+## Separate the voice pipeline from the model
 
-1. **Wake word** — [Picovoice Porcupine](https://picovoice.ai/platform/porcupine/) (WASM) runs continuous keyword spotting on the audio stream. "Topshe" triggers; ~50 ms latency on device.
-2. **Speech-to-text** — Web Speech API (browser native) or Whisper.cpp WASM fallback. Streaming partials feed the LLM as you speak.
-3. **Intent parse + tool dispatch** — the quantised Qwen 2.5 1.5B Q4 (~900 MB, `wllama` runtime) receives the transcript, decides if a tool is needed, emits a structured call.
-4. **Tool registry** — a 200-line event bus maps tool names to handlers: `web_search`, `weather`, `stocks`, `news`, `calendar`, `email`, `todo`, `reminder`, `timer`, `rag_remember`, `rag_recall`. Each handler is pure client-side or OAuth-to-your-own-accounts.
-5. **Response synthesis** — the model composes a natural-language answer from tool results.
-6. **Text-to-speech** — Web Speech Synthesis or Piper WASM for offline TTS.
+The project uses browser speech APIs for recognition and synthesis. A browser can process speech differently from how the language model processes text. In particular, speech recognition may involve a remote service. A locally running model is therefore insufficient evidence for a claim that no data leaves the device.
 
-No network hop. No API key. The only bytes leaving the device are your explicit OAuth grants to Google/Outlook calendars.
+Wake-word support uses Picovoice Porcupine and requires its own access key. Push-to-talk is a fallback. These are product dependencies, not details to hide behind a broad offline label. The [MDN SpeechRecognition documentation](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition) explains the browser-support and remote-processing caveats.
 
-### The latency budget (why each stage is sized the way it is)
+## Delivered scope versus future ambition
 
-The whole loop has to feel conversational, which in practice means staying under ~2 seconds from end-of-speech to first spoken word. Where the time actually goes on an M-series laptop vs a mid-tier Android:
+The repository documents local conversation history with IndexedDB and an offline-capable application shell. It also describes calendar, email, news and smart-home integrations as planned. Those ideas should be read as a roadmap, not features a visitor can already rely on.
 
-| Stage | Laptop (M2) | Mid-tier phone | Notes |
-|-------|-------------|----------------|-------|
-| Wake word detect | ~50 ms | ~80 ms | Porcupine WASM, always-on |
-| STT (Web Speech) | streaming | streaming | partials feed the LLM early |
-| LLM first token | ~300 ms | ~900 ms | Qwen 2.5 1.5B Q4 via wllama |
-| LLM full response | ~1.2 s | ~3.5 s | ~40 tokens typical reply |
-| TTS start | ~100 ms | ~200 ms | Web Speech Synthesis |
+WebGPU is not an established completed acceleration path in the documented implementation. Likewise, a compatibility statement in a README is not a substitute for a tested device matrix. Text-only fallbacks and clear unavailable states are part of making the current scope understandable.
 
-The phone column is why the model is 1.5B and not 7B. **The latency budget picked the model, not the leaderboard.**
+## The next useful evidence
 
-## Why edge, really
+Before positioning this as a dependable assistant, I would want first-use completion rates, model-load failures, memory use and response latency across representative devices. Speech should be evaluated separately, with its permissions and processing path made visible. Integration tests should follow actual connected workflows as they are built.
 
-- **Privacy without a story.** Nothing leaves the device — no transcripts recorded by a vendor, no telemetry, no "improve the model" checkbox.
-- **$0/month** with real inference, not an API token funnel. You own the compute.
-- **PWA** — works as an app, no install, offline capable. Install to home screen, runs in airplane mode.
+These are future validation needs, not results claimed from this project. The current artifact demonstrates browser-local inference and the interface around it. The lesson is to make a narrow privacy claim accurately, and to treat dependencies and unsupported capabilities as part of the user experience.
 
-### Edge vs cloud, honestly scored
-
-| Dimension | In-browser (Topshe) | Cloud API assistant |
-|-----------|---------------------|---------------------|
-| Privacy | Nothing leaves device | Vendor sees every prompt |
-| Marginal cost | $0 | Per-token, forever |
-| Reasoning depth | Small-model ceiling | Frontier-model quality |
-| Offline | Full function | Dead |
-| First-run setup | ~900 MB download | Instant |
-| Latency (simple ask) | Sub-second local | Network + inference |
-
-The right answer for most products is a hybrid — local for intent parsing and private data, cloud for heavy reasoning. Topshe deliberately refuses the hybrid to prove where the pure-edge ceiling is.
-
-## The agent personality system (the v2 leap)
-
-Version 1 was a tool-caller. Version 2 added a **personality system** — a small system prompt plus a few-shot memory block that persists across sessions in IndexedDB. The assistant now:
-
-- Remembers your name, preferred name for it ("Topshe" / "assistant"), and tone preference (terse / conversational).
-- Maintains a "running context" of the last 5 turns compressed into a summary, so "remember that" works without blowing the context window.
-- Has a REPL mode — type `/` to drop into a raw prompt sandbox for debugging tool calls.
-- Exposes contacts, clipboard, and file read/write (via File System Access API) as tools, so "send this to Anirudh" or "save this as a note" work end-to-end.
-
-This turned "a voice tool" into "an agent you talk to daily." The personality system is ~300 lines of prompt + storage logic — small enough to audit, big enough to feel like a consistent character.
-
-## The honest tradeoffs
-
-- **Model size vs quality.** Quantisation shaves latency but taxes clever summarisation; the assistant is snappier than deep, by design. A 7B model would hallucinate less but wouldn't fit on many phones in-browser.
-- **Memory ceiling.** Not every mobile device runs a 7B model comfortably in-browser; we size the model to the device (auto-detect RAM, pick 1.5B or 3B).
-- **Wake-word environments.** WASM audio wakes fast in quiet rooms; speaker noise, AC hum, and cafe chatter still puzzle it. Porcupine helps but isn't magic.
-- **OAuth is the only cloud.** Calendar and email need your explicit grant. If you don't connect them, those tools simply don't appear — graceful degradation.
-
-## What it demonstrated
-
-Edge LLMs are production-viable for **small systems with clear intents** — a light assistant, a noise tool, a vault-adjacent copilot. They are not (yet) full cloud-grade chat without a compute fallback.
-
-[TGB Hunt](/blog/tgb-hunt-linkedin-outreach-agent) and Topshe bookend the same taste: I keep reaching for the smallest system that gives the product to the user. Topshe is the smallest.
-
-## What I'd do differently
-
-- **Ship wake-word tuning** before claiming "hands-free" — the demo works, the hallway doesn't.
-- **Benchmark on a mid-tier phone.** We demoed on silicon that flattered the WASM numbers; a Snapdragon 7-series shows 2–3× latency.
-- **Build a WASM Whisper fallback** for STT when Web Speech is unavailable (Safari, some Androids).
-
-The [projects page](/projects) holds the live demo link and the [open-source repo](https://github.com/saswatasg/topshe) — 10 commits, v2 personality + contacts + clipboard + files + REPL.
+See the [Topshe implementation and roadmap](https://github.com/saswatasg/topshe) for the documented architecture and current scope.
 
 <FAQ items={frontmatter.faq} />

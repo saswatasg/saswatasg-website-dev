@@ -6,8 +6,10 @@ import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/700.css";
 import "@/index.css";
-import "@/styles/worlds.css";
-import "@/styles/polish.css";
+import "@/styles/creative-scoped.css";
+import "@/styles/two-world-flow.css";
+import "@/styles/workbench-editorial.css";
+import "@/styles/workbench-pages.css";
 import "@fontsource/noto-serif-bengali/bengali-400.css";
 
 const container = document.getElementById("root");

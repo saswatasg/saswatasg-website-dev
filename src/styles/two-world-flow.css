@@ -1,0 +1,25 @@
+/* The professional site keeps its original stylesheet. Only the external
+   world switch is shared; creative page refinements remain inside their scope. */
+.two-world-dock{position:fixed;bottom:max(16px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:49;display:flex;gap:4px;padding:5px;background:#fff;border:2px solid #0a0a0a;border-radius:12px;box-shadow:3px 3px 0 #e85d3a;font:700 12px/1.2 Inter,sans-serif;white-space:nowrap}
+.two-world-dock nav{display:flex;gap:4px}.two-world-dock a{display:flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;border-radius:7px;color:#0a0a0a;transition:background .2s}.two-world-dock a[aria-current]{background:#fde68a}.two-world-dock a:hover{background:#f5f2ec}.two-world-dock a:focus-visible{outline:2px solid #6d28d9;outline-offset:2px}
+.creative-shell .adda-home{padding-top:80px}
+.creative-shell .adda-hero.shared-hero{max-width:1200px;margin:0 auto;grid-template-columns:2fr 1fr;gap:24px;padding:40px 24px 100px;min-height:580px;align-items:start}
+.creative-shell .adda-hero-copy{padding:32px;border:2px solid #0a0a0a;border-radius:16px;background:#fffaf0;box-shadow:4px 4px 0 #ae382b}
+.creative-shell .adda-hero h1{font-size:clamp(34px,3.5vw,50px)}
+.creative-shell .adda-portrait-wrap{width:100%;margin:0;background:#f2cf9b;padding:30px 20px 58px;border:2px solid #0a0a0a;border-radius:16px;box-shadow:4px 4px 0 #276d58}
+.creative-shell .adda-handnote{bottom:10px;right:20px;font-size:22px}
+.creative-shell .adda-portrait-wrap .world-portrait{border-width:5px}
+.creative-shell .adda .shared-section{max-width:1152px;margin:32px auto;padding:36px;border:2px solid #0a0a0a;border-radius:16px;box-shadow:4px 4px 0 #d6aa6d}
+.creative-shell .adda .shared-section.shared-contact{margin-bottom:48px}
+.creative-shell .adda .featured-photo,.creative-shell .adda .book-cover,.creative-shell .adda .cinema-projects article,.creative-shell .adda .book-preview{border:2px solid #0a0a0a;border-radius:12px;overflow:hidden}
+.creative-shell .adda .material-button,.creative-shell .adda .text-link{border-radius:8px}
+.creative-shell .adda .cinema-fragment{box-shadow:4px 4px 0 #ae382b}
+.creative-shell .adda .cinema-fragment p{color:#e8ded0}
+.creative-shell .adda footer{background:#0a0a0a;font-family:Inter,sans-serif}
+.creative-shell .adda footer p{color:rgb(255 255 255 / .6)}
+.creative-shell .adda header{font-family:Inter,sans-serif}
+.creative-shell .adda .world-page{padding-top:120px}
+.legacy-builds h1{font-size:clamp(36px,6vw,60px);font-weight:900}.legacy-builds h3{font-weight:800;font-size:24px}.legacy-builds .build-links{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px}.legacy-builds .build-links a{font-weight:700;text-decoration:underline}
+@media(max-width:767px){.creative-shell .adda-home{padding-top:56px}.creative-shell .adda-hero.shared-hero{padding:24px 16px 80px;grid-template-columns:1fr;gap:24px;min-height:0}.creative-shell .adda-hero-copy{padding:24px}.creative-shell .adda-portrait-wrap{max-width:340px;padding:24px 24px 58px}.creative-shell .adda .shared-section{margin:24px 16px;padding:24px;max-width:calc(100% - 32px)}.creative-shell .adda .world-page{padding-top:90px}.two-world-dock{bottom:max(12px,env(safe-area-inset-bottom))}.two-world-dock a{min-height:38px}}
+@media(prefers-reduced-motion:reduce){.two-world-dock a{transition:none}}
+@media(max-width:767px){.creative-shell .entrance .half-topline{display:none}}

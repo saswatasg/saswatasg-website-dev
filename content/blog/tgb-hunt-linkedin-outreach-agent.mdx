@@ -1,24 +1,20 @@
 ---
-title: "I built my own LinkedIn outreach tool (766 commits later)"
-description: "TGB Hunt: a self-hosted, open-source agent that finds recruiters, drafts intros, and never sends without my approval. 766 commits, GPLv3."
+title: "TGB Hunt: outreach workflows and automation limits"
+description: "A self-hosted outreach experiment: task orchestration, campaign state and the limits of automated platform actions."
 slug: "tgb-hunt-linkedin-outreach-agent"
 date: 2026-07-14
-updated: 2026-08-03
-pillar: agents
-persona: local-ai-builder
-targetKeyword: "open source linkedin automation"
-secondaryKeywords:
-  - "linkedin automation tools"
-  - "self-hosted linkedin agent"
-  - "AI linkedin outreach"
-anchorProject: tgb-hunt
+updated: "2026-10-07"
+pillar: "agents"
+targetKeyword: "outreach workflow automation"
+secondaryKeywords: ["product design", "implementation evidence"]
+anchorProject: "tgb-hunt"
 faq:
-  - q: "What is TGB Hunt?"
-    a: "A self-hosted, open-source agent (GPLv3) that finds recruiters for a role I describe, then drafts personalized intros I approve before anything sends."
-  - q: "Why build a LinkedIn outreach tool instead of using an existing SaaS?"
-    a: "SaaS tools optimize for volume, not research. TGB Hunt does 20 minutes of research per prospect in seconds, then still needs my approval to send."
-  - q: "Is automated LinkedIn outreach safe to run?"
-    a: "Keep volume modest and the human in the loop — personalization beats scale. TGB Hunt drafts; I approve every send."
+  - q: "Does every message require approval?"
+    a: "A mandatory per-message approval gate is not established. The connection-task implementation can send automatically."
+  - q: "Are reply or meeting improvements measured?"
+    a: "No traceable outcome dataset is published here, so this case does not claim a reply-rate or meeting uplift."
+  - q: "How is this project presented?"
+    a: "As an archived automation experiment with workflow-engineering value and platform constraints."
 ---
 
 import AnswerBox from '@/components/blog/AnswerBox';
@@ -26,96 +22,41 @@ import FAQ from '@/components/blog/FAQ';
 import Figure from '@/components/blog/Figure';
 
 <AnswerBox>
-**TGB Hunt** is a self-hosted, open-source LinkedIn agent I built to find recruiters and hiring managers for roles I'm chasing — not a tool recruiters use to find candidates. It owns research, matching, and intro drafting; a human (me) owns the identity and every send. GPLv3, 766 commits, 6 releases, one macOS app (Python/Django/Playwright). The hard part wasn't the LLM; it's the judgment boundary between what the agent may say and what must stay human.
+TGB Hunt is a self-hosted Django and Playwright outreach experiment. Its useful engineering story is campaign tasks, state tracking and follow-up orchestration. Its implementation can send automatically; it should not be described as a system where every message always receives human approval.
 </AnswerBox>
 
-Every LinkedIn automation tool I tried dies the same death: it scales the *sending* and skips the *reading*. The result is a thousand identical "I came across your profile" messages and a burned account. So I built my own — 766 commits later, TGB Hunt does twenty minutes of research per prospect in three seconds, drafts an intro that proves the research happened, and then **refuses to send anything on its own**. The human gate isn't a compliance afterthought; it's the entire product thesis.
+<Figure src="/blog-assets/audited/tgb-hunt-linkedin-outreach-agent.svg" alt="Campaign tasks, then Browser actions, then State tracking, then Reconciliation" caption="A schematic of the documented workflow; not a measured outcome." />
 
-## What the agent actually does
+## The workflow behind the interface
 
-The system has four moving parts, each designed to keep the human in the loop:
+Outreach is a sequence of states rather than a single text-generation task. A campaign needs to know what has been attempted, what remains pending, which connection requests have changed status and whether a follow-up should be scheduled. Losing those distinctions can create duplicate or badly timed actions.
 
-**Target discovery** — describe the roles you're chasing (e.g., "VP Engineering at Series B fintech in NYC"), and the agent finds matching recruiters and hiring managers across LinkedIn, cross-referencing company size, recent funding, and hiring signals.
+The repository includes task handlers for connections, follow-ups and pending-request checks, alongside campaign records and background execution. Django provides the application and persistence layer; Playwright operates the browser. The language model participates in the workflow, but the product is not simply a prompt wrapped in a button.
 
-**Personalized intros** — for each target, the agent pulls public context (recent posts, company news, shared connections) and drafts an intro in your tone, referencing specifics — not boilerplate. The output is a draft you edit, not a message that fires.
+## State is a product requirement
 
-**Follow-up cadence** — it tracks conversation state, remembers who last said what, and cues a sane nudge when a thread goes cold. No ghosting; the human decides when to send.
+A useful task record should distinguish intended work from attempted work and confirmed completion. Browser activity can fail in ways that are not equivalent: navigation may fail before an action, an action may complete before confirmation is recorded, or a platform state may change between checks.
 
-**Human gate** — nothing sends itself. Every message is a draft until you hit approve. The "😳 I sent 400 messages" scenario is impossible by design.
+The project includes reconciliation and failed-state handling. Those mechanisms are important implementation artifacts. They do not establish that every edge case is covered or that the platform will continue to accept the same interaction behavior. A reliable claim needs reproducible tests and operational evidence, not only the presence of task code.
 
-<Figure src="/blog-assets/tgb-hunt/architecture.svg" alt="TGB Hunt architecture: discovery → enrichment → draft intro → human gate → send" caption="Four stages, one gate. The human approves every send." />
+## Correcting the approval claim
 
-## The stack: local-first, no vendor lock-in
+The public connection-task handler can perform the send action. The implementation reviewed here does not establish a mandatory human decision before each individual send. The earlier portfolio description of an always-reviewed drafting agent overstated that boundary.
 
-- **Python 3.11 + Django** for the orchestrator and web UI
-- **[Playwright](https://playwright.dev/)** for browser automation (LinkedIn session management, scrolling, extraction)
-- **SQLite** for local state — prospects, drafts, conversation history, sent log
-- **PyInstaller** for the one-click macOS .app bundle (~180 MB)
-- **No external LLM API by default** — runs against a local [Ollama](https://ollama.com/) endpoint or your own key; the enrichment step uses public APIs (Crunchbase, Clearbit free tiers) not an LLM
+A review-first workflow would be a meaningful future product change: persist a proposed action, display its recipient and content, obtain approval, then execute and record the result. That is a recommendation, not an existing capability being claimed here.
 
-The whole thing runs on your laptop. Zero cloud bill. Your LinkedIn cookies never leave the machine.
+## Platform constraints shape the product
 
-## Design decisions that mattered
+An external platform is more than a browser surface. Its policies, account permissions and interface changes constrain what a product can responsibly offer. LinkedIn documents restrictions around prohibited software and automated activity in its [official help guidance](https://www.linkedin.com/help/linkedin/answer/a1341387).
 
-**Fail-closed by default.** The worst thing an outreach experiment can do is spam. I switched to strong approval flows early (step 3 of every run), which killed the blast scenario before it could happen. The default action for any draft is "wait for approval."
+This project should therefore remain an archived technical experiment rather than a promise of dependable recruiter outreach. The portfolio does not claim policy compliance, zero account risk, universal compatibility or an unattended service guarantee. Those would require evidence beyond a working browser task.
 
-**Quality data > bigger model.** Personalization came from a small enrichment step per prospect — company size, funding round, recent blog post, shared connection, tech stack signals from job posts. The LLM just crafted prose. Cheaper and more accurate than a bigger model guessing from thin air. A 7B local model with good context beats a 70B API with no context.
+## What is and is not measured
 
-**Versioned every prompt.** 766 commits lived in changelogs. Each release was reproducible; if an intro style overfit yesterday's niche, you could roll it back in minutes. The prompt history *is* the product memory.
+There is no traceable public dataset supporting the earlier reply-rate, approval-rate or meeting claims. This revised note removes them. Repository history and release counts show development activity; they are not proof of user value or conversion improvement.
 
-**Self-hosted, one-click macOS app.** Packaged with PyInstaller — no server, no cloud bill, your data stays on your machine. That constraint forced the architecture toward local-first tooling (Playwright for browser automation, SQLite for state). The .app installs via drag-and-drop, asks for LinkedIn session cookie once, then runs headless or headed.
+A stronger future evaluation would measure task-state correctness, duplicate prevention, recovery behavior and the distinction between drafted and executed actions. Any user-outcome study would also need a defined sample, time window and attribution method. Until then, the defensible contribution is workflow engineering and an explicit account of its limitations.
 
-## The enrichment pipeline (where the signal lives)
-
-The LLM is the *writer*, not the *researcher*. Here's the enrichment chain per prospect:
-
-1. **LinkedIn profile scrape** (Playwright, authenticated session) → headline, current company, tenure, recent posts, skills, connections
-2. **Company enrichment** (Crunchbase/Clearbit free) → size, stage, recent funding, tech stack, hiring velocity
-3. **Shared connection check** — mutual 1st/2nd degree connections via LinkedIn graph
-4. **Recent activity** — posts, comments, reactions in last 30 days
-5. **Hiring signals** — open roles, "we're hiring" posts, team growth rate
-
-This enrichment takes ~3 seconds per prospect and costs ~$0.002 in API calls. The LLM then gets a structured JSON blob and writes the intro. Garbage in, garbage out — the enrichment is the product.
-
-## The prompt design (and what it kept getting wrong)
-
-The drafting prompt went through six released versions. The structure that survived:
-
-1. **Identity block** — who you are, in your own words, 2 sentences max.
-2. **Tone examples** — 5 of your real sent messages (the calibration step below).
-3. **The enrichment JSON** — structured facts only; no free-text summaries, which invite hallucination.
-4. **Hard rules** — no flattery openers, no "I hope this finds you well", exactly one specific reference to the prospect's work, under 90 words, one clear ask.
-
-The failure modes that forced those rules, in order of discovery:
-
-- **v1 flattered.** "Your impressive journey" appeared in 60% of drafts. Banned superlatives about the person; allowed them only about specific work.
-- **v2 hallucinated specifics.** Given a company name, it invented funding rounds. Fixed by feeding *only* the enrichment JSON and instructing "if a field is missing, don't mention the topic."
-- **v3 wrote essays.** 200-word intros read as automated precisely because no busy human writes that much to a stranger. The 90-word cap doubled reply rates on its own.
-- **v4–v5 were tone drift** — too formal, then too breezy. The 5-example calibration block settled it.
-
-**An outreach prompt is an eval problem, not a writing problem.** Every variant got measured against reply rate before it earned the default slot.
-
-## Where it honestly hits walls
-
-1. **When the target writes back.** The draft must hand off to a human fast — the agent shouldn't "handle" real conversation. The handoff latency is the quality ceiling. I built a "reply notification → open draft → edit → send" flow that takes ~15 seconds.
-
-2. **When volume rises.** Once you scale past permission, you're just reinventing spam. We kept it modest on purpose — the system earns trust by restraint. The daily cap is configurable; default 15 drafts/day.
-
-3. **When tone deviates.** An LLM writes "too polished." Your own voice wins more read receipts than perfect grammar. The best intros felt like *you* wrote them after 20 minutes of research, not like a template. I added a "tone calibration" step: feed the model 5 of your past sent messages, it learns your cadence.
-
-4. **LinkedIn session fragility.** Cookies expire, challenges trigger, UI changes break selectors. The Playwright layer has a "session health" monitor that pauses the run and alerts you before it burns the account.
-
-## The metric that mattered
-
-The goal is **reply rate on qualified personas** — not messages blasted. I tracked every preview against its reply share and killed variants that under-indexed. The signal is downstream: did the human get a meeting?
-
-| Metric | Target | Achieved |
-|--------|--------|----------|
-| Draft approval rate | >80% | 87% |
-| Reply rate (qualified) | >25% | 31% |
-| Meeting booked / draft | >5% | 8% |
-| Spam reports | 0 | 0 |
-
-That same discipline — research signal **before** outreach — is the whole thesis of my [Upcore lead scoring work](/case-studies/upcore-lead-scoring). If you're building outreach automation, start there: score the lead, then write the message. And if you want the fully-local end of the same philosophy, [Topshe runs an entire assistant in the browser](/blog/topshe-browser-voice-ai) with the same rule: the agent does the work, the human owns the identity.
+The [TGB Hunt repository](https://github.com/saswatasg/TGBhunt) contains the implementation. It is presented here as an archive, with no invented business result.
 
 <FAQ items={frontmatter.faq} />
