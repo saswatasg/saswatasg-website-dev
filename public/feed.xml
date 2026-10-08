@@ -6,7 +6,7 @@
     <description>Product decisions, client delivery, growth work and experiments with clear evidence boundaries.</description>
     <language>en-us</language>
     <atom:link href="https://saswatasg.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 07 Oct 2026 10:21:34 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 16:32:26 GMT</lastBuildDate>
     <item>
       <title><![CDATA[Building Topshe: a voice assistant in the browser]]></title>
       <link>https://saswatasg.com/blog/topshe-browser-voice-ai</link>
@@ -40,10 +40,10 @@
       <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
-      <title><![CDATA[AI image greetings lifted feature engagement by 168%]]></title>
+      <title><![CDATA[AI greetings: relevance, creation and reported engagement]]></title>
       <link>https://saswatasg.com/blog/ai-send-greetings-168</link>
       <guid isPermaLink="true">https://saswatasg.com/blog/ai-send-greetings-168</guid>
-      <description><![CDATA[A dormant 'Send Greetings' feature, an image-gen model, and a festival calendar across 27 occasions — feature engagement up 168% at LiveKeeping.]]></description>
+      <description><![CDATA[AI image generation and a 27-occasion regional calendar for LiveKeeping’s Send Greetings feature, with a reported 168% engagement increase.]]></description>
       <category>Blog</category>
       <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
     </item>
@@ -59,7 +59,7 @@
       <title><![CDATA[Daily reporting: three sources, one dependable view]]></title>
       <link>https://saswatasg.com/blog/daily-report-automation</link>
       <guid isPermaLink="true">https://saswatasg.com/blog/daily-report-automation</guid>
-      <description><![CDATA[A LiveKeeping reporting workflow using Google Apps Script, 88 mapped rows and three data sources, with freshness and reconciliation made explicit.]]></description>
+      <description><![CDATA[A LiveKeeping reporting workflow using Google Apps Script, 88 mapped rows and three data sources, deployed and used daily by the team.]]></description>
       <category>Blog</category>
       <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
     </item>
@@ -133,23 +133,23 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/cart-checkout</guid>
       <description><![CDATA[Case study: Cart & Checkout — –26% abandonment]]></description>
       <category>Case Study</category>
-      <pubDate>Wed, 07 Oct 2026 10:21:34 GMT</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:32:26 GMT</pubDate>
     </item>
     <item>
-      <title><![CDATA[Category Pages — +17% conversion]]></title>
+      <title><![CDATA[Category Pages — +34% qualified leads]]></title>
       <link>https://saswatasg.com/case-studies/category-discovery</link>
       <guid isPermaLink="true">https://saswatasg.com/case-studies/category-discovery</guid>
-      <description><![CDATA[Case study: Category Pages — +17% conversion]]></description>
+      <description><![CDATA[Case study: Category Pages — +34% qualified leads]]></description>
       <category>Case Study</category>
-      <pubDate>Wed, 07 Oct 2026 10:21:34 GMT</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:32:26 GMT</pubDate>
     </item>
     <item>
-      <title><![CDATA[Lead Form Overhaul — +124% submissions]]></title>
+      <title><![CDATA[Lead Form Overhaul — +124% submission volume]]></title>
       <link>https://saswatasg.com/case-studies/lead-form</link>
       <guid isPermaLink="true">https://saswatasg.com/case-studies/lead-form</guid>
-      <description><![CDATA[Case study: Lead Form Overhaul — +124% submissions]]></description>
+      <description><![CDATA[Case study: Lead Form Overhaul — +124% submission volume]]></description>
       <category>Case Study</category>
-      <pubDate>Wed, 07 Oct 2026 10:21:34 GMT</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:32:26 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Inventory Leveling — Upcore client demo]]></title>
@@ -157,7 +157,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/upcore-inventory-leveling</guid>
       <description><![CDATA[Case study: Inventory Leveling — Upcore client demo]]></description>
       <category>Case Study</category>
-      <pubDate>Wed, 07 Oct 2026 10:21:34 GMT</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:32:26 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Discovery & Solution Delivery — 23+ clients]]></title>
@@ -165,7 +165,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/upcore-discovery</guid>
       <description><![CDATA[Case study: Discovery & Solution Delivery — 23+ clients]]></description>
       <category>Case Study</category>
-      <pubDate>Wed, 07 Oct 2026 10:21:34 GMT</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:32:26 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Lead Qualification — Five dimensions, four tiers]]></title>
@@ -173,7 +173,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/upcore-lead-scoring</guid>
       <description><![CDATA[Case study: Lead Qualification — Five dimensions, four tiers]]></description>
       <category>Case Study</category>
-      <pubDate>Wed, 07 Oct 2026 10:21:34 GMT</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:32:26 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Lead Allocation — Gold/Silver/Bronze]]></title>
@@ -181,7 +181,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/sierra-lead-allocation</guid>
       <description><![CDATA[Case study: Lead Allocation — Gold/Silver/Bronze]]></description>
       <category>Case Study</category>
-      <pubDate>Wed, 07 Oct 2026 10:21:34 GMT</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:32:26 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Compliance Gap — 17:1 Tally vs LiveKeeping]]></title>
@@ -189,7 +189,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/livekeeping-compliance-gap</guid>
       <description><![CDATA[Case study: Compliance Gap — 17:1 Tally vs LiveKeeping]]></description>
       <category>Case Study</category>
-      <pubDate>Wed, 07 Oct 2026 10:21:34 GMT</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:32:26 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Send Greetings + Nano Banana AI]]></title>
@@ -197,7 +197,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/livekeeping-send-greetings</guid>
       <description><![CDATA[Case study: Send Greetings + Nano Banana AI]]></description>
       <category>Case Study</category>
-      <pubDate>Wed, 07 Oct 2026 10:21:34 GMT</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:32:26 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Push Notification Architecture]]></title>
@@ -205,7 +205,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/livekeeping-notifications</guid>
       <description><![CDATA[Case study: Push Notification Architecture]]></description>
       <category>Case Study</category>
-      <pubDate>Wed, 07 Oct 2026 10:21:34 GMT</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:32:26 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[Daily Report Automation]]></title>
@@ -213,7 +213,7 @@
       <guid isPermaLink="true">https://saswatasg.com/case-studies/livekeeping-report-automation</guid>
       <description><![CDATA[Case study: Daily Report Automation]]></description>
       <category>Case Study</category>
-      <pubDate>Wed, 07 Oct 2026 10:21:34 GMT</pubDate>
+      <pubDate>Thu, 08 Oct 2026 16:32:26 GMT</pubDate>
     </item>
   </channel>
 </rss>

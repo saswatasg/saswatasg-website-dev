@@ -240,7 +240,7 @@ export default function ImpactEvidence() {
         ))}
       </div>
       <div className="wb-selected-work-bottom">
-        <Link to="/work" className="wb-inline-link">
+        <Link to="/work" className="wb-button wb-button-paper">
           Explore all work <ArrowUpRight size={17} />
         </Link>
       </div>

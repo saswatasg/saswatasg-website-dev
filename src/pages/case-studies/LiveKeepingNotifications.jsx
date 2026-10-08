@@ -33,10 +33,10 @@ const LiveKeepingNotifications = () => {
       >
         <ContextBar company="LiveKeeping · Notification Architecture" period="Jan–Mar 2026" tags={['50,000+ Users']} />
         <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
-          27+ triggers. Geo-segmented by region. A 3-slot daily cap with priority queuing. Built from scratch.
+          Give notifications a clear priority.
         </h1>
         <p className="text-xl text-ink/60 font-medium mt-4 max-w-4xl">
-          LiveKeeping had notifications. They had no system. I built the system.
+          Designed a lifecycle-messaging architecture with 27+ triggers, regional eligibility and a three-slot daily cap with priority exceptions.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
@@ -76,8 +76,8 @@ const LiveKeepingNotifications = () => {
         </Card>
 
         {[
-          { title: 'NO PRIORITY SYSTEM', desc: 'A Diwali greeting and an GSTR-1 deadline reminder had equal weight. One is a compliance P0. One is a relationship touch. They\'re not the same.' },
-          { title: 'NO CAP', desc: 'Users could theoretically receive 5+ notifications on a single day during busy compliance periods. Every notification above 3 per day is a churn risk.' },
+          { title: 'NO PRIORITY SYSTEM', desc: 'A Diwali greeting and a GSTR-1 deadline reminder had equal weight. One is a compliance P0. One is a relationship touch. They\'re not the same.' },
+          { title: 'NO CAP', desc: 'Users could theoretically receive 5+ notifications on a single day during busy compliance periods. The design needed a cap and priority exceptions to manage message fatigue.' },
           { title: 'NO GEO-LOGIC', desc: 'A Ganesh Chaturthi greeting going to a user in Chandigarh is meaningless noise. A Vishwakarma Puja greeting going only to East India users is the right call. This logic didn\'t exist.' },
         ].map((item, i) => (
           <motion.div key={i} variants={itemVariants} whileHover={{ scale: 1.005, y: -2 }} className={`${['bg-blush', 'bg-lemon', 'bg-sky'][i]} border-2 border-black rounded-xl p-5 mt-3`}>

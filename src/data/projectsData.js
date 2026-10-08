@@ -6,7 +6,8 @@ export const openSourceProjects = [
     name: "DhanPlan",
     tagline: "A monthly retirement plan, with visible assumptions",
     description:
-      "An India-focused planner connecting contributions, assets and retirement withdrawals in a monthly ledger. Engine 2.0.0 includes gap-solving and stress scenarios; projections remain assumption-based.",
+      "Connect contributions, assets and retirement withdrawals in a monthly plan with visible assumptions.",
+    implementationNotes: "An India-focused planner connecting contributions, assets and retirement withdrawals in a monthly ledger. Engine 2.0.0 includes gap-solving and stress scenarios; projections remain assumption-based.",
     status: "Independent product · Live",
     group: "independent",
     tags: ["Retirement planning", "Scenario modelling", "Monthly ledger"],
@@ -28,7 +29,8 @@ export const openSourceProjects = [
     name: "Meldstead",
     tagline: "A connected project workspace",
     description:
-      "Tasks, docs, whiteboards and timelines, with AI connections and client reviews. An independent product in pre-launch final audit; public availability does not mean a completed public launch.",
+      "Bring tasks, documents, whiteboards and timelines into one connected project workspace.",
+    implementationNotes: "Tasks, docs, whiteboards and timelines, with AI connections and client reviews. An independent product in pre-launch final audit; public availability does not mean a completed public launch.",
     status: "Independent product · Pre-launch final audit",
     group: "independent",
     tags: ["Project workspace", "Collaboration"],
@@ -45,7 +47,8 @@ export const openSourceProjects = [
     name: "Inventory Leveling Agent",
     tagline: "Make procurement dependencies visible",
     description:
-      "An Upcore Technologies client demo using mock data: expands BOM demand, nets inventory and schedules purchasing. The repository documents 28 reconciliation tests; there is no live ERP integration.",
+      "Trace shared component demand, net available stock and schedule purchasing in a procurement demo.",
+    implementationNotes: "An Upcore Technologies client demo using mock data: expands BOM demand, nets inventory and schedules purchasing. The repository documents 28 reconciliation tests; there is no live ERP integration.",
     status: "Upcore Technologies · Client demo · Mock data",
     group: "client",
     tags: ["MRP logic", "Procurement", "React", "TypeScript"],
@@ -63,7 +66,8 @@ export const openSourceProjects = [
     name: "BlogHero",
     tagline: "From search evidence to a reviewable draft",
     description:
-      "A Sierra Living Concepts content tool connecting Search Console opportunities, research and writing to WordPress drafts and a Sheets run log. It creates drafts rather than publishing automatically; client impact metrics are not published.",
+      "Turn search opportunities and research into reviewable WordPress drafts and a tracked content workflow.",
+    implementationNotes: "A Sierra Living Concepts content tool connecting Search Console opportunities, research and writing to WordPress drafts and a Sheets run log. It creates drafts rather than publishing automatically; client impact metrics are not published.",
     status: "Client tool · Reported client use",
     group: "client",
     tags: ["Search Console", "Python", "Content workflows"],
@@ -74,7 +78,8 @@ export const openSourceProjects = [
     name: "LinkForge",
     tagline: "Backlink outreach with an inspectable workflow",
     description:
-      "A desktop workflow for Sierra Living Concepts: discover and vet domains, find contacts, match pages and draft pitches into a Google Sheets tracker. Suppression rules apply throughout; it does not send outreach automatically. Deployment and adoption are not established here.",
+      "Inspect domains, contacts and page matches before drafting backlink outreach into a shared tracker.",
+    implementationNotes: "A desktop workflow for Sierra Living Concepts: discover and vet domains, find contacts, match pages and draft pitches into a Google Sheets tracker. Suppression rules apply throughout; it does not send outreach automatically. Deployment and adoption are not established here.",
     status: "Client-oriented tool · Documented implementation",
     group: "client",
     tags: ["NiceGUI", "Google Sheets", "Outreach workflows"],
@@ -85,7 +90,8 @@ export const openSourceProjects = [
     name: "Pixel Display Controller",
     tagline: "Connect a web interface to a real device",
     description:
-      "A personal controller for a 32×32 BLE display. A Next.js interface connects through a local FastAPI bridge for text, images, GIFs and device controls. The repository reports an MVP tested on hardware; this is a personal integration, not a commercial deployment.",
+      "Control text, images and GIFs on a 32×32 Bluetooth display through a web interface.",
+    implementationNotes: "A personal controller for a 32×32 BLE display. A Next.js interface connects through a local FastAPI bridge for text, images, GIFs and device controls. The repository reports an MVP tested on hardware; this is a personal integration, not a commercial deployment.",
     status: "Personal build · Hardware MVP",
     group: "independent",
     tags: ["Next.js", "FastAPI", "Bluetooth", "Hardware integration"],
@@ -102,7 +108,8 @@ export const openSourceProjects = [
     name: "FilmRisk.AI",
     tagline: "A risk-model experiment with published failures",
     description:
-      "A TypeScript scoring experiment using 2,454 film records, of which 729 have trainable financial data. Published temporal backtests did not establish an advantage over simple baselines. The useful artifact is the evaluation and its limitations.",
+      "Explore film-risk scoring through published backtests and an evaluation of where the model falls short.",
+    implementationNotes: "A TypeScript scoring experiment using 2,454 film records, of which 729 have trainable financial data. Published temporal backtests did not establish an advantage over simple baselines. The useful artifact is the evaluation and its limitations.",
     status: "Research experiment · Weak backtest",
     group: "research",
     tags: ["Next.js", "Gradient boosting", "Bayesian priors", "Evaluation"],
@@ -119,7 +126,8 @@ export const openSourceProjects = [
     name: "Topshe",
     tagline: "Explore a local language model in the browser",
     description:
-      "An experimental assistant running a quantised Qwen model through WebAssembly, with local conversation storage. Voice uses browser speech APIs and may involve remote services. Calendar, email and smart-home integrations are planned rather than delivered.",
+      "Run a local language model in the browser with conversation storage and experimental voice controls.",
+    implementationNotes: "An experimental assistant running a quantised Qwen model through WebAssembly, with local conversation storage. Voice uses browser speech APIs and may involve remote services. Calendar, email and smart-home integrations are planned rather than delivered.",
     status: "Personal experiment · Browser-local LLM",
     group: "research",
     tags: ["React", "wllama", "Web Speech API", "PWA"],
@@ -136,7 +144,8 @@ export const openSourceProjects = [
     name: "TGB Hunt",
     tagline: "A self-hosted outreach automation experiment",
     description:
-      "A Django and Playwright experiment for campaign tasks, connection requests and follow-ups. The implementation can send automatically; a mandatory review gate is not established. Kept as an archive of workflow engineering and product constraints.",
+      "Explore campaign task orchestration and follow-ups in a self-hosted outreach automation experiment.",
+    implementationNotes: "A Django and Playwright experiment for campaign tasks, connection requests and follow-ups. The implementation can send automatically; a mandatory review gate is not established. Kept as an archive of workflow engineering and product constraints.",
     status: "Archive · Automation experiment",
     group: "archive",
     tags: ["Django", "Playwright", "Task orchestration"],
@@ -153,7 +162,8 @@ export const openSourceProjects = [
     name: "Intent",
     tagline: "A prototype for more deliberate matching",
     description:
-      "An independent dating-product prototype built with Next.js and Supabase. Explore the product direction through the demo; verified-profile coverage, matching quality and public launch timing are not established.",
+      "Explore a more deliberate matching experience through a working dating-product prototype.",
+    implementationNotes: "An independent dating-product prototype built with Next.js and Supabase. Explore the product direction through the demo; verified-profile coverage, matching quality and public launch timing are not established.",
     status: "Independent prototype · Demo",
     group: "research",
     tags: ["Next.js", "Supabase", "Product exploration"],
@@ -170,7 +180,8 @@ export const openSourceProjects = [
     name: "11 PM Cinema",
     tagline: "A small tool for choosing a film together",
     description:
-      "A personal movie-selection app exploring mood-led choices for two people. A compact build rather than a claim of commercial traction.",
+      "Choose a film together through a compact app built around mood-led suggestions.",
+    implementationNotes: "A personal movie-selection app exploring mood-led choices for two people. A compact build rather than a claim of commercial traction.",
     status: "Archive · Personal app",
     group: "archive",
     tags: ["Next.js", "TypeScript"],
@@ -238,7 +249,7 @@ export const allProjects = [
     companyName: "LiveKeeping",
     title: "E-Way Bill Adoption Diagnosis — 17:1 Compliance Gap",
     description:
-      "Conducted deep-dive analysis uncovering a massive drop-off where PRO+ users generated E-Way Bills externally via Tally rather than in-app. Built an executive narrative that changed the product roadmap.",
+      "Conducted deep-dive analysis uncovering a massive drop-off where PRO+ users generated E-Way Bills externally via Tally rather than in-app. Presented the findings to leadership to inform roadmap discussions.",
     tags: [
       "Data Analytics",
       "B2B SaaS",
@@ -278,7 +289,7 @@ export const allProjects = [
       "Diagnosed event funnels and rage-clicks. Rebuilt static form into category-specific modules with Material 3 components, contextual microcopy, and latency fixes.",
     tags: ["Product Management", "UX", "CRO", "Analytics"],
     result:
-      "Lead submissions: +124% · Mobile completion time: −41% · Rage clicks: −68%",
+      "Submission volume: +124% · Mobile completion time: −41% · Rage clicks: −68%",
     caseStudyLink: "/case-studies/lead-form",
   },
   {
@@ -286,7 +297,7 @@ export const allProjects = [
     companyName: "Sierra Living Concepts",
     title: "Lead Allocation & Routing — Gold/Silver/Bronze System",
     description:
-      "Built a data-backed lead routing system across 4 agents. Website forms (63.5% CVR) routed differently from chat (4.7% CVR). 30-day pilot from 10% to full rollout.",
+      "Built a data-backed lead routing system across 4 agents. Website forms (63.5% CVR) routed differently from chat (4.7% CVR). Designed a 30-day pilot with staged rollout objectives.",
     tags: [
       "Sales Ops",
       "Data Analysis",
@@ -294,7 +305,7 @@ export const allProjects = [
       "Revenue Operations",
     ],
     result:
-      "Gold source CVR: 63.5% · Bronze source CVR: 0.4% · Days to close: 5.2 → 3.5 target",
+      "Observed form source CVR: 63.5% · Observed Bronze source CVR: 0.4% · Days to close: 5.2 → 3.5 target",
     caseStudyLink: "/case-studies/sierra-lead-allocation",
   },
   {
@@ -304,7 +315,7 @@ export const allProjects = [
     description:
       "Integrated Google Gemini Flash (Nano Banana) image AI into LiveKeeping's dormant Pro+ Send Greetings feature. Built a geo-segmented festival calendar across 5 Indian regions with 27 occasions.",
     tags: ["AI Integration", "Feature PM", "India SMB", "Engagement"],
-    result: "+168% feature engagement · 27 occasions · 5 geo-regions",
+    result: "+168% reported feature engagement · 27 occasions · 5 geo-regions",
     caseStudyLink: "/case-studies/livekeeping-send-greetings",
   },
   {
@@ -328,10 +339,10 @@ export const allProjects = [
     companyName: "LiveKeeping",
     title: "Daily Report Automation — 3 Sources, 88 Rows, 11 AM",
     description:
-      "Built a Google Apps Script pipeline unifying Kibana, MongoDB, and GA4 into a single auto-populated report. Eliminated manual data entry across the team.",
+      "Deployed a Google Apps Script pipeline combining Kibana, MongoDB and GA4 in one auto-populated report used daily by the team.",
     tags: ["Google Apps Script", "Kibana", "MongoDB", "GA4"],
     result:
-      "3 sources unified · 88 rows mapped · 11 AM auto-populate · 0 manual steps",
+      "3 sources unified · 88 rows mapped · Deployed · Used daily",
     caseStudyLink: "/case-studies/livekeeping-report-automation",
   },
   {
@@ -458,7 +469,7 @@ export const allProjects = [
     companyName: "Freelance · Diwan",
     title: "Lead-Gen Engine — Home Interiors",
     description:
-      "Designed and ran a always-on lead-generation engine for a home interiors brand — offer positioning, landing flow, and qualification filters.",
+      "Designed and ran an always-on lead-generation engine for a home interiors brand — offer positioning, landing flow, and qualification filters.",
     tags: ["Lead Gen", "Growth Consulting", "Funnel Design", "India D2C"],
     result: "478–523 qualified leads/mo · CPL: ₹277–293",
   },

@@ -33,16 +33,16 @@ const SierraLeadAllocation = () => {
       >
         <ContextBar company="Sierra Living Concepts · Sales Operations" period="Q3–Q4 2024" tags={['30-Day Pilot', 'Full Rollout']} />
         <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
-          The team was routing leads randomly. Gold leads were being picked up by the wrong agents.
+          Route leads according to observed intent.
         </h1>
         <p className="text-xl text-ink/60 font-medium mt-4 max-w-4xl">
-          Built a data-backed routing system that tripled high-value lead coverage using 3 months of real conversion data.
+          Used three months of source conversion data to design a tiered routing model for four agents. Source rates are observed inputs; improved coverage and time to close are pilot targets.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
-            { value: '63.5%', label: 'Website Form CVR', sub: 'Highest-converting source — GOLD' },
-            { value: '71.4%', label: 'Inbound Call CVR', sub: 'Most valuable per-lead — GOLD' },
-            { value: '4.7%', label: 'Chat CVR', sub: '13x lower than GOLD sources' },
+            { value: '63.5%', label: 'Observed Form Source CVR', sub: 'Analysed source data — GOLD' },
+            { value: '71.4%', label: 'Observed Call Source CVR', sub: 'Analysed source data — GOLD' },
+            { value: '4.7%', label: 'Observed Chat Source CVR', sub: '13x lower than GOLD sources' },
             { value: '5.2 → 3.5', label: 'Days to Close', sub: 'Target after routing fix' },
           ].map((m, i) => (
             <div key={i} className="bg-ink/10 border border-ink/20 rounded-xl p-4">

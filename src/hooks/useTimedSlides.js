@@ -64,9 +64,13 @@ export default function useTimedSlides(
     paused,
     setPaused,
     bindings: {
-      onMouseEnter: () => setHovered(true),
+      // Playback controls must remain usable while the reading area pauses.
+      // MouseOver also notices moving from a card onto its controls.
+      onMouseOver: (event) =>
+        setHovered(!event.target.closest("[data-slide-controls]")),
       onMouseLeave: () => setHovered(false),
-      onFocusCapture: () => setFocused(true),
+      onFocusCapture: (event) =>
+        setFocused(!event.target.closest("[data-slide-controls]")),
       onBlurCapture: (event) => {
         if (!event.currentTarget.contains(event.relatedTarget))
           setFocused(false);

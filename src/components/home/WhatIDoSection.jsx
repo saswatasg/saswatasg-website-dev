@@ -212,6 +212,7 @@ export default function WhatIDoSection() {
   return (
     <section
       ref={root}
+      {...timer.bindings}
       id="work-section"
       className="wb-process"
       aria-labelledby="wb-process-title"
@@ -233,6 +234,7 @@ export default function WhatIDoSection() {
       <div className="wb-process-workspace">
         <div
           className="wb-process-nav"
+          data-slide-controls
           role="group"
           aria-label="Explore my working process"
         >

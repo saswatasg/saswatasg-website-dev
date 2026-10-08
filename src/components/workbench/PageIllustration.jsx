@@ -11,7 +11,7 @@ export default function PageIllustration({ variant }) {
       y={y}
       width={w}
       height={h}
-      rx="10"
+      rx="2"
       fill={fill}
       stroke={ink}
       strokeWidth="1.5"

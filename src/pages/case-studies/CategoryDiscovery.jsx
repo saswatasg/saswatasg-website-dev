@@ -33,10 +33,10 @@ const CategoryDiscovery = () => {
       >
         <ContextBar company="Sierra Living Concepts" period="2024" tags={['D2C', 'UX']} />
         <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
-          Every category page had the same problem: nobody had watched what users actually did.
+          Help shoppers find the right category.
         </h1>
         <p className="text-xl text-ink/60 font-medium mt-4 max-w-4xl">
-          1.1 million BigQuery events. 376 in-session intercepts. 30+ UX issues in a template the team thought was fine.
+          Research across 1.1 million BigQuery events and 376 in-session intercepts shaped category journeys built around comparison, trust and product discovery.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[

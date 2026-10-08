@@ -1,20 +1,14 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { Boxes, Sparkles, FileText, Package, Rocket } from "lucide-react";
+import { Sparkles, FileText, Package, ArrowUpRight } from "lucide-react";
 import PageMeta from "@/components/PageMeta";
 import PageHeader, { PageEnd } from "@/components/workbench/PageHeader";
 import ProjectCard from "@/components/projects/ProjectCard";
 import CasePreviewCard from "@/components/workbench/CasePreviewCard";
-import BuildDiagram from "@/components/workbench/BuildDiagram";
 import caseStudies from "@/data/caseStudies";
-import {
-  openSourceProjects,
-  allProjects,
-  FILTERS,
-  softwareSchema,
-} from "@/data/projectsData";
+import { allProjects, FILTERS, softwareSchema } from "@/data/projectsData";
 import { trackEvent } from "@/utils/analytics";
 
 const containerVariants = {
@@ -34,21 +28,15 @@ const cardVariants = {
 const TABS = [
   {
     id: "case-studies",
-    label: "Case Studies",
+    label: "More case studies",
     icon: FileText,
-    count: caseStudies.length,
+    count: caseStudies.filter((study) => !study.featured).length,
   },
   {
     id: "product-work",
     label: "Product Work",
     icon: Package,
     count: allProjects.filter((p) => !p.caseStudyLink).length,
-  },
-  {
-    id: "external",
-    label: "Products & Builds",
-    icon: Rocket,
-    count: openSourceProjects.length,
   },
 ];
 
@@ -71,7 +59,7 @@ const Work = () => {
     <>
       <PageMeta
         title="Work | Saswata S. Sengupta"
-        description="Case studies and product work at Upcore Technologies, LiveKeeping and Sierra Living Concepts, alongside open-source AI builds."
+        description="Product decisions and delivery at Upcore Technologies, LiveKeeping and Sierra Living Concepts, with evidence from enterprise AI, SaaS and commerce."
       />
       <Helmet>
         <script type="application/ld+json">
@@ -91,7 +79,7 @@ const Work = () => {
           label="Work"
           variant="work"
           title="Good problems. Tangible progress."
-          description="Explore product decisions, client solutions and working tools across enterprise AI, B2B SaaS and commerce. Each story makes its role, delivery stage and outcome clear."
+          description="How I define problems, make product decisions and work with teams to deliver—in enterprise AI, B2B SaaS and commerce."
         />
         {/* Featured case studies */}
         <motion.div
@@ -124,7 +112,31 @@ const Work = () => {
                 <button
                   key={tab.id}
                   role="tab"
+                  id={`wb-work-tab-${tab.id}`}
+                  aria-controls="wb-work-panel"
+                  tabIndex={isActive ? 0 : -1}
                   aria-selected={isActive}
+                  onKeyDown={(event) => {
+                    const current = TABS.findIndex(
+                      (item) => item.id === activeTab,
+                    );
+                    const next =
+                      event.key === "Home"
+                        ? 0
+                        : event.key === "End"
+                          ? TABS.length - 1
+                          : event.key === "ArrowRight"
+                            ? (current + 1) % TABS.length
+                            : event.key === "ArrowLeft"
+                              ? (current + TABS.length - 1) % TABS.length
+                              : -1;
+                    if (next < 0) return;
+                    event.preventDefault();
+                    setActiveTab(TABS[next].id);
+                    document
+                      .getElementById(`wb-work-tab-${TABS[next].id}`)
+                      ?.focus();
+                  }}
                   onClick={() => {
                     trackEvent("work", "tab", tab.id);
                     setActiveTab(tab.id);
@@ -148,11 +160,14 @@ const Work = () => {
           </div>
         </motion.div>
 
-        <p className="text-xs text-ink/45 font-medium mb-6 -mt-1">
-          Case studies explain the decisions and evidence. Product work shows
-          additional company projects. Products & builds brings together
-          independent products, tools and clearly labeled client demos.
-        </p>
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm text-ink/70">
+            Additional decisions and deliveries beyond the selected stories.
+          </p>
+          <Link className="wb-inline-link" to="/builds">
+            Explore independent builds <ArrowUpRight size={16} />
+          </Link>
+        </div>
 
         {/* Tab panels */}
         <AnimatePresence mode="wait">
@@ -163,12 +178,16 @@ const Work = () => {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
             role="tabpanel"
+            id="wb-work-panel"
+            aria-labelledby={`wb-work-tab-${activeTab}`}
           >
             {activeTab === "case-studies" && (
               <div className="wb-lab-grid">
-                {caseStudies.map((cs, index) => (
-                  <CasePreviewCard key={cs.id} study={cs} index={index} />
-                ))}
+                {caseStudies
+                  .filter((study) => !study.featured)
+                  .map((cs, index) => (
+                    <CasePreviewCard key={cs.id} study={cs} index={index} />
+                  ))}
               </div>
             )}
 
@@ -213,66 +232,6 @@ const Work = () => {
                     No projects in this filter yet.
                   </div>
                 )}
-              </div>
-            )}
-
-            {activeTab === "external" && (
-              <div className="bg-white border-2 border-black rounded-2xl p-6 md:p-8">
-                <div className="flex items-center gap-2 mb-1">
-                  <Boxes className="w-5 h-5 text-ink" />
-                  <h2 className="text-ink text-xl md:text-2xl font-display font-black tracking-tight">
-                    Products, tools & prototypes
-                  </h2>
-                </div>
-                <p className="text-sm md:text-base text-ink/70 font-medium mb-6">
-                  Explore independent products, open-source experiments and
-                  client demos. Each build shows its current stage and the
-                  available product or source links.
-                </p>
-                <div className="wb-lab-grid">
-                  {openSourceProjects.map((p, index) => (
-                    <article
-                      key={p.name}
-                      className="wb-surface wb-lab-card"
-                      style={{
-                        "--wb-panel-tone": `var(--wb-${["sage", "clay", "blue", "gold", "lilac"][index % 5]})`,
-                      }}
-                    >
-                      <div className="wb-lab-card-visual" aria-hidden="true">
-                        <BuildDiagram project={p} />
-                      </div>
-                      <div className="wb-lab-card-body">
-                        <span className="wb-status">{p.status}</span>
-                        <h3>{p.name}</h3>
-                        <p>{p.description}</p>
-                        <div className="wb-role-links">
-                          {p.links.map((l) => (
-                            <a
-                              key={l.href}
-                              href={l.href}
-                              target={l.external ? "_blank" : undefined}
-                              rel="noopener noreferrer"
-                            >
-                              {l.label} ↗
-                            </a>
-                          ))}
-                          {p.code && (
-                            <a
-                              href={p.code}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Source code ↗
-                            </a>
-                          )}
-                          {p.caseStudyLink && (
-                            <Link to={p.caseStudyLink}>Read the case ↗</Link>
-                          )}
-                        </div>
-                      </div>
-                    </article>
-                  ))}
-                </div>
               </div>
             )}
           </motion.div>

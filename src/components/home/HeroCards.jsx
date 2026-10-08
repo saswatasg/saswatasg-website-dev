@@ -264,6 +264,7 @@ export function MobileHeroCard() {
       </Shift>
       <div
         className="wb-mobile-deck-controls"
+        data-slide-controls
         role="group"
         aria-label="Mobile hero slideshow controls"
       >
@@ -281,8 +282,13 @@ export function MobileHeroCard() {
           {String(timer.index + 1).padStart(2, "0")} / 08
         </span>
         <button
-          aria-label={`${timer.paused || timer.reduced ? "Play" : "Pause"} mobile hero slideshow`}
+          aria-label={
+            timer.reduced
+              ? "Mobile hero automatic playback disabled for reduced motion"
+              : `${timer.paused ? "Play" : "Pause"} mobile hero slideshow`
+          }
           disabled={!!timer.reduced}
+          aria-pressed={!timer.paused && !timer.reduced}
           onClick={() => timer.setPaused((value) => !value)}
         >
           {timer.paused || timer.reduced ? (

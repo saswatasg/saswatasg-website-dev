@@ -88,3 +88,19 @@ All scheduling entry points open the shared Radix in-page dialog with Google's p
 
 ### Homepage Build Lab showcase
 Independent products have one compact showcase immediately before Selected Work. DhanPlan and Meldstead use illustrative miniature interfaces, explicit live/pre-launch states, concise descriptions and direct external product links. Explore Builds opens the full collection. The duplicate Products & Prototypes section is removed. Desktop uses two adjoining panels inside one framed shelf; mobile stacks panels with no nested elevation. Hover straightens the illustrative frames; reduced motion disables animation. Closing writing links include the existing editorial artwork.
+
+## Final audit polish — 8 October 2026
+
+- Work separates three selected cases from additional case studies. Builds is its own catalogue, with Archive excluded from the default view and preserved by filter and deep links.
+- Case and build illustrations use one ink-and-muted-palette family with different structures for procurement, compliance, checkout, reporting, messaging, planning and workspace tools. They are editorial illustrations, not product screenshots. Metric labels remain explicit in the card copy.
+- About explains product judgment and collaboration; Experience prioritizes current product ownership and progressively discloses achievements. Collapsed cards omit repeated metric badges when those figures are already in their bullets.
+- Square major panels use 2px outlines and 4px hard shadows; nested data uses flat outlines. Controls use 4px corners. Legacy pill badges normalize to the control radius. Header height remains 68px desktop / 64px mobile.
+- All slide systems preserve elapsed progress while hovered/focused reading content pauses. Playback controls are excluded from reading-area pauses so Play remains effective. Reduced motion disables autoplay.
+- The mobile hero's eight variants keep their ordinary 196px outer geometry, while content can grow with enlarged text instead of clipping. Process panels share 570px outer geometry at 390px and can grow for accessibility.
+- Chat preserves focus after suggested questions and asynchronous answers. Opening on mobile focuses Close, leaving keyboard activation to the visitor.
+- Booking remains an iframe popup, with reload and email help. Chrome availability was verified; Safari/Firefox and physical mobile keyboards require device verification.
+- Contact delivery and archival requests start concurrently and have independent deadlines. Only confirmed delivery clears the form. Tests mock both services; no contact message was sent.
+
+### Confirmed evidence
+
+LiveKeeping's reporting workflow was deployed and used daily. The lead-form result is **+124% submission volume**, distinct from the separately scoped role metric. Lead-routing source conversion rates remain observed inputs, and pilot targets remain targets. The greetings result is a reported engagement change without claiming isolated causal attribution.

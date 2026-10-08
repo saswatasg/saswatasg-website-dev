@@ -21,134 +21,134 @@
       "kind": "career"
     },
     {
-      "title": "Inventory Leveling: Knowing What to Buy, and When",
+      "title": "Plan purchases around real dependencies",
       "text": "Upcore Technologies. Enterprise workflows · Client demo. A working procurement demo connecting shared component demand, available stock and lead-time scheduling. Built on mock data. Evidence: BOM Demand Trace; 28 Reconciliation Tests; Gantt Purchase Timing; Demo Delivery Stage. Topics: Product Design, Procurement, React, TypeScript",
       "url": "/case-studies/upcore-inventory-leveling",
       "kind": "case study"
     },
     {
-      "title": "From a Client Problem to a Deliverable Solution",
+      "title": "From client problem to delivered solution",
       "text": "Upcore Technologies. Enterprise discovery · Delivery ownership. Built the discovery practice and derived solutions while managing delivery end to end for 23+ clients. Evidence: 23+ Clients · Solution Delivery; 500+ Survey Responses; 20+ Prospect Conversations; 6 Developers Coordinated. Topics: Discovery, Solution Design, Delivery, Enterprise",
       "url": "/case-studies/upcore-discovery",
       "kind": "case study"
     },
     {
-      "title": "The 17:1 Compliance Gap Nobody Had Measured",
+      "title": "Understand the compliance adoption gap",
       "text": "LiveKeeping. B2B SaaS · Analytical. For every E-Way Bill generated in LiveKeeping, 17 were going to Tally. I found this in 100K+ API logs and took it to the CEO. Evidence: 17:1 E-Way Bill Gap; 19:1 E-Invoice Gap; C-Suite Escalation; Discovery Roadmap Input. Topics: Product Discovery, Data Analysis, Executive Comms, B2B SaaS",
       "url": "/case-studies/livekeeping-compliance-gap",
       "kind": "case study"
     },
     {
-      "title": "From 73% to 54%: Removing Friction from Checkout",
+      "title": "Remove friction from checkout",
       "text": "Sierra Living Concepts. D2C E-Commerce. 480,000 sessions. Funnel instrumentation, session evidence and targeted mobile checkout improvements. Evidence: –26% Checkout Abandonment; +47% Mobile CVR; +49% Checkout Completion; 480K Sessions Analysed. Topics: UX Research, A/B Testing, Mobile-First, GA4",
       "url": "/case-studies/cart-checkout",
       "kind": "case study"
     },
     {
-      "title": "AI-Powered Send Greetings: +168% Engagement From a Dormant Feature",
-      "text": "LiveKeeping. AI Integration · Feature PM. Integrated Google Gemini Flash image AI into a dormant Pro+ feature. Built a geo-segmented festival calendar across 5 Indian regions. Evidence: +168% Feature Engagement; 27 occasions Festival Calendar; Nano Banana AI Model; 5 regions Geo-Segmented. Topics: AI Integration, Feature PM, India SMB, Engagement",
+      "title": "Make customer greetings useful again",
+      "text": "LiveKeeping. AI Integration · Feature PM. Integrated Google Gemini Flash image AI into a dormant Pro+ feature. Built a geo-segmented festival calendar across 5 Indian regions. Evidence: +168% Reported Feature Engagement; 27 occasions Festival Calendar; Nano Banana AI Model; 5 regions Geo-Segmented. Topics: AI Integration, Feature PM, India SMB, Engagement",
       "url": "/case-studies/livekeeping-send-greetings",
       "kind": "case study"
     },
     {
-      "title": "Push Notifications From Zero: 27+ Triggers, 5 Regions, One System",
-      "text": "LiveKeeping. Systems Design · Notification Strategy. 27+ triggers. P0–P3 priority hierarchy. 3-slot daily cap with conflict resolution. Geo-segmented across 5 Indian regions. Built the entire system from scratch. Evidence: 27+ Event Triggers; 3-slot Daily Cap + Priority Queue; 5 regions Geo-Segmented; PRO/PRO+ Plan-Tier Logic. Topics: Systems Design, Notification Strategy, GST Compliance, India SMB",
+      "title": "Give notifications a clear priority",
+      "text": "LiveKeeping. Systems Design · Notification Strategy. Designed lifecycle messaging with 27+ triggers, priority rules, a daily cap and regional relevance. Evidence: 27+ Event Triggers; 3-slot Daily Cap + Priority Queue; 5 regions Geo-Segmented; PRO/PRO+ Plan-Tier Logic. Topics: Systems Design, Notification Strategy, GST Compliance, India SMB",
       "url": "/case-studies/livekeeping-notifications",
       "kind": "case study"
     },
     {
-      "title": "Story-Driven Category Pages: +34% Leads Without a Single Ad",
+      "title": "Help shoppers find the right category",
       "text": "Sierra Living Concepts. D2C Discovery. Replaced commodity category pages with story-driven, trust-led journeys. 1.1M BigQuery events. 376 in-session intercepts. Evidence: +34% Qualified Leads; +24% Session Duration; –16% Bounce Rate; +27% ATC Rate. Topics: BigQuery, Clarity, Lead Gen, Conversion",
       "url": "/case-studies/category-discovery",
       "kind": "case study"
     },
     {
-      "title": "Lead Form Overhaul: +124% Without a Single New Visitor",
-      "text": "Sierra Living Concepts. Form Optimization. Static form. Zero conditional logic. Rebuilt into category-specific modules. No traffic changes — pure UX architecture. Evidence: +124% Submission Rate; –41% Mobile Completion Time; –68% Rage Clicks; –31% Bounce (Form Page). Topics: Behavioral Analytics, UX Redesign, Clarity, Mobile",
+      "title": "Make the lead form easier to complete",
+      "text": "Sierra Living Concepts. Form Optimization. Rebuilt a static form into category-specific modules with inline validation. Reported submission volume increased 124% in 28 days. Evidence: +124% Submission Volume; –41% Mobile Completion Time; –68% Rage Clicks; –31% Bounce (Form Page). Topics: Behavioral Analytics, UX Redesign, Clarity, Mobile",
       "url": "/case-studies/lead-form",
       "kind": "case study"
     },
     {
-      "title": "Gold, Silver, Bronze: Lead Routing That Closed 63.5%",
-      "text": "Sierra Living Concepts. Sales Operations. Website Forms convert at 63.5%. Chat converts at 4.7%. The team was treating them identically. Built Gold/Silver/Bronze routing across 4 agents. Evidence: 63.5% Gold Source CVR; 0.4% Bronze Source CVR; 5.2→3.5 Days to Close Target; 30 days Pilot to Full Rollout. Topics: Sales Ops, Data Analysis, Routing Design, Revenue Operations",
+      "title": "Route leads according to observed intent",
+      "text": "Sierra Living Concepts. Sales Operations. Used observed source conversion rates to design a Gold/Silver/Bronze routing model for four agents. Pilot targets remain distinct from measured source rates. Evidence: 63.5% Observed Form Source CVR; 0.4% Observed Bronze Source CVR; 5.2→3.5 Days to Close Target; 30 days Pilot Plan. Topics: Sales Ops, Data Analysis, Routing Design, Revenue Operations",
       "url": "/case-studies/sierra-lead-allocation",
       "kind": "case study"
     },
     {
-      "title": "Daily Report Automation: 3 Sources, 88 Rows, 0 Manual Steps",
-      "text": "LiveKeeping. Internal Tooling. Kibana + MongoDB + GA4 → Google Sheets. One Apps Script trigger. Manual data entry eliminated across the team. Evidence: 3 Data Sources Unified; 88 rows Fully Mapped; 11 AM Auto-Populate; 0 Manual Steps. Topics: Google Apps Script, Kibana, MongoDB, GA4",
+      "title": "Bring daily reporting into one view",
+      "text": "LiveKeeping. Internal Tooling. Deployed a Google Apps Script workflow combining Kibana, MongoDB and GA4 in an 88-row report used daily by the team. Evidence: 3 Data Sources Unified; 88 rows Fully Mapped; Daily Team Use; Deployed Delivery Stage. Topics: Google Apps Script, Kibana, MongoDB, GA4",
       "url": "/case-studies/livekeeping-report-automation",
       "kind": "case study"
     },
     {
-      "title": "Lead Qualification: A Shared Basis for the Next Conversation",
+      "title": "Create a shared lead qualification scorecard",
       "text": "Upcore Technologies. B2B GTM · Method study. A five-dimension, 100-point scorecard applied to the live pipeline, with four actionable qualification tiers. Evidence: 5 Dimensions; 100 Point Scale; 4 Qualification Tiers; Live Pipeline Application. Topics: B2B GTM, Lead Scoring, Enterprise, Sales Ops",
       "url": "/case-studies/upcore-lead-scoring",
       "kind": "case study"
     },
     {
       "title": "DhanPlan",
-      "text": "An India-focused planner connecting contributions, assets and retirement withdrawals in a monthly ledger. Engine 2.0.0 includes gap-solving and stress scenarios; projections remain assumption-based. Status: Independent product · Live. Tags: Retirement planning, Scenario modelling, Monthly ledger",
+      "text": "Connect contributions, assets and retirement withdrawals in a monthly plan with visible assumptions. Status: Independent product · Live. Tags: Retirement planning, Scenario modelling, Monthly ledger",
       "url": "/builds#dhanplan",
       "kind": "build"
     },
     {
       "title": "Meldstead",
-      "text": "Tasks, docs, whiteboards and timelines, with AI connections and client reviews. An independent product in pre-launch final audit; public availability does not mean a completed public launch. Status: Independent product · Pre-launch final audit. Tags: Project workspace, Collaboration",
+      "text": "Bring tasks, documents, whiteboards and timelines into one connected project workspace. Status: Independent product · Pre-launch final audit. Tags: Project workspace, Collaboration",
       "url": "/builds#meldstead",
       "kind": "build"
     },
     {
       "title": "Inventory Leveling Agent",
-      "text": "An Upcore Technologies client demo using mock data: expands BOM demand, nets inventory and schedules purchasing. The repository documents 28 reconciliation tests; there is no live ERP integration. Status: Upcore Technologies · Client demo · Mock data. Tags: MRP logic, Procurement, React, TypeScript",
+      "text": "Trace shared component demand, net available stock and schedule purchasing in a procurement demo. Status: Upcore Technologies · Client demo · Mock data. Tags: MRP logic, Procurement, React, TypeScript",
       "url": "/builds#inventory-leveling-agent",
       "kind": "build"
     },
     {
       "title": "BlogHero",
-      "text": "A Sierra Living Concepts content tool connecting Search Console opportunities, research and writing to WordPress drafts and a Sheets run log. It creates drafts rather than publishing automatically; client impact metrics are not published. Status: Client tool · Reported client use. Tags: Search Console, Python, Content workflows",
+      "text": "Turn search opportunities and research into reviewable WordPress drafts and a tracked content workflow. Status: Client tool · Reported client use. Tags: Search Console, Python, Content workflows",
       "url": "/builds#bloghero",
       "kind": "build"
     },
     {
       "title": "LinkForge",
-      "text": "A desktop workflow for Sierra Living Concepts: discover and vet domains, find contacts, match pages and draft pitches into a Google Sheets tracker. Suppression rules apply throughout; it does not send outreach automatically. Deployment and adoption are not established here. Status: Client-oriented tool · Documented implementation. Tags: NiceGUI, Google Sheets, Outreach workflows",
+      "text": "Inspect domains, contacts and page matches before drafting backlink outreach into a shared tracker. Status: Client-oriented tool · Documented implementation. Tags: NiceGUI, Google Sheets, Outreach workflows",
       "url": "/builds#linkforge",
       "kind": "build"
     },
     {
       "title": "Pixel Display Controller",
-      "text": "A personal controller for a 32×32 BLE display. A Next.js interface connects through a local FastAPI bridge for text, images, GIFs and device controls. The repository reports an MVP tested on hardware; this is a personal integration, not a commercial deployment. Status: Personal build · Hardware MVP. Tags: Next.js, FastAPI, Bluetooth, Hardware integration",
+      "text": "Control text, images and GIFs on a 32×32 Bluetooth display through a web interface. Status: Personal build · Hardware MVP. Tags: Next.js, FastAPI, Bluetooth, Hardware integration",
       "url": "/builds#pixel-display-controller",
       "kind": "build"
     },
     {
       "title": "FilmRisk.AI",
-      "text": "A TypeScript scoring experiment using 2,454 film records, of which 729 have trainable financial data. Published temporal backtests did not establish an advantage over simple baselines. The useful artifact is the evaluation and its limitations. Status: Research experiment · Weak backtest. Tags: Next.js, Gradient boosting, Bayesian priors, Evaluation",
+      "text": "Explore film-risk scoring through published backtests and an evaluation of where the model falls short. Status: Research experiment · Weak backtest. Tags: Next.js, Gradient boosting, Bayesian priors, Evaluation",
       "url": "/builds#filmrisk-ai",
       "kind": "build"
     },
     {
       "title": "Topshe",
-      "text": "An experimental assistant running a quantised Qwen model through WebAssembly, with local conversation storage. Voice uses browser speech APIs and may involve remote services. Calendar, email and smart-home integrations are planned rather than delivered. Status: Personal experiment · Browser-local LLM. Tags: React, wllama, Web Speech API, PWA",
+      "text": "Run a local language model in the browser with conversation storage and experimental voice controls. Status: Personal experiment · Browser-local LLM. Tags: React, wllama, Web Speech API, PWA",
       "url": "/builds#topshe",
       "kind": "build"
     },
     {
       "title": "TGB Hunt",
-      "text": "A Django and Playwright experiment for campaign tasks, connection requests and follow-ups. The implementation can send automatically; a mandatory review gate is not established. Kept as an archive of workflow engineering and product constraints. Status: Archive · Automation experiment. Tags: Django, Playwright, Task orchestration",
+      "text": "Explore campaign task orchestration and follow-ups in a self-hosted outreach automation experiment. Status: Archive · Automation experiment. Tags: Django, Playwright, Task orchestration",
       "url": "/builds#tgb-hunt",
       "kind": "build"
     },
     {
       "title": "Intent",
-      "text": "An independent dating-product prototype built with Next.js and Supabase. Explore the product direction through the demo; verified-profile coverage, matching quality and public launch timing are not established. Status: Independent prototype · Demo. Tags: Next.js, Supabase, Product exploration",
+      "text": "Explore a more deliberate matching experience through a working dating-product prototype. Status: Independent prototype · Demo. Tags: Next.js, Supabase, Product exploration",
       "url": "/builds#intent",
       "kind": "build"
     },
     {
       "title": "11 PM Cinema",
-      "text": "A personal movie-selection app exploring mood-led choices for two people. A compact build rather than a claim of commercial traction. Status: Archive · Personal app. Tags: Next.js, TypeScript",
+      "text": "Choose a film together through a compact app built around mood-led suggestions. Status: Archive · Personal app. Tags: Next.js, TypeScript",
       "url": "/builds#11-pm-cinema",
       "kind": "build"
     },
@@ -184,7 +184,7 @@
     },
     {
       "title": "E-Way Bill Adoption Diagnosis — 17:1 Compliance Gap",
-      "text": "LiveKeeping. Conducted deep-dive analysis uncovering a massive drop-off where PRO+ users generated E-Way Bills externally via Tally rather than in-app. Built an executive narrative that changed the product roadmap. 17:1 E-Way Bill gap · 19:1 E-Invoice gap · Executive decision support",
+      "text": "LiveKeeping. Conducted deep-dive analysis uncovering a massive drop-off where PRO+ users generated E-Way Bills externally via Tally rather than in-app. Presented the findings to leadership to inform roadmap discussions. 17:1 E-Way Bill gap · 19:1 E-Invoice gap · Executive decision support",
       "url": "/case-studies/livekeeping-compliance-gap",
       "kind": "product work"
     },
@@ -202,19 +202,19 @@
     },
     {
       "title": "Lead Form Conversion Overhaul — +124% in 28 Days",
-      "text": "Sierra Living Concepts. Diagnosed event funnels and rage-clicks. Rebuilt static form into category-specific modules with Material 3 components, contextual microcopy, and latency fixes. Lead submissions: +124% · Mobile completion time: −41% · Rage clicks: −68%",
+      "text": "Sierra Living Concepts. Diagnosed event funnels and rage-clicks. Rebuilt static form into category-specific modules with Material 3 components, contextual microcopy, and latency fixes. Submission volume: +124% · Mobile completion time: −41% · Rage clicks: −68%",
       "url": "/case-studies/lead-form",
       "kind": "product work"
     },
     {
       "title": "Lead Allocation & Routing — Gold/Silver/Bronze System",
-      "text": "Sierra Living Concepts. Built a data-backed lead routing system across 4 agents. Website forms (63.5% CVR) routed differently from chat (4.7% CVR). 30-day pilot from 10% to full rollout. Gold source CVR: 63.5% · Bronze source CVR: 0.4% · Days to close: 5.2 → 3.5 target",
+      "text": "Sierra Living Concepts. Built a data-backed lead routing system across 4 agents. Website forms (63.5% CVR) routed differently from chat (4.7% CVR). Designed a 30-day pilot with staged rollout objectives. Observed form source CVR: 63.5% · Observed Bronze source CVR: 0.4% · Days to close: 5.2 → 3.5 target",
       "url": "/case-studies/sierra-lead-allocation",
       "kind": "product work"
     },
     {
       "title": "Send Greetings + Nano Banana AI Integration — +168% Engagement",
-      "text": "LiveKeeping. Integrated Google Gemini Flash (Nano Banana) image AI into LiveKeeping's dormant Pro+ Send Greetings feature. Built a geo-segmented festival calendar across 5 Indian regions with 27 occasions. +168% feature engagement · 27 occasions · 5 geo-regions",
+      "text": "LiveKeeping. Integrated Google Gemini Flash (Nano Banana) image AI into LiveKeeping's dormant Pro+ Send Greetings feature. Built a geo-segmented festival calendar across 5 Indian regions with 27 occasions. +168% reported feature engagement · 27 occasions · 5 geo-regions",
       "url": "/case-studies/livekeeping-send-greetings",
       "kind": "product work"
     },
@@ -226,7 +226,7 @@
     },
     {
       "title": "Daily Report Automation — 3 Sources, 88 Rows, 11 AM",
-      "text": "LiveKeeping. Built a Google Apps Script pipeline unifying Kibana, MongoDB, and GA4 into a single auto-populated report. Eliminated manual data entry across the team. 3 sources unified · 88 rows mapped · 11 AM auto-populate · 0 manual steps",
+      "text": "LiveKeeping. Deployed a Google Apps Script pipeline combining Kibana, MongoDB and GA4 in one auto-populated report used daily by the team. 3 sources unified · 88 rows mapped · Deployed · Used daily",
       "url": "/case-studies/livekeeping-report-automation",
       "kind": "product work"
     },
@@ -310,7 +310,7 @@
     },
     {
       "title": "Lead-Gen Engine — Home Interiors",
-      "text": "Freelance · Diwan. Designed and ran a always-on lead-generation engine for a home interiors brand — offer positioning, landing flow, and qualification filters. 478–523 qualified leads/mo · CPL: ₹277–293",
+      "text": "Freelance · Diwan. Designed and ran an always-on lead-generation engine for a home interiors brand — offer positioning, landing flow, and qualification filters. 478–523 qualified leads/mo · CPL: ₹277–293",
       "url": "/work",
       "kind": "product work"
     },
@@ -345,8 +345,8 @@
       "kind": "career"
     },
     {
-      "title": "AI image greetings lifted feature engagement by 168%",
-      "text": "A dormant 'Send Greetings' feature, an image-gen model, and a festival calendar across 27 occasions — feature engagement up 168% at LiveKeeping.\n\n\n\n\n\n\n  At LiveKeeping, I worked on an AI image-generation integration for the Pro+\n  Send Greetings feature and a geo-segmented calendar of 27 occasions across\n  five regional groupings. The supplied record reports +168% feature engagement;\n  it does not establish the same increase in overall product retention or\n  revenue.\n\n\n\n\n## Give the feature a relevant moment\n\nThe feature helps a merchant create greetings for customers. Its product challenge is broader than generating an attractive image: the occasion, language and business context need to make the greeting useful at the moment someone wants to send it.\n\nThe documented work combines image generation with a regional festival calendar. This gives the product a structured source of relevant occasions rather than treating every user as if they follow the same national calendar. Five groupings provide a practical segmentation basis; they are not a claim to represent every local custom.\n\n## Make the integration understandable\n\nThe supplied work describes the Nano Banana image model integration and its role in producing greeting artwork. The product flow brings together the selected occasion, business context and image generation. A user needs to understand what will be created and have a clear path to review the result.\n\nAn AI integration should be assessed through the task it helps complete. Generation availability alone does not show that someone created a usable card or sent it successfully. Those steps deserve separate instrumentation rather than one undifferentiated AI-use counter.\n\n## Calendar design is part of the product\n\nThe 27-occasion calendar makes timing and relevance explicit. Regional mapping connects the schedule to the merchant’s context. The feature work also fits the broader lifecycle-messaging architecture, where priority, daily limits and conflicting messages need to be considered.\n\nA useful notification is a prompt for a relevant task. Sending more reminders is not automatically better, and the calendar should not be interpreted as permission to contact every merchant for every occasion. The design needs a path from relevance to action, alongside controls for message fatigue.\n\n## What the ",
+      "title": "AI greetings: relevance, creation and reported engagement",
+      "text": "AI image generation and a 27-occasion regional calendar for LiveKeeping’s Send Greetings feature, with a reported 168% engagement increase.\n\n\n\n\n\n\n  At LiveKeeping, I worked on an AI image-generation integration for the Pro+\n  Send Greetings feature and a geo-segmented calendar of 27 occasions across\n  five regional groupings. The supplied record reports +168% feature engagement;\n  it does not establish the same increase in overall product retention or\n  revenue.\n\n\n\n\n## Give the feature a relevant moment\n\nThe feature helps a merchant create greetings for customers. Its product challenge is broader than generating an attractive image: the occasion, language and business context need to make the greeting useful at the moment someone wants to send it.\n\nThe documented work combines image generation with a regional festival calendar. This gives the product a structured source of relevant occasions rather than treating every user as if they follow the same national calendar. Five groupings provide a practical segmentation basis; they are not a claim to represent every local custom.\n\n## Make the integration understandable\n\nThe supplied work describes the Nano Banana image model integration and its role in producing greeting artwork. The product flow brings together the selected occasion, business context and image generation. A user needs to understand what will be created and have a clear path to review the result.\n\nAn AI integration should be assessed through the task it helps complete. Generation availability alone does not show that someone created a usable card or sent it successfully. Those steps deserve separate instrumentation rather than one undifferentiated AI-use counter.\n\n## Calendar design is part of the product\n\nThe 27-occasion calendar makes timing and relevance explicit. Regional mapping connects the schedule to the merchant’s context. The feature work also fits the broader lifecycle-messaging architecture, where priority, daily limits and conflicting messages need to be considered.\n\nA useful notification is a prompt for a relevant task. Sending more reminders is not automatically better, and the calendar should not be interpreted as permission to contact every merchant for every occasion. The design needs a path from relevance to action, alongside controls for message fatigue.\n\n## What the ",
       "url": "/blog/ai-send-greetings-168",
       "kind": "article"
     },
@@ -364,7 +364,7 @@
     },
     {
       "title": "Daily reporting: three sources, one dependable view",
-      "text": "A LiveKeeping reporting workflow using Google Apps Script, 88 mapped rows and three data sources, with freshness and reconciliation made explicit.\n\n\n\n\n\n\n  At LiveKeeping, I built a Google Apps Script reporting workflow bringing\n  Kibana, MongoDB and GA4 information into an 88-row daily report. The\n  documented operating schedule was 11 AM. The useful product artifact is a\n  repeatable reporting structure, with a defined mapping scope and daily\n  operating expectation.\n\n\n\n\n## Define what each row means\n\nCombining systems is not the same as making their figures comparable. A report needs a definition for each row: its source, qualifying population, time period and calculation. Subscriber counts, transaction activity and analytics events describe different objects. A single spreadsheet can make those differences easier to see or accidentally hide them. The mapping work is therefore part of the product decision, not merely preparation for the script.\n\n## Separate collection from interpretation\n\nThe pipeline consolidates information so the team can inspect it in one working view. That does not mean the system can decide why a metric moved. The report needs stable labels and enough context to support comparison; the analyst still needs to investigate a change. No production credentials, private database extracts or confidential records are reproduced in this article.\n\n## Treat the schedule as an operating expectation\n\nThe 11 AM report time describes the intended daily routine. Google Apps Script time-driven triggers can run within a scheduled window rather than guaranteeing an exact second. A robust report should show when each source was last refreshed and whether the current run completed. See Google’s [installable-trigger documentation](https://developers.google.com/apps-script/guides/triggers/installable) for scheduling behavior and account constraints.\n\n## Build trust through reconciliation\n\nUseful validation compares a sample of mapped rows with their original sources, distinguishes missing values from zero and makes failed collection visible. Repeat runs should not silently duplicate figures or overwrite a valid prior result with incomplete data. Those are acceptance criteria for dependable reporting; this public case does not publish a full set of operational logs proving every condition. It also does no",
+      "text": "A LiveKeeping reporting workflow using Google Apps Script, 88 mapped rows and three data sources, deployed and used daily by the team.\n\n\n\n\n\n\n  At LiveKeeping, I built a Google Apps Script reporting workflow bringing\n  Kibana, MongoDB and GA4 information into an 88-row daily report. The\n  workflow was deployed and used daily by the team, with an 11 AM\n  operating schedule. The contribution spans the reporting structure, source\n  mapping and delivery of the routine the team used.\n\n\n\n\n## Define what each row means\n\nCombining systems is not the same as making their figures comparable. A report needs a definition for each row: its source, qualifying population, time period and calculation. Subscriber counts, transaction activity and analytics events describe different objects. A single spreadsheet can make those differences easier to see or accidentally hide them. The mapping work is therefore part of the product decision, not merely preparation for the script.\n\n## Separate collection from interpretation\n\nThe pipeline consolidates information so the team can inspect it in one working view. That does not mean the system can decide why a metric moved. The report needs stable labels and enough context to support comparison; the analyst still needs to investigate a change. No production credentials, private database extracts or confidential records are reproduced in this article.\n\n## Treat the schedule as an operating expectation\n\nThe 11 AM report time describes the intended daily routine. Google Apps Script time-driven triggers can run within a scheduled window rather than guaranteeing an exact second. A robust report should show when each source was last refreshed and whether the current run completed. See Google’s [installable-trigger documentation](https://developers.google.com/apps-script/guides/triggers/installable) for scheduling behavior and account constraints.\n\n## Build trust through reconciliation\n\nUseful validation compares a sample of mapped rows with their original sources, distinguishes missing values from zero and makes failed collection visible. Repeat runs should not silently duplicate figures or overwrite a valid prior result with incomplete data. Those are acceptance criteria for dependable reporting; this public case does not publish a full set of operational logs proving every cond",
       "url": "/blog/daily-report-automation",
       "kind": "article"
     },
@@ -400,7 +400,7 @@
     },
     {
       "title": "Lead forms: diagnose the field, improve the journey",
-      "text": "A Sierra Living Concepts form redesign: field-level diagnosis, inline validation and category-specific modules, with reported results in context.\n\n\n\n\n\n\n  At Sierra Living Concepts, a field-level investigation identified a\n  restrictive phone-format check contributing to abandonment. The redesign\n  combined clearer input guidance, inline validation and category-specific form\n  modules. The project record reports +124% submissions in 28 days.\n\n\n## Start with the interaction, not the form length\n\nAn aggregate completion rate tells a team that people are leaving. It does not tell them which interaction needs attention. The useful question was where users hesitated or failed: field entry, validation, submission, or the next step.\n\nGA4 field-level events and Microsoft Clarity session evidence helped connect the measured funnel with the experience of filling out the form. The project record attributes 23% of drop-offs to a restrictive field. That finding supported a focused intervention rather than a blanket recommendation to remove fields.\n\n\n\n## Make the expected action understandable\n\nThe redesign addressed three connected needs:\n\n| Change                  | User need                                                  |\n| ----------------------- | ---------------------------------------------------------- |\n| Visible format guidance | Understand what the field accepts before an error          |\n| Inline validation       | Recognize and correct a problem while entering information |\n| Context-specific labels | Understand why the information is needed                   |\n\nCategory-specific modules made the form more relevant to the enquiry. A customer asking about custom furniture should encounter a form that supports that task. Faster initialization and mobile interaction details also mattered: a clear field cannot help if it appears unresponsive.\n\n## Evaluate the complete journey\n\nThe project record reports **+124% submissions**, **−41% mobile completion time** and **−68% rage clicks**. These outcomes describe different aspects of the experience. More submissions should also be evaluated against lead quality; faster completion should not depend on confusing defaults or skipped information.\n\nA separate role-level record reports conversion moving from **2.14% to 4.40%**, approximately **+105%**. The available reco",
+      "text": "A Sierra Living Concepts form redesign: field-level diagnosis, inline validation and category-specific modules, with reported results in context.\n\n\n\n\n\n\n  At Sierra Living Concepts, a field-level investigation identified a\n  restrictive phone-format check contributing to abandonment. The redesign\n  combined clearer input guidance, inline validation and category-specific form\n  modules. The project record reports +124% submission volume in 28 days.\n\n\n## Start with the interaction, not the form length\n\nAn aggregate completion rate tells a team that people are leaving. It does not tell them which interaction needs attention. The useful question was where users hesitated or failed: field entry, validation, submission, or the next step.\n\nGA4 field-level events and Microsoft Clarity session evidence helped connect the measured funnel with the experience of filling out the form. The project record attributes 23% of drop-offs to a restrictive field. That finding supported a focused intervention rather than a blanket recommendation to remove fields.\n\n\n\n## Make the expected action understandable\n\nThe redesign addressed three connected needs:\n\n| Change                  | User need                                                  |\n| ----------------------- | ---------------------------------------------------------- |\n| Visible format guidance | Understand what the field accepts before an error          |\n| Inline validation       | Recognize and correct a problem while entering information |\n| Context-specific labels | Understand why the information is needed                   |\n\nCategory-specific modules made the form more relevant to the enquiry. A customer asking about custom furniture should encounter a form that supports that task. Faster initialization and mobile interaction details also mattered: a clear field cannot help if it appears unresponsive.\n\n## Evaluate the complete journey\n\nThe project record reports **+124% submission volume**, **−41% mobile completion time** and **−68% rage clicks**. These outcomes describe different aspects of the experience. More submissions should also be evaluated against lead quality; faster completion should not depend on confusing defaults or skipped information.\n\nA separate role-level record reports conversion moving from **2.14% to 4.40%**, approximately **+105%**. The av",
       "url": "/blog/lead-form-overhaul-124",
       "kind": "article"
     },

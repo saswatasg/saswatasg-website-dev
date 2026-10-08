@@ -1,7 +1,6 @@
-import React, { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import PageHeader, { PageEnd } from "@/components/workbench/PageHeader";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import PageMeta from "@/components/PageMeta";
 import BuildDiagram from "@/components/workbench/BuildDiagram";
 import Home from "@/pages/Home";
@@ -55,10 +54,32 @@ export default function Workbench() {
   return <Home />;
 }
 export function Builds() {
-  const [filter, setFilter] = useState("all");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const requestedFilter = [
+    "current",
+    "independent",
+    "client",
+    "research",
+    "archive",
+  ].includes(searchParams.get("filter"))
+    ? searchParams.get("filter")
+    : "current";
+  const hashProject = openSourceProjects.find(
+    (project) =>
+      `#${project.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}` ===
+      location.hash,
+  );
+  const filter =
+    hashProject?.group === "archive" && !searchParams.has("filter")
+      ? "archive"
+      : requestedFilter;
+  const setFilter = (value) => {
+    setSearchParams(value === "current" ? {} : { filter: value });
+  };
   const reduced = useReducedMotion();
-  const projects = openSourceProjects.filter(
-    (p) => filter === "all" || p.group === filter,
+  const projects = openSourceProjects.filter((p) =>
+    filter === "current" ? p.group !== "archive" : p.group === filter,
   );
   return (
     <>
@@ -75,7 +96,7 @@ export function Builds() {
         />
         <div className="wb-filter-row" role="group" aria-label="Filter builds">
           {[
-            ["all", "All builds"],
+            ["current", "Current builds"],
             ["independent", "Independent products"],
             ["client", "Client tools & demos"],
             ["research", "Research & prototypes"],
@@ -121,6 +142,12 @@ export function Builds() {
                 <span className="wb-status">{p.status}</span>
                 <h2>{p.name}</h2>
                 <p>{p.description}</p>
+                {p.implementationNotes && (
+                  <details className="wb-build-details">
+                    <summary>Build details</summary>
+                    <p>{p.implementationNotes}</p>
+                  </details>
+                )}
                 <div className="wb-role-links">
                   {p.links.map((l) => (
                     <a

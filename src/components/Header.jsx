@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   motion,
   AnimatePresence,
@@ -13,7 +13,6 @@ import {
   X,
   ArrowUpRight,
   ArrowLeftRight,
-  Sparkles,
   Coffee,
   Briefcase,
 } from "lucide-react";
@@ -66,26 +65,32 @@ export default function Header() {
     };
   }, [open]);
   const navigation = (mobile) =>
-    navItems.map((item) => (
-      <NavLink
-        key={item.path}
-        to={item.path}
-        className={({ isActive }) =>
-          `wb-nav-link ${isActive || (item.path === "/work" && /^\/(case-studies|projects)/.test(location.pathname)) ? "is-active" : ""}`
-        }
-        onClick={() => {
-          trackEvent(
-            "navigation",
-            mobile ? "mobile_nav_click" : "nav_click",
-            item.name,
-          );
-          setOpen(false);
-        }}
-      >
-        {item.name}
-        {mobile && <ArrowUpRight size={17} />}
-      </NavLink>
-    ));
+    navItems.map((item) => {
+      const active =
+        location.pathname === item.path ||
+        location.pathname.startsWith(`${item.path}/`) ||
+        (item.path === "/work" &&
+          /^\/(case-studies|projects)/.test(location.pathname));
+      return (
+        <Link
+          key={item.path}
+          to={item.path}
+          className={`wb-nav-link ${active ? "is-active" : ""}`}
+          aria-current={active ? "page" : undefined}
+          onClick={() => {
+            trackEvent(
+              "navigation",
+              mobile ? "mobile_nav_click" : "nav_click",
+              item.name,
+            );
+            setOpen(false);
+          }}
+        >
+          {item.name}
+          {mobile && <ArrowUpRight size={17} />}
+        </Link>
+      );
+    });
   return (
     <header
       ref={root}
@@ -147,9 +152,6 @@ export default function Header() {
               </span>
             </a>
           ))}
-          <span className="wb-switch-spark" aria-hidden="true">
-            <Sparkles size={17} />
-          </span>
         </nav>
         <button
           className="wb-nav-cta"

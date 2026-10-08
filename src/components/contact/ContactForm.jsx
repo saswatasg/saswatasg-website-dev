@@ -7,6 +7,7 @@ import { Loader2, ArrowRight } from "lucide-react";
 import { trackEvent, getUTM } from "@/utils/analytics";
 import { supabase } from "@/lib/supabaseClient";
 import { cn } from "@/lib/utils";
+import { deliverContactMessage } from "@/utils/contactDelivery";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -16,6 +17,7 @@ const ContactForm = () => {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailError, setEmailError] = useState("");
+  const [deliveryStatus, setDeliveryStatus] = useState("");
   const MAX_MESSAGE_LENGTH = 1000;
 
   const validateEmail = (value) => {
@@ -50,6 +52,7 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
     if (!isFormValid) {
       trackEvent("contact_form", "validation_failed");
       if (!name.trim()) trackEvent("contact_form", "field_error", "name");
@@ -62,58 +65,60 @@ const ContactForm = () => {
     const utm = getUTM();
     trackEvent("contact_form", "submit", name, 1);
     setIsSubmitting(true);
+    setDeliveryStatus("Sending your message…");
     let error = null;
-    // Try Supabase first (owned store) — best-effort, never blocks formsubmit
     try {
-      await supabase.from("contact_submissions").insert([
+      await deliverContactMessage(
         {
-          name: name.slice(0, 100),
-          email: email.slice(0, 100),
-          phone: phone.slice(0, 20),
-          message: message.slice(0, 2000),
-          utm_source: utm.utm_source || null,
-          utm_medium: utm.utm_medium || null,
-          utm_campaign: utm.utm_campaign || null,
-          referrer: utm.referrer || null,
-          landing_page: utm.landing_page || null,
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim(),
+          message: message.trim(),
+          _subject: "New message from portfolio contact form",
+          _replyto: email.trim(),
+          _template: "table",
+          _captcha: "false",
+          _utm_source: utm.utm_source || "",
+          _utm_medium: utm.utm_medium || "",
+          _utm_campaign: utm.utm_campaign || "",
+          _referrer: utm.referrer || "",
         },
-      ]);
-    } catch (_) {}
-    try {
-      const res = await fetch(
-        "https://formsubmit.co/ajax/saswatasg@gmail.com",
         {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name,
-            email,
-            phone,
-            message,
-            _subject: "New message from portfolio contact form",
-            _replyto: email,
-            _template: "table",
-            _captcha: "false",
-            _utm_source: utm.utm_source || "",
-            _utm_medium: utm.utm_medium || "",
-            _utm_campaign: utm.utm_campaign || "",
-            _referrer: utm.referrer || "",
-          }),
+          store: (signal) =>
+            supabase
+              .from("contact_submissions")
+              .insert([
+                {
+                  name: name.slice(0, 100),
+                  email: email.slice(0, 100),
+                  phone: phone.slice(0, 20),
+                  message: message.slice(0, 2000),
+                  utm_source: utm.utm_source || null,
+                  utm_medium: utm.utm_medium || null,
+                  utm_campaign: utm.utm_campaign || null,
+                  referrer: utm.referrer || null,
+                  landing_page: utm.landing_page || null,
+                },
+              ])
+              .abortSignal(signal),
         },
       );
-      if (!res.ok) error = new Error("Failed to send");
     } catch (e) {
       error = e;
     }
     setIsSubmitting(false);
     if (error) {
+      setDeliveryStatus(
+        "Delivery could not be confirmed. Your message is still here; email saswatasg@gmail.com instead.",
+      );
       toast({
-        title: "Your message could not be sent.",
+        title: "Message delivery could not be confirmed.",
         description: "Email me directly: saswatasg@gmail.com",
         variant: "destructive",
         duration: 5000,
       });
     } else {
+      setDeliveryStatus("Message sent. I’ll reply by email.");
       trackEvent("contact_form", "success", undefined, 1);
       toast({
         title: "Your message has been sent.",
@@ -143,7 +148,12 @@ const ContactForm = () => {
           Share a little context and the best email to reach you.
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4"
+          noValidate
+          aria-busy={isSubmitting}
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label
@@ -260,12 +270,10 @@ const ContactForm = () => {
           </div>
 
           <div className="flex justify-end pt-4">
-            <div className="relative inline-flex group">
-              <div className="absolute inset-0 rounded-lg border-2 border-black bg-coral translate-x-[3px] translate-y-[3px]" />
               <button
                 type="submit"
                 disabled={isSubmitting || !isFormValid}
-                className="relative z-10 bg-ink text-white rounded-lg border-2 border-black px-5 py-2.5 min-h-[44px] text-sm font-bold inline-flex items-center gap-2 transition-transform duration-150 group-hover:translate-x-[3px] group-hover:translate-y-[3px] disabled:opacity-50"
+                className="wb-page-button wb-contact-submit"
               >
                 {isSubmitting ? (
                   <>
@@ -277,8 +285,14 @@ const ContactForm = () => {
                   </>
                 )}
               </button>
-            </div>
           </div>
+          <p
+            role="status"
+            aria-live="polite"
+            className="text-sm font-medium text-ink"
+          >
+            {deliveryStatus}
+          </p>
         </form>
       </div>
     </motion.div>

@@ -1,21 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import PageHeader, { PageEnd } from "@/components/workbench/PageHeader";
-import { trackEvent } from "@/utils/analytics";
 import {
-  Calendar,
   Map,
-  Layers,
-  GitBranch,
   Target,
   Brain,
-  Lightbulb,
   Search,
   FileText,
   BarChart2,
   Bell,
-  MessageSquare,
   TrendingUp,
   DollarSign,
   Zap,
@@ -23,7 +17,6 @@ import {
   Users,
   Award,
   CheckCircle2,
-  ArrowRight,
 } from "lucide-react";
 import CareerTimeline from "@/components/workbench/CareerTimeline";
 import PageMeta from "@/components/PageMeta";
@@ -35,7 +28,7 @@ const roles = [
     period: "April 2026 – Present",
     type: "Full-time",
     context:
-      "Deriving solutions and managing their delivery end to end for 23+ clients, alongside product discovery and sprint/backlog coordination with six developers.",
+      "Product discovery and end-to-end solution delivery for 23+ clients, coordinating scope and priorities with a six-developer team.",
     tags: [
       "AI Agents",
       "Product Discovery",
@@ -45,9 +38,19 @@ const roles = [
     ],
     achievements: [
       {
-        text: "Derived solutions and managed their delivery end to end for 23+ clients, connecting client problems, solution definition and execution.",
+        text: "Defined solutions and managed end-to-end delivery for 23+ clients.",
         icon: <Target className="w-4 h-4" />,
         metric: "23+ clients",
+      },
+      {
+        text: "Turned a 500+ response buyer survey into prioritized agentic AI opportunities.",
+        icon: <Search className="w-4 h-4" />,
+        metric: "500+ survey",
+      },
+      {
+        text: "Ran discovery with 20+ prospective enterprise clients across 12 verticals to identify high-impact AI opportunities.",
+        icon: <Map className="w-4 h-4" />,
+        metric: "20+",
       },
       {
         text: "Overhauled webinar sales engine — designed full-funnel landing page and email sequence; scaled registrations to 478 sign-ups/month (up 51% from baseline).",
@@ -65,16 +68,6 @@ const roles = [
         metric: "5 evaluations",
       },
       {
-        text: "Ran discovery practice across the org — synthesised a 500+ response buyer survey into prioritised agentic AI opportunities.",
-        icon: <Search className="w-4 h-4" />,
-        metric: "500+ survey",
-      },
-      {
-        text: "Performed discovery with 20+ prospective enterprise clients across 12 verticals, top-3 high-impact agentic AI opportunities.",
-        icon: <Map className="w-4 h-4" />,
-        metric: "20+",
-      },
-      {
         text: "Produced a 16-page 'State of AI Agents' report covering market sizing, tooling landscape, adoption maturity curve, and 8+ case studies across industries.",
         icon: <FileText className="w-4 h-4" />,
         metric: "16 pages",
@@ -90,12 +83,12 @@ const roles = [
     ],
     caseStudies: [
       {
-        to: "/case-studies/upcore-inventory-leveling",
-        label: "Inventory Leveling Client Demo",
-      },
-      {
         to: "/case-studies/upcore-discovery",
         label: "Discovery & Solution Delivery",
+      },
+      {
+        to: "/case-studies/upcore-inventory-leveling",
+        label: "Inventory Leveling Client Demo",
       },
       {
         to: "/case-studies/upcore-lead-scoring",
@@ -119,17 +112,17 @@ const roles = [
     ],
     achievements: [
       {
-        text: "Diagnosed a 17:1 adoption gap where PRO+ subscribers generated E-Way Bills via Tally instead of LiveKeeping's native module; built an executive presentation for VP/CEO that greenlit a cross-functional investigation.",
+        text: "Uncovered a 17:1 E-Way Bill adoption gap between Tally and LiveKeeping; secured a cross-functional investigation through executive reporting.",
         icon: <Search className="w-4 h-4" />,
         metric: "17:1 ratio",
       },
       {
-        text: "Identified a similar 19:1 E-Invoice adoption gap between Tally and LiveKeeping, feeding analysis into C-suite reporting.",
+        text: "Identified a 19:1 E-Invoice adoption gap and brought the evidence into executive reporting.",
         icon: <FileText className="w-4 h-4" />,
         metric: "19:1",
       },
       {
-        text: "Built an automated weekly CEO report tracking GST rejection errors across compliance products — replaced manual data pulls with structured, recurring insights.",
+        text: "Deployed automated reporting used daily to track compliance errors and replace manual data pulls.",
         icon: <BarChart2 className="w-4 h-4" />,
       },
       {
@@ -171,7 +164,7 @@ const roles = [
         metric: "-20.7%",
       },
       {
-        text: "Doubled lead submissions (2.14% → 4.40%) via form UX and CTA improvements",
+        text: "Improved lead-form UX and CTAs: conversion rose from 2.14% to 4.40%.",
         icon: <Target className="w-4 h-4" />,
         metric: "+105%",
       },
@@ -346,7 +339,7 @@ function RoleCard({ role, index }) {
   return (
     <motion.article
       id={`experience-${index}`}
-      className={`wb-surface wb-role-card wb-tone-${["sage", "blue", "clay", "gold", "lilac"][index % 5]}`}
+      className={`wb-surface wb-role-card wb-experience-card wb-role-card-compact wb-tone-${["sage", "blue", "clay", "gold", "lilac"][index % 5]}`}
       initial={reduced ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
@@ -366,7 +359,9 @@ function RoleCard({ role, index }) {
           {role.achievements.slice(0, expanded ? undefined : 3).map((a, i) => (
             <li key={i}>
               <p>{a.text}</p>
-              {a.metric && <span className="wb-role-metric">{a.metric}</span>}
+              {a.metric && (expanded || role.achievements.length <= 3) && (
+                <span className="wb-role-metric">{a.metric}</span>
+              )}
             </li>
           ))}
         </ul>
@@ -390,7 +385,7 @@ function RoleCard({ role, index }) {
           >
             {expanded
               ? "Show less"
-              : `Show more · ${role.achievements.length - 3} more points`}{" "}
+              : `Show more · ${role.achievements.length - 3} ${role.achievements.length - 3 === 1 ? "more point" : "more points"}`}{" "}
             <span aria-hidden="true">{expanded ? "−" : "+"}</span>
           </button>
         )}

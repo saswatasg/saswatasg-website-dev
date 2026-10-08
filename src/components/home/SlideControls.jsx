@@ -6,13 +6,19 @@ export default function SlideControls({ timer, labels, name }) {
     <div className="wb-slide-footer">
       <div
         className="wb-slide-controls"
+        data-slide-controls
         role="group"
         aria-label={`${name} controls`}
       >
         <button
           onClick={() => timer.setPaused((value) => !value)}
           disabled={!!timer.reduced}
-          aria-label={`${timer.paused || timer.reduced ? "Play" : "Pause"} ${name}`}
+          aria-pressed={!timer.paused && !timer.reduced}
+          aria-label={
+            timer.reduced
+              ? `${name} automatic playback disabled for reduced motion`
+              : `${timer.paused ? "Play" : "Pause"} ${name}`
+          }
         >
           {timer.paused || timer.reduced ? (
             <Play size={14} />

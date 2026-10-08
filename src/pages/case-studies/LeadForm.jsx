@@ -41,18 +41,16 @@ const LeadForm = () => {
         />
         <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">Remove friction from the lead form.</h1>
         <p className="text-xl text-ink/60 font-medium mt-4 max-w-4xl">
-          Static form. Zero conditional logic. No inline validation. Rebuilt
-          into category-specific modules with Material 3. The rebuild reports
-          +124% lead submissions in 28 days. A separate role-level record
-          reports 2.14% → 4.40% (+105%); the measurement windows are not
-          established as the same, so the figures are not combined.
+          Category-specific modules and inline validation made a static form
+          easier to complete. Reported lead submission volume increased
+          124% in 28 days.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
             {
               value: "+124%",
-              label: "Submission Rate",
-              sub: "Overall lead uplift",
+              label: "Submission Volume",
+              sub: "Reported change over 28 days",
               color: "text-ink",
             },
             {
@@ -286,9 +284,9 @@ const LeadForm = () => {
           className="grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           {[
-            { label: "Lead Submissions", value: "+124%", bg: "bg-mint" },
+            { label: "Submission Volume", value: "+124%", bg: "bg-mint" },
             { label: "Mobile Completion Time", value: "–41%", bg: "bg-sky" },
-            { label: "Rage Clicks Eliminated", value: "–68%", bg: "bg-blush" },
+            { label: "Rage Click Reduction", value: "–68%", bg: "bg-blush" },
             { label: "Form Page Bounce", value: "–31%", bg: "bg-lemon" },
           ].map((k, i) => (
             <motion.div
@@ -313,15 +311,15 @@ const LeadForm = () => {
           className="bg-ink border-2 border-black rounded-2xl p-6 mt-4"
         >
           <p className="text-white font-display font-black text-lg">
-            The A/B test validated the compounding friction hypothesis.
+            Read the volume and conversion measures separately.
           </p>
           <p className="text-white/70 text-sm mt-2 leading-relaxed">
-            The rebuilt form outperformed the control across every segment — new
-            vs returning visitors, mobile vs desktop, all traffic sources. Lead
-            submissions more than doubled. Mobile conversion rate improved by
-            38%. The compounding friction hypothesis was correct: fixing all
-            issues simultaneously produced results greater than the sum of
-            individual fixes.
+            The project reports +124% submission volume in 28 days. A separate
+            role-level record reports conversion moving from 2.14% to 4.40%
+            (+105%). Their comparison windows and denominators are not
+            established as the same, so these are not combined. Volume,
+            completion speed and interaction friction each describe a different
+            part of the form experience.
           </p>
           <p className="text-[#3DDC91] font-black mt-3">
             When friction compounds, the fix must too.

@@ -4,10 +4,10 @@ import { ArrowUpRight } from "lucide-react";
 import { postsBySlug } from "@/data/blogPosts";
 const notes = [
   {
-    slug: "film-risk-engine",
-    label: "BUILDING WITH UNCERTAINTY",
+    slug: "discovery-to-roadmap",
+    label: "DISCOVERY TO DELIVERY",
     summary:
-      "Model choices, published backtests and what the failures taught me.",
+      "How research becomes a solution, a delivery plan and a measurable next step.",
   },
   {
     slug: "push-notification-architecture",
@@ -22,7 +22,7 @@ export default function LatestWriting() {
       <div className="wb-closing-notes">
         <div className="wb-closing-note-heading">
           <span className="wb-label">A LITTLE MORE OF THE THINKING</span>
-          <Link to="/blog" className="wb-inline-link">
+          <Link to="/blog" className="wb-button wb-button-paper">
             All writing
             <ArrowUpRight size={15} />
           </Link>

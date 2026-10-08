@@ -5,7 +5,7 @@ const caseStudies = [
     featured: true,
     company: "Upcore Technologies",
     year: "Enterprise workflows · Client demo",
-    title: "Inventory Leveling: Knowing What to Buy, and When",
+    title: "Plan purchases around real dependencies",
     description:
       "A working procurement demo connecting shared component demand, available stock and lead-time scheduling. Built on mock data.",
     stats: [
@@ -26,7 +26,7 @@ const caseStudies = [
     slug: "upcore-discovery",
     company: "Upcore Technologies",
     year: "Enterprise discovery · Delivery ownership",
-    title: "From a Client Problem to a Deliverable Solution",
+    title: "From client problem to delivered solution",
     description:
       "Built the discovery practice and derived solutions while managing delivery end to end for 23+ clients.",
     stats: [
@@ -48,7 +48,7 @@ const caseStudies = [
     slug: "livekeeping-compliance-gap",
     company: "LiveKeeping",
     year: "B2B SaaS · Analytical",
-    title: "The 17:1 Compliance Gap Nobody Had Measured",
+    title: "Understand the compliance adoption gap",
     description:
       "For every E-Way Bill generated in LiveKeeping, 17 were going to Tally. I found this in 100K+ API logs and took it to the CEO.",
     stats: [
@@ -70,7 +70,7 @@ const caseStudies = [
     featured: true,
     company: "Sierra Living Concepts",
     year: "D2C E-Commerce",
-    title: "From 73% to 54%: Removing Friction from Checkout",
+    title: "Remove friction from checkout",
     description:
       "480,000 sessions. Funnel instrumentation, session evidence and targeted mobile checkout improvements.",
     stats: [
@@ -91,11 +91,11 @@ const caseStudies = [
     slug: "livekeeping-send-greetings",
     company: "LiveKeeping",
     year: "AI Integration · Feature PM",
-    title: "AI-Powered Send Greetings: +168% Engagement From a Dormant Feature",
+    title: "Make customer greetings useful again",
     description:
       "Integrated Google Gemini Flash image AI into a dormant Pro+ feature. Built a geo-segmented festival calendar across 5 Indian regions.",
     stats: [
-      { value: "+168%", label: "Feature Engagement" },
+      { value: "+168%", label: "Reported Feature Engagement" },
       { value: "27 occasions", label: "Festival Calendar" },
       { value: "Nano Banana", label: "AI Model" },
       { value: "5 regions", label: "Geo-Segmented" },
@@ -112,9 +112,9 @@ const caseStudies = [
     slug: "livekeeping-notifications",
     company: "LiveKeeping",
     year: "Systems Design · Notification Strategy",
-    title: "Push Notifications From Zero: 27+ Triggers, 5 Regions, One System",
+    title: "Give notifications a clear priority",
     description:
-      "27+ triggers. P0–P3 priority hierarchy. 3-slot daily cap with conflict resolution. Geo-segmented across 5 Indian regions. Built the entire system from scratch.",
+      "Designed lifecycle messaging with 27+ triggers, priority rules, a daily cap and regional relevance.",
     stats: [
       { value: "27+", label: "Event Triggers" },
       { value: "3-slot", label: "Daily Cap + Priority Queue" },
@@ -138,7 +138,7 @@ const caseStudies = [
     slug: "category-discovery",
     company: "Sierra Living Concepts",
     year: "D2C Discovery",
-    title: "Story-Driven Category Pages: +34% Leads Without a Single Ad",
+    title: "Help shoppers find the right category",
     description:
       "Replaced commodity category pages with story-driven, trust-led journeys. 1.1M BigQuery events. 376 in-session intercepts.",
     stats: [
@@ -159,11 +159,11 @@ const caseStudies = [
     slug: "lead-form",
     company: "Sierra Living Concepts",
     year: "Form Optimization",
-    title: "Lead Form Overhaul: +124% Without a Single New Visitor",
+    title: "Make the lead form easier to complete",
     description:
-      "Static form. Zero conditional logic. Rebuilt into category-specific modules. No traffic changes — pure UX architecture.",
+      "Rebuilt a static form into category-specific modules with inline validation. Reported submission volume increased 124% in 28 days.",
     stats: [
-      { value: "+124%", label: "Submission Rate" },
+      { value: "+124%", label: "Submission Volume" },
       { value: "–41%", label: "Mobile Completion Time" },
       { value: "–68%", label: "Rage Clicks" },
       { value: "–31%", label: "Bounce (Form Page)" },
@@ -180,14 +180,14 @@ const caseStudies = [
     slug: "sierra-lead-allocation",
     company: "Sierra Living Concepts",
     year: "Sales Operations",
-    title: "Gold, Silver, Bronze: Lead Routing That Closed 63.5%",
+    title: "Route leads according to observed intent",
     description:
-      "Website Forms convert at 63.5%. Chat converts at 4.7%. The team was treating them identically. Built Gold/Silver/Bronze routing across 4 agents.",
+      "Used observed source conversion rates to design a Gold/Silver/Bronze routing model for four agents. Pilot targets remain distinct from measured source rates.",
     stats: [
-      { value: "63.5%", label: "Gold Source CVR" },
-      { value: "0.4%", label: "Bronze Source CVR" },
+      { value: "63.5%", label: "Observed Form Source CVR" },
+      { value: "0.4%", label: "Observed Bronze Source CVR" },
       { value: "5.2→3.5", label: "Days to Close Target" },
-      { value: "30 days", label: "Pilot to Full Rollout" },
+      { value: "30 days", label: "Pilot Plan" },
     ],
     bg: "bg-lemon",
     shadowColor: "#0A0A0A",
@@ -206,14 +206,14 @@ const caseStudies = [
     slug: "livekeeping-report-automation",
     company: "LiveKeeping",
     year: "Internal Tooling",
-    title: "Daily Report Automation: 3 Sources, 88 Rows, 0 Manual Steps",
+    title: "Bring daily reporting into one view",
     description:
-      "Kibana + MongoDB + GA4 → Google Sheets. One Apps Script trigger. Manual data entry eliminated across the team.",
+      "Deployed a Google Apps Script workflow combining Kibana, MongoDB and GA4 in an 88-row report used daily by the team.",
     stats: [
       { value: "3", label: "Data Sources Unified" },
       { value: "88 rows", label: "Fully Mapped" },
-      { value: "11 AM", label: "Auto-Populate" },
-      { value: "0", label: "Manual Steps" },
+      { value: "Daily", label: "Team Use" },
+      { value: "Deployed", label: "Delivery Stage" },
     ],
     bg: "bg-mint",
     shadowColor: "#0A0A0A",
@@ -227,7 +227,7 @@ const caseStudies = [
     slug: "upcore-lead-scoring",
     company: "Upcore Technologies",
     year: "B2B GTM · Method study",
-    title: "Lead Qualification: A Shared Basis for the Next Conversation",
+    title: "Create a shared lead qualification scorecard",
     description:
       "A five-dimension, 100-point scorecard applied to the live pipeline, with four actionable qualification tiers.",
     stats: [

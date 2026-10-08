@@ -40,7 +40,7 @@ const LiveKeepingSendGreetings = () => {
           tags={["AI Integration", "UX Redesign"]}
         />
         <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
-          A dormant Pro+ feature. Rebuilt with AI. +168% engagement.
+          Make customer greetings useful again.
         </h1>
         <p className="text-xl text-ink/60 font-medium mt-4 max-w-4xl">
           Integrated Google&#39;s Nano Banana (Gemini Flash) image model so SMB
@@ -51,7 +51,7 @@ const LiveKeepingSendGreetings = () => {
           {[
             {
               value: "+168%",
-              label: "Feature Engagement",
+              label: "Reported Feature Engagement",
               sub: "Pro+ Send Greetings module",
             },
             {
@@ -294,8 +294,9 @@ const LiveKeepingSendGreetings = () => {
           </p>
           <p className="text-sm text-ink/70 mt-3">
             The public record does not include the event definition, cohort or
-            comparison window. This is a feature-engagement result, not a
-            product-wide retention or revenue claim.
+            comparison window. The result does not isolate AI generation from
+            calendar relevance or other changes; it is not a product-wide
+            retention or revenue claim.
           </p>
         </motion.div>
 
@@ -357,11 +358,11 @@ const LiveKeepingSendGreetings = () => {
                 1
               </div>
               <p className="text-sm md:text-base text-ink/80 font-medium leading-relaxed">
-                AI integration for a use case where AI genuinely adds value —
-                personalised, localised visual content at scale — is
-                fundamentally different from AI as a buzzword feature. The +168%
-                engagement was driven by relevance improvement, not novelty.
-                Relevance compounds. Novelty doesn&#39;t.
+                The product hypothesis was that more personal content and relevant
+                occasions would make greetings more useful. The reported +168%
+                engagement change supports further investigation, but does not
+                isolate relevance from novelty or other changes. Repeat use and
+                completed sends would help test that distinction.
               </p>
             </div>
             <div className="flex gap-3">

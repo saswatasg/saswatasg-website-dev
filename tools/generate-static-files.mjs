@@ -110,8 +110,8 @@ ${urlTags.join('\n')}
 async function writeFeed(posts) {
   const caseStudies = [
     { slug: 'cart-checkout', title: 'Cart & Checkout — –26% abandonment' },
-    { slug: 'category-discovery', title: 'Category Pages — +17% conversion' },
-    { slug: 'lead-form', title: 'Lead Form Overhaul — +124% submissions' },
+    { slug: 'category-discovery', title: 'Category Pages — +34% qualified leads' },
+    { slug: 'lead-form', title: 'Lead Form Overhaul — +124% submission volume' },
     { slug: 'upcore-inventory-leveling', title: 'Inventory Leveling — Upcore client demo' },
     { slug: 'upcore-discovery', title: 'Discovery & Solution Delivery — 23+ clients' },
     { slug: 'upcore-lead-scoring', title: 'Lead Qualification — Five dimensions, four tiers' },

@@ -8,6 +8,7 @@ import { SCHEDULE_URL } from "@/utils/openCalendar";
 export default function BookingDialog() {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [revision, setRevision] = useState(0);
   const opener = useRef(null);
   useEffect(() => {
     const show = () => {
@@ -55,6 +56,7 @@ export default function BookingDialog() {
               </div>
             )}
             <iframe
+              key={revision}
               credentialless=""
               src={SCHEDULE_URL}
               title="Book an appointment with Saswata on Google Calendar"
@@ -66,6 +68,19 @@ export default function BookingDialog() {
             <a href="mailto:saswatasg@gmail.com">
               <Mail size={15} /> Email Saswata
             </a>
+            <details className="booking-help">
+              <summary>Can’t see the available times?</summary>
+              <p>Reload the calendar, or email me to arrange a time.</p>
+              <button
+                type="button"
+                onClick={() => {
+                  setLoaded(false);
+                  setRevision((value) => value + 1);
+                }}
+              >
+                Reload calendar
+              </button>
+            </details>
           </footer>
         </Dialog.Content>
       </Dialog.Portal>

@@ -153,7 +153,8 @@ export default function PortfolioGuide() {
     } finally {
       clearTimeout(timeout);
       setBusy(false);
-      inputRef.current?.focus();
+      // Keep the visitor's current focus. A suggested question must never
+      // open a phone keyboard when its answer arrives.
     }
   }
   if (!world) return null;

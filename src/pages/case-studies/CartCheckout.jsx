@@ -36,10 +36,10 @@ const CartCheckout = () => {
       >
         <ContextBar company="Sierra Living Concepts" period="2024" tags={['D2C', 'E-Commerce']} />
         <h1 className="font-display font-black text-4xl md:text-6xl text-ink leading-tight">
-          73% cart abandonment isn&#39;t a Shopify problem. It&#39;s an instrumentation problem.
+          Remove friction from checkout.
         </h1>
         <p className="text-xl text-ink/60 font-medium mt-4 max-w-4xl">
-          480,000 sessions. Three friction points. Two sprints. Zero architecture changes. The checkout didn&#39;t need to be rebuilt — it needed to be measured.
+          Funnel data and session evidence across 480,000 sessions guided two sprints of checkout improvements. Reported abandonment moved from 73.1% to 53.9%.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[

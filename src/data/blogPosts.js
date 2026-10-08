@@ -40,13 +40,13 @@ export const PILLAR_META = {
 export const PILLAR_CTA = {
   agents: {
     title: 'Want to see how these agents are wired?',
-    body: 'Browse the open-source repos and live demos behind every agent mentioned here.',
+    body: 'Explore repositories, demos and implementation notes for the builds discussed here.',
     label: 'See the projects',
-    href: '/work',
+    href: '/builds',
   },
   growth: {
     title: 'Curious how these numbers were found?',
-    body: 'Browse the case studies behind the checkout, form, and routing lifts — or just say hello.',
+    body: 'Browse the case studies behind the checkout improvements, form results and routing decisions — or just say hello.',
     ctas: [
       { label: "Let's talk", href: null, action: 'book' },
       { label: 'See the work', href: '/work' },
@@ -55,7 +55,7 @@ export const PILLAR_CTA = {
   },
   pm: {
     title: 'Thinking about product differently?',
-    body: "Read more case studies, or let's talk — free, no pitch. Or follow the daily shipping notes on LinkedIn.",
+    body: "Explore the decisions behind the work, discuss a product challenge, or connect on LinkedIn.",
     ctas: [
       { label: "Let's talk", href: null, action: 'book' },
       { label: 'See the work', href: '/work' },

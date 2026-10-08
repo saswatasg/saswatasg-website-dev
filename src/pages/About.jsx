@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import {
@@ -14,37 +14,37 @@ import PageMeta from "@/components/PageMeta";
 import { PageEnd } from "@/components/workbench/PageHeader";
 const chapters = [
   {
-    company: "Upcore Technologies",
-    field: "Enterprise AI & solution delivery",
-    question: "What does this client actually need?",
+    company: "Understand the actual problem",
+    field: "Product judgment",
+    question: "Start with the workflow, not the promise of AI.",
     story:
-      "I derive solutions from client problems and manage delivery end to end. Research, scope, engineering coordination and the details of a working solution stay connected.",
-    proof: "23+ clients",
-    detail: "Solution definition & delivery ownership",
+      "At Upcore Technologies, I connect client conversations with workflow constraints and opportunity priorities. A request for AI starts the conversation; understanding what the solution needs to change gives the team a useful brief.",
+    proof: "Research → decision",
+    detail: "Customer evidence, scope and priorities",
     to: "/case-studies/upcore-discovery",
     tone: "blue",
     icon: Compass,
   },
   {
-    company: "LiveKeeping (IndiaMART)",
-    field: "B2B SaaS & product adoption",
-    question: "What is the workflow telling us?",
+    company: "Keep the team connected",
+    field: "Collaboration & delivery",
+    question: "A good decision needs a shared path to delivery.",
     story:
-      "I investigated adoption and compliance workflows, built the case for product decisions, and worked on AI features, notifications and reporting automation.",
-    proof: "17:1",
-    detail: "E-Way Bill gap uncovered in API logs",
-    to: "/case-studies/livekeeping-compliance-gap",
+      "I connect solution definition with engineering coordination, backlog priorities and client expectations. Ownership means staying involved as requirements become a working solution.",
+    proof: "Decision → delivery",
+    detail: "Scope, dependencies and delivery coordination",
+    to: "/experience",
     tone: "sage",
     icon: Users,
   },
   {
-    company: "Sierra Living Concepts",
-    field: "Commerce & the buying journey",
-    question: "Where does intent lose momentum?",
+    company: "Stay close to what happens next",
+    field: "Learning from use",
+    question: "Fix the step behind the metric.",
     story:
-      "I connected session evidence, funnel analysis and customer research to improvements in checkout, category discovery and lead capture.",
-    proof: "73% → 54%",
-    detail: "Checkout abandonment before and after",
+      "In Sierra Living Concepts’ checkout work, I connected funnel drop-offs with session evidence before changing fields, validation and trust cues. The useful lesson: a headline number tells you where to investigate; the workflow tells you what to change.",
+    proof: "Delivery → learning",
+    detail: "Observed behavior and measurable outcomes",
     to: "/case-studies/cart-checkout",
     tone: "clay",
     icon: Wrench,
@@ -125,19 +125,13 @@ export default function About() {
         </header>
         <section className="wb-about-chapters" aria-labelledby="about-contexts">
           <div className="wb-section-title">
-            <span className="wb-label">
-              DIFFERENT CONTEXTS. THE SAME CURIOSITY.
-            </span>
-            <h2 id="about-contexts">
-              The question changes.
-              <br />
-              The ownership stays.
-            </h2>
+            <span className="wb-label">THE JUDGMENT BEHIND THE WORK</span>
+            <h2 id="about-contexts">What I pay attention to.</h2>
           </div>
           <div className="wb-chapter-layout">
             <div
               className="wb-chapter-tabs"
-              aria-label="Explore my work contexts"
+              aria-label="Explore my product approach"
             >
               {chapters.map((item, i) => (
                 <button
@@ -174,47 +168,48 @@ export default function About() {
                   </div>
                   <h3>{chapter.question}</h3>
                   <p>{chapter.story}</p>
-                  <div className="wb-chapter-proof">
+                  <div className="wb-chapter-proof wb-approach-principle">
                     <strong>{chapter.proof}</strong>
                     <span>{chapter.detail}</span>
                   </div>
                   <Link className="wb-inline-link" to={chapter.to}>
-                    See the decisions behind the work <ArrowUpRight size={17} />
+                    See it in practice <ArrowUpRight size={17} />
                   </Link>
                 </motion.div>
               </AnimatePresence>
             </div>
           </div>
         </section>
-        <section className="wb-about-builder" aria-labelledby="about-builder">
+        <section
+          className="wb-about-builder"
+          aria-labelledby="about-collaboration"
+        >
           <div>
-            <span className="wb-label">FROM QUESTION TO WORKING PRODUCT</span>
-            <h2 id="about-builder">
-              Some ideas need
-              <br />a working answer.
-            </h2>
+            <span className="wb-label">WORKING TOGETHER</span>
+            <h2 id="about-collaboration">Make the next decision clearer.</h2>
             <p>
-              DhanPlan and Meldstead are independent products I build alongside
-              my professional work. They keep me close to the tradeoffs that
-              appear when an idea becomes something people can use.
+              I bring research, product judgment and delivery coordination into
+              the same conversation. Whether it starts with a client request or
+              a confusing workflow, I want the team to understand the problem,
+              the tradeoff and the next step.
             </p>
-            <Link className="wb-inline-link" to="/builds">
-              Explore the builds <ArrowUpRight size={17} />
+            <Link className="wb-inline-link" to="/contact">
+              Start a conversation <ArrowUpRight size={17} />
             </Link>
           </div>
           <div className="wb-builder-stack">
-            <Link to="/builds#dhanplan">
-              <span className="wb-label">PERSONAL FINANCE / LIVE</span>
-              <strong>DhanPlan</strong>
+            <Link to="/work">
+              <span className="wb-label">DECISIONS IN CONTEXT</span>
+              <strong>See the work</strong>
               <span>
-                Planning through scenarios <ArrowUpRight size={17} />
+                Problems, choices and evidence <ArrowUpRight size={17} />
               </span>
             </Link>
-            <Link to="/builds#meldstead">
-              <span className="wb-label">WORKSPACE / PRE-LAUNCH AUDIT</span>
-              <strong>Meldstead</strong>
+            <Link to="/builds">
+              <span className="wb-label">HANDS-ON PRODUCT BUILDING</span>
+              <strong>Explore Builds</strong>
               <span>
-                Connecting the work <ArrowUpRight size={17} />
+                Ideas tested through working products <ArrowUpRight size={17} />
               </span>
             </Link>
           </div>

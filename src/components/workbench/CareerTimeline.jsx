@@ -11,10 +11,10 @@ import {
 import { Link } from "react-router-dom";
 import useTimedSlides from "@/hooks/useTimedSlides";
 export default function CareerTimeline({ roles }) {
-  const order = [5, 4, 2, 3, 1, 0];
+  const order = [2, 1, 0];
   const entries = order.map((i) => roles[i]);
   const timer = useTimedSlides(entries.length, 4000, {
-    initialIndex: 5,
+    initialIndex: entries.length - 1,
     initialPaused: true,
   });
   const { index: selected, reduced, paused, setPaused, progress } = timer;
@@ -54,10 +54,11 @@ export default function CareerTimeline({ roles }) {
     });
   };
   const active = entries[selected];
-  const tone = ["lilac", "gold", "clay", "sage", "blue", "gold"][selected];
+  const tone = ["clay", "blue", "gold"][selected];
   return (
     <section
       ref={timer.ref}
+      {...timer.bindings}
       className="wb-career-map"
       aria-labelledby="career-map-title"
     >
@@ -79,6 +80,7 @@ export default function CareerTimeline({ roles }) {
           {!reduced && (
             <button
               className="wb-career-play"
+              data-slide-controls
               onClick={() => setPaused((p) => !p)}
               aria-pressed={playing}
             >
@@ -91,6 +93,7 @@ export default function CareerTimeline({ roles }) {
       <div
         ref={rail}
         className="wb-career-track"
+        data-slide-controls
         role="tablist"
         aria-label="Career chapters"
       >
@@ -109,10 +112,10 @@ export default function CareerTimeline({ roles }) {
             onClick={() => choose(i)}
             onKeyDown={(event) => {
               let next;
-              if (event.key === "ArrowRight") next = (i + 1) % 6;
-              else if (event.key === "ArrowLeft") next = (i + 5) % 6;
+              if (event.key === "ArrowRight") next = (i + 1) % entries.length;
+              else if (event.key === "ArrowLeft") next = (i + entries.length - 1) % entries.length;
               else if (event.key === "Home") next = 0;
-              else if (event.key === "End") next = 5;
+              else if (event.key === "End") next = entries.length - 1;
               if (next !== undefined) {
                 event.preventDefault();
                 choose(next, true);
@@ -123,10 +126,9 @@ export default function CareerTimeline({ roles }) {
               {i + 1}
             </span>
             <span className="wb-career-year">
-              {["2022", "2023", "2024–25", "2025", "2026", "NOW"][i]}
+              {["2024–25", "2026", "NOW"][i]}
             </span>
             <strong>{role.company}</strong>
-            {i === 3 && <small>Alongside Sierra</small>}
           </button>
         ))}
       </div>
@@ -183,8 +185,7 @@ export default function CareerTimeline({ roles }) {
         </AnimatePresence>
       </div>
       <p className="wb-career-map-caption">
-        Timeline focuses on product, consulting and internships. Earlier
-        creative work follows below.
+        Product roles at a glance. Consulting and earlier experience follow below.
       </p>
     </section>
   );

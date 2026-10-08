@@ -94,8 +94,8 @@ export default function HeroSection({ bannerDismissed, onDismissBanner }) {
               <div className="wb-mobile-hero-intro">
                 <h2>Product Manager</h2>
                 <p>
-                  I turn complex problems into useful products—from discovery
-                  to delivery.
+                  I turn complex problems into useful products—from discovery to
+                  delivery.
                 </p>
               </div>
               <PositionCard />
