@@ -1,9 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import * as Dialog from '@radix-ui/react-dialog';
-import PageMeta from '@/components/PageMeta';
-import { photographySeries } from '@/data/creativeContent';
-import { FishRule } from '@/components/worlds/Motifs';
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import * as Dialog from "@radix-ui/react-dialog";
+import PageMeta from "@/components/PageMeta";
+import { photographySeries } from "@/data/creativeContent";
+import { FishRule } from "@/components/worlds/Motifs";
+import AddaPageHeader, {
+  AddaPageEnd,
+} from "@/components/worlds/AddaPageHeader";
 export default function Photography() {
   return (
     <div className="world-page editorial-page">
@@ -11,16 +14,18 @@ export default function Photography() {
         title="Photography | Saswata S. Sengupta"
         description="A curated photography gallery in preparation. Explore the gallery prototype through clearly labeled graphic studies."
       />
-      <p className="eyebrow">ADDA / THROUGH THE VIEWFINDER</p>
-      <h1>
-        A frame.
-        <br />
-        <em>A second look.</em>
-      </h1>
-      <p className="page-intro">
-        Photography deserves room to breathe. Curated series will live here when
-        the final images arrive.
-      </p>
+      <AddaPageHeader
+        label="Photography"
+        variant="photography"
+        title={
+          <>
+            A frame.
+            <br />
+            <em>A second look.</em>
+          </>
+        }
+        description="Photography deserves room to breathe. Curated series will live here when the final images arrive."
+      />
       <FishRule />
       {photographySeries.map((s) => (
         <article className="series-preview" key={s.slug}>
@@ -41,6 +46,7 @@ export default function Photography() {
           </Link>
         </article>
       ))}
+      <AddaPageEnd />
     </div>
   );
 }
@@ -71,11 +77,15 @@ export function PhotographySeries() {
       <Link className="text-link" to="/photography">
         ← All series
       </Link>
+      <AddaPageHeader
+        label={series.title}
+        variant="photography"
+        title={series.title}
+        description={series.introduction}
+      />
       <p className="eyebrow">DESIGNED PLACEHOLDERS / NOT PHOTOGRAPHS</p>
-      <h1>{series.title}</h1>
-      <p className="page-intro">{series.introduction}</p>
       {(series.location || series.year) && (
-        <p>{[series.location, series.year].filter(Boolean).join(' / ')}</p>
+        <p>{[series.location, series.year].filter(Boolean).join(" / ")}</p>
       )}
       <div className="photo-sequence">
         {series.images.map((img, i) => (
@@ -83,8 +93,8 @@ export function PhotographySeries() {
             key={img.src}
             style={{
               maxWidth: img.width < img.height ? 600 : undefined,
-              width: '100%',
-              margin: '0 auto',
+              width: "100%",
+              margin: "0 auto",
             }}
           >
             <button
@@ -100,7 +110,7 @@ export function PhotographySeries() {
                 height={img.height}
                 srcSet={img.srcSet}
                 sizes="(max-width: 700px) 90vw, 80vw"
-                loading={i === 0 ? 'eager' : 'lazy'}
+                loading={i === 0 ? "eager" : "lazy"}
                 alt={img.alt}
               />
             </button>
@@ -123,11 +133,11 @@ export function PhotographySeries() {
               trigger.current?.focus();
             }}
             onKeyDown={(e) => {
-              if (e.key === 'ArrowRight') {
+              if (e.key === "ArrowRight") {
                 e.preventDefault();
                 move(1);
               }
-              if (e.key === 'ArrowLeft') {
+              if (e.key === "ArrowLeft") {
                 e.preventDefault();
                 move(-1);
               }

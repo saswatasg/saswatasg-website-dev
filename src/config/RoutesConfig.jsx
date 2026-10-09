@@ -85,7 +85,7 @@ const AnimatedPage = ({ children }) => {
 // A page can contain looping graphics or its own presence group; those must not
 // hold the next route behind an AnimatePresence "wait" boundary.
 const RouteTransition = ({ world, location, reduced, children }) => {
-  if (world === "workbench") {
+  if (world === "workbench" || world === "adda") {
     return (
       <motion.div
         key={location.pathname}

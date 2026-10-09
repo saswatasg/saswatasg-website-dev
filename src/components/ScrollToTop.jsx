@@ -7,7 +7,7 @@ export default function ScrollToTop() {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     if (
       !hash ||
-      !/^\/(workbench|builds|work|experience|about|blog|case-studies)(\/|$)/.test(
+      !/^\/(workbench|builds|work|experience|about|blog|case-studies|adda|photography|writing|cinema)(\/|$)/.test(
         pathname,
       )
     )

@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import PageMeta from "@/components/PageMeta";
 import { useWorld } from "@/contexts/WorldContext";
-import LegacyContact from "./LegacyContact";
+import AddaContact from "./worlds/AddaContact";
 import { openScheduleBooking } from "@/utils/openCalendar";
 const ContactForm = React.lazy(
   () => import("@/components/contact/ContactForm"),
@@ -44,7 +44,7 @@ const links = [
 export default function Contact() {
   const { world } = useWorld();
   const reduced = useReducedMotion();
-  if (world === "adda") return <LegacyContact />;
+  if (world === "adda") return <AddaContact />;
   return (
     <>
       <PageMeta
@@ -107,7 +107,9 @@ export default function Contact() {
           <div>
             <span className="wb-label">PREFER A CONVERSATION?</span>
             <h2 id="contact-booking">Meet Saswata.</h2>
-            <p>Choose a time that works for you. The calendar opens right here.</p>
+            <p>
+              Choose a time that works for you. The calendar opens right here.
+            </p>
           </div>
           <button className="wb-page-button" onClick={openScheduleBooking}>
             Book an appointment <ArrowUpRight size={18} />

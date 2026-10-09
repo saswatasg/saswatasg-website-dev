@@ -11,6 +11,7 @@ import "@/styles/two-world-flow.css";
 import "@/styles/workbench-editorial.css";
 import "@/styles/workbench-pages.css";
 import "@/styles/workbench-system.css";
+import "@/styles/adda-system.css";
 import "@fontsource/noto-serif-bengali/bengali-400.css";
 
 const container = document.getElementById("root");

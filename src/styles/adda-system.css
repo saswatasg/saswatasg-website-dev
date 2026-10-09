@@ -1,0 +1,653 @@
+/* Shared navigation and reading patterns; Adda keeps its Bengali journal identity. */
+.creative-shell .adda {
+  --adda-ink: #07594f;
+  --adda-paper: #fff3d8;
+  --adda-gold: #efcf83;
+  --adda-sage: #dce6d5;
+  --adda-clay: #eed6c2;
+  --adda-border: 2px solid var(--adda-ink);
+  --adda-shadow: 4px 4px 0 var(--adda-ink);
+  --wb-ink: #07594f;
+  --wb-gold: #efdfba;
+  --wb-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.creative-shell .adda .adda-island {
+  height: 68px;
+  padding: 8px 12px;
+  border: var(--adda-border);
+  border-radius: 4px;
+  background: #064c44;
+  box-shadow: var(--adda-shadow);
+  transition: box-shadow 180ms;
+}
+.adda-island .wb-island-row {
+  height: 48px;
+  min-height: 48px;
+}
+.adda-island
+  :is(
+    .wb-nav-link,
+    .wb-brand,
+    .wb-nav-cta,
+    .wb-menu-toggle,
+    .wb-mode-switch,
+    .wb-mode-switch a,
+    .wb-mode-indicator,
+    .wb-mobile-talk
+  ) {
+  border-radius: 4px;
+}
+.adda-island .wb-brand {
+  width: 44px;
+  padding: 0;
+  justify-content: center;
+}
+.adda-island .wb-nav-link {
+  height: 44px;
+  padding-block: 0;
+  white-space: nowrap;
+  color: #fff3d8;
+}
+.adda-island .wb-nav-link.is-active,
+.adda-island .wb-brand[aria-current="page"] {
+  background: var(--adda-gold);
+  color: #083e37;
+}
+.adda-island
+  :is(.wb-nav-link, .wb-brand):hover:not(.is-active):not([aria-current]) {
+  background: var(--adda-sage);
+  color: #083e37;
+}
+.adda-island .wb-world-switch {
+  border: 1px solid #efcf8399;
+  background: #103e36;
+  box-shadow: 2px 2px 0 #efcf8360;
+}
+.adda-island .wb-world-switch a {
+  height: 40px;
+  min-height: 40px;
+  padding: 0 10px;
+  color: #fff3d8;
+}
+.adda-island .wb-world-switch a[aria-current] {
+  color: #083e37;
+}
+.adda-island .wb-mode-indicator {
+  background: var(--adda-gold);
+  border: 1px solid #083e37;
+  box-shadow: 2px 2px 0 #083e37;
+}
+.adda-island .wb-switch-word {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.adda-island .wb-switch-bengali {
+  font:
+    18px/1.2 "Noto Serif Bengali",
+    serif;
+}
+.adda-island .wb-switch-word small {
+  font-size: 9px;
+}
+.adda-island .wb-menu-toggle {
+  border: 1px solid #fff3d870;
+  min-width: 44px;
+  min-height: 44px;
+}
+.adda-island .wb-nav-cta {
+  background: var(--adda-paper);
+  color: var(--adda-ink);
+}
+.adda-island .wb-nav-cta:hover {
+  background: var(--adda-sage);
+  transform: none;
+}
+.adda-island .wb-nav-progress {
+  background: var(--adda-gold);
+  left: 0;
+  right: 0;
+  border-radius: 0;
+}
+.adda-island .wb-mobile-nav {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: -2px;
+  right: -2px;
+  background: #064c44;
+  border: var(--adda-border);
+  box-shadow: var(--adda-shadow);
+}
+.adda-island .wb-mobile-nav > div {
+  margin: 0;
+  border: 0;
+  padding: 12px;
+}
+.adda-island .wb-mobile-nav .wb-nav-link.is-active {
+  background: var(--adda-gold);
+  color: #083e37;
+}
+.adda-island .wb-mobile-talk {
+  background: var(--adda-gold);
+  color: #083e37;
+}
+.creative-shell .adda .reading-progress {
+  display: none;
+}
+.creative-shell .adda :is(.shared-section, .world-page, [id^="adda-"]) {
+  scroll-margin-top: 110px;
+}
+.creative-shell .adda .adda-home {
+  padding-top: 110px;
+}
+.creative-shell .adda .adda-home > .folk-border {
+  max-width: 1152px;
+  margin-inline: auto;
+}
+.creative-shell .adda .adda-hero.shared-hero {
+  max-width: 1200px;
+}
+.creative-shell
+  .adda
+  :is(
+    .adda-hero-copy,
+    .adda-portrait-wrap,
+    .shared-section,
+    .featured-photo,
+    .book-preview,
+    .cinema-projects article
+  ) {
+  border-radius: 0;
+}
+.creative-shell .adda .shared-section {
+  border: var(--adda-border);
+  box-shadow: var(--adda-shadow);
+}
+.creative-shell .adda .adda-feature {
+  background: #f4ead3;
+}
+.creative-shell .adda .adda-books {
+  background: var(--adda-sage);
+}
+.creative-shell .adda .adda-personal {
+  background: var(--adda-clay);
+}
+.creative-shell .adda .editorial-heading {
+  align-items: center;
+  gap: 16px;
+}
+.creative-shell .adda .editorial-heading h2 {
+  flex: 1;
+  font-size: clamp(28px, 3vw, 42px);
+}
+.creative-shell .adda :is(.adda-button, .material-button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: var(--adda-border);
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 var(--adda-ink);
+  background: var(--adda-paper);
+  color: var(--adda-ink);
+  min-height: 44px;
+  padding: 12px 18px;
+  font:
+    700 12px/1.4 Inter,
+    sans-serif;
+  width: max-content;
+  max-width: 100%;
+  transition:
+    transform 180ms,
+    box-shadow 180ms,
+    background 180ms;
+}
+.creative-shell .adda .adda-button:hover,
+.creative-shell .adda .material-button:hover {
+  background: var(--adda-gold);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--adda-ink);
+}
+.creative-shell .adda .adda-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+.creative-shell .adda .adda-contents {
+  max-width: 1152px;
+  margin: 0 auto 40px;
+  padding: 16px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+  border: var(--adda-border);
+  background: var(--adda-gold);
+  box-shadow: var(--adda-shadow);
+  font:
+    700 12px/1.5 Inter,
+    sans-serif;
+}
+.creative-shell .adda .adda-contents .eyebrow {
+  margin: 0 auto 0 0;
+}
+.creative-shell .adda .adda-contents a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.creative-shell .adda .world-page {
+  max-width: 1200px;
+  padding: 130px 24px 64px;
+  margin: 0 auto;
+}
+.creative-shell .adda .adda-page-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 48px;
+  align-items: center;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--rule);
+}
+.creative-shell .adda .adda-breadcrumb {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 26px;
+  font:
+    600 12px/1.6 Inter,
+    sans-serif;
+}
+.creative-shell .adda .adda-breadcrumb a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.creative-shell .adda .adda-breadcrumb [lang="bn"] {
+  font-family: "Noto Serif Bengali", serif;
+}
+.creative-shell .adda .adda-page-header h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(38px, 5vw, 68px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+.creative-shell .adda .adda-page-header .page-intro {
+  font:
+    17px/1.8 Georgia,
+    serif;
+  max-width: 640px;
+  margin: 24px 0 0;
+}
+.creative-shell .adda .adda-page-art {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  aspect-ratio: 1.1;
+  padding: 24px;
+  position: relative;
+  border: var(--adda-border);
+  background: var(--adda-clay);
+  box-shadow: var(--adda-shadow);
+  transform: rotate(2deg);
+  overflow: hidden;
+}
+.creative-shell .adda .adda-page-art > svg:not(.adda-art-flower) {
+  width: 115px;
+  height: 115px;
+  align-self: center;
+}
+.creative-shell .adda .adda-page-art .eyebrow {
+  position: relative;
+  z-index: 1;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.creative-shell .adda .adda-art-writing {
+  background: var(--adda-sage);
+}
+.creative-shell .adda .adda-art-cinema {
+  background: var(--adda-gold);
+}
+.creative-shell .adda .adda-art-photography {
+  background: #dde6e1;
+}
+.creative-shell .adda .adda-page-art .adda-art-flower {
+  position: absolute;
+  width: 95px;
+  right: -18px;
+  bottom: -18px;
+  opacity: 0.25;
+}
+.creative-shell .adda .book-preview {
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 50px;
+  padding: 36px;
+  margin-block: 32px;
+  background: var(--adda-sage);
+  border: var(--adda-border);
+  box-shadow: var(--adda-shadow);
+}
+.creative-shell .adda .book-preview:nth-of-type(even) {
+  background: var(--adda-clay);
+}
+.creative-shell .adda .cinema-projects {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.creative-shell .adda .cinema-projects article {
+  background: var(--adda-sage);
+  padding: 24px;
+  border: var(--adda-border);
+  box-shadow: var(--adda-shadow);
+  margin: 0;
+}
+.creative-shell .adda .cinema-projects article:nth-child(2) {
+  background: var(--adda-gold);
+}
+.creative-shell .adda .cinema-projects article:nth-child(3) {
+  background: var(--adda-clay);
+}
+.creative-shell .adda .series-preview {
+  margin-block: 32px;
+  border: var(--adda-border);
+  background: var(--adda-sage);
+  box-shadow: var(--adda-shadow);
+  overflow: hidden;
+}
+.creative-shell .adda .series-preview > a {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+}
+.creative-shell .adda .series-preview img {
+  width: 100%;
+  height: auto;
+}
+.creative-shell .adda .series-preview > a > div {
+  padding: 30px;
+}
+.creative-shell .adda .personal-intro {
+  background: var(--adda-sage);
+  border: var(--adda-border);
+  box-shadow: var(--adda-shadow);
+  padding: 36px;
+  gap: 48px;
+}
+.creative-shell .adda .personal-intro h2 {
+  font:
+    36px/1.2 Georgia,
+    serif;
+  margin-top: 20px;
+}
+.creative-shell .adda .adda-page-end {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  background: var(--adda-clay);
+  border: var(--adda-border);
+  box-shadow: var(--adda-shadow);
+  padding: 32px;
+  margin-top: 56px;
+}
+.creative-shell .adda .adda-page-end h2 {
+  font:
+    36px/1.2 Georgia,
+    serif;
+  margin: 12px 0;
+}
+.creative-shell .adda .adda-page-end p {
+  font:
+    16px/1.7 Georgia,
+    serif;
+}
+.creative-shell .adda .adda-footer {
+  border-top-color: var(--adda-gold);
+  background: #064c44;
+}
+.creative-shell .adda .adda-footer a:focus-visible {
+  outline-color: var(--adda-gold);
+}
+.creative-shell .adda .adda-contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 32px;
+  align-items: start;
+}
+.creative-shell .adda .adda-contact-invite {
+  background: var(--adda-sage);
+  border: var(--adda-border);
+  box-shadow: var(--adda-shadow);
+  padding: 32px;
+}
+.creative-shell .adda .adda-contact-invite h2,
+.creative-shell .adda .adda-connect-section h2 {
+  font:
+    34px/1.2 Georgia,
+    serif;
+  margin: 18px 0;
+}
+.creative-shell .adda .adda-contact-invite p {
+  font:
+    16px/1.8 Georgia,
+    serif;
+  margin: 20px 0;
+}
+.creative-shell .adda .adda-location,
+.creative-shell .adda .adda-contact-email {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  overflow-wrap: anywhere;
+}
+.creative-shell .adda .adda-contact-email {
+  margin-top: 24px;
+  font:
+    600 13px/1.8 Inter,
+    sans-serif;
+}
+.creative-shell .adda .adda-contact-form > div > div {
+  background: var(--adda-clay);
+  border: var(--adda-border);
+  border-radius: 0;
+  box-shadow: var(--adda-shadow) !important;
+}
+.creative-shell .adda .adda-contact-form > div > div {
+  padding: 32px;
+}
+.creative-shell .adda .adda-contact-form :is(input, textarea) {
+  border: var(--adda-border);
+  border-radius: 4px;
+  background: #fff8e9;
+}
+.creative-shell .adda .adda-contact-form .wb-contact-submit {
+  background: var(--adda-gold);
+  color: var(--adda-ink) !important;
+  border: var(--adda-border);
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 var(--adda-ink);
+}
+.creative-shell .adda .adda-contact-form .wb-contact-submit:disabled {
+  background: #efdfba;
+  color: #595347 !important;
+  box-shadow: none;
+}
+.creative-shell .adda .adda-connect-section {
+  margin-top: 56px;
+}
+.creative-shell .adda .adda-connect-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.creative-shell .adda .adda-connect-links a {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: var(--adda-border);
+  background: var(--adda-gold);
+  box-shadow: var(--adda-shadow);
+  padding: 24px;
+}
+.creative-shell .adda .adda-connect-links a:nth-child(2) {
+  background: var(--adda-sage);
+}
+.creative-shell .adda .adda-connect-links a > div {
+  display: grid;
+  gap: 6px;
+  flex: 1;
+  font:
+    600 14px/1.5 Inter,
+    sans-serif;
+}
+.creative-shell .adda .adda-connect-links a span {
+  font-size: 12px;
+  font-weight: 400;
+}
+@media (max-width: 1199px) {
+  .creative-shell .adda .adda-contents {
+    margin-inline: 24px;
+  }
+}
+@media (max-width: 999px) {
+  .creative-shell .adda .adda-island {
+    height: 64px;
+    padding: 6px 9px;
+    width: calc(100% - 24px);
+  }
+  .adda-island .wb-switch-word > svg {
+    display: none;
+  }
+  .adda-island .wb-world-switch a {
+    padding-inline: 8px;
+    font-size: 11px;
+  }
+  .creative-shell .adda .adda-page-header {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 28px;
+  }
+  .creative-shell .adda .cinema-projects {
+    grid-template-columns: 1fr;
+  }
+  .creative-shell .adda .adda-contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 699px) {
+  .creative-shell .adda .world-page {
+    padding: 110px 20px 48px;
+  }
+  .creative-shell .adda .adda-home {
+    padding-top: 100px;
+  }
+  .creative-shell .adda .adda-contents {
+    margin: 0 16px 24px;
+    padding: 12px 16px;
+    gap: 4px 20px;
+  }
+  .creative-shell .adda .adda-contents .eyebrow {
+    width: 100%;
+  }
+  .creative-shell .adda .adda-page-header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-bottom: 28px;
+  }
+  .creative-shell .adda .adda-page-art {
+    width: 100%;
+    aspect-ratio: auto;
+    height: 150px;
+    transform: none;
+    padding: 18px;
+  }
+  .creative-shell .adda .adda-page-art > svg:not(.adda-art-flower) {
+    width: 66px;
+    height: 66px;
+    position: absolute;
+    right: 32px;
+    top: 42px;
+  }
+  .creative-shell .adda .adda-page-art .eyebrow {
+    max-width: 55%;
+  }
+  .creative-shell .adda .adda-page-header .page-intro {
+    font-size: 16px;
+  }
+  .creative-shell .adda .editorial-heading {
+    align-items: flex-start;
+  }
+  .creative-shell .adda .editorial-heading h2 {
+    flex-basis: 100%;
+  }
+  .creative-shell .adda .editorial-heading .adda-button {
+    margin-left: auto;
+  }
+  .creative-shell .adda .book-preview {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 32px;
+  }
+  .creative-shell .adda .book-preview .book-cover {
+    width: min(230px, 100%);
+    margin: auto;
+  }
+  .creative-shell .adda .series-preview > a {
+    grid-template-columns: 1fr;
+  }
+  .creative-shell .adda .series-preview > a > div {
+    padding: 24px;
+  }
+  .creative-shell .adda .personal-intro {
+    padding: 24px;
+    grid-template-columns: 1fr;
+  }
+  .creative-shell .adda .personal-intro .world-portrait {
+    max-width: 280px;
+    margin: auto;
+  }
+  .creative-shell .adda .adda-page-end {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    margin-top: 40px;
+  }
+  .creative-shell .adda .adda-page-end .adda-button {
+    margin-left: auto;
+  }
+  .creative-shell .adda .adda-contact-invite {
+    padding: 24px;
+  }
+  .creative-shell .adda .adda-contact-form > div > div {
+    padding: 24px;
+  }
+  .creative-shell .adda .adda-connect-links {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 359px) {
+  .adda-island .wb-world-switch a {
+    padding-inline: 5px;
+    font-size: 10px;
+  }
+  .adda-island .wb-switch-word small {
+    font-size: 8px;
+  }
+  .adda-island .wb-switch-bengali {
+    font-size: 16px;
+  }
+  .adda-island .wb-island-row {
+    gap: 4px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .creative-shell .adda :is(.adda-button, .material-button, .adda-page-art) {
+    transition: none;
+    transform: none;
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   motion,
   AnimatePresence,
@@ -28,13 +28,28 @@ const navItems = [
   { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
 ];
+const addaNavItems = [
+  { name: "Photography", path: "/photography" },
+  { name: "Writing", path: "/writing" },
+  { name: "Cinema", path: "/cinema" },
+  { name: "About", path: "/adda/about" },
+  { name: "Contact", path: "/contact?world=adda" },
+];
 export default function Header() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const root = useRef(null),
     toggle = useRef(null);
   const reduced = useReducedMotion();
   const { world, switchWorld, destination, transitioning } = useWorld();
+  const creative = world === "adda";
+  const home = creative ? "/adda" : "/workbench";
+  const talk = () => {
+    setOpen(false);
+    if (creative) navigate("/contact?world=adda");
+    else openScheduleBooking();
+  };
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 100, damping: 28 });
   useEffect(() => setOpen(false), [location.pathname, location.search]);
@@ -65,10 +80,11 @@ export default function Header() {
     };
   }, [open]);
   const navigation = (mobile) =>
-    navItems.map((item) => {
+    (creative ? addaNavItems : navItems).map((item) => {
+      const path = item.path.split("?")[0];
       const active =
-        location.pathname === item.path ||
-        location.pathname.startsWith(`${item.path}/`) ||
+        location.pathname === path ||
+        location.pathname.startsWith(`${path}/`) ||
         (item.path === "/work" &&
           /^\/(case-studies|projects)/.test(location.pathname));
       return (
@@ -94,15 +110,15 @@ export default function Header() {
   return (
     <header
       ref={root}
-      className={`wb-island ${open ? "is-expanded" : ""}`}
-      aria-label="Workbench navigation"
+      className={`wb-island ${creative ? "adda-island" : ""} ${open ? "is-expanded" : ""}`}
+      aria-label={`${creative ? "Adda" : "Workbench"} navigation`}
     >
       <div className="wb-island-row">
         <Link
-          to="/workbench"
+          to={home}
           className="wb-brand"
-          aria-label="Saswata — Workbench home"
-          aria-current={location.pathname === "/workbench" ? "page" : undefined}
+          aria-label={`Saswata — ${creative ? "Adda" : "Workbench"} home`}
+          aria-current={location.pathname === home ? "page" : undefined}
         >
           <Home size={20} />
         </Link>
@@ -157,10 +173,10 @@ export default function Header() {
           className="wb-nav-cta"
           onClick={() => {
             trackEvent("navigation", "book_a_call");
-            openScheduleBooking();
+            talk();
           }}
         >
-          Let’s talk <ArrowUpRight size={16} />
+          {creative ? "Say hello" : "Let’s talk"} <ArrowUpRight size={16} />
         </button>
         <button
           ref={toggle}
@@ -199,11 +215,11 @@ export default function Header() {
               <button
                 className="wb-mobile-talk"
                 onClick={() => {
-                  setOpen(false);
-                  openScheduleBooking();
+                  talk();
                 }}
               >
-                Let’s talk <ArrowUpRight size={17} />
+                {creative ? "Say hello" : "Let’s talk"}{" "}
+                <ArrowUpRight size={17} />
               </button>
             </div>
           </motion.nav>

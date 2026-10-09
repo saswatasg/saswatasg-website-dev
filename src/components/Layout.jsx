@@ -3,12 +3,10 @@ import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CreativeHeader, { ModeSelector } from "@/components/worlds/WorldHeader";
 import CreativeFooter from "@/components/worlds/CreativeFooter";
 import WorldMotion from "@/components/worlds/WorldMotion";
 import WorkbenchMotion from "@/components/workbench/WorkbenchMotion";
 import { useWorld } from "@/contexts/WorldContext";
-import { Link } from "react-router-dom";
 import PortfolioGuide from "@/components/PortfolioGuide";
 import BookingDialog from "@/components/BookingDialog";
 import WhatsAppModal from "@/components/WhatsAppModal";
@@ -61,7 +59,7 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <MotionConfig reducedMotion={creative ? "never" : "user"}>
+    <MotionConfig reducedMotion="user">
       <CreativeScope active={creative}>
         <div
           className={
@@ -78,11 +76,7 @@ const Layout = ({ children }) => {
           >
             Skip to main content
           </a>
-          {world === "workbench" ? (
-            <Header />
-          ) : world === "adda" ? (
-            <CreativeHeader />
-          ) : null}
+          {world && <Header />}
           {creative && <WorldMotion />}
           {world === "workbench" && <WorkbenchMotion />}
           <main id="main-content" className="flex-grow flex flex-col">
@@ -111,14 +105,6 @@ const Layout = ({ children }) => {
           ) : world === "adda" ? (
             <CreativeFooter />
           ) : null}
-          {world === "adda" && (
-            <div className="two-world-dock">
-              <ModeSelector />
-              <Link to="/" aria-label="Back to the split entrance">
-                ↔
-              </Link>
-            </div>
-          )}
           <Toaster />
         </div>
       </CreativeScope>

@@ -11,6 +11,9 @@ import {
 } from "@/components/worlds/Motifs";
 import { books, photographySeries } from "@/data/creativeContent";
 import { openSourceProjects } from "@/data/projectsData";
+import AddaPageHeader, {
+  AddaPageEnd,
+} from "@/components/worlds/AddaPageHeader";
 export function BookPreview({ book }) {
   return (
     <article className="book-preview">
@@ -57,7 +60,7 @@ export default function Adda() {
             <br />
             Welcome to the other side of my workbench.
           </p>
-          <a className="text-link" href="#adda-shelf">
+          <a className="adda-button" href="#adda-shelf">
             Take a look around ↓
           </a>
         </div>
@@ -81,11 +84,20 @@ export default function Adda() {
         <Owl className="adda-hero-owl" />
       </section>
       <FishRule />
+      <nav className="adda-contents" aria-label="Explore Adda">
+        <span className="eyebrow">AROUND THE TABLE</span>
+        <a href="#adda-shelf">A second look ↘</a>
+        <a href="#adda-desk">On the desk ↘</a>
+        <a href="#adda-cinema">After the credits ↘</a>
+        <a href="#adda-person">The person ↘</a>
+      </nav>
       <section className="adda-feature shared-section" id="adda-shelf">
         <div className="editorial-heading">
           <span>01 / THROUGH THE VIEWFINDER</span>
           <h2>A few things that stayed with me.</h2>
-          <Link to="/photography">Photography ↗</Link>
+          <Link className="adda-button" to="/photography">
+            Explore photographs ↗
+          </Link>
         </div>
         <Link to={`/photography/${series.slug}`} className="featured-photo">
           <img
@@ -106,11 +118,13 @@ export default function Adda() {
         </div>
       </section>
       <FolkBorder />
-      <section className="adda-books shared-section">
+      <section className="adda-books shared-section" id="adda-desk">
         <div className="editorial-heading">
           <span>02 / ON THE WRITING DESK</span>
           <h2>Not yet on a bookshelf.</h2>
-          <Link to="/writing">Two manuscripts ↗</Link>
+          <Link className="adda-button" to="/writing">
+            Open the writing desk ↗
+          </Link>
         </div>
         <div className="personal-book-feature">
           <Link
@@ -143,7 +157,7 @@ export default function Adda() {
         </div>
       </section>
       <FishRule />
-      <section className="cinema-fragment shared-section">
+      <section className="cinema-fragment shared-section" id="adda-cinema">
         <span className="eyebrow">03 / AFTER THE CREDITS</span>
         <div>
           <h2>
@@ -164,7 +178,7 @@ export default function Adda() {
           ◉
         </span>
       </section>
-      <section className="adda-personal shared-section">
+      <section className="adda-personal shared-section" id="adda-person">
         <Owl />
         <div>
           <p className="eyebrow">04 / THE PERSON AT THE TABLE</p>
@@ -201,19 +215,23 @@ export function Writing() {
         title="Writing — Two unpublished books | Saswata S. Sengupta"
         description="Two unpublished manuscripts: a North Kolkata detective story and a societal story about school and education in a fictional town."
       />
-      <p className="eyebrow">ADDA / THE WRITING DESK</p>
-      <h1>
-        Stories,
-        <br />
-        <em>still becoming.</em>
-      </h1>
-      <p className="page-intro">
-        Two unpublished books. Two different questions. Both still on my desk.
-      </p>
+      <AddaPageHeader
+        label="Writing"
+        variant="writing"
+        title={
+          <>
+            Stories,
+            <br />
+            <em>still becoming.</em>
+          </>
+        }
+        description="Two unpublished books. Two different questions. Both still on my desk."
+      />
       <FolkBorder />
       {books.map((book) => (
         <BookPreview key={book.id} book={book} />
       ))}
+      <AddaPageEnd />
     </div>
   );
 }
@@ -227,12 +245,18 @@ export function Cinema() {
         title="Cinema | Saswata S. Sengupta"
         description="Satyajit Ray, Rituparno Ghosh and a wider world of cinema. Film reflections to come, alongside cinema-inspired builds."
       />
-      <p className="eyebrow">ADDA / AFTER THE CREDITS</p>
-      <h1>
-        The film ends.
-        <br />
-        <em>The conversation stays.</em>
-      </h1>
+      <AddaPageHeader
+        label="Cinema"
+        variant="cinema"
+        title={
+          <>
+            The film ends.
+            <br />
+            <em>The conversation stays.</em>
+          </>
+        }
+        description="A few influences, a few experiments, and room for the films that linger."
+      />
       <FishRule />
       <div className="reading-column">
         <h2>A few names, for now.</h2>
@@ -259,6 +283,7 @@ export function Cinema() {
           </article>
         ))}
       </div>
+      <AddaPageEnd />
     </div>
   );
 }
@@ -269,14 +294,21 @@ export function AddaAbout() {
         title="The observer | Saswata S. Sengupta"
         description="Saswata’s personal side: Kolkata, photography, cooking, cinema and two unpublished manuscripts."
       />
-      <p className="eyebrow">ADDA / THE PERSON AT THE TABLE</p>
-      <div className="personal-intro">
-        <div>
-          <h1>
+      <AddaPageHeader
+        label="About"
+        title={
+          <>
             Same curiosity.
             <br />
             <em>Another lens.</em>
-          </h1>
+          </>
+        }
+        description="Kolkata is home. This is a little of the life around the work."
+      />
+      <div className="personal-intro">
+        <div>
+          <span className="eyebrow">THE PERSON AT THE TABLE</span>
+          <h2>Hi, I’m Saswata.</h2>
           <div className="reading-column">
             <p>
               I’m Saswata S. Sengupta, based in Kolkata. I explore digital
@@ -305,6 +337,7 @@ export function AddaAbout() {
         <Portrait world="adda" />
       </div>
       <FolkBorder />
+      <AddaPageEnd />
     </div>
   );
 }
